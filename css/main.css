@@ -1,0 +1,125 @@
+.cuadrito
+{
+	background-color: #162123;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px #D3D3D3;
+    float: left;
+    margin-right: 10px;
+    margin-top: 7px;
+    min-height: 250px;
+    padding: 10px;
+    width: 560px;
+    position: relative;
+}
+
+.inputbox div {
+    background:#f00
+}
+
+a.trigger{
+    background:url("../media/sprites.png") no-repeat scroll 0 0 transparent;
+    display:block;
+    height:40px;
+    position:absolute;
+    right:0;
+    top:10px;
+    width:50px
+}
+
+
+.typeahead-devs, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px 8px 8px 8px;
+    font-size: 24px;
+    height: 45px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 400px;
+}
+
+.tt-dropdown-menu {
+    width: 400px;
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px 8px 8px 8px;
+    font-size: 18px;
+    color: #111;
+    background-color: #F1F1F1;
+}
+
+#cabecera{
+	border-radius: 5px;
+	background-color: #162123;
+	font-weight: bold;
+	color: #000;
+	padding: 10px;
+}
+
+#content{
+	min-height:600px;
+	background-color:#162123;
+	color:#000
+}
+
+
+.doughnut-legend li span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 7px;
+  float: left;
+  margin-top: 4px;
+  margin-right: 8px;
+}
+
+.doughnut-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  margin-top : 20px;
+
+}
+
+.doughnut-legend li {
+  margin-bottom : 4px;
+  text-align: left;
+}
+
+.doughnut-legend li:first-letter {
+  text-transform: capitalize;
+}
+
+.comm-how {
+  display: inline-block;
+  float : left;
+  color : #979797;
+  width : 25px;
+  text-align: left;
+  margin-right : 10px;
+}
+
+.legend {
+	background:transparent;
+}
+
+.legend .title {
+    display: block;
+    margin-bottom: 0.5em;
+    line-height: 1.2em;
+    padding: 0 0.3em;
+	text-align:left;
+}
+
+.legend .color-sample {
+    display: block;
+    float: left;
+    width: 1em;
+    height: 1em; /* Comment out if you don't want to show the fillColor */
+    border-radius: 0.5em; /* Comment out if you prefer squarish samples */
+    margin-right: 0.5em;
+}
