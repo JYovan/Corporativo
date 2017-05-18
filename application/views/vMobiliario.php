@@ -7,7 +7,10 @@
                         <div class="col-md-4"></div> 
                         <div class="col-md-4"><h3 class="panel-title">MÓDULO MOBILIARIO</h3></div>
                         <div class="col-md-2"></div> 
-                        <div class="col-md-2" id=""><span class="fa fa-clock-o fa-lg"></span></div>
+                        
+                    <div class="col-md-2 panel-title" align="right">
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                    </div>
                     </div>
                 </div>
                 <div class="panel-body">

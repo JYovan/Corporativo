@@ -46,7 +46,7 @@ class ctrlProveedors extends CI_Controller {
                 $data = array(
                     'Tipo' => $Tipo,
                     'Proveedor' => strtoupper($Proveedor),
-                    'RFC' => ((isset($Correo) && $Correo !== '') ? $RFC : NULL),
+                    'RFC' => ((isset($RFC) && $RFC !== '') ? $RFC : NULL),
                     'Correo' => ((isset($Correo) && $Correo !== '') ? $Correo : NULL),
                     'Pagina' => ((isset($Pagina) && $Pagina !== '') ? $Pagina : NULL),
                     'Calle' => ((isset($Calle) && $Calle !== '') ? $Calle : NULL),
@@ -70,6 +70,7 @@ class ctrlProveedors extends CI_Controller {
                     'Fecha' => ((isset($Fecha) && $Fecha !== '') ? $Fecha : NULL),
                     'Registro' => Date('d/m/Y h:i:s a')
                 );
+                
                 $ID = $this->resource_model->onAction("Proveedores", $data, "save", 0);
                 
             if (isset($_FILES["Icono"]["name"])) {
@@ -100,7 +101,7 @@ class ctrlProveedors extends CI_Controller {
                 $data = array(
                     'Tipo' => $Tipo,
                     'Proveedor' => strtoupper($Proveedor),
-                    'RFC' => ((isset($Correo) && $Correo !== '') ? $RFC : NULL),
+                    'RFC' => ((isset($RFC) && $RFC !== '') ? $RFC : NULL),
                     'Correo' => ((isset($Correo) && $Correo !== '') ? $Correo : NULL),
                     'Pagina' => ((isset($Pagina) && $Pagina !== '') ? $Pagina : NULL),
                     'Calle' => ((isset($Calle) && $Calle !== '') ? $Calle : NULL),
@@ -124,6 +125,7 @@ class ctrlProveedors extends CI_Controller {
                     'Fecha' => ((isset($Fecha) && $Fecha !== '') ? $Fecha : NULL),
                     'Registro' => Date('d/m/Y h:i:s a')
                 );
+                var_dump($data);
                 $ID = $this->resource_model->onAction("Proveedores", $data, "update", array('ID', $ID));
             }
         } catch (Exception $exc) {

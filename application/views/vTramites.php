@@ -692,6 +692,10 @@
         }).done(function (data, x, jq) {
             console.log(data);
             $("#tblResult").html(getTable('tblTramites', data));
+                $('#tblTramites tfoot th').each(function () {
+                    var title = $(this).text();
+                    $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
+                });
             var tblSelected = $('#tblTramites').DataTable(tableOptions);
             $('#tblTramites tbody').on('click', 'tr', function () {
                 $("#tblTramites").find("tr").removeClass("success");

@@ -192,6 +192,18 @@ class ctrlProductos extends CI_Controller {
         }
     }
 
+    public function onEliminarPrecio() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = array( 
+                'Estatus' => 'INACTIVO'
+            );
+            $ID = $this->resource_model->onAction('catalogo', $data, 'update', array('ID', $ID));
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
     public function onUpdatePrecioXProductoYProveedor() {
         try {
             date_default_timezone_set('America/Mexico_City');

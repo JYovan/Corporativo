@@ -27,6 +27,33 @@ class compras_model extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
+    function getOrdenesDeCompra() {
+        try {
+            $query = $this->db->query("CALL SP_GETORDENESDECOMPRAS()");
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query(); 
+            $data = $query->result(); 
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    function getOrdenesDeCompraADetalle() {
+        try {
+            $query = $this->db->query("CALL SP_GETORDENESDECOMPRASADETALLE()");
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query(); 
+            $data = $query->result(); 
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 
     function getCanceledRecords() {
         try {

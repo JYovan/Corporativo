@@ -31,4 +31,19 @@ class empresas_model extends CI_Model {
 //        var_dump($str);
         return $data;
     }
+    
+    function getEmpresaByID($ID) {
+        $this->db->select('DIR.*', false);
+        $this->db->from('Directorio AS DIR'); 
+        $this->db->where('DIR.ID',$ID);
+        $query = $this->db->get();
+        /*
+         * FOR DEBUG ONLY
+         */
+        $str = $this->db->last_query();
+//        print $str;
+        $data = $query->result();
+//        var_dump($str);
+        return $data;
+    }
 }

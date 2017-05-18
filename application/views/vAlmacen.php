@@ -1,3 +1,5 @@
+
+
 <div class="row">
     <fieldset>
         <div class="col-md-12 margin-15-top">
@@ -12,188 +14,312 @@
                         <div class="text-center cursor-hand" onclick="onHideFunctions()">MÓDULO DE SUMINISTRO DE MATERIALES <span class="fa fa-chevron-up" data-toggle="tooltip" data-placement="top" title="" data-original-title="OCULTAR/MOSTRAR BOTONES"></span></div>
                     </div> 
                     <div class="col-md-2 panel-title" align="right">
-                        <a href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
-                            <span class="fa fa-navicon"data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                        </a> 
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
                     </div>
                 </div>
                 <div class="panel-body">
-                    <div align="center">
-
+                    <div align="center"> 
                         <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo" > 
                             <button class="btn btn-default btn-lg text-center fa-lg" 
                                     data-toggle="tooltip" 
                                     data-placement="top" 
-                                    title="NUEVO"  type="button"
-                                    data-original-title="NUEVO">
-                                <span class="fa fa-plus fa-2x info-icon"></span>
+                                    title="NUEVO ALMACEN"  type="button"
+                                    data-original-title="NUEVO ALMACEN">
+                                <span class="fa fa-plus fa-lg info-icon"></span>
                             </button>
                         </span>
                         <button id="btnEditar" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
-                                data-original-title="EDITAR">
-                            <span class="fa fa-pencil fa-2x success-icon"></span>
+                                data-original-title="EDITAR ALMACEN">
+                            <span class="fa fa-pencil fa-lg success-icon"></span>
                         </button>
                         <button id="btnRefresh" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="REFRESCAR">
-                            <span class="fa fa-refresh fa-2x warning-icon"></span>
+                            <span class="fa fa-refresh fa-lg warning-icon"></span>
                         </button>
                         <button id="btnAsignar" class="btn btn3d btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="ASIGNAR PRODUCTOS">
-                            <span class="fa fa-arrow-down fa-2x danger-icon"></span>
+                            <span class="fa fa-arrow-down fa-lg danger-icon"></span>
                         </button>
                         <button id="btnProductosAsignados" class="btn btn3d btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="PRODUCTOS ASIGNADOS">
-                            <span class="fa fa-eye fa-2x danger-icon"></span>
+                            <span class="fa fa-eye fa-lg danger-icon"></span>
                         </button>
                         <button id="btnNuevoMovimiento" class="btn btn-default btn-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="NUEVO MOVIMIENTO">
-                            <span class="fa fa-sign-in fa-2x purple-icon"></span>
+                            <span class="fa fa-sign-in fa-lg purple-icon"></span>
                         </button>
                         <button id="btnEntrada" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="NUEVA ENTRADA">
-                            <span class="fa fa-sign-in fa-2x lime-icon"></span>
+                            <span class="fa fa-sign-in fa-lg lime-icon"></span>
                         </button>
                         <button id="btnEntradas" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="ENTRADAS">
-                            <span class="fa fa-eye fa-2x lime-icon"></span>
+                            <span class="fa fa-eye fa-lg lime-icon"></span>
                         </button>
                         <button id="btnCancelarEntrada" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="CANCELAR ENTRADA">
-                            <span class="fa fa-ban fa-2x lime-icon"></span>
+                            <span class="fa fa-ban fa-lg lime-icon"></span>
                         </button>
                         <button id="btnSalida" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="NUEVA SALIDA">
-                            <span class="fa fa-external-link fa-2x purple-icon"></span>
+                            <span class="fa fa-external-link fa-lg purple-icon"></span>
                         </button>
                         <button id="btnSalidas" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="SALIDAS">
-                            <span class="fa fa-eye fa-2x purple-icon"></span>
+                            <span class="fa fa-eye fa-lg purple-icon"></span>
                         </button>
                         <button id="btnCancelarSalida" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="CANCELAR SALIDA">
-                            <span class="fa fa-ban fa-2x purple-icon"></span>
+                            <span class="fa fa-ban fa-lg purple-icon"></span>
                         </button>
                         <button id="btnSalidasCanceladas" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="SALIDAS CANCELADAS">
-                            <span class="fa fa-eye-slash fa-2x purple-icon"></span>
+                            <span class="fa fa-eye-slash fa-lg purple-icon"></span>
                         </button>
                         <button id="btnDevolucion" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="NUEVA DEVOLUCIÓN">
-                            <span class="fa fa-exchange fa-2x cyan-icon"></span>
+                            <span class="fa fa-exchange fa-lg cyan-icon"></span>
                         </button>
                         <button id="btnDevoluciones" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="DEVOLUCIONES">
-                            <span class="fa fa-eye fa-2x  cyan-icon"></span>
+                            <span class="fa fa-eye fa-lg  cyan-icon"></span>
                         </button>
                         <button id="btnCancelarDevolucion" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="CANCELAR DEVOLUCIÓN">
-                            <span class="fa fa-ban fa-2x cyan-icon"></span>
+                            <span class="fa fa-ban fa-lg cyan-icon"></span>
                         </button>
                         <button id="btnRecepcion" class="btn btn-default btn-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="CANCELAR MOVIMIENTO">
-                            <span class="fa fa-times fa-2x"></span>
+                            <span class="fa fa-times fa-lg"></span>
                         </button>
                         <button id="btnAjuste" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="NUEVO AJUSTE">
-                            <span class="fa fa-wrench fa-2x brown-icon"></span>
+                            <span class="fa fa-wrench fa-lg brown-icon"></span>
                         </button>
                         <button id="btnAjustes" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="AJUSTES">
-                            <span class="fa fa-eye fa-2x brown-icon"></span>
+                            <span class="fa fa-eye fa-lg brown-icon"></span>
                         </button>
                         <button id="btnExistencias" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="EXISTENCIAS (KÁRDEX)">
-                            <span class="fa fa-cube fa-2x bluegrey-icon"></span>
+                            <span class="fa fa-cube fa-lg bluegrey-icon"></span>
                         </button> 
                         <button id="btnKardexPDF" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="REPORTES DE EXISTENCIAS (KÁRDEX)">
-                            <span class="fa fa-balance-scale fa-2x bluegrey-icon"></span>
+                            <span class="fa fa-balance-scale fa-lg bluegrey-icon"></span>
                         </button>
                         <button id="btnPerdida" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="NUEVA PERDIDA">
-                            <span class="fa fa-eraser fa-2x black-icon"></span>
+                            <span class="fa fa-eraser fa-lg black-icon"></span>
                         </button>
                         <button id="btnPerdidas" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="PERDIDAS">
-                            <span class="fa fa-eye fa-2x black-icon"></span>
+                            <span class="fa fa-eye fa-lg black-icon"></span>
                         </button>
+                        <button id="btnCancelarPerdida" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="CANCELAR PERDIDA">
+                            <span class="fa fa-ban fa-lg black-icon"></span>
+                        </button>
+
+
+                        <button id="btnDevolucionX" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="NUEVA DEVOLUCION">
+                            <span class="fa fa-mail-reply fa-lg kingblue-icon"></span>
+                        </button>
+                        <button id="btnDevolucionesX" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="DEVOLUCIONES">
+                            <span class="fa fa-eye fa-lg kingblue-icon"></span>
+                        </button>
+                        <button id="btnComprobante" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="GENERAR COMPROBANTE">
+                            <span class="fa fa-file-text fa-lg cyan-icon"></span>
+                        </button>
+
                         <button id="btnAsignarX" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
                                 data-original-title="ASIGNAR X">
-                            <span class="fa fa-exchange fa-2x black-icon"></span>
+                            <span class="fa fa-exchange fa-lg black-icon"></span>
                         </button>
+                    </div>
+
+                    <div class="col-md-12 hide" id="mdlBusquedaDevolucionesX">
+                        <fieldset>
+                            <div class="col-md-12" align="center">
+                                <h3>BÚSQUEDA DE DEVOLUCIONES</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="">FECHA INICIAL</label>
+                                <input type="text" id="FechaInicial" name="FechaInicial" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="">FECHA FINAL</label>
+                                <input type="text" id="FechaFinal" name="FechaFinal" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">PROYECTO</label>
+                                <select id="IdProyecto" name="IdProyecto" class="form-control">
+
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">ALMACEN</label>
+                                <select id="IdAlmacen" name="IdAlmacen" class="form-control">
+
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-default fa-lg" id="btnBuscarPerdidas" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title=""  type="button"
+                                        data-original-title="BUSCAR DEVOLUCIONES"><span class="fa fa-search fa-2x grayscale-icon"></span></button>
+                                <button type="button" class="btn btn-default fa-lg" id="btnReiniciarPerdida" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title=""  type="button"
+                                        data-original-title="REINICIAR"><span class="fa fa-trash fa-2x grayscale-icon"></span></button>
+                            </div>
+                            <div class="col-md-12" align="center">
+                                <button type="button" class="btn btn-default fa-lg" id="btnReporteDePerdidas" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title=""  type="button"
+                                        data-original-title="GENERAR REPORTE DE DEVOLUCIONES"><span class="fa fa-check fa-2x danger-icon"></span></button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-12 hide" id="mdlBusquedaPerdida">
+                        <fieldset>
+                            <div class="col-md-12" align="center">
+                                <h3>BÚSQUEDA DE PERDIDAS</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="">FECHA INICIAL</label>
+                                <input type="text" id="FechaInicial" name="FechaInicial" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="">FECHA FINAL</label>
+                                <input type="text" id="FechaFinal" name="FechaFinal" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">PROYECTO</label>
+                                <select id="IdProyecto" name="IdProyecto" class="form-control">
+
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">ALMACEN</label>
+                                <select id="IdAlmacen" name="IdAlmacen" class="form-control">
+
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-default fa-lg" id="btnBuscarPerdidas" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title=""  type="button"
+                                        data-original-title="BUSCAR PERDIDAS"><span class="fa fa-search fa-2x grayscale-icon"></span></button>
+                                <button type="button" class="btn btn-default fa-lg" id="btnReiniciarPerdida" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title=""  type="button"
+                                        data-original-title="REINICIAR"><span class="fa fa-trash fa-2x grayscale-icon"></span></button>
+                            </div>
+                            <div class="col-md-12" align="center">
+                                <button type="button" class="btn btn-default fa-lg" id="btnReporteDePerdidas" 
+                                        data-toggle="tooltip" 
+                                        data-placement="top" 
+                                        title=""  type="button"
+                                        data-original-title="GENERAR REPORTE DE PERDIDAS"><span class="fa fa-check fa-2x danger-icon"></span></button>
+                            </div>
+                        </fieldset>
                     </div>
 
                     <div class="col-md-12 hide" id="mdlBusquedaEntrada" >
                         <form>
+                            <div class="col-md-12" align="center">
+                                <h3>BÚSQUEDA DE ENTRADAS</h3>
+                            </div>
                             <div class="col-md-2">
                                 <label for="">FECHA INICIAL</label>
                                 <input type="text" id="Inicio" name="Inicio" class="form-control cursor-hand" placeholder="FECHA INICIAL" readonly="" data-provide="datepicker" data-date-format="dd/mm/yyyy" >
@@ -255,6 +381,10 @@
 
                     <div class="col-md-12 hide" id="mdlBusquedaSalida" >
                         <form>
+
+                            <div class="col-md-12" align="center">
+                                <h3>BÚSQUEDA DE SALIDAS</h3>
+                            </div>
                             <div class="col-md-2">
                                 <label for="">FECHA INICIAL</label>
                                 <input type="text" id="Inicio" name="Inicio" class="form-control cursor-hand" placeholder="FECHA INICIAL" readonly="" data-provide="datepicker" data-date-format="dd/mm/yyyy" >
@@ -426,6 +556,9 @@
                     </div>
 
                     <div  class="col-md-12 hide" id="mdlBusquedaDevoluciones">
+                        <div class="col-md-12" align="center">
+                            <h3>BÚSQUEDA DE DEVOLUCIONES</h3>
+                        </div>
                         <div class="col-md-2">
                             <label for="">FECHA INICIAL</label>
                             <input type="text" class="form-control" id="FechaInicial" name="FechaInicial" placeholder="XX/XX/XXXX"  data-date-format="dd/mm/yyyy" data-provide="datepicker">
@@ -474,7 +607,7 @@
                             </button>
                         </div>
                     </div>
-                    <div id="rAlmacen" class=""></div> 
+                    <div id="rAlmacen" class="col-md-12"></div> 
                 </div>
             </div>
         </div>
@@ -787,29 +920,33 @@
                                     data-toggle="tooltip" 
                                     data-placement="top" 
                                     title=""  type="button"
-                                    data-original-title="QUITAR TODOS" class="btn btn3d  btn-default fa-lg"><span class="fa fa-angle-double-left fa-5x"></span></button>
+                                    data-original-title="QUITAR TODOS" class="btn btn3d  btn-default fa-lg"><span class="fa fa-angle-double-left fa-3x"></span></button>
                             <button id="btnAgregarTodos"
                                     data-toggle="tooltip" 
                                     data-placement="top" 
                                     title=""  type="button"
-                                    data-original-title="AGREGAR TODOS" class="btn btn3d  btn-default fa-lg"><span class="fa fa-angle-double-right fa-5x"></span></button>
+                                    data-original-title="AGREGAR TODOS" class="btn btn3d  btn-default fa-lg"><span class="fa fa-angle-double-right fa-3x"></span></button>
                         </div>
                         <div class="col-md-3">
                             <label for="">PRODUCTO</label>
                             <input type="text" id="txtSearchA" name="txtSearchA" class="form-control" placeholder="NOMBRE DEL PRODUCTO">
                         </div>
-                        <div class="col-md-2" id="nProductosAsignados" align="center"></div>
+                        <div class="col-md-2 " id="nProductosAsignados" align="center"></div>
                         <div class="col-md-12"></div>
-                        <div class="col-md-6" id="dtblProductos">
-                            <table id="tblProductos" class="">
-                                <thead> 
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
+                        <div class="col-md-4">
+                            <div class="col-md-12 hide" id="dtblProductos" style="height: 600px; overflow-y: auto; overflow-x: hidden;">
+                                <table id="tblProductos" class="">
+                                    <thead> 
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>  
                         </div>  
 
-                        <div class="col-md-6" id="dtblProductosAsignados" style="">  
+                        <div class="col-md-7">
+                            <div class="col-md-12 table-responsive hide" id="dtblProductosAsignados" style="height: 600px; overflow-y: auto;">  
+                            </div> 
                         </div> 
                         <div class="col-md-12" id="msgResult"></div>
                     </fieldset>
@@ -1244,7 +1381,361 @@
     </div>
 </div>
 
+<div id="mdlPerdida" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="text-center modal-title" id="myModalLabel">PERDIDA DE PRODUCTO EN INVENTARIO</h2>
+            </div> 
+            <form id="frmPerdida">
+                <div id="messages-result" class="modal-body text-center">
+                    <fieldset>
+                        <div class="col-md-6">
+                            <label for="">FECHA</label>
+                            <input type="text" id="Fecha" name="Fecha" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                        </div>  
+                        <div class="col-md-6">
+                            <label for="">HORA</label>
+                            <input type="text" id="Hora" name="Hora" class="form-control" placeholder="XX/XX/XXXX">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">PROYECTO</label>
+                            <select id="IdProyecto" name="IdProyecto" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">ALMACÉN</label>
+                            <select id="IdAlmacen" name="IdAlmacen" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div> 
+                        <div class="col-md-6">
+                            <label for="">PRODUCTO CON REPORTE DE PERDIDA</label>
+                            <select id="IdProducto" name="IdProducto" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">TIPO DE PERDIDA</label>
+                            <select id="Tipo" name="Tipo" class="form-control">
+                                <option value=""></option> 
+                                <option value="1">DAÑO</option> 
+                                <option value="2">ROBO</option> 
+                                <option value="3">EXTRAVÍO</option> 
+                                <option value="4">OTRO</option> 
+                            </select>
+                        </div> 
+                        <div class="col-md-3">
+                            <label for="">CANTIDAD DE PRODUCTO</label>
+                            <input type="number" id="Cantidad" name="Cantidad" class="form-control" placeholder="0">
+                            <label for="">PRECIO</label>
+                            <input type="text" id="Precio" name="Precio" class="form-control" readonly="">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">UNIDAD DE MEDIDA</label>
+                            <input type="text" id="UnidadDeMedida" name="UnidadDeMedida" class="form-control" placeholder="X"> 
+                            <label for="">TOTAL DE LA PERDIDA</label>
+                            <input type="number" id="Total" name="Total" class="form-control" placeholder="0"> 
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">DESCRIPCIÓN DE LAS CAUSAS DE LA PERDIDA</label>
+                            <textarea id="Descripcion" name="Descripcion" type="text" placeholder="SE QUEBRO, SE MOJO, SE DERRAMO, SE ROMPIO,SE PERDIO" name="" rows="4" cols="20" class="form-control">
+                            </textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">PERSONA QUE DETECTA LA PERDIDA</label>
+                            <select id="PersonaDetecta" name="PersonaDetecta" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">RESPONSABLE DE ALMACÉN QUE REGISTRA LA PERDIDA</label>
+                            <select id="Responsable" name="Responsable" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+                <button id="btnGuardar" type="button" class="btn btn-default btn-lg fa-lg"  data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"><span class="fa fa-check fa-3x success-icon"></span> </button> 
+            </div>
+        </div>
+    </div>
+</div>
 
+
+<div id="mdlVerPerdida" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="text-center modal-title" id="myModalLabel">VER PERDIDA DE PRODUCTO EN INVENTARIO</h2>
+            </div>  
+            <div id="messages-result" class="modal-body text-center">
+                <fieldset>
+                    <div class="col-md-6">
+                        <label for="">FECHA</label>
+                        <input type="text" id="Fecha" name="Fecha" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                    </div>  
+                    <div class="col-md-6">
+                        <label for="">HORA</label>
+                        <input type="text" id="Hora" name="Hora" class="form-control" placeholder="XX/XX/XXXX">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">PROYECTO</label>
+                        <select id="IdProyecto" name="IdProyecto" class="form-control">
+                            <option value=""></option> 
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">ALMACÉN</label>
+                        <select id="IdAlmacen" name="IdAlmacen" class="form-control">
+                            <option value=""></option> 
+                        </select>
+                    </div> 
+                    <div class="col-md-6">
+                        <label for="">PRODUCTO CON REPORTE DE PERDIDA</label>
+                        <input type="text" id="ProductoT" name="ProductoT" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">TIPO DE PERDIDA</label>
+                        <input type="text"  id="TipoT" name="TipoT" class="form-control">
+                    </div> 
+                    <div class="col-md-3">
+                        <label for="">CANTIDAD DE PRODUCTO</label>
+                        <input type="number" id="Cantidad" name="Cantidad" class="form-control" placeholder="0">
+                        <label for="">PRECIO</label>
+                        <input type="text" id="Precio" name="Precio" class="form-control" readonly="">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">UNIDAD DE MEDIDA</label>
+                        <input type="text" id="UnidadDeMedida" name="UnidadDeMedida" class="form-control" placeholder="X"> 
+                        <label for="">TOTAL DE LA PERDIDA</label>
+                        <input type="number" id="Total" name="Total" class="form-control" placeholder="0"> 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">DESCRIPCIÓN DE LAS CAUSAS DE LA PERDIDA</label>
+                        <textarea id="Descripcion" name="Descripcion" type="text" placeholder="SE QUEBRO, SE MOJO, SE DERRAMO, SE ROMPIO,SE PERDIO" name="" rows="4" cols="20" class="form-control">
+                        </textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">PERSONA QUE DETECTA LA PERDIDA</label>
+                        <input type="text" id="PersonaDetectaT" name="PersonaDetectaT" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">RESPONSABLE DE ALMACÉN QUE REGISTRA LA PERDIDA</label>
+                        <input type="text" id="ResponsableT" name="ResponsableT" class="form-control">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="mdlDevolucionX" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="text-center modal-title" id="myModalLabel">REGISTRO DE DEVOLUCIÓN DE PRODUCTO EN INVENTARIO</h2>
+            </div> 
+            <form id="frmDevolucion">
+                <div id="messages-result" class="modal-body text-center">
+                    <fieldset>
+                        <div class="col-md-6">
+                            <label for="">FECHA</label>
+                            <input type="text" id="FechaDevolucion" name="FechaDevolucion" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                        </div>  
+                        <div class="col-md-6">
+                            <label for="">HORA</label>
+                            <input type="text" id="HoraDevolucion" name="HoraDevolucion" class="form-control" placeholder="XX/XX/XXXX">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">PROYECTO</label>
+                            <select id="IdProyecto" name="IdProyecto" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">ALMACÉN</label>
+                            <select id="IdAlmacen" name="IdAlmacen" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div align="center" class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">ORDEN DE COMPA DE REFERENCIA</label>
+                            <input type="text" id="OrdenDeCompraReferencia" name="OrdenDeCompraReferencia" class="form-control" placeholder="XX/XX/XXXX">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">ORDEN DE FACTURA DE REFERENCIA</label>
+                            <input type="text" id="Factura" name="Factura" class="form-control" placeholder="XX/XX/XXXX">
+                        </div>
+
+                        <div align="center" class="col-md-12">
+                            <hr>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">PRODUCTO CON REPORTE DE DEVOLUCIÓN</label>
+                            <select id="IdProducto" name="IdProducto" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">MOTIVO DE DEVOLUCIÓN</label>
+                            <select id="Motivo" name="Motivo" class="form-control">
+                                <option value=""></option> 
+                                <option value="1">NO CORRESPONDE A LO SOLICITADO</option> 
+                                <option value="2">PRESENTA DAÑO O DEFECTO</option> 
+                                <option value="3">NO FUNCIONAMIENTO</option> 
+                                <option value="4">OTRO</option> 
+                            </select>
+                        </div> 
+                        <div class="col-md-3">
+                            <label for="">CANTIDAD DE PRODUCTO</label>
+                            <input type="number" id="CantidadDevuelta" name="CantidadDevuelta" class="form-control" placeholder="0">
+                            <label for="">PRECIO</label>
+                            <input type="text" id="Precio" name="Precio" class="form-control" placeholder="EJ: 50.0">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">UNIDAD DE MEDIDA</label>
+                            <input type="text" id="UnidadDeMedida" name="UnidadDeMedida" class="form-control" placeholder="X"> 
+                            <label for="">TOTAL DE LA PERDIDA</label>
+                            <input type="number" id="Total" name="Total" class="form-control" placeholder="0.0"> 
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">DESCRIPCIÓN DE LAS CAUSAS DE LA DEVOLUCIÓN</label>
+                            <textarea id="Observaciones" name="Observaciones" type="text" placeholder="SE QUEBRO, SE MOJO, SE DERRAMO, SE ROMPIO,SE PERDIO" name="" rows="4" cols="20" class="form-control">
+                            </textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">PERSONA QUE IDENTIFICA EL MOTIVO DE DEVOLUCIÓN</label>
+                            <select id="PersonaDetecta" name="PersonaDetecta" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">RESPONSABLE DE ALMACÉN QUE REGISTRA LA DEVOLUCIÓN</label>
+                            <select id="Responsable" name="Responsable" class="form-control">
+                                <option value=""></option> 
+                            </select>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+                <button id="btnGuardar" type="button" class="btn btn-default btn-lg fa-lg"  data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"><span class="fa fa-check fa-3x success-icon"></span> </button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="mdlVerDevolucionX" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="text-center modal-title" id="myModalLabel">VER DEVOLUCIÓN DE PRODUCTO EN INVENTARIO</h2>
+            </div>  
+            <div id="messages-result" class="modal-body text-center">
+                <fieldset>
+                    <div class="col-md-6">
+                        <label for="">FECHA</label>
+                        <input type="text" id="FechaDevolucion" name="FechaDevolucion" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                    </div>  
+                    <div class="col-md-6">
+                        <label for="">HORA</label>
+                        <input type="text" id="HoraDevolucion" name="HoraDevolucion" class="form-control" placeholder="XX/XX/XXXX">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">PROYECTO</label>
+                        <select id="IdProyecto" name="IdProyecto" class="form-control">
+                            <option value=""></option> 
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">ALMACÉN</label>
+                        <select id="IdAlmacen" name="IdAlmacen" class="form-control">
+                            <option value=""></option> 
+                        </select>
+                    </div>
+                    <div align="center" class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">ORDEN DE COMPA DE REFERENCIA</label>
+                        <input type="text" id="OrdenDeCompraReferencia" name="OrdenDeCompraReferencia" class="form-control" placeholder="XX/XX/XXXX">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">ORDEN DE FACTURA DE REFERENCIA</label>
+                        <input type="text" id="Factura" name="Factura" class="form-control" placeholder="XX/XX/XXXX">
+                    </div>
+
+                    <div align="center" class="col-md-12">
+                        <hr>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">PRODUCTO CON REPORTE DE DEVOLUCIÓN</label>
+                        <input type="text" id="Producto" name="Producto" class="form-control"> 
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">MOTIVO DE DEVOLUCIÓN</label>
+                        <select id="Motivo" name="Motivo" class="form-control">
+                            <option value=""></option> 
+                            <option value="1">NO CORRESPONDE A LO SOLICITADO</option> 
+                            <option value="2">PRESENTA DAÑO O DEFECTO</option> 
+                            <option value="3">NO FUNCIONAMIENTO</option> 
+                            <option value="4">OTRO</option> 
+                        </select>
+                    </div> 
+                    <div class="col-md-3">
+                        <label for="">CANTIDAD DE PRODUCTO</label>
+                        <input type="number" id="CantidadDevuelta" name="CantidadDevuelta" class="form-control" placeholder="0">
+                        <label for="">PRECIO</label>
+                        <input type="text" id="Precio" name="Precio" class="form-control" placeholder="EJ: 50.0">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">UNIDAD DE MEDIDA</label>
+                        <input type="text" id="UnidadMedida" name="UnidadMedida" class="form-control" placeholder="X">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">DESCRIPCIÓN DE LAS CAUSAS DE LA DEVOLUCIÓN</label>
+                        <textarea id="Observaciones" name="Observaciones" type="text" placeholder="SE QUEBRO, SE MOJO, SE DERRAMO, SE ROMPIO,SE PERDIO" name="" rows="4" cols="20" class="form-control">
+                        </textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">PERSONA QUE IDENTIFICA EL MOTIVO DE DEVOLUCIÓN</label>
+                        <select id="PersonaDetecta" name="PersonaDetecta" class="form-control">
+                            <option value=""></option> 
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">RESPONSABLE DE ALMACÉN QUE REGISTRA LA DEVOLUCIÓN</label>
+                        <select id="Responsable" name="Responsable" class="form-control">
+                            <option value=""></option> 
+                        </select>
+                    </div>
+                </fieldset>
+            </div> 
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     var master_url = base_url + 'index.php/ctrlAlmacen/';
     var mdlNuevo = $("#mdlNuevo");
@@ -1331,11 +1822,229 @@
     var btnReporteSalidas = mdlBusquedaSalida.find("#btnReporteSalidas");
     var btnResetBuscarDevoluciones = mdlBusquedaDevoluciones.find("#btnResetBuscarDevoluciones");
 
+    var btnPerdida = $("#btnPerdida");
+    var btnPerdidas = $("#btnPerdidas");
+
+    var mdlPerdida = $("#mdlPerdida");
+    var btnGuardarPerdida = mdlPerdida.find("#btnGuardar");
+    var mdlBusquedaPerdida = $("#mdlBusquedaPerdida");
+    var btnReporteDePerdidas = $("#btnReporteDePerdidas");
+    var mdlVerPerdida = $("#mdlVerPerdida");
+
+    var btnBuscarPerdidas = $("#btnBuscarPerdidas");
+
     var entrada = false;
     var salida = false;
+    /*DEVOLUCIONES*/
+    var mdlDevolucionX = $("#mdlDevolucionX");
+    var btnDevolucionX = $("#btnDevolucionX");
+    var btnDevolucionesX = $("#btnDevolucionesX");
+    var btnGuardarDevolucionX = mdlDevolucionX.find("#btnGuardar");
+    var mdlBusquedaDevolucionesX = $("#mdlBusquedaDevolucionesX");
 
+    var mdlVerDevolucionX = $("#mdlVerDevolucionX");
+
+    var btnCancelarPerdida = $("#btnCancelarPerdida");
+
+    var btnComprobante = $("#btnComprobante");
+
+    var btnReiniciarPerdida = $("#btnReiniciarPerdida");
     $(document).ready(function () {
 
+
+        btnDevolucionesX.click(function () {
+            mdlBusquedaDevolucionesX.removeClass("hide");
+            btnCancelarEntrada.addClass("hide");
+            btnCancelarSalida.addClass("hide");
+            btnCancelarDevolucion.addClass("hide");
+            btnCancelarPerdida.addClass("hide");
+
+            mdlBusqueda.addClass("hide");
+            mdlBusquedaDevoluciones.addClass("hide");
+            mdlBusquedaEntrada.addClass("hide");
+            mdlBusquedaPerdida.addClass("hide");
+            mdlBusquedaSalida.addClass("hide");
+            getAlmacenes();
+            getDevolucionesX();
+            getProyectos();
+        });
+
+        btnGuardarDevolucionX.click(function () {
+            var frm = new FormData(mdlDevolucionX.find("form")[0]);
+            frm.append('IdProyectoT', mdlDevolucionX.find("#IdProyecto option:selected").text());
+            frm.append('IdAlmacenT', mdlDevolucionX.find("#IdAlmacen option:selected").text());
+            frm.append('Producto', mdlDevolucionX.find("#IdProducto option:selected").text());
+            frm.append('MotivoT', mdlDevolucionX.find("#Motivo option:selected").text());
+            frm.append('PersonaDetectaT', mdlDevolucionX.find("#PersonaDetecta option:selected").text());
+            frm.append('ResponsableT', mdlDevolucionX.find("#Responsable option:selected").text());
+            HoldOn.open({
+                theme: 'sk-bounce',
+                message: 'GUARDANDO...'
+            });
+            $.ajax({
+                url: master_url + 'onGuardarDevolucionX',
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: frm
+            }).done(function (data, x, jq) {
+                mdlDevolucionX.modal('hide');
+                btnDevolucionesX.trigger('click');
+                onNotify('<span class="fa fa-check fa-lg"></span>', 'DEVOLUCION GUARDADA', 'success');
+                console.log(data, x, jq);
+            }).fail(function (x, y, z) {
+                console.log(x, y, z);
+            }).always(function () {
+                HoldOn.close();
+            });
+        });
+
+        btnComprobante.click(function () {
+            HoldOn.open({
+                theme: 'sk-bounce',
+                message: 'ESPERE...'
+            });
+            $.ajax({
+                url: master_url + 'getComprobanteDeArticulosMaterialesYEquipoDeTrabajo',
+                type: "POST"
+            }).done(function (data, x, jq) {
+                onNotify('<span class="fa fa-check fa-lg"></span>', 'COMPROBANTE DE SALIDA DE ARTÍCULOS, MATERIALES Y EQUIPO DE TRABAJO, GENERADO', 'success');
+                console.log(data);
+                window.open(data, '_blank');
+            }).fail(function (x, y, z) {
+                console.log(x, y, z);
+            }).always(function () {
+                HoldOn.close();
+            });
+        });
+
+        btnDevolucionX.click(function () {
+            getUsuarios();
+            mdlDevolucionX.modal('show');
+        });
+
+        btnReporteDePerdidas.click(function () {
+            HoldOn.open({
+                theme: 'sk-bounce',
+                message: 'ESPERE...'
+            });
+            $.ajax({
+                url: master_url + 'getReporteDePerdidas',
+                type: "POST",
+                data: {
+                    INICIO: (mdlBusquedaPerdida.find("#FechaInicial").val() !== '') ? mdlBusquedaPerdida.find("#FechaInicial").val() : '',
+                    FIN: (mdlBusquedaPerdida.find("#FechaFinal").val() !== '') ? mdlBusquedaPerdida.find("#FechaFinal").val() : '',
+                    PROYECTO: (mdlBusquedaPerdida.find("#IdProyecto").val() !== '') ? mdlBusquedaPerdida.find("#IdProyecto").val() : '',
+                    ALMACEN: (mdlBusquedaPerdida.find("#IdAlmacen").val() !== '') ? mdlBusquedaPerdida.find("#IdAlmacen").val() : ''
+                }
+            }).done(function (data, x, jq) {
+                onNotify('<span class="fa fa-check fa-lg"></span>', 'REPORTE DE PERDIDAS, GENERADO', 'success');
+                console.log(data);
+                window.open(data, '_blank');
+            }).fail(function (x, y, z) {
+                console.log(x, y, z);
+            }).always(function () {
+                HoldOn.close();
+            });
+        });
+
+        btnReiniciarPerdida.click(function () {
+            onReiniciarPerdidas();
+            getProyectosConPerdidas();
+            mdlBusquedaPerdida.find("#IdAlmacen").html("");
+            onNotify('<span class="fa fa-check fa-lg"></span>', 'PERDIDAS REINICIADAS', 'success');
+        });
+
+        btnBuscarPerdidas.click(function () {
+            getBuscarPerdidas();
+        });
+
+        btnPerdidas.click(function () {
+            mdlBusquedaDevolucionesX.addClass("hide");
+            mdlBusquedaEntrada.addClass("hide");
+            mdlBusquedaSalida.addClass("hide");
+            mdlBusqueda.addClass("hide");
+            mdlBusquedaDevoluciones.addClass("hide");
+            mdlBusquedaPerdida.removeClass("hide");
+            getProyectosConPerdidas();
+            getPerdidas();
+        });
+
+        mdlBusquedaPerdida.find("#IdProyecto").change(function () {
+            getAlmacenConPerdidasXProyecto($(this).val());
+        });
+        mdlPerdida.find("#Cantidad").change(function () {
+            var Cantidad = ($(this).val() !== '') ? $(this).val() : 0;
+            var Precio = (mdlPerdida.find("#Precio").val() !== '') ? mdlPerdida.find("#Precio").val() : 0;
+            mdlPerdida.find("#Total").val(parseFloat(Cantidad) * parseFloat(Precio));
+        });
+        mdlPerdida.find("#Cantidad").keyup(function () {
+            var Cantidad = ($(this).val() !== '') ? $(this).val() : 0;
+            var Precio = (mdlPerdida.find("#Precio").val() !== '') ? mdlPerdida.find("#Precio").val() : 0;
+            mdlPerdida.find("#Total").val(parseFloat(Cantidad) * parseFloat(Precio));
+        });
+
+        mdlPerdida.find("#IdProducto").change(function () {
+            getProductoInformacion($(this).val());
+        });
+
+        btnGuardarPerdida.click(function () {
+            var Cantidad = parseFloat(mdlPerdida.find("#Cantidad").val());
+            console.log(Cantidad);
+            if (Cantidad > 0 && Cantidad !== undefined && Cantidad !== '') {
+                var frm = new FormData(mdlPerdida.find("form")[0]);
+                frm.append('AlmacenT', mdlPerdida.find("#IdAlmacen option:selected").text());
+                frm.append('ProductoT', mdlPerdida.find("#IdProducto option:selected").text());
+                frm.append('TipoT', mdlPerdida.find("#Tipo option:selected").text());
+                frm.append('PersonaDetectaT', mdlPerdida.find("#PersonaDetecta option:selected").text());
+                frm.append('ResponsableT', mdlPerdida.find("#Responsable option:selected").text());
+                HoldOn.open({
+                    theme: 'sk-bounce',
+                    message: 'GUARDANDO...'
+                });
+                $.ajax({
+                    url: master_url + 'onGuardarPerdida',
+                    type: "POST",
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: frm
+                }).done(function (data, x, jq) {
+                    mdlPerdida.modal('hide');
+                    btnPerdidas.trigger('click');
+                    onNotify('<span class="fa fa-check fa-lg"></span>', 'PERDIDA GUARDADA', 'success');
+                    console.log(data, x, jq);
+                }).fail(function (x, y, z) {
+                    console.log(x, y, z);
+                }).always(function () {
+                    HoldOn.close();
+                });
+            } else {
+                onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'DEBE DE INGRESAR UNA CANTIDAD', 'danger');
+            }
+        });
+
+        mdlDevolucionX.find("#IdProyecto").change(function () {
+            getAlmacenesXProyecto($(this).val());
+        });
+        mdlPerdida.find("#IdProyecto").change(function () {
+            getAlmacenesXProyecto($(this).val());
+        });
+
+        mdlDevolucionX.find("#IdAlmacen").change(function () {
+            getProductosXPerdida($(this).val());
+        });
+        mdlPerdida.find("#IdAlmacen").change(function () {
+            getProductosXPerdida($(this).val());
+        });
+
+        btnPerdida.click(function () {
+            getUsuarios();
+            mdlPerdida.find("input").val("");
+            mdlPerdida.find("textarea").val("");
+            mdlPerdida.modal('show');
+        });
 
         btnReporteSalidas.click(function () {
             if (mdlBusquedaSalida.find("#cmbProyecto").val() > 0) {
@@ -1406,7 +2115,7 @@
             mdlBusquedaSalida.find("select").select2("val", "");
             mdlBusquedaSalida.find("input").val("");
         });
-        
+
         btnResetBuscarDevoluciones.click(function () {
             mdlBusquedaDevoluciones.find("select").select2("val", "");
             mdlBusquedaDevoluciones.find("input").val("");
@@ -1440,6 +2149,7 @@
         btnDevoluciones.click(function () {
             entrada = false;
             salida = false;
+            mdlBusquedaPerdida.addClass("hide");
             mdlBusquedaDevoluciones.removeClass("hide");
             mdlBusquedaSalida.addClass("hide");
             btnCancelarDevolucion.removeClass("hide");
@@ -1530,10 +2240,13 @@
         });
 
         btnProductosAsignados.click(function () {
+            mdlBusquedaDevolucionesX.addClass("hide");
             btnCancelarDevolucion.addClass("hide");
             mdlBusqueda.addClass("hide");
             mdlBusquedaEntrada.addClass("hide");
             mdlBusquedaSalida.addClass("hide");
+
+            mdlBusquedaPerdida.addClass("hide");
             btnCancelarEntrada.addClass("hide");
             btnCancelarSalida.addClass("hide");
             btnDevolucion.addClass("hide");
@@ -1870,14 +2583,18 @@
                 getProveedoresExistentes();
                 getProyectos();
             }
+            mdlBusquedaDevolucionesX.addClass("hide");
             btnCancelarEntrada.addClass("hide");
             btnCancelarSalida.addClass("hide");
             mdlBusqueda.removeClass("hide");
             mdlBusquedaEntrada.addClass("hide");
             mdlBusquedaSalida.addClass("hide");
+            mdlBusquedaPerdida.addClass("hide");
         });
 
         btnExistencias.click(function () {
+            mdlBusquedaDevolucionesX.addClass("hide");
+            mdlBusquedaPerdida.addClass("hide");
             mdlBusquedaDevoluciones.addClass("hide");
             mdlBusqueda.addClass("hide");
             mdlBusquedaEntrada.addClass("hide");
@@ -2063,6 +2780,7 @@
         btnSalidas.click(function () {
             entrada = false;
             salida = true;
+            mdlBusquedaDevolucionesX.addClass("hide");
             mdlBusquedaDevoluciones.addClass("hide");
             btnCancelarDevolucion.addClass("hide");
             divSalidas.removeClass("hide");
@@ -2146,6 +2864,8 @@
         btnEntradas.click(function () {
             entrada = true;
             salida = false;
+            mdlBusquedaDevolucionesX.addClass("hide");
+            mdlBusquedaPerdida.addClass("hide");
             btnCancelarDevolucion.addClass("hide");
             mdlBusquedaDevoluciones.addClass("hide");
             btnDevolucion.addClass("hide");
@@ -2858,6 +3578,8 @@
 
         mdlAsignacionIdProveedor.change(function () {
             mdlAsignacion.find("#tblProductosAsignados tbody").empty();
+            mdlAsignacion.find("#dtblProductos").removeClass("hide");
+            mdlAsignacion.find("#dtblProductosAsignados").removeClass("hide");
             getProductosAsignadosXAlmacenXProveedor();
         });
 
@@ -3144,6 +3866,8 @@
         onRefresh();
     });
 
+
+
     function onUpload(e)
     {
         var row = $(e).parent().parent();
@@ -3218,6 +3942,7 @@
     function onRefresh() {
         entrada = false;
         salida = false;
+        mdlBusquedaPerdida.addClass("hide");
         btnCancelarDevolucion.addClass("hide");
         btnDevolucion.addClass("hide");
         mdlBusqueda.addClass("hide");
@@ -3317,6 +4042,11 @@
             mdlBusqueda.find("#cmbProyecto").html(options);
             mdlBusquedaEntrada.find("#cmbProyecto").html(options);
             mdlBusquedaSalida.find("#cmbProyecto").html(options);
+            mdlPerdida.find("#IdProyecto").html(options);
+            mdlVerPerdida.find("#IdProyecto").html(options);
+            mdlDevolucionX.find("#IdProyecto").html(options);
+            mdlVerDevolucionX.find("#IdProyecto").html(options);
+            mdlBusquedaDevolucionesX.find("#IdProyecto").html(options);
         }).fail(function (x, y, z) {
             console.log(x, y, z);
         }).always(function () {
@@ -3335,12 +4065,47 @@
             type: "POST",
             dataType: "JSON"
         }).done(function (data, x, jq) {
+            console.log(' * * * * * ALMACENES * * * * * ');
+            console.log(data);
+            console.log(' * * * * * ALMACENES * * * * * ');
             var options = "<option></option>";
             $.each(data, function (k, v) {
                 options = options + '<option value="' + v.ID + '">' + v.ALMACEN + '</option>';
             });
             $(".modal form #IdAlmacen").html(options);
+            mdlVerPerdida.find("#IdAlmacen").html(options);
+            mdlDevolucionX.find("#IdAlmacen").html(options);
+            mdlVerDevolucionX.find("#IdAlmacen").html(options);
+            console.log("ALMACENES SETEADOS");
             getAlmacenesConDevolucion();
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
+    function getAlmacenesXProyecto(IDX)
+    {
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "CARGANDO DATOS..."
+        });
+        $.ajax({
+            url: master_url + 'getAlmacenesXProyecto',
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                ID: IDX
+            }
+        }).done(function (data, x, jq) {
+            var options = "<option></option>";
+            $.each(data, function (k, v) {
+                options = options + '<option value="' + v.ID + '">' + v.ALMACEN + '</option>';
+            });
+            mdlPerdida.find("#IdAlmacen").html(options);
+            mdlDevolucionX.find("#IdAlmacen").html(options);
+            mdlBusquedaPerdida.find("#IdAlmacen").html(options);
         }).fail(function (x, y, z) {
             console.log(x, y, z);
         }).always(function () {
@@ -3363,7 +4128,6 @@
             $.each(data, function (k, v) {
                 options = options + '<option value="' + v.ID + '">' + v.ALMACEN + '</option>';
             });
-            $(".modal form #IdAlmacen").html(options);
             mdlBusquedaDevoluciones.find("#Almacen").html(options);
         }).fail(function (x, y, z) {
             console.log(x, y, z);
@@ -3536,9 +4300,36 @@
         }).done(function (data, x, jq) {
             var options = "<option></option>";
             $.each(data, function (k, v) {
-                options = options + '<option value="' + v.ID + '">' + v.PRODUCTO + '</option>';
+                options += '<option value="' + v.ID + '">' + v.PRODUCTO + '</option>';
             });
             mdlAsignacion.find("#IdProducto").html(options);
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
+    function getProductosXPerdida(IDX)
+    {
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "CARGANDO DATOS..."
+        });
+        $.ajax({
+            url: master_url + 'getProductosXAlmacenXPerdida',
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                ID: IDX
+            }
+        }).done(function (data, x, jq) {
+            var options = "<option></option>";
+            $.each(data, function (k, v) {
+                options += '<option value="' + v.ID + '">' + v.PRODUCTO + '</option>';
+            });
+            mdlPerdida.find("#IdProducto").html(options);
+            mdlDevolucionX.find("#IdProducto").html(options);
         }).fail(function (x, y, z) {
             console.log(x, y, z);
         }).always(function () {
@@ -3612,6 +4403,13 @@
             });
             mdlNuevoMovimiento.find("#RecibeAlmacen").html(options);
             mdlEntrada.find("#RecibeAlmacen").html(options);
+            mdlPerdida.find("#PersonaDetecta").html(options);
+            mdlPerdida.find("#Responsable").html(options);
+            mdlDevolucionX.find("#PersonaDetecta").html(options);
+            mdlDevolucionX.find("#Responsable").html(options);
+            mdlVerDevolucionX.find("#PersonaDetecta").html(options);
+            mdlVerDevolucionX.find("#Responsable").html(options);
+
             //            $(".modal").find("#IdProveedor").html(options);
         }).fail(function (x, y, z) {
             console.log(x, y, z);
@@ -3805,7 +4603,7 @@
         }).done(function (data) {
             var tblName = "tblProductos";
             if (data.length > 0) {
-                $("#dtblProductos").html(getTable(tblName, data));
+                mdlAsignacion.find("#dtblProductos").html(getTable(tblName, data));
                 var thID = $("#" + tblName + " thead").find("th")[0];
                 var thPRO = $("#" + tblName + " thead").find("th")[1];
                 var thIDf = $("#" + tblName + " tfoot").find("th")[0];
@@ -3820,7 +4618,7 @@
                 $(thPROf).attr('colspan', 2);
                 console.log('*******************************************END HEADER*********************************************');
                 //CLICK SELECTED ROW
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                mdlAsignacion.find('#' + tblName + ' tbody').on('click', 'tr', function () {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
                     var id = this.id;
@@ -3833,12 +4631,12 @@
                     $(this).addClass('success');
                 });
                 //DB CLICK FOR EDIT
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
-                    $("#" + tblName).find("tr").removeClass("warning");
+                mdlAsignacion.find('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                    mdlAsignacion.find("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                 });
                 var c = {};
-                $("#" + tblName + " tbody tr").draggable({
+                mdlAsignacion.find("#" + tblName + " tbody tr").draggable({
                     helper: "clone",
                     start: function (event, ui) {
                         c.tr = this;
@@ -3850,7 +4648,7 @@
                     },
                     zIndex: 10000
                 });
-                var nrow = (parseInt($("#tblProductos tbody tr").length) - parseInt($("#tblProductos tbody tr.hide").length));
+                var nrow = (parseInt(mdlAsignacion.find("#tblProductos tbody tr").length) - parseInt(mdlAsignacion.find("#tblProductos tbody tr.hide").length));
                 nProductos.html("<br><span class=\"label label-emerald\">" + ((nrow === 1) ? nrow + " FILA" : nrow + " FILAS") + "</span>");
             } else { //                $("#" + target_result).html("");
                 //                $("#" + target_fail_messages).html('<div class="alert alert-dismissible alert-warning">' +
@@ -3881,34 +4679,34 @@
         }).done(function (data) {
             var tblName = "tblProductosAsignados";
             if (data.length > 0) {
-                $("#dtblProductosAsignados").html(getTable(tblName, data));
+                mdlAsignacion.find("#dtblProductosAsignados").html(getTable(tblName, data));
                 console.log($("#" + tblName + " thead").find("th"));
-                var thID = $("#" + tblName + " thead").find("th")[0];
-                var thPRO = $("#" + tblName + " thead").find("th")[1];
-                var thIDPXA = $("#" + tblName + " thead").find("th")[4];
-                var thIDf = $("#" + tblName + " tfoot").find("th")[0];
-                var thPROf = $("#" + tblName + " tfoot").find("th")[1];
-                var thIDPXAF = $("#" + tblName + " tfoot").find("th")[4];
+                var thID = mdlAsignacion.find("#" + tblName + " thead").find("th")[0];
+                var thPRO = mdlAsignacion.find("#" + tblName + " thead").find("th")[1];
+                var thIDPXA = mdlAsignacion.find("#" + tblName + " thead").find("th")[4];
+                var thIDf = mdlAsignacion.find("#" + tblName + " tfoot").find("th")[0];
+                var thPROf = mdlAsignacion.find("#" + tblName + " tfoot").find("th")[1];
+                var thIDPXAF = mdlAsignacion.find("#" + tblName + " tfoot").find("th")[4];
                 console.log('******************************************HEADER**********************************************');
-                $(thID).addClass("hide");
-                $(thIDPXA).addClass("hide");
-                $(thPRO).attr('colspan', 2);
-                $("#" + tblName + " thead tr").append("<th>ELIMINAR</th>");
-                $("#" + tblName + " tfoot tr").append("<th>ELIMINAR</th>");
-                $("#tblProductosAsignados tbody tr").each(function (k, v) {
-                    var r = $(v).find("td")[4];
-                    $(r).addClass("hide");
-                    $(v).find("td div").removeClass("col-md-6").addClass("col-md-12");
-                    $(v).append("<td><button type=\"button\" class=\"btn btn3d btn-default fa-lg\"><span class=\"fa fa-check success-icon-square-o fa-3x\" onclick=\"onRemoveAsignado(this)\"></span></button></td>");
+                mdlAsignacion.find(thID).addClass("hide");
+                mdlAsignacion.find(thIDPXA).addClass("hide");
+                mdlAsignacion.find(thPRO).attr('colspan', 2);
+                mdlAsignacion.find("#" + tblName + " thead tr").append("<th>ELIMINAR</th>");
+                mdlAsignacion.find("#" + tblName + " tfoot tr").append("<th>ELIMINAR</th>");
+                mdlAsignacion.find("#tblProductosAsignados tbody tr").each(function (k, v) {
+                    var r = mdlAsignacion.find(v).find("td")[4];
+                    mdlAsignacion.find(r).addClass("hide");
+                    mdlAsignacion.find(v).find("td div").removeClass("col-md-6").addClass("col-md-12");
+                    mdlAsignacion.find(v).append("<td><button type=\"button\" class=\"btn btn3d btn-default fa-lg\"><span class=\"fa fa-check success-icon-square-o fa-3x\" onclick=\"onRemoveAsignado(this)\"></span></button></td>");
                 });
-                $(thIDf).addClass("hide");
-                $(thPROf).attr('colspan', 2);
-                $(thIDPXAF).addClass("hide");
+                mdlAsignacion.find(thIDf).addClass("hide");
+                mdlAsignacion.find(thPROf).attr('colspan', 2);
+                mdlAsignacion.find(thIDPXAF).addClass("hide");
                 console.log('*******************************************END HEADER*********************************************');
                 //CLICK SELECTED ROW
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
-                    $("#" + tblName).find("tr").removeClass("success");
-                    $("#" + tblName).find("tr").removeClass("warning");
+                mdlAsignacion.find('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    mdlAsignacion.find("#" + tblName).find("tr").removeClass("success");
+                    mdlAsignacion.find("#" + tblName).find("tr").removeClass("warning");
                     var id = this.id;
                     var index = $.inArray(id, selected);
                     if (index === -1) {
@@ -3916,15 +4714,15 @@
                     } else {
                         selected.splice(index, 1);
                     }
-                    $(this).addClass('success');
+                    mdlAsignacion.find(this).addClass('success');
                 });
                 //DB CLICK FOR EDIT
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
-                    $("#" + tblName).find("tr").removeClass("warning");
-                    $(this).addClass('warning');
+                mdlAsignacion.find('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                    mdlAsignacion.find("#" + tblName).find("tr").removeClass("warning");
+                    mdlAsignacion.find(this).addClass('warning');
                 });
                 var c = {};
-                $("#" + tblName + " tbody tr").draggable({
+                mdlAsignacion.find("#" + tblName + " tbody tr").draggable({
                     helper: "clone",
                     start: function (event, ui) {
                         c.tr = this;
@@ -3940,21 +4738,38 @@
                 nProductos.html("<br><span class=\"label label-emerald\">" + ((nrow === 1) ? nrow + " FILA" : nrow + " FILAS") + "</span>");
                 var nrow = parseInt($("#tblProductosAsignados tbody tr").length);
                 nProductosAsignados.html("<br><span class=\"label label-king-blue\">" + ((nrow === 1) ? nrow + " FILA ENCONTRADA" : nrow + " FILAS ENCONTRADAS") + "</span>");
-                $("#" + tblName + " thead tr").droppable({
+//                $("#" + tblName + " thead tr").droppable({
+//                    hoverClass: "highlight",
+//                    drop: function (event, e) {
+//                        var row = '<tr>';
+//                        row += e.draggable[0].innerHTML;
+//                        row += "<td><button type=\"button\" class=\"btn btn3d btn-default\">";
+//                        row += "<span class=\"fa fa-minus fa-4x\" onclick=\"onRemove(this)\"></span></button></td>";
+//                        row += "</tr>";
+//                        $("#" + tblName + " tbody").append(row);
+//                        $(e.draggable).remove();
+//                        $(e.helper).remove();
+//                        var nrow = (parseInt($("#tblProductos tbody tr").length) - parseInt($("#tblProductos tbody tr.hide").length));
+//                        nProductos.html("<br><span class=\"label label-emerald\">" + ((nrow === 1) ? nrow + " FILA" : nrow + " FILAS") + "</span>");
+//                    }
+//                });
+                mdlAsignacion.find("#" + tblName).droppable({
                     hoverClass: "highlight",
                     drop: function (event, e) {
                         var row = '<tr>';
                         row += e.draggable[0].innerHTML;
-                        row += "<td><button type=\"button\" class=\"btn btn3d btn-default\">";
+                        row += "<td></td><td></td><td></td><td><button type=\"button\" class=\"btn btn3d btn-default\">";
                         row += "<span class=\"fa fa-minus fa-4x\" onclick=\"onRemove(this)\"></span></button></td>";
                         row += "</tr>";
-                        $("#" + tblName + " tbody").append(row);
-                        $(e.draggable).remove();
-                        $(e.helper).remove();
-                        var nrow = (parseInt($("#tblProductos tbody tr").length) - parseInt($("#tblProductos tbody tr.hide").length));
+//                        mdlAsignacion.find("#" + tblName + " tbody").append(row);
+                        mdlAsignacion.find("#" + tblName + " tbody").prependTo(row).fadeIn("slow");
+                        mdlAsignacion.find(e.draggable).remove();
+                        mdlAsignacion.find(e.helper).remove();
+                        var nrow = (parseInt(mdlAsignacion.find("#tblProductos tbody tr").length) - parseInt(mdlAsignacion.find("#tblProductos tbody tr.hide").length));
                         nProductos.html("<br><span class=\"label label-emerald\">" + ((nrow === 1) ? nrow + " FILA" : nrow + " FILAS") + "</span>");
                     }
                 });
+
             } else {
                 var tbl = "<div class=\"table-responsive\">";
                 tbl = "<table id=\"tblProductosAsignados\" class=\"table table-bordered table-striped table-hover display row-border hover order-column\" cellspacing=\"10\" width=\"100%\">";
@@ -3974,19 +4789,34 @@
                 //                tbl +="";
                 //                tbl +="";
 
-                $("#dtblProductosAsignados").html(tbl);
-                $("#dtblProductosAsignados thead tr").droppable({
+                mdlAsignacion.find("#dtblProductosAsignados").html(tbl);
+//                $("#dtblProductosAsignados thead tr").droppable({
+//                    hoverClass: "highlight",
+//                    drop: function (event, e) {
+//                        var row = '<tr>';
+//                        row += e.draggable[0].innerHTML;
+//                        row += "<td><button type=\"button\" class=\"btn btn3d btn-default\">";
+//                        row += "<span class=\"fa fa-minus fa-4x\" onclick=\"onRemove(this)\"></span></button></td>";
+//                        row += "</tr>";
+//                        $("#" + tblName + " tbody").append(row);
+//                        $(e.draggable).remove();
+//                        $(e.helper).remove();
+//                        var nrow = (parseInt($("#tblProductos tbody tr").length) - parseInt($("#tblProductos tbody tr.hide").length));
+//                        nProductos.html("<br><span class=\"label label-emerald\">" + ((nrow === 1) ? nrow + " FILA" : nrow + " FILAS") + "</span>");
+//                    }
+//                });
+                mdlAsignacion.find("#dtblProductosAsignados").droppable({
                     hoverClass: "highlight",
                     drop: function (event, e) {
                         var row = '<tr>';
                         row += e.draggable[0].innerHTML;
-                        row += "<td><button type=\"button\" class=\"btn btn3d btn-default\">";
+                        row += "<td></td><td></td><td></td><button type=\"button\" class=\"btn btn3d btn-default\">";
                         row += "<span class=\"fa fa-minus fa-4x\" onclick=\"onRemove(this)\"></span></button></td>";
                         row += "</tr>";
-                        $("#" + tblName + " tbody").append(row);
-                        $(e.draggable).remove();
-                        $(e.helper).remove();
-                        var nrow = (parseInt($("#tblProductos tbody tr").length) - parseInt($("#tblProductos tbody tr.hide").length));
+                        mdlAsignacion.find("#" + tblName + " tbody").prependTo(row).fadeIn("slow");
+                        mdlAsignacion.find(e.draggable).remove();
+                        mdlAsignacion.find(e.helper).remove();
+                        var nrow = (parseInt(mdlAsignacion.find("#tblProductos tbody tr").length) - parseInt(mdlAsignacion.find("#tblProductos tbody tr.hide").length));
                         nProductos.html("<br><span class=\"label label-emerald\">" + ((nrow === 1) ? nrow + " FILA" : nrow + " FILAS") + "</span>");
                     }
                 });
@@ -4600,7 +5430,7 @@
             url: master_url + 'getProyectosConDevolucion',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) { 
+        }).done(function (data, x, jq) {
             console.log('*********************************************');
             console.log(data);
             console.log('*********************************************');
@@ -4615,4 +5445,356 @@
             HoldOn.close();
         });
     }
+
+    function getProductoInformacion(IDX) {
+        console.log(IDX);
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "ESPERE..."
+        });
+        $.ajax({
+            url: master_url + 'getProductoInformacion',
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                ID: IDX
+            }
+        }).done(function (data, x, jq) {
+            console.log(data, x, jq);
+            var dtm = data[0];
+            mdlPerdida.find("#Precio").val(dtm.PRECIO);
+            mdlPerdida.find("#UnidadMedida").val(dtm["UNIDAD DE MEDIDA"]);
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
+    function getPerdidas() {
+        temp = 0;
+        HoldOn.open({
+            theme: 'sk-bounce',
+            message: 'CARGANDO...'
+        });
+
+        $.ajax({
+            url: master_url + 'getPerdidas',
+            type: "POST",
+            dataType: "JSON"
+        }).done(function (data, x, jq) {
+            console.log(data, x, jq);
+
+            var tblName = "tblPerdidas";
+            if (data.length > 0) {
+                target_result.html(getTable(tblName, data));
+                $('#' + tblName + ' tfoot th').each(function () {
+                    var title = $(this).text();
+                    $(this).html('<fieldset><div><label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" /></div></fieldset>');
+                });
+
+                var tblSelected = $('#' + tblName).DataTable(tableOptions);
+                //CLICK SELECTED ROW
+                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("success");
+                    $("#" + tblName).find("tr").removeClass("warning");
+                    //                console.log(this)
+                    var id = this.id;
+                    var index = $.inArray(id, selected);
+                    if (index === -1) {
+                        selected.push(id);
+                    } else {
+                        selected.splice(index, 1);
+                    }
+                    $(this).addClass('success');
+                    var row = $(this).find("td");
+                    console.log(row);
+                    temp = row[0].innerText;
+                    console.log('ID PERDIDA: ' + temp);
+                });
+                //DB CLICK FOR EDIT
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("warning");
+                    $(this).addClass('warning');
+                    console.log("* * * * * * * * * * * * * * * * * * * * * * AIDI * * * * * * * * *");
+                    console.log($(this).find("td")[0].innerText);
+                    console.log("* * * * * * * * * * * * * * * * * * * * * * AIDI * * * * * * * * *");
+                    HoldOn.open({
+                        theme: 'sk-bounce',
+                        message: 'ESPERE UN MOMENTO...'
+                    });
+                    $.ajax({
+                        url: master_url + 'getPerdidasXID',
+                        type: "POST",
+                        dataType: "JSON",
+                        data: {
+                            ID: $(this).find("td")[0].innerText
+                        }
+                    }).done(function (data, x, jq) {
+                        console.log(data);
+                        var dtm = data[0];
+                        $.each(dtm, function (k, v) {
+                            console.log(k, v);
+                            mdlVerPerdida.find("#" + k).val(v);
+                            mdlVerPerdida.find("#" + k).select2("val", v);
+                        });
+                        mdlVerPerdida.modal('show');
+                    }).fail(function (x, y, z) {
+                        console.log(x, y, z);
+                    }).always(function () {
+                        HoldOn.close();
+                    });
+                });
+                tblSelected.columns().every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change', function () {
+                        if (that.search() !== this.value) {
+                            that.search(this.value).draw();
+                        }
+                    });
+                });
+            } else {
+                $("#rAlmacen").html('<div class="alert alert-dismissible alert-warning">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<h1 class="text-center">NO SE ENCONTRARON REGISTROS</h1>' +
+                        '</div>');
+                HoldOn.close();
+            }
+
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+
+    }
+
+    function getBuscarPerdidas() {
+        temp = 0;
+        HoldOn.open({
+            theme: 'sk-bounce',
+            message: 'CARGANDO...'
+        });
+
+        $.ajax({
+            url: master_url + 'getGenerarReporteDePerdidas',
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                INICIO: (mdlBusquedaPerdida.find("#FechaInicial").val() !== '') ? mdlBusquedaPerdida.find("#FechaInicial").val() : '',
+                FIN: (mdlBusquedaPerdida.find("#FechaFinal").val() !== '') ? mdlBusquedaPerdida.find("#FechaFinal").val() : '',
+                PROYECTO: (mdlBusquedaPerdida.find("#IdProyecto").val() !== '') ? mdlBusquedaPerdida.find("#IdProyecto").val() : '',
+                ALMACEN: (mdlBusquedaPerdida.find("#IdAlmacen").val() !== '') ? mdlBusquedaPerdida.find("#IdAlmacen").val() : ''
+            }
+        }).done(function (data, x, jq) {
+            console.log(data, x, jq);
+            var tblName = "tblPerdidas";
+            if (data.length > 0) {
+                target_result.html(getTable(tblName, data));
+                $('#' + tblName + ' tfoot th').each(function () {
+                    var title = $(this).text();
+                    $(this).html('<fieldset><div><label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" /></div></fieldset>');
+                });
+
+                var tblSelected = $('#' + tblName).DataTable(tableOptions);
+                //CLICK SELECTED ROW
+                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("success");
+                    $("#" + tblName).find("tr").removeClass("warning");
+                    //                console.log(this)
+                    var id = this.id;
+                    var index = $.inArray(id, selected);
+                    if (index === -1) {
+                        selected.push(id);
+                    } else {
+                        selected.splice(index, 1);
+                    }
+                    $(this).addClass('success');
+                    var row = $(this).find("td");
+                    console.log(row);
+                    temp = row[0].innerText;
+                    console.log('ID PERDIDA: ' + temp);
+                });
+                //DB CLICK FOR EDIT
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("warning");
+                    $(this).addClass('warning');
+                });
+                tblSelected.columns().every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change', function () {
+                        if (that.search() !== this.value) {
+                            that.search(this.value).draw();
+                        }
+                    });
+                });
+            } else {
+                $("#rAlmacen").html('<div class="col-md-12"><div class="alert alert-dismissible alert-warning">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<h1 class="text-center">NO SE ENCONTRARON REGISTROS</h1>' +
+                        '</div></div>');
+                HoldOn.close();
+            }
+
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+
+    }
+
+    function getProyectosConPerdidas() {
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "ESPERE..."
+        });
+        $.ajax({
+            url: master_url + 'getProyectosConPerdidas',
+            type: "POST",
+            dataType: "JSON"
+        }).done(function (data, x, jq) {
+            var options = "<option></option>";
+            $.each(data, function (k, v) {
+                options = options + '<option value="' + v.ID + '">' + v.PROYECTO + '</option>';
+            });
+            mdlBusquedaPerdida.find("#IdProyecto").html(options);
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
+    function getAlmacenConPerdidasXProyecto(IDX) {
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "ESPERE..."
+        });
+        $.ajax({
+            url: master_url + 'getAlmacenConPerdidasXProyecto',
+            type: "POST",
+            dataType: "JSON",
+            data: {
+                ID: IDX
+            }
+        }).done(function (data, x, jq) {
+            var options = "<option></option>";
+            $.each(data, function (k, v) {
+                options = options + '<option value="' + v.ID + '">' + v.ALMACEN + '</option>';
+            });
+            mdlBusquedaPerdida.find("#IdAlmacen").html(options);
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
+    function onReiniciarPerdidas() {
+        getPerdidas();
+        mdlBusquedaPerdida.find("#FechaInicial").val("");
+        mdlBusquedaPerdida.find("#FechaFinal").val("");
+        mdlBusquedaPerdida.find("#IdProyecto").select2("val", "");
+        mdlBusquedaPerdida.find("#IdAlmacen").select2("val", "");
+    }
+
+    function getDevolucionesX() {
+        temp = 0;
+        HoldOn.open({
+            theme: 'sk-bounce',
+            message: 'CARGANDO...'
+        });
+
+        $.ajax({
+            url: master_url + 'getDevolucionesX',
+            type: "POST",
+            dataType: "JSON"
+        }).done(function (data, x, jq) {
+            console.log(data, x, jq);
+
+            var tblName = "tblDevolucionesX";
+            if (data.length > 0) {
+                target_result.html(getTable(tblName, data));
+                $('#' + tblName + ' tfoot th').each(function () {
+                    var title = $(this).text();
+                    $(this).html('<fieldset><div><label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" /></div></fieldset>');
+                });
+
+                var tblSelected = $('#' + tblName).DataTable(tableOptions);
+                //CLICK SELECTED ROW
+                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("success");
+                    $("#" + tblName).find("tr").removeClass("warning");
+                    //                console.log(this)
+                    var id = this.id;
+                    var index = $.inArray(id, selected);
+                    if (index === -1) {
+                        selected.push(id);
+                    } else {
+                        selected.splice(index, 1);
+                    }
+                    $(this).addClass('success');
+                    var row = $(this).find("td");
+                    console.log(row);
+                    temp = row[0].innerText;
+                    console.log('ID DEVOLUCIONX: ' + temp);
+                });
+                //DB CLICK FOR EDIT
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("warning");
+                    $(this).addClass('warning');
+                    console.log("* * * * * * * * * * * * * * * * * * * * * * AIDI * * * * * * * * *");
+                    console.log($(this).find("td")[0].innerText);
+                    console.log("* * * * * * * * * * * * * * * * * * * * * * AIDI * * * * * * * * *");
+                    HoldOn.open({
+                        theme: 'sk-bounce',
+                        message: 'ESPERE UN MOMENTO...'
+                    });
+                    $.ajax({
+                        url: master_url + 'getDevolucionXID',
+                        type: "POST",
+                        dataType: "JSON",
+                        data: {
+                            ID: $(this).find("td")[0].innerText
+                        }
+                    }).done(function (data, x, jq) {
+                        console.log(data);
+                        var dtm = data[0];
+                        $.each(dtm, function (k, v) {
+                            console.log(k, v);
+                            mdlVerDevolucionX.find("#" + k).val(v);
+                            mdlVerDevolucionX.find("#" + k).select2("val", v);
+                        });
+                        mdlVerDevolucionX.modal('show');
+                    }).fail(function (x, y, z) {
+                        console.log(x, y, z);
+                    }).always(function () {
+                        HoldOn.close();
+                    });
+                });
+                tblSelected.columns().every(function () {
+                    var that = this;
+                    $('input', this.footer()).on('keyup change', function () {
+                        if (that.search() !== this.value) {
+                            that.search(this.value).draw();
+                        }
+                    });
+                });
+            } else {
+                $("#rAlmacen").html('<div class="alert alert-dismissible alert-warning">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<h1 class="text-center">NO SE ENCONTRARON REGISTROS</h1>' +
+                        '</div>');
+                HoldOn.close();
+            }
+
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+
+    }
+
 </script>

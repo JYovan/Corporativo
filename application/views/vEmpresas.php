@@ -28,14 +28,18 @@ $indice = $_SESSION["ID"];
                 <fieldset> 
                     <div class="col-md-12" align="center">
                         <span data-toggle="modal" data-target="#mdlNuevo">
-                            <button type="button" id="btnAgregarEmpresaMdl" class="btn btn-info btn-lg"   data-toggle="tooltip" data-placement="top" title="" data-original-title="NUEVO">
-                                <span class="fa fa-plus fa-3x"></span>
+                            <button type="button" id="btnAgregarEmpresaMdl" class="btn btn-info btn-lg fa-lg"   
+                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="NUEVO">
+                                <span class="fa fa-plus fa-3x info-icon"></span>
                             </button> </span>
-                        <button type="submit" class="btn btn-warning btn-lg">
-                            <span class="fa fa-refresh fa-3x"></span>
+                        <button id="btnEditar"  type="button" class="btn btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="EDTIAR">
+                            <span class="fa fa-pencil fa-3x success-icon"></span>
                         </button>
-                        <button type=button onClick="location = '<?php echo base_url(); ?>index.php/controlador/ExcelDirectorio';" class="btn btn-success btn-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="DESCARGAR ARCHIVO DE EXCEL">
-                            <span class="fa fa-file-excel-o fa-3x"></span>
+                        <button type="button" class="btn btn-warning btn-lg fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="REFRESCAR">
+                            <span class="fa fa-refresh fa-3x warning-icon"></span>
+                        </button>
+                        <button type=button onClick="location = '<?php echo base_url(); ?>index.php/controlador/ExcelDirectorio';" class="btn btn-success btn-lg fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="DESCARGAR ARCHIVO DE EXCEL">
+                            <span class="fa fa-file-excel-o fa-3x success-icon"></span>
                         </button> 
                         <hr>
                     </div> 
@@ -359,6 +363,316 @@ $indice = $_SESSION["ID"];
 
 <!-- /.modal -->
 
+<div id="mdlEditar" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">EDITAR EMPRESA</h4>
+            </div>
+            <form id="frmEditar">
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="col-md-12 hide">
+                            <input type="text" id="ID" name="ID" class="form-control" >
+                        </div> 
+                            <div class="col-md-4">
+                                <label for="Nombre" class="control-label">NOMBRE COMERCIAL</label>
+                                <input class="form-control" type="text" name="NombreC" id="NombreC" required>		
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Nombre" class="control-label">RAZ&Oacute;N SOCIAL</label>
+                                <input class="form-control" type="text" name="RazonS" id="RazonS" required>		
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Nombre" class="control-label">RFC</label>
+                                <input class="form-control" type="text" name="RFC" id="RFC" required>		
+                            </div> 
+                            <div class="col-md-12">
+                                <label for="RepresentanteL" >REPRESENTANTE LEGAL:</label> 
+                                <input class="form-control" type="text" name="RepresentanteL" id="RepresentanteL" required>		
+                            </div>
+                            <div class="col-md-12">
+                                <label for="RepresentanteL">RESPONSABLE:</label> 
+                                <select class="form-control" id="id_responsable" name="id_responsable"  required>
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Responsables as $temporal) { ?> 
+                                        <option value="<?php echo $temporal->Id; ?>"><?php echo $temporal->nombre . " " . $temporal->apaterno . " " . $temporal->amaterno; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="Sucursal" class="control-label">SUCURSAL:</label> 
+                                <select class="form-control" id="Sucursal" name="Sucursal"  required>
+                                    <option value="">Selecciona</option>
+                                    <option value="León">León</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6"> 
+                                <label for="Sucursal" class="control-label">TIPO DE EMPRESA:</label>
+                                <select class="form-control" id="cliente" name="cliente"  required>
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($cliente as $cliente1) { ?> 
+                                        <option value="<?php echo $cliente1->id_cliente; ?>"><?php echo $cliente1->dsc_cliente; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6"> 
+                                <label for="Tipo_cliente" class="control-label">REGIMEN DE LA EMPRESA:</label>
+                                <select class="form-control" id="Tipo_cliente" name="Tipo_cliente"  required>
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Tipo_cliente as $Tipo_cliente1) { ?> 
+                                        <option value="<?php echo $Tipo_cliente1->id_Tipo_cliente; ?>"><?php echo $Tipo_cliente1->dsc_Tipo_cliente; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="SubTipo-cliente" class="control-label">GRUPO DE ACTIVIDAD ECON&Oacute;MICA:</label> 
+                                <select class="form-control" id="SubTipo_cliente" name="SubTipo_cliente"  required>
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($SubTipo_cliente as $SubTipo_cliente1) { ?> 
+                                        <option value="<?php echo $SubTipo_cliente1->id_SubTipo_cliente; ?>"><?php echo $SubTipo_cliente1->dsc_SubTipo_cliente; ?></option>
+                                    <?php } ?>
+                                </select> 
+                            </div>
+                            <div class="col-md-4">
+                                <label for="RegimenJ">CURP:</label>
+                                <input  class="form-control" type="text" name="CURP" id="CURP">		
+                            </div>
+                            <div class="col-md-4">
+                                <label for="FormaJ">R&Eacute;GIMEN JUR&Iacute;DICO:</label> 
+                                <select class="form-control" id="RegimenJ" name="RegimenJ"  required>
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Regimen as $Regimen1) { ?> 
+                                        <option value="<?php echo $Regimen1->id_regimen; ?>"><?php echo $Regimen1->dsc_regimen; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="AmbitoA" class="control-label">FORMA JUR&Iacute;DICA:</label>
+                                <select class="form-control" id="FormaJ" name="FormaJ"  required  >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Forma as $Forma1) { ?> 
+                                        <option value="<?php echo $Forma1->id_forma; ?>"><?php echo $Forma1->dsc_forma; ?></option>
+                                    <?php } ?>
+                                </select>		
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Tamanio" class="control-label">&Aacute;MBITO DE ACTUACI&Oacute;N:</label>
+                                <select class="form-control" id="AmbitoA" name="AmbitoA"  required  >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Ambito as $Ambito1) { ?> 
+                                        <option value="<?php echo $Ambito1->id_ambito; ?>"><?php echo $Ambito1->dsc_ambito; ?></option>
+                                    <?php } ?>
+                                </select>		
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Sector" class="control-label">TAMA&Ntilde;O:</label>
+                                <select class="form-control" id="Tamanio" name="Tamanio"  required  >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Tamanio as $Tamanio1) { ?> 
+                                        <option value="<?php echo $Tamanio1->id_tamanio; ?>"><?php echo $Tamanio1->dsc_tamanio; ?></option>
+                                    <?php } ?>
+                                </select>			
+                            </div>
+                            <div class="col-md-4">
+                                <label for="Clasificacion" class="control-label">SECTOR:</label>
+                                <select class="form-control" id="Sector" name="Sector"  required  >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Sector as $Sector1) { ?> 
+                                        <option value="<?php echo $Sector1->id_sector; ?>"><?php echo $Sector1->dsc_sector; ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="Rama" class="control-label">RAMA:</label> 
+                                <select class="form-control" id="Rama" name="Rama"  required >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Rama as $Rama1) { ?> 
+                                        <option value="<?php echo $Rama1->id_rama; ?>"><?php echo $Rama1->dsc_rama; ?></option>
+                                    <?php } ?>
+                                </select>		
+                            </div>
+                            <div class="col-xs-12 col-sm-12" align="center">
+                                <br><label  class="control-label"><h2>DOMICILIO</h2></label><br>		
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <hr class="">
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Calle" class="control-label">CALLE:</label>
+                                <input   class="form-control" type="text" name="Calle" id="Calle" required>	
+
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Numero" class="control-label">No.:</label>    
+                                <input   class="form-control" type="text" name="No" id="No" required>
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Colonia" class="control-label">COLONIA:</label>
+                                <input   class="form-control" type="text" name="Colonia" id="Colonia" required>
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="CP" class="control-label">C.P:</label>
+                                <input   class="form-control" type="text" name="CP" id="CP" required>
+                            </div>  
+                            <div class="col-xs-6 col-sm-6" id="Pais2">
+                                <label for="Pais" class="control-label">PA&Iacute;S:</label><br>
+                                <select class="form-control" id="Pais" name="Pais"  required>
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Pais as $Pais1) { ?> 
+                                        <option value="<?php echo $Pais1->id_pais; ?>"><?php echo $Pais1->dsc_pais; ?></option>
+                                    <?php } ?>
+                                </select>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6" id="Estado2">
+                                <label for="Estado" class="control-label">ESTADO:</label><br>
+                                <select class="form-control" id="Estado" name="Estado"  required >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Estado as $Estado1) { ?> 
+                                        <option value="<?php echo $Estado1->id_estado; ?>"><?php echo $Estado1->dsc_estado; ?></option>
+                                    <?php } ?>
+                                </select>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6" id="Ciudad2">
+                                <label for="Ciudad" class="control-label">CIUDAD:</label><br>	
+                                <select class="form-control" id="Ciudad" name="Ciudad"  required >
+                                    <option value="">Selecciona</option>
+                                    <?php foreach ($Ciudad as $Ciudad1) { ?> 
+                                        <option value="<?php echo $Ciudad1->id_ciudad; ?>"><?php echo $Ciudad1->dsc_ciudad; ?></option>
+                                    <?php } ?>
+                                </select>		
+                            </div>  
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Lada" class="control-label">LADA:</label><br>
+                                <input   class="form-control" type="text" name="Lada" id="Lada" required>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Telefono" class="control-label">TEL&Eacute;FONO:</label><br>
+                                <input   class="form-control" type="text" name="Tel" id="Tel" required>
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Pagina" class="control-label">P&Aacute;GINA WEB:</label><br>
+                                <input  class="form-control" type="text" name="Pagina" id="Pagina">
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12" align="center">
+                                <br><label class="control-label"><h2>REDES SOCIALES</h2></label>	
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <hr class="">
+                            </div> 	 		   	  
+                            <div class="col-xs-6 col-sm-6" align="center">
+                                <label for="facebook" class="control-label">Facebook:</label>	
+                                <input class="form-control" type="text" id="facebook" name="facebook">		  	
+                            </div>		   	  
+                            <div class="col-xs-6 col-sm-6" align="center">
+                                <label for="twitter" class="control-label">Twitter:</label> 		  	
+                                <input class="form-control" type="text" id="twitter" name="twitter" >		  	
+                            </div>		   	  
+                            <div class="col-xs-6 col-sm-6" align="center">
+                                <label for="linkedin" class="control-label">LinkedIn:</label> 		  	
+                                <input class="form-control" type="text" id="linkedin" name="linkedin" >		  	
+                            </div>		 
+                            <div class="col-xs-6 col-sm-6" align="center">
+                                <label for="google" class="control-label">Google+:</label>  		  	
+                                <input class="form-control" type="text" id="google" name="google" >		  	
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-12" align="center">
+                                <br><label class="control-label"><h2>DATOS DE CONTACTO</h2></label>	
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <hr class="">
+                            </div> 	
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Contacto" class="control-label">NOMBRE DEL CONTACTO:</label><br>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Profesion" class="control-label">PROFESI&Oacute;N:</label><br>		
+                            </div> 
+                            <div class="col-xs-6 col-sm-6">
+                                <input   class="form-control" type="text" name="Contacto" id="Contacto" required>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <input   class="form-control" type="text" name="Profesion" id="Profesion" required>	
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Cargo" class="control-label">CARGO O PUESTO:</label><br>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <label for="Correo" class="control-label">CORREO ELECTR&Oacute;NICO:</label><br>		
+                            </div> 
+                            <div class="col-xs-6 col-sm-6">
+                                <input   class="form-control" type="text" name="Puesto" id="Puesto" required>		
+                            </div>
+                            <div class="col-xs-6 col-sm-6">
+                                <input  class="form-control" type="email" name="Correo" id="Correo" required>	
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <label for="Lada2" class="control-label">LADA:</label><br>		
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <label for="Telefono2" class="control-label">TEL&Eacute;FONO:</label><br>		
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <label for="Ext" class="control-label">EXT:</label><br>		
+                            </div> 
+                            <div class="col-xs-4 col-sm-4">
+                                <input   class="form-control" type="text" name="C_Lada" id="C_Lada" required>		
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <input   class="form-control" type="text" name="C_Tel" id="C_Tel" required>
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                                <input   class="form-control" type="text" name="C_Ext" id="C_Ext">
+                            </div>  
+                            <div class="col-xs-12 col-sm-12" align="center">
+                                <br><label class="control-label"><h2>SERVICIOS</h2></label>	
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                                <hr class="">
+                            </div> 
+                            <div class="form-group col-xs-6 col-sm-6" >
+                                <input name="Construccion" type="checkbox" value="SÍ"/>
+                                <label for="1" class="control-label">CONSTRUCCI&Oacute;N DE VIVIENDA</label><br>		
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <input name="Ainmuebles" type="checkbox" value="SÍ"/>
+                                <label for="2" class="control-label">ALQUILER DE INMUEBLES</label><br>		
+                            </div> 
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <input name="Comercio" type="checkbox" value="SÍ"/>
+                                <label for="3" class="control-label">COMERCIO DE MATERIALES DE LA CONSTRUCCI&Oacute;N</label><br>		
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <input name="Amaquinaria" type="checkbox" value="SÍ"/>
+                                <label for="4" class="control-label">ALQUILER DE MAQUINARIA PARA LA CONSTRUCCI&Oacute;N</label><br>		
+                            </div> 
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <input name="AdmonConstruccion" type="checkbox" value="SÍ"/>
+                                <label for="5" class="control-label">ADMINISTRACI&Oacute;N Y SUPERVISI&Oacute;N DE VIVIENDA</label><br>		
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-6">
+                                <input name="Autotransportes" type="checkbox" value="SÍ"/>
+                                <label for="6" class="control-label">AUTOTRANSPORTE FOR&Aacute;NEO DE CARGA GENERAL</label><br>		
+                            </div>
+                            <div class="col-xs-12 col-sm-12">
+                            </div> 
+                        
+                    </fieldset>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button>
+                <button type="button" class="btn btn-default fa-lg" id="btnModificar"><span class="fa fa-check fa-3x success-icon"></span></button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 
 <script>
     cli.config.tipocliente();
@@ -366,7 +680,42 @@ $indice = $_SESSION["ID"];
     cli.config.Estado();
     cli.config.Ciudad();
     var master_url = base_url + 'index.php/ctrlEmpresa/';
+    
+    
+    var btnEditar = $("#btnEditar");
+    var mdlEditar = $("#mdlEditar");
     $(document).ready(function () {
+        
+        
+       btnEditar.click(function(){
+           HoldOn.open({
+               theme: 'sk-bounce',
+               message: 'CARGANDO...'
+           });
+           $.ajax({
+               url: master_url + 'getEmpresaByID',
+               type:"POST",
+               dataType: "JSON",
+               data:{
+                   ID: temp
+               }
+           }).done(function(data,x,jq){
+               console.log(data);
+               var dtm = data[0];
+               $.each(dtm, function(k,v){
+                   console.log(k,v);
+                   mdlEditar.find("#"+k).val(v);
+                   mdlEditar.find("#"+k).select2("val",v);
+               });
+           }).fail(function(x,y,z){
+               console.log(x,y,z);
+           }).always(function(){
+               HoldOn.close();
+           });
+           console.log('ok')
+           mdlEditar.modal('show');
+       });
+       
         onRefresh();
         var btnGuardar = $("#mdlNuevo #btnGuardar");
         btnGuardar.click(function () {
@@ -398,10 +747,7 @@ $indice = $_SESSION["ID"];
         $("#btnRefresh").click(function () {
             onRefresh();
         });
-        $("#btnEditar").click(function () {
-
-            onBeforeUpdate();
-        });
+         
     });
 
 
@@ -425,7 +771,7 @@ $indice = $_SESSION["ID"];
             console.log('FINALIZADO');
         });
     }
-    
+
     function onRefresh() {
 //        $.ajax({
 //            url: master_url + 'getActividades',
@@ -534,4 +880,4 @@ $indice = $_SESSION["ID"];
         });
     }
 
-</script> 
+</script>  

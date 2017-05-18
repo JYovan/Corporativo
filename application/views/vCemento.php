@@ -13,9 +13,10 @@ $indice = $_SESSION["ID"];
                 <div class="col-md-8"> 
                     <div class="text-center cursor-hand" onclick="onHideFunctions()"><h3 class="text-white">MÓDULO PRECIOS DEL CEMENTO<span class="fa fa-chevron-up" ></span></h3></div>
                 </div>
-                <div class="col-md-2 panel-title" align="right">
-                    <label for="chkTooltip"><input type="checkbox" class="" id="chkTooltip" name="chkTooltip" data-toggle="tooltip" data-placement="left" data-original-title="MOSTRAR LEYENDAS"></label>
-                </div>
+                
+                    <div class="col-md-2 panel-title" align="right">
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                    </div>
             </div>
             <div class="panel-body">
                 <fieldset  align="center">

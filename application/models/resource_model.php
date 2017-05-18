@@ -42,7 +42,7 @@ class resource_model extends CI_Model {
                     break;
                 case "save":
                     $this->db->insert($tbl, $array);
-                    print $str = $this->db->last_query();
+//                    print $str = $this->db->last_query();
                     $query = $this->db->query('SELECT LAST_INSERT_ID()');
                     $row = $query->row_array();
                     $LastIdInserted = $row['LAST_INSERT_ID()'];
@@ -51,7 +51,7 @@ class resource_model extends CI_Model {
                 case "update":
                     $this->db->where($condition[0], $condition[1]);
                     $this->db->update($tbl, $array);
-//                    print $str = $this->db->last_query();
+                    print $str = $this->db->last_query();
                     print 1;
                     break;
                 case "delete":

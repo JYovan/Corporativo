@@ -2181,11 +2181,11 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
             extract(filter_input_array(INPUT_POST));
             $EMPRESA = $this->tramitefactura_model->getEmpresasByID($Empresa);
             $PROVEEDOR = $this->tramitefactura_model->getProveedoresByID($Proveedor);
-            $img = base_url() . 'uploads/Facturas/Scan/' . strtoupper($EMPRESA[0]->NombreC) . '/' .strtoupper($PROVEEDOR[0]->Proveedor) . '/' . $NumeroFactura . '/' . $_FILES["rtImagen"]["name"];
+            $img = base_url() . 'uploads/Facturas/Scan/' . strtoupper($EMPRESA[0]->NombreC) . '/' . strtoupper($PROVEEDOR[0]->Proveedor) . '/' . $NumeroFactura . '/' . $_FILES["rtImagen"]["name"];
             print "**********************************************";
             print $PAGADA;
-             print "**********************************************";
-            
+            print "**********************************************";
+
             $ImporteCalculado = $Importe - $TOTALNOTASDECREDITO;
             if (isset($PAGADA) && ((int) $PAGADA) == 1) {
 //                print 'PAGADA';
@@ -3184,7 +3184,7 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
             $mail->isHTML(true);  // Set email format to HTML
 
             $mail->Subject = $Subject;
-            $mail->AddEmbeddedImage('media/Rabina.png', 'RabinaLogo');
+            $mail->AddEmbeddedImage('media/LogoRabina2017.png', 'RabinaLogo');
 
             $mail->Body = $bodyContent;
             if (!$mail->send()) {
@@ -3283,7 +3283,7 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
     public function onEnviar($ID, $data, $URL) {
         try {
             extract(filter_input_array(INPUT_POST));
-            $Subject = utf8_decode("SE HA REGISTRADO UNA NUEVA FACTURA");
+            $Subject = utf8_decode("SE HA REGISTRADO UNA NUEVA FACTURA: $NumeroFactura, $" . number_format($Importe, 2, '.', ', '));
             $bodyContent = '<div align="center" style="overflow-x:auto;">';
             $bodyContent .= '<img src="cid:RabinaLogo" height="50%" width="50%">';
             $bodyContent .= '<BR><h1>DATOS DE LA FACTURA</h1>';
@@ -3374,7 +3374,7 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
             $mail->isHTML(true);  // Set email format to HTML
 
             $mail->Subject = $Subject;
-            $mail->AddEmbeddedImage('media/Rabina.png', 'RabinaLogo');
+            $mail->AddEmbeddedImage('media/LogoRabina2017.png', 'RabinaLogo');
 
             $mail->Body = utf8_decode($bodyContent);
             if (!$mail->send()) {
@@ -3392,6 +3392,205 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
         try {
             extract(filter_input_array(INPUT_POST));
             $data = $this->tramitefactura_model->getUltimoFolioXProveedor($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function onEnviarRevision($ID, $data, $URL) {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $Subject = utf8_decode("SE HA REVISADO UNA FACTURA: $NumeroFactura, $" . number_format($Importe, 2, '.', ', '));
+            $bodyContent = '<div align="center" style="overflow-x:auto;">';
+            $bodyContent .= '<img src="cid:RabinaLogo" height="50%" width="50%">';
+            $bodyContent .= '<BR><h1>DATOS DE LA FACTURA</h1>';
+            $bodyContent .= '<table border="2" align="center" style="border-collapse: collapse;overflow-x:auto;">';
+            $bodyContent .= '<thead>'
+                    . '<tr style="background-color:MidnightBlue; color:white;" align="center">'
+                    . '<th><B>FOLIO</B></th>'
+                    . '<th><B>FECHA</B></th>'
+                    . '<th><B>HORA</B></th>'
+                    . '<th><B>EMPRESA</B></th>'
+                    . '<th><B>ACTIVIDAD</B></th>'
+                    . '<th><B>PROYECTO</B></th>'
+                    . '<th><B>NÚMERO DE CONTRATO</B></th>'
+                    . '<th><B>PROVEEDOR</B></th>'
+                    . '</tr>'
+                    . '</thead>';
+            $bodyContent .= '<tbody align="center">';
+            $bodyContent .= '<tr>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Folio . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Fecha . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Hora . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $EmpresaT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ModeloNegocioT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ActividadT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $NumeroDeContrato . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ProveedorT . '</td>';
+            $bodyContent .= '</tr>';
+            $bodyContent .= '</tbody>';
+            $bodyContent .= '<thead>'
+                    . '<tr style="background-color:MidnightBlue; color:white;" align="center">'
+                    . '<th><B>FECHA DE LA FACTURA</B></th>'
+                    . '<th><B>NÚMERO DE FACTURA</B></th>'
+                    . '<th><B>IMPORTE</B></th>'
+                    . '<th><B>FACTURA PAGADA</B></th>'
+                    . '<th><B>ORDEN DE COMPRA DE REFERENCIA</B></th>'
+                    . '<th><B>OBSERVACIÓN</B></th>'
+                    . '<th><B>RECEPTOR EN RABINA</B></th>'
+                    . '</tr>'
+                    . '</thead>';
+            $bodyContent .= '<tbody align="center">';
+            $bodyContent .= '<tr>';
+            $bodyContent .= '<td style="padding: 10px;">' . $FechaFactura . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $NumeroFactura . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . "$ " . number_format($Importe, 2, '.', ', ') . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . ((((int) $PAGADA) == 1) ? "SI" : "NO") . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $OrdenDeCompraRef . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Observacion . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ReceptorT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . utf8_decode($URL) . '</td>';
+            $bodyContent .= '</tr>';
+            $bodyContent .= '</tbody>';
+            $bodyContent .= '</table>';
+
+            $this->onEnviarEmail($ID, $Subject, $bodyContent, $data, $URL);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function onEnviarAutorizacion($ID, $data, $URL) {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $Subject = utf8_decode("SE HA AUTORIZADO UNA FACTURA: $NumeroFactura, $" . number_format($Importe, 2, '.', ', '));
+            $bodyContent = '<div align="center" style="overflow-x:auto;">';
+            $bodyContent .= '<img src="cid:RabinaLogo" height="50%" width="50%">';
+            $bodyContent .= '<BR><h1>DATOS DE LA FACTURA</h1>';
+            $bodyContent .= '<table border="2" align="center" style="border-collapse: collapse;overflow-x:auto;">';
+            $bodyContent .= '<thead>'
+                    . '<tr style="background-color:MidnightBlue; color:white;" align="center">'
+                    . '<th><B>FOLIO</B></th>'
+                    . '<th><B>FECHA</B></th>'
+                    . '<th><B>HORA</B></th>'
+                    . '<th><B>EMPRESA</B></th>'
+                    . '<th><B>ACTIVIDAD</B></th>'
+                    . '<th><B>PROYECTO</B></th>'
+                    . '<th><B>NÚMERO DE CONTRATO</B></th>'
+                    . '<th><B>PROVEEDOR</B></th>'
+                    . '</tr>'
+                    . '</thead>';
+            $bodyContent .= '<tbody align="center">';
+            $bodyContent .= '<tr>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Folio . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Fecha . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Hora . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $EmpresaT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ModeloNegocioT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ActividadT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $NumeroDeContrato . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ProveedorT . '</td>';
+            $bodyContent .= '</tr>';
+            $bodyContent .= '</tbody>';
+            $bodyContent .= '<thead>'
+                    . '<tr style="background-color:MidnightBlue; color:white;" align="center">'
+                    . '<th><B>FECHA DE LA FACTURA</B></th>'
+                    . '<th><B>NÚMERO DE FACTURA</B></th>'
+                    . '<th><B>IMPORTE</B></th>'
+                    . '<th><B>FACTURA PAGADA</B></th>'
+                    . '<th><B>ORDEN DE COMPRA DE REFERENCIA</B></th>'
+                    . '<th><B>OBSERVACIÓN</B></th>'
+                    . '<th><B>RECEPTOR EN RABINA</B></th>'
+                    . '</tr>'
+                    . '</thead>';
+            $bodyContent .= '<tbody align="center">';
+            $bodyContent .= '<tr>';
+            $bodyContent .= '<td style="padding: 10px;">' . $FechaFactura . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $NumeroFactura . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . "$ " . number_format($Importe, 2, '.', ', ') . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . ((((int) $PAGADA) == 1) ? "SI" : "NO") . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $OrdenDeCompraRef . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Observacion . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ReceptorT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . utf8_decode($URL) . '</td>';
+            $bodyContent .= '</tr>';
+            $bodyContent .= '</tbody>';
+            $bodyContent .= '</table>';
+
+            $this->onEnviarEmail($ID, $Subject, $bodyContent, $data, $URL);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function onEnviarPago($ID, $data, $URL) {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $Subject = utf8_decode("SE HA PAGADO UNA FACTURA: $NumeroFactura, $" . number_format($Importe, 2, '.', ', '));
+            $bodyContent = '<div align="center" style="overflow-x:auto;">';
+            $bodyContent .= '<img src="cid:RabinaLogo" height="50%" width="50%">';
+            $bodyContent .= '<BR><h1>DATOS DE LA FACTURA</h1>';
+            $bodyContent .= '<table border="2" align="center" style="border-collapse: collapse;overflow-x:auto;">';
+            $bodyContent .= '<thead>'
+                    . '<tr style="background-color:MidnightBlue; color:white;" align="center">'
+                    . '<th><B>FOLIO</B></th>'
+                    . '<th><B>FECHA</B></th>'
+                    . '<th><B>HORA</B></th>'
+                    . '<th><B>EMPRESA</B></th>'
+                    . '<th><B>ACTIVIDAD</B></th>'
+                    . '<th><B>PROYECTO</B></th>'
+                    . '<th><B>NÚMERO DE CONTRATO</B></th>'
+                    . '<th><B>PROVEEDOR</B></th>'
+                    . '</tr>'
+                    . '</thead>';
+            $bodyContent .= '<tbody align="center">';
+            $bodyContent .= '<tr>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Folio . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Fecha . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Hora . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $EmpresaT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ModeloNegocioT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ActividadT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $NumeroDeContrato . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ProveedorT . '</td>';
+            $bodyContent .= '</tr>';
+            $bodyContent .= '</tbody>';
+            $bodyContent .= '<thead>'
+                    . '<tr style="background-color:MidnightBlue; color:white;" align="center">'
+                    . '<th><B>FECHA DE LA FACTURA</B></th>'
+                    . '<th><B>NÚMERO DE FACTURA</B></th>'
+                    . '<th><B>IMPORTE</B></th>'
+                    . '<th><B>FACTURA PAGADA</B></th>'
+                    . '<th><B>ORDEN DE COMPRA DE REFERENCIA</B></th>'
+                    . '<th><B>OBSERVACIÓN</B></th>'
+                    . '<th><B>RECEPTOR EN RABINA</B></th>'
+                    . '</tr>'
+                    . '</thead>';
+            $bodyContent .= '<tbody align="center">';
+            $bodyContent .= '<tr>';
+            $bodyContent .= '<td style="padding: 10px;">' . $FechaFactura . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $NumeroFactura . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . "$ " . number_format($Importe, 2, '.', ', ') . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . ((((int) $PAGADA) == 1) ? "SI" : "NO") . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $OrdenDeCompraRef . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $Observacion . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . $ReceptorT . '</td>';
+            $bodyContent .= '<td style="padding: 10px;">' . utf8_decode($URL) . '</td>';
+            $bodyContent .= '</tr>';
+            $bodyContent .= '</tbody>';
+            $bodyContent .= '</table>';
+
+            $this->onEnviarEmail($ID, $Subject, $bodyContent, $data, $URL);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getModeloNegocioXProyectoID() {
+        try {
+            extract($this->input->post());
+            $data = $this->tramitefactura_model->getModeloNegocioXProyectoID($ID);
             print json_encode($data);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();

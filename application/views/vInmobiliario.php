@@ -3,7 +3,15 @@
         <div class="col-md-12 margin-15-top">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title" align="center">MODULO INMOBILIARIO</h3>
+                    <div class="row"  align="center">
+                        <div class="col-md-4"></div> 
+                        <div class="col-md-4"><h3 class="panel-title">MÓDULO INMOBILIARIO</h3></div>
+                        <div class="col-md-2"></div> 
+                        
+                    <div class="col-md-2 panel-title" align="right">
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                    </div>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="col-md-12" align="center">

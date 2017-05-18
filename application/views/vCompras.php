@@ -17,11 +17,9 @@ $page_index_menu = base_url() . "index.php/ctrlsesion/onLoadData";
                 <div class="col-md-8"> 
                     <div class="text-center">COTIZACIONES / ÓRDENES DE COMPRA</div>
                 </div> 
-                <div class="col-md-2 panel-title" align="right">
-                    <a href = '<?php echo $page_index_menu; ?>'>
-                        <span class="fa fa-navicon"></span>
-                    </a> 
-                </div>
+                    <div class="col-md-2 panel-title" align="right">
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                    </div>
             </div>
             <div class="panel-body">
                 <fieldset>
@@ -63,6 +61,12 @@ $page_index_menu = base_url() . "index.php/ctrlsesion/onLoadData";
                         </button>
                         <button id="btnReportingOC" class="btn btn-lg fa-lg btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="GENERAR ORDEN DE COMPRA">
                             <span class="fa fa-cart-arrow-down fa-3x bluegrey-icon"></span>
+                        </button>
+                        <button id="btnOrdenesDeCompra" class="btn btn-lg fa-lg btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="VER ORDENES DE COMPRA">
+                            <span class="fa fa-eye fa-3x bluegrey-icon"></span>
+                        </button>
+                        <button id="btnOrdenesDeCompraADetalle" class="btn btn-lg fa-lg btn-default" data-toggle="tooltip" data-placement="top" title="" data-original-title="VER ORDENES DE COMPRA A DETALLE">
+                            <span class="fa fa-eye fa-3x black-icon"></span>
                         </button>
                     </div>
                     <div class="col-md-12"><br></div>
@@ -497,7 +501,7 @@ $page_index_menu = base_url() . "index.php/ctrlsesion/onLoadData";
     </div>
 </div>
 <script>
-
+    var master_url = base_url + 'index.php/ctrlCompras/';
     /*
      * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
      * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
@@ -508,7 +512,16 @@ $page_index_menu = base_url() . "index.php/ctrlsesion/onLoadData";
     var nformat = "";
     var target_messages = "mdlMessages";
     var content_message = "NO HA ELEGIDO NINGUN REGISTRO";
+    var btnOrdenesDeCompra = $("#btnOrdenesDeCompra");
+    var btnOrdenesDeCompraADetalle = $("#btnOrdenesDeCompraADetalle");
+    
     $(document).ready(function (e) {
+        btnOrdenesDeCompraADetalle.click(function(){
+            getOrdenesDeCompraADetalle();
+        });
+        btnOrdenesDeCompra.click(function(){
+            getOrdenesDeCompra();
+        });
         var master_url = base_url + 'index.php/ctrlCompras/';
         var Autoriza = $("#Autoriza");
         var Recibe = $("#Recibe");
@@ -1970,4 +1983,91 @@ $page_index_menu = base_url() . "index.php/ctrlsesion/onLoadData";
             HoldOn.close();
         });
     }
+    
+    
+    function getOrdenesDeCompra() {
+
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "POR FAVOR ESPERE..."
+        }); 
+        temp = 0;
+        $.ajax({
+            url: master_url +'getOrdenesDeCompra',
+            type: "POST",
+            dataType: "JSON"
+        }).done(function (data, textStatus, jqXHR) {
+            var tblName = 'tblOrdenesDeCompra'; 
+            if (data.length > 0) {
+                $("#rCompras").html(getTable(tblName, data));
+                var tblSelected = $('#' + tblName).DataTable(tableOptions);
+                //CLICK SELECTED ROW
+                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("success");
+                    $("#" + tblName).find("tr").removeClass("warning");
+//                console.log(this)
+                    var id = this.id;
+                    var index = $.inArray(id, selected);
+                    if (index === -1) {
+                        selected.push(id);
+                    } else {
+                        selected.splice(index, 1);
+                    } 
+                });  
+            } else {
+                $("#" + target_fail_messages).html('<div class="alert alert-dismissible alert-warning">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<h1 class="text-center">' + fail_message + '</h1>' +
+                        '</div>');
+            }
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+    
+    
+    function getOrdenesDeCompraADetalle() {
+
+        HoldOn.open({
+            theme: "sk-bounce",
+            message: "POR FAVOR ESPERE..."
+        }); 
+        temp = 0;
+        $.ajax({
+            url: master_url +'getOrdenesDeCompraADetalle',
+            type: "POST",
+            dataType: "JSON"
+        }).done(function (data, textStatus, jqXHR) { 
+            var tblName = 'tblOrdenesDeCompraADetalle'; 
+            if (data.length > 0) {
+                $("#rCompras").html(getTable(tblName, data));
+                var tblSelected = $('#' + tblName).DataTable(tableOptions);
+                //CLICK SELECTED ROW
+                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    $("#" + tblName).find("tr").removeClass("success");
+                    $("#" + tblName).find("tr").removeClass("warning");
+//                console.log(this)
+                    var id = this.id;
+                    var index = $.inArray(id, selected);
+                    if (index === -1) {
+                        selected.push(id);
+                    } else {
+                        selected.splice(index, 1);
+                    } 
+                });  
+            } else {
+                $("#" + target_fail_messages).html('<div class="alert alert-dismissible alert-warning">' +
+                        '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                        '<h1 class="text-center">' + fail_message + '</h1>' +
+                        '</div>');
+            }
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
 </script>

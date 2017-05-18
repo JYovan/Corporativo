@@ -364,11 +364,11 @@
                         </div>
                         <div class="col-md-6">
                             <label for="">TELÉFONO</label>
-                            <input type="tel" id="TelContacto" name="TelContacto" class="form-control">
+                            <input type="text" id="TelContacto" name="TelContacto" class="form-control">
                         </div>
                         <div class="col-md-6">
                             <label for="">CORREO</label>
-                            <input type="email" id="MailContacto" name="MailContacto" class="form-control">
+                            <input type="text" id="MailContacto" name="MailContacto" class="form-control">
                         </div>
 
                         <div class="col-md-12" align="center">
@@ -445,7 +445,30 @@
                             <label for="">CLABE</label>
                             <input type="text" class="form-control" id="CLABE" name="CLABE">
                         </div>
-
+                        <div class="col-md-12" id="VistaPrevia" align="center"></div>
+                        <div class="col-md-12 text-center">
+                            <input type="file" id="Icono" name="Icono" class="hide">
+                            <span class="fa fa-cloud-upload fa-5x sea-icon cursor-hand" id="btnIcono"></span>
+                            <h3 class="sea-icon">SELECCIONE UNA IMAGEN</h3>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                var mdlModificar = $("#mdlModificar");
+                                var vpU = mdlModificar.find("#VistaPrevia");
+                                var IconoU = mdlModificar.find("#Icono");
+                                var btnIconoU = mdlModificar.find("#btnIcono");
+                                btnIconoU.click(function () {
+                                    IconoU.trigger('click');
+                                });
+                                IconoU.change(function () {
+                                    var fr = new FileReader();
+                                    fr.onload = function (e) {
+                                        vpU.html('<br><img src="' + fr.result + '" class="img-responsive">');
+                                    };
+                                    fr.readAsDataURL(IconoU[0].files[0]);
+                                });
+                            });</script>
+                        
                         <div id="msgResult"></div>
                     </fieldset>
                 </div>

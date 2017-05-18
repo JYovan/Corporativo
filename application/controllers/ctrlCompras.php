@@ -944,5 +944,23 @@ class ctrlCompras extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
+    
+    public function getOrdenesDeCompra() {
+        try {
+            $data = $this->compras_model->getOrdenesDeCompra();
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    public function getOrdenesDeCompraADetalle() {
+        try {
+            $data = $this->compras_model->getOrdenesDeCompraADetalle();
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 
 }

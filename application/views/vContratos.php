@@ -14,10 +14,9 @@ $PERMISOS = $_SESSION["PERMISOS"][36];
                     <div class="col-md-8"> 
                         <div class="text-center cursor-hand" onclick="onHideFunctions()">MÓDULO DE CONTRATOS <span class="fa fa-chevron-up" data-toggle="tooltip" data-placement="top" title="" data-original-title="OCULTAR/MOSTRAR BOTONES"></span></div>
                     </div> 
+                    
                     <div class="col-md-2 panel-title" align="right">
-                        <a href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
-                            <span class="fa fa-navicon"data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                        </a> 
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
                     </div>
                 </div>
                 <div class="panel-body"> 
@@ -995,7 +994,35 @@ $PERMISOS = $_SESSION["PERMISOS"][36];
     var RDocumentoDisplayDU = mdlModificar.find("#RDocumentoDisplayD");
     var btnAgregarTramiteFactura = $("#btnAgregarTramiteFactura");
 
+    var btnCancelar = $("#btnCancelar");
+
     $(document).ready(function () {
+
+        btnCancelar.click(function () {
+            if (temp !== null, temp !== 0 && temp !== undefined) {
+                HoldOn.open({
+                    theme: 'sk-bounce',
+                    message: 'ESPERE...'
+                });
+                $.ajax({
+                    url: master_url + 'onCancelarContrato',
+                    type: "POST",
+                    data: {
+                        ID: temp
+                    }
+                }).done(function (data, x, jq) {
+                    console.log(data);
+                    btnRefresh.trigger('click');
+                    onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'CONTRATO CANCELADO', 'danger');
+                }).fail(function (x, y, z) {
+                    console.log(x, y, z);
+                }).always(function ( ) {
+                    HoldOn.close();
+                });
+            } else {
+                onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'DEBE DE SELECCIONAR UN REGISTRO', 'danger');
+            }
+        });
 
         btnAgregarTramiteFactura.click(function () {
             getTestigosContratista();
@@ -1762,17 +1789,18 @@ $PERMISOS = $_SESSION["PERMISOS"][36];
                     }
                     $(this).addClass('success');
                     var dtm = tblSelected.row(this).data();
-                    temp = parseInt($(dtm[0]).find("span")[0] !== undefined ? $(dtm[0]).find("span")[0].innerText : dtm[0]);
+                    console.log($(dtm));
+                    console.log($(dtm[0])[0].innerText);
+                    console.log($(dtm[0]));
+                    temp = $(dtm[0])[0].innerText;
+                    console.log(temp);
                 });
                 //DB CLICK FOR EDIT
                 $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
-                    var dtm = tblSelected.row(this).data();
-                    console.log($(dtm[0])[0].innerText);
-                    console.log($(dtm[0]).find("span").innerText);
-                    var id = $(dtm[0]).find("span")[0] !== undefined ? $(dtm[0]).find("span")[0].innerText : $(dtm[0]).val();
-                    temp = parseInt($(dtm[0])[0].innerText);
+                    var dtm = tblSelected.row(this).data(); 
+                    temp = $(dtm[0])[0].innerText;
                     btnEditar.trigger("click");
                 });
                 // Apply the search thead

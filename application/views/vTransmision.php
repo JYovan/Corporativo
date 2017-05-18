@@ -12,9 +12,7 @@
                         <div class="text-center cursor-hand" onclick="onHideFunctions()">MÓDULO DE TRANSMISIÓN Y DISPERSIÓN<span class="fa fa-chevron-up" data-toggle="tooltip" data-placement="top" title="" data-original-title="OCULTAR/MOSTRAR BOTONES"></span></div>
                     </div> 
                     <div class="col-md-2 panel-title" align="right">
-                        <a href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
-                            <span class="fa fa-navicon"data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                        </a> 
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -2541,14 +2539,14 @@
                 data: frm
             }).done(function (data, x, jq) {
                 console.log(data, x, jq);
-                if (parseInt(data) === 1 || parseInt(data) === 11) {
+//                if (parseInt(data) === 1 || parseInt(data) === 11) {
                     btnDispersiones.trigger('click');
                     mdlPagoDispersado.modal('hide');
-                } else {
-                    mdlPagoDispersado.find("#msgPagoDispersado").html('<div class="alert alert-dismissible alert-danger">\n\
-            <button type="button" class="close" data-dismiss="alert">&times;</button>\n\
-                <h2>NO SE HA PODIDO ACTUALIZAR EL REGISTRO O ALGO EXTRAÑO OCURRIO, CONSULTE LA CONSOLA PARA MÁS DETALLE.</h2></div>');
-                }
+//                } else {
+//                    mdlPagoDispersado.find("#msgPagoDispersado").html('<div class="alert alert-dismissible alert-danger">\n\
+//            <button type="button" class="close" data-dismiss="alert">&times;</button>\n\
+//                <h2>NO SE HA PODIDO ACTUALIZAR EL REGISTRO O ALGO EXTRAÑO OCURRIO, CONSULTE LA CONSOLA PARA MÁS DETALLE.</h2></div>');
+//                }
             }).fail(function (x, y, z) {
                 console.log(x, y, z);
             }).always(function () {
@@ -2717,14 +2715,14 @@
                 data: frm
             }).done(function (data, x, jq) {
                 console.log(data, x, jq);
-                if (parseInt(data) === 1 || parseInt(data) === 11) {
+//                if (parseInt(data) === 1 || parseInt(data) === 11) {
                     btnDispersiones.trigger('click');
                     mdlDispersarU.modal('hide');
-                } else {
-                    mdlDispersarU.find("#msgDispersionesU").html('<div class="alert alert-dismissible alert-danger">\n\
-            <button type="button" class="close" data-dismiss="alert">&times;</button>\n\
-                <h2>NO SE HA PODIDO ACTUALIZAR EL REGISTRO O ALGO EXTRAÑO OCURRIO, CONSULTE LA CONSOLA PARA MÁS DETALLE.</h2></div>');
-                }
+//                } else {
+//                    mdlDispersarU.find("#msgDispersionesU").html('<div class="alert alert-dismissible alert-danger">\n\
+//            <button type="button" class="close" data-dismiss="alert">&times;</button>\n\
+//                <h2>NO SE HA PODIDO ACTUALIZAR EL REGISTRO O ALGO EXTRAÑO OCURRIO, CONSULTE LA CONSOLA PARA MÁS DETALLE.</h2></div>');
+//                }
             }).fail(function (x, y, z) {
                 console.log(x, y, z);
             }).always(function () {
@@ -2911,10 +2909,10 @@
                 data: frm
             }).done(function (data, x, jq) {
                 console.log(data, x, jq);
-                if (parseInt(data) === 1 || parseInt(data) === 11) {
+//                if (parseInt(data) === 1 || parseInt(data) === 11) {
                     mdlDispersar.modal('hide');
                     btnRefresh.trigger('click');
-                }
+//                }
             }).fail(function (x, y, z) {
                 console.log(x, y, z);
             }).always(function () {

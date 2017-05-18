@@ -10,10 +10,10 @@
                 </div>
                 <div class="col-md-8"> 
                     <div class="text-center cursor-hand " onclick="onHideFunctions()"><h3 class="text-white">MÓDULO DE TRÁMITE DE FACTURAS <span class="fa fa-chevron-up" ></span></h3></div>
-                </div>
-                <div class="col-md-2 panel-title" align="right">
-                    <label for="chkTooltip"><input type="checkbox" class="" id="chkTooltip" name="chkTooltip" data-toggle="tooltip" data-placement="left" data-original-title="MOSTRAR LEYENDAS"></label>
-                </div>
+                </div> 
+                    <div class="col-md-2 panel-title" align="right">
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                    </div>
             </div>
             <div class="panel-body">
                 <fieldset>
@@ -24,74 +24,74 @@
                                 <button id="btnNuevo" class="btn btn-lg btn-default fa-lg box-shadow"  data-toggle="tooltip" data-placement="top" title="" data-original-title="NUEVO">
                                     <span class="fa fa-plus fa-3x info-icon"></span></button>
                             </span>
-                            <button id="btnEditarTramiteFactura" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnEditarTramiteFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg "
                                     data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MODIFICAR"  ><span class="fa fa-pencil fa-3x success-icon"></span></button>
-                            <button id="btnReCargarTramiteFactura" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnReCargarTramiteFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="REFRESCAR"  ><span class="fa fa-refresh fa-3x warning-icon"></span></button>
-                            <button id="btnCancelarFactura" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnCancelarFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CANCELAR FACTURA"  ><span class="fa fa-times fa-3x danger-icon"></span></button>
-                            <button id="btnFacturasCanceladas" class="btn btn3d btn-lg btn-default fa-lg hide"
+                            <button id="btnFacturasCanceladas" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="FACTURAS CANCELADAS"  >
                                 <span class="fa fa-eye-slash fa-3x sea-icon"></span></button>
-                            <button id="btnReporteAcumuladoGeneral" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnReporteAcumuladoGeneral" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="REPORTE ACUMULADO GENERAL"  >
                                 <span class="fa fa-file-text fa-3x brown-icon"></span>
                             </button>
-                            <button id="btnReporteTramiteFactura" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnReporteTramiteFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ACUSE DE FACTURA"  >
                                 <span class="fa fa-file-text fa-3x purple-icon"></span>
                             </button>
                             <span  data-toggle="hide" data-easein="swoopIn" data-target="#content-busqueda" >
-                                <button id="btnBusquedaEspecifica" class="btn btn3d btn-lg btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="BUSQUEDA ESPECIFICA"  >
+                                <button id="btnBusquedaEspecifica" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="BUSQUEDA ESPECIFICA"  >
                                     <span class="fa fa-search fa-3x"></span>
                                 </button> 
                             </span>
-                            <button id="btnNC" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnNC" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="bottom" title="" data-original-title="APLICACIÓN DE NOTA DE CREDITO"  >
                                 <span class="fa fa-eraser fa-3x cyan-icon"></span>
                             </button> 
-                            <button id="btnNotasDeCredito" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnNotasDeCredito" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="VER NOTAS DE CRÉDITO APLICADAS">
                                 <span class="fa fa-eye fa-3x ligth-green-icon"></span>
                             </button> 
-                            <button id="btnEditarNC" class="btn btn3d btn-lg btn-default fa-lg hide"
+                            <button id="btnEditarNC" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="EDITAR NOTAS DE CRÉDITO APLICADAS">
                                 <span class="fa fa-pencil fa-3x ligth-green-icon"></span>
                             </button> 
 
-                            <button id="btnCancelarNC" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnCancelarNC" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="CANCELAR NOTA DE CRÉDITO">
                                 <span class="fa fa-eraser fa-3x danger-icon"></span>
                             </button> 
-                            <button id="btnAvance" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnAvance" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="bottom" title="" data-original-title="AVANZAR"  >
                                 <span class="fa fa-forward fa-3x bluegrey-icon"></span>
                             </button>
-                            <button id="btnPagadas" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnPagadas" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="VER FACTURAS PAGADAS"  >
                                 <span class="fa fa-eye fa-3x success-icon"></span>
                             </button>
-                            <button id="btnCancelarPagada" class="btn btn3d btn-lg btn-default fa-lg hide"
+                            <button id="btnCancelarPagada" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="CANCELAR FACTURA PAGADA"  >
                                 <span class="fa fa-ban fa-3x success-icon"></span>
                             </button>
-                            <button id="btnCanceladas" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnCanceladas" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="VER FACTURAS CANCELADAS"  >
                                 <span class="fa fa-eye fa-3x danger-icon"></span>
                             </button>
-                            <button id="btnPagarFactura" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnPagarFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="PAGAR FACTURA"  >
                                 <span class="fa fa-fast-forward fa-3x kingblue-icon"></span>
                             </button>
-                            <button id="btnHistorialPagos" class="btn btn3d btn-lg btn-default fa-lg hide"
+                            <button id="btnHistorialPagos" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="VER HISTORIAL DE PAGOS"  >
                                 <span class="fa fa-eye fa-3x"></span>
                             </button>
-                            <button id="btnFacturaAGasto" class="btn btn3d btn-lg btn-default fa-lg"
+                            <button id="btnFacturaAGasto" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="CONVERTIR EN GASTO"  >
                                 <span class="fa fa-random fa-3x"></span>
                             </button>
-                            <button id="btnAvance" class="btn btn3d btn-lg btn-default fa-lg hide"
+                            <button id="btnAvance" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="FINALIZAR"  >
                                 <span class="fa fa-fast-forward fa-3x"></span> 
                             </button>
@@ -270,7 +270,7 @@
 
 <!-- Modal -->
 
-<div id="mdlNuevo" class="modal animated zoomInUp"  data-easein="swoopIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="mdlNuevo" class="modal animated rubberBand"  data-easein="swoopIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -300,28 +300,27 @@
                             <label for="Hora">HORA</label>
                             <input type="text" id="Hora" name="Hora" class="form-control" required="" data-date-format="dd/mm/yyyy">
                         </div>
-                        <div class="col-md-12">  
+                        <div class="col-md-12">
+                            <label for="Actividad">PROYECTO</label>
+                            <select id="Actividad" name="Actividad" class="form-control">
+                                <option value=""></option>
+
+                            </select>
+                        </div>
+                        <div class="col-md-6">  
                             <label for="Empresa">EMPRESA</label>
                             <select id="Empresa" name="Empresa" class="form-control">
                                 <option value=""></option> 
                             </select>   
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label for="ModeloNegocio">ACTIVIDAD</label>
                             <!--<input type="text" id="ModeloNegocio" name="ModeloNegocio" class="form-control" required="" data-date-format="dd/mm/yyyy">-->
                             <select id="ModeloNegocio" name="ModeloNegocio" class="form-control">
                                 <option value=""></option>
                             </select>
                         </div>
-                        <div class="col-md-4">
-                            <label for="Actividad">PROYECTO</label>
-                                <!--<input type="text" id="Actividad" name="Actividad" class="form-control" required="" >-->
-                            <select id="Actividad" name="Actividad" class="form-control">
-                                <option value=""></option>
-
-                            </select>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <label for="NumeroDeContrato">NÚMERO DE CONTRATO</label>
                             <input type="text" id="NumeroDeContrato" name="NumeroDeContrato" class="form-control" required="" >
                         </div>
@@ -401,30 +400,7 @@
                         </div>
 
                         <div id="msgfacturas" class="col-md-12"></div>
-                        <script>
-//                            window.onload = function () {
-//                                var fileInput = document.getElementById('rtImagen');
-//                                var fileDisplayArea = document.getElementById('frtImagen');
-//                                fileInput.addEventListener('change', function (e) {
-//                                    var file = fileInput.files[0];
-//                                    var imageType = /image.*/;
-//                                    if (file.type.match(imageType)) {
-//                                        var reader = new FileReader();
-//                                        reader.onload = function (e) {
-//                                            fileDisplayArea.innerHTML = "";
-//                                            var img = new Image();
-//                                            img.src = reader.result;
-//                                            img.className = "img-responsive";
-//                                            fileDisplayArea.appendChild(img);
-//                                        };
-//                                        reader.readAsDataURL(file);
-//                                    } else {
-//                                        fileDisplayArea.innerHTML = "LA API DE FILEREADER NO ES CAPAZ DE EJECUTARSE EN ESTE NAVEGADOR, UTILIZA CHROME O FIREFOX!";
-//                                    }
-//                                });
-//                            };
-                        </script>
-                        
+
                         <div class="col-md-12" align="center">
                             <h1 class="font100">NOTAS DE CRÉDITO</h1>
                         </div>
@@ -1703,27 +1679,37 @@
 
     $(document).ready(function () {
 
-//        mdlNuevo.find("#Proveedor").change(function () {
-//            console.log($(this).val());
-//            $.ajax({
-//                url: master_url + 'getUltimoFolioXProveedor',
-//                type: "POST",
-//                dataType: "JSON",
-//                data: {
-//                    ID: $(this).val()
-//                }
-//            }).done(function (data, x, jq) {
-//                var dtm = data[0];
-//                mdlNuevo.find("#Folio").val(dtm.Folio);
-//                mdlNuevo.find("#Folio").focus();
-//                console.log(data);
-//                onNotify('<span class="fa fa-exclamation fa-3x"></span>', 'SE HA OBTENIDO EL ULTIMO FOLIO REGISTRADO', 'danger');
-//            }).fail(function (x, y, z) {
-//                console.log(x, y, z);
-//            }).always(function () {
-//                HoldOn.close();
-//            });
-//        });
+        mdlNuevo.find("#Actividad").change(function () {
+            HoldOn.open({
+                theme: 'sk-bounce',
+                message: 'ESPERE...'
+            });
+            console.log($(this).val());
+            $.ajax({
+                url: master_url + 'getModeloNegocioXProyectoID',
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    ID: mdlNuevo.find("#Actividad").val()
+                }
+            }).done(function (data, x, jq) {
+                var dtm = data[0];
+                console.log(dtm);
+                if (dtm.Clave !== undefined && dtm.Clave !== null) {
+                    mdlNuevo.find("#ModeloNegocio").select2("val", dtm.Clave);
+                    mdlNuevo.find("#Empresa").select2("val", dtm.EMPRESA);
+
+                }else{
+                    mdlNuevo.find("#ModeloNegocio").select2("val", "");
+                    mdlNuevo.find("#Empresa").select2("val", "");
+                }
+                console.log(data);
+            }).fail(function (x, y, z) {
+                console.log(x, y, z);
+            }).always(function () {
+                HoldOn.close();
+            });
+        });
 
         var btnSaveRevision = mdlRevision.find("#btnSave");
         var mdlAutorizacion = $("#mdlAutorizacion");
@@ -3122,7 +3108,8 @@
 
                 options += '<option value="' + data[x].ID + '">' + data[x].Proyecto + '</option>';
             }
-            $("#Actividad").html(options);
+            mdlNuevo.find("#Actividad").html(options);
+            mdlNuevo.find("#Actividad").html(options);
         });
     }
 
@@ -3152,7 +3139,7 @@
 
             var options = "<option></option>";
             for (var x = 0; x < data.length; x++) {
-
+                console.log(data[x])
                 options += '<option value="' + data[x].Clave + '">' + data[x].Actividad + '</option>';
             }
             $("#ModeloNegocio").html(options);

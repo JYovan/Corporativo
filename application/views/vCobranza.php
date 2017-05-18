@@ -15,11 +15,9 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 <div class="col-md-8"> 
                     <div class="text-center cursor-hand" onclick="onHideFunctions()">MÓDULO DE COBRANZA <span class="fa fa-chevron-up" data-toggle="tooltip" data-placement="top" title="" data-original-title="OCULTAR/MOSTRAR BOTONES"></span></div>
                 </div> 
-                <div class="col-md-2 panel-title" align="right">
-                    <a href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
-                        <span class="fa fa-navicon"data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                    </a> 
-                </div>
+                    <div class="col-md-2 panel-title" align="right">
+                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                    </div>
             </div>
             <?php echo form_open_multipart(base_url() . 'index.php/ctrlCobranza/Cobranza'); ?>  
             <div class="panel-body">

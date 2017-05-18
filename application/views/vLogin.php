@@ -1,4 +1,4 @@
-<div class="col-md-12 top200">
+<div class="col-md-12 top100">
     <div class="row"> 
         <form id="frmLogin" name="frmLogin">
             <fieldset>  

@@ -43,77 +43,77 @@ class ctrlEmpresa extends CI_Controller {
         $this->load->view($data['layout'], $data);
     }
 
-    public function index() { 
-        
+    public function index() {
+
         session_start();
-        if (isset($_SESSION["ID"])) { 
-        $indiceuser = $_SESSION["ID"];
-        $where = '';
-        $USUARIOS = $this->modelo->getUSUARIOSALL($where);
-        $data['USUARIOS'] = $USUARIOS;
-        $data['User'] = $indiceuser;
-        $d_cliente = $this->modelo->getCliente($where);
-        $data['cliente'] = $d_cliente;
+        if (isset($_SESSION["ID"])) {
+            $indiceuser = $_SESSION["ID"];
+            $where = '';
+            $USUARIOS = $this->modelo->getUSUARIOSALL($where);
+            $data['USUARIOS'] = $USUARIOS;
+            $data['User'] = $indiceuser;
+            $d_cliente = $this->modelo->getCliente($where);
+            $data['cliente'] = $d_cliente;
 //Abriendo BD responsables
-        $where = '';
-        $d_responsables = $this->modelo->getResponsable($where);
-        $data['Responsables'] = $d_responsables;
+            $where = '';
+            $d_responsables = $this->modelo->getResponsable($where);
+            $data['Responsables'] = $d_responsables;
 //Abriendo BD Tipo-cliente
-        $where = '';
-        $d_Tipo_cliente = $this->modelo->getTipoCliente2($where);
-        $data['Tipo_cliente'] = $d_Tipo_cliente;
+            $where = '';
+            $d_Tipo_cliente = $this->modelo->getTipoCliente2($where);
+            $data['Tipo_cliente'] = $d_Tipo_cliente;
 //Abriendo BD SubTipo-cliente
-        $where = '';
-        $d_SubTipo_cliente = $this->modelo->getSubTipoCliente2($where);
-        $data['SubTipo_cliente'] = $d_SubTipo_cliente;
+            $where = '';
+            $d_SubTipo_cliente = $this->modelo->getSubTipoCliente2($where);
+            $data['SubTipo_cliente'] = $d_SubTipo_cliente;
 //Abriendo BD cliente
-        $where = '';
-        $d_ID_cliente = $this->modelo->getID_Cliente($where);
-        $data['ID_cliente'] = $d_ID_cliente;
+            $where = '';
+            $d_ID_cliente = $this->modelo->getID_Cliente($where);
+            $data['ID_cliente'] = $d_ID_cliente;
 //Abriendo BD Regimen
-        $where = '';
-        $d_regimen = $this->modelo->getRegimen($where);
-        $data['Regimen'] = $d_regimen;
+            $where = '';
+            $d_regimen = $this->modelo->getRegimen($where);
+            $data['Regimen'] = $d_regimen;
 //Abriendo BD Forma
-        $where = '';
-        $d_Forma = $this->modelo->getForma($where);
-        $data['Forma'] = $d_Forma;
+            $where = '';
+            $d_Forma = $this->modelo->getForma($where);
+            $data['Forma'] = $d_Forma;
 //Abriendo BD Ambito
-        $where = '';
-        $d_Ambito = $this->modelo->getAmbito($where);
-        $data['Ambito'] = $d_Ambito;
+            $where = '';
+            $d_Ambito = $this->modelo->getAmbito($where);
+            $data['Ambito'] = $d_Ambito;
 //Abriendo BD Clasificacion
-        $where = '';
-        $d_Clasificacion = $this->modelo->getClasificacion($where);
-        $data['Clasificacion'] = $d_Clasificacion;
+            $where = '';
+            $d_Clasificacion = $this->modelo->getClasificacion($where);
+            $data['Clasificacion'] = $d_Clasificacion;
 //Abriendo BD Tamanio
-        $where = '';
-        $d_Tamanio = $this->modelo->getTamanio($where);
-        $data['Tamanio'] = $d_Tamanio;
+            $where = '';
+            $d_Tamanio = $this->modelo->getTamanio($where);
+            $data['Tamanio'] = $d_Tamanio;
 //Abriendo BD Sector
-        $where = '';
-        $d_Sector = $this->modelo->getSector($where);
-        $data['Sector'] = $d_Sector;
+            $where = '';
+            $d_Sector = $this->modelo->getSector($where);
+            $data['Sector'] = $d_Sector;
 //Abriendo BD Rama
-        $where = '';
-        $d_Rama = $this->modelo->getRama($where);
-        $data['Rama'] = $d_Rama;
+            $where = '';
+            $d_Rama = $this->modelo->getRama($where);
+            $data['Rama'] = $d_Rama;
 //Abriendo BD Pais
-        $where = '';
-        $d_Pais = $this->modelo->getPais($where);
-        $data['Pais'] = $d_Pais;
+            $where = '';
+            $d_Pais = $this->modelo->getPais($where);
+            $data['Pais'] = $d_Pais;
 //Abriendo BD Estado
-        $where = '';
-        $d_Estado = $this->modelo->getEstado2($where);
-        $data['Estado'] = $d_Estado;
+            $where = '';
+            $d_Estado = $this->modelo->getEstado2($where);
+            $data['Estado'] = $d_Estado;
 //Abriendo BD Ciudad
-        $where = '';
-        $d_Ciudad = $this->modelo->getCiudad2($where);
-        $data['Ciudad'] = $d_Ciudad;
+            $where = '';
+            $d_Ciudad = $this->modelo->getCiudad2($where);
+            $data['Ciudad'] = $d_Ciudad;
 // View render
-        $data['scripts'] = array('cliente');
-        $data['contentView'] = 'vEmpresas';
-        $this->_renderView($data);
+            $data['scripts'] = array('cliente');
+            $data['contentView'] = 'vEmpresas';
+            $this->_renderView($data);
         } else {
             $this->load->view('layout/base/lytBaseHead');
             $this->load->view('vLogin');
@@ -124,6 +124,16 @@ class ctrlEmpresa extends CI_Controller {
     public function getRecords() {
         try {
             $data = $this->empresas_model->getRecords();
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getEmpresaByID() {
+        try {
+            extract($this->input->post());
+            $data = $this->empresas_model->getEmpresaByID($ID);
             print json_encode($data);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
@@ -152,7 +162,7 @@ class ctrlEmpresa extends CI_Controller {
                     'AmbitoA' => $AmbitoA,
                     'Tamanio' => $Tamanio,
                     'Sector' => $Sector,
-                    'Clasificacion'=>'',
+                    'Clasificacion' => '',
                     'Rama' => $Rama,
                     'Calle' => $Calle,
                     'No' => $No,

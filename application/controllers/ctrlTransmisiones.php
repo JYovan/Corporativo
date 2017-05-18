@@ -1023,6 +1023,11 @@ class ctrlTransmisiones extends CI_Controller {
                 $pdf->AddPage();
                 $top = 0;
             }
+            $numero_total_pago_terreno = 0;
+            $diferencias_a_favor = 0;
+            $diferencias_en_contra = 0;
+            $numero_de_dispersiones = 0;
+            $numero_de_incrementos = 0;
 //            for ($index = 0; $index < 1000; $index++) {
             foreach ($rows as $row) {
                 if ($top > $page_height) {
@@ -1090,11 +1095,28 @@ class ctrlTransmisiones extends CI_Controller {
 
 
                 $total_pago_de_terreno += $row->{"PAGO DE TERRENO"};
+                if ($row->{"PAGO DE TERRENO"} > 0) {
+                    $numero_total_pago_terreno += 1;
+                }
                 $total_pago_de_rendimientos += $row->{"PAGO DE RENDIMIENTOS"};
                 $total_de_ingreso += $row->{"TOTAL DE INGRESO"};
+                if ($row->{"CANTIDAD DISPERSADA"} > 0) {
+                    $numero_de_dispersiones += 1;
+                }
                 $total_de_cantidad_dispersada += $row->{"CANTIDAD DISPERSADA"};
+
+                if ($row->{"DIFERENCIA A FAVOR"} > 0) {
+                    $diferencias_a_favor += 1;
+                }
                 $total_a_favor += $row->{"DIFERENCIA A FAVOR"};
+                if ($row->{"DIFERENCIA EN CONTRA"} > 0) {
+                    $diferencias_en_contra += 1;
+                }
                 $total_en_contra += $row->{"DIFERENCIA EN CONTRA"};
+
+                if ($row->INCREMENTO > 0) {
+                    $numero_de_incrementos += 1;
+                }
                 $incremento += $row->INCREMENTO;
             }
             $top += 20;
@@ -1110,8 +1132,8 @@ class ctrlTransmisiones extends CI_Controller {
             $pdf->SetFont('Arial', 'B', 6.5);
             $pdf->SetX(20);
             $pdf->Cell(/* X */10, 8, (count($rows) == 1) ? "1 REGISTRO" : count($rows) . " REGISTROS", 0, 1, 'L');
-            
-            
+
+
             $top += 80;
 
             if ($top > $page_height) {
@@ -1119,77 +1141,119 @@ class ctrlTransmisiones extends CI_Controller {
                 $pdf->AddPage();
                 $top = 0;
             }
-            $pdf->SetFont('Arial', 'B', 20);
+            $pdf->SetTextColor(4, 71, 136);
+            $pdf->SetFont('Arial', '', 25);
             $pdf->SetX(115);
             $pdf->Cell(/* X */10, 8, "TOTALES ACUMULADOS", 0, 1, 'L');
+//            
+                
+            
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 12, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */60, /* Top-Y */ $pdf->GetY(), /* Largo */ 60, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */110, /* Top-Y */ $pdf->GetY(), /* Largo */ 110, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */165, /* Top-Y */ $pdf->GetY(), /* Largo */ 165, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */215, /* Top-Y */ $pdf->GetY(), /* Largo */ 215, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */280, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY() + 18);
             $pdf->SetX(15);
             $pdf->SetFont('Arial', 'B', 10);
-            $pdf->SetTextColor(183, 28, 28);
+            $pdf->SetTextColor(0, 0, 0);
             $YX = $pdf->GetY();
-            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGOS DE TERRENO", 0, 1, 'L');
+
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGOS DE TERRENO ($numero_total_pago_terreno)");
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGOS DE TERRENO", 0, 1, 'L');
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $pdf->SetX(20);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_terreno, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
-            $pdf->SetX(80);
-            $pdf->SetTextColor(230, 81, 0);
-            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGO DE RENDIMIENTOS", 0, 1, 'L');
-            $pdf->SetX(85);
+            $pdf->SetX(65);
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGO DE RENDIMIENTOS", 0, 1, 'L');
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGO DE RENDIMIENTOS");
+            $pdf->SetX(70);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_rendimientos, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
 
-            $pdf->SetX(160);
+            $pdf->SetX(115);
+            $pdf->MultiCell(/* X */40, 5, "TOTAL DE INGRESO A RECIBIR");
             $pdf->SetTextColor(51, 105, 30);
-            $pdf->Cell(/* X */10, 5, "TOTAL DE INGRESO", 0, 1, 'L');
-            $pdf->SetX(165);
+            $pdf->SetX(120);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_ingreso, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
 
+            $pdf->SetX(170);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGADO (DEPOSITADO)");
+            $pdf->SetX(175);
+            $pdf->SetTextColor(0,89,178);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada + $incremento, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetY($YX);
+
+
+            $pdf->SetX(220);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */35, 5, "TOTAL DE DIFERENCIAS (" . ($diferencias_a_favor + $diferencias_en_contra) . ")");
             $pdf->SetX(225);
-            $pdf->SetTextColor(1, 87, 155);
-            $pdf->Cell(/* X */10, 5, "TOTAL DISPERSADO", 0, 1, 'L');
-            $pdf->SetX(230);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada, 2, '.', ', '), 0, 1, 'L');
- 
+            $pdf->SetTextColor(178, 0, 14);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 1, 'L');
+
+            $pdf->SetTextColor(0, 0, 0);
+
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+
+            $pdf->SetY($pdf->GetY() + 10);
+            $pdf->SetTextColor(4, 71, 136);
+            $pdf->SetX(30);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell(50, 10, utf8_decode("DIFERENCIAS"), 0, 0);
+            $pdf->SetX(167);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell(50, 10, utf8_decode("AJUSTE PRECIO DE TERRENO"), 0, 0);
+            $pdf->SetFont('Arial', 'B', 10);
+
+            $pdf->SetY($pdf->GetY() + 15);
             $YX = $pdf->GetY();
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 12, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */60, /* Top-Y */ $pdf->GetY(), /* Largo */ 60, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */110, /* Top-Y */ $pdf->GetY(), /* Largo */ 110, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */165, /* Top-Y */ $pdf->GetY(), /* Largo */ 165, $pdf->GetY() + 18);
+//            $pdf->Line(/* Izq-X */215, /* Top-Y */ $pdf->GetY(), /* Largo */ 215, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */280, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Cell(/* X */10, 5, "TOTAL A FAVOR", 0, 1, 'L');
-            $pdf->SetX(20);
+            $pdf->MultiCell(/* X */30, 5, "DIFERENCIA A FAVOR ($diferencias_a_favor)");
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+            $pdf->SetX(15);
+            $pdf->SetTextColor(51, 105, 30);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetTextColor(0, 0, 0);
             $pdf->SetY($YX);
 
-            $pdf->SetX(50);
-            $pdf->Cell(/* X */10, 5, "TOTAL EN CONTRA", 0, 1, 'L');
-            $pdf->SetX(55);
+            $pdf->SetX(60);
+            $pdf->MultiCell(/* X */35, 5, "DIFERENCIA EN CONTRA ($diferencias_en_contra)");
+            $pdf->SetX(60);
+            $pdf->SetTextColor(178, 0, 14);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_en_contra, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetTextColor(0, 0, 0);
             $pdf->SetY($YX);
 
-            $pdf->SetX(90);
-            $pdf->Cell(/* X */10, 5, "TOTAL DE DIFERENCIAS", 0, 1, 'L');
-            $pdf->SetX(95);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
-            $pdf->SetY($YX);
-
-            $pdf->SetX(140);
-            $pdf->Cell(/* X */10, 5, "INCREMENTOS", 0, 1, 'L');
-            $pdf->SetX(140);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($incremento, 2, '.', ', '), 0, 0, 'L');
-            $pdf->SetY($YX);
+//            $pdf->SetX(110);
+//            $pdf->MultiCell(/* X */30, 5, "TOTAL DE DIFERENCIAS");
+//            $pdf->SetX(110);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
 
             $pdf->SetX(170);
-            $pdf->Cell(/* X */10, 5, "TOTAL PAGADO(INCREMENTOS) ", 0, 1, 'L');
+            $pdf->MultiCell(/* X */60, 10, "TOTAL PAGADO ($numero_de_incrementos)");
             $pdf->SetX(175);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format(($total_de_cantidad_dispersada + $incremento), 2, '.', ', '), 0, 0, 'L');
-            $pdf->SetY($YX);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($incremento, 2, '.', ', '), 0, 1, 'L');
 
-            $pdf->SetX(230);
-            $pdf->Cell(/* X */10, 5, "TOTAL PAGADO (DIFERENCIAS)", 0, 1, 'L');
-            $pdf->SetX(235);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format(($total_de_cantidad_dispersada + $incremento) + ($total_a_favor - $total_en_contra), 2, '.', ', '), 0, 0, 'L');
- 
-            $pdf->SetFont('Arial', '', 10);
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+            $YX = $pdf->GetY();    
+            
             if (!file_exists('uploads/Transmisiones/AcumuladosGenerales')) {
                 mkdir('uploads/Transmisiones/AcumuladosGenerales', 0777, true);
             }
@@ -1204,7 +1268,6 @@ class ctrlTransmisiones extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
-
 
     public function getReporteDispersionesXProyectoYEtapaXIncrementoTotales() {
         try {
@@ -1242,97 +1305,164 @@ class ctrlTransmisiones extends CI_Controller {
             $pdf->SetX(230);
             $pdf->Cell(25, 5, strtoupper(DATE('d/m/Y h:i:s a')), 0, 0);
             $pdf->SetY(25);
-            $pdf->SetFont('Arial', '', 10);
             $pdf->SetTextColor(4, 71, 136);
-            $pdf->SetFont('Arial', '', 16);
-            $pdf->SetX(120);
-            $pdf->SetFont('Arial', '', 15);
+            $pdf->SetX(90);
+            $pdf->SetFont('Arial', '', 30);
             $pdf->Cell(50, 10, utf8_decode("TOTALES ACUMULADOS"), 0, 0);
             $pdf->SetFont('Arial', 'B', 7);
-            $pdf->SetTextColor(0, 0, 0); 
+            $pdf->SetTextColor(0, 0, 0);
 
             $pdf->SetY(45);
             if ($top > $page_height) {
                 $pdf->AddPage();
                 $top = 0;
-            } 
-            foreach ($rows as $row) {  
+            }
+            $numero_total_pago_terreno = 0;
+            $diferencias_a_favor = 0;
+            $diferencias_en_contra = 0;
+            $numero_de_dispersiones = 0;
+            $numero_de_incrementos = 0;
+            foreach ($rows as $row) {
                 $total_pago_de_terreno += $row->{"PAGO DE TERRENO"};
+                if ($row->{"PAGO DE TERRENO"} > 0) {
+                    $numero_total_pago_terreno += 1;
+                }
                 $total_pago_de_rendimientos += $row->{"PAGO DE RENDIMIENTOS"};
                 $total_de_ingreso += $row->{"TOTAL DE INGRESO"};
+                if ($row->{"CANTIDAD DISPERSADA"} > 0) {
+                    $numero_de_dispersiones += 1;
+                }
                 $total_de_cantidad_dispersada += $row->{"CANTIDAD DISPERSADA"};
+
+                if ($row->{"DIFERENCIA A FAVOR"} > 0) {
+                    $diferencias_a_favor += 1;
+                }
                 $total_a_favor += $row->{"DIFERENCIA A FAVOR"};
+                if ($row->{"DIFERENCIA EN CONTRA"} > 0) {
+                    $diferencias_en_contra += 1;
+                }
                 $total_en_contra += $row->{"DIFERENCIA EN CONTRA"};
+
+                if ($row->INCREMENTO > 0) {
+                    $numero_de_incrementos += 1;
+                }
                 $incremento += $row->INCREMENTO;
-            } 
+            }
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 12, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */60, /* Top-Y */ $pdf->GetY(), /* Largo */ 60, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */110, /* Top-Y */ $pdf->GetY(), /* Largo */ 110, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */165, /* Top-Y */ $pdf->GetY(), /* Largo */ 165, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */215, /* Top-Y */ $pdf->GetY(), /* Largo */ 215, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */280, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY() + 18);
             $pdf->SetX(15);
             $pdf->SetFont('Arial', 'B', 10);
-            $pdf->SetTextColor(183, 28, 28);
+            $pdf->SetTextColor(0, 0, 0);
             $YX = $pdf->GetY();
-            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGOS DE TERRENO", 0, 1, 'L');
+
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGOS DE TERRENO ($numero_total_pago_terreno)");
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGOS DE TERRENO", 0, 1, 'L');
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $pdf->SetX(20);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_terreno, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
-            $pdf->SetX(80);
-            $pdf->SetTextColor(230, 81, 0);
-            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGO DE RENDIMIENTOS", 0, 1, 'L');
-            $pdf->SetX(85);
+            $pdf->SetX(65);
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGO DE RENDIMIENTOS", 0, 1, 'L');
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGO DE RENDIMIENTOS");
+            $pdf->SetX(70);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_rendimientos, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
 
-            $pdf->SetX(160);
+            $pdf->SetX(115);
+            $pdf->MultiCell(/* X */40, 5, "TOTAL DE INGRESO A RECIBIR");
             $pdf->SetTextColor(51, 105, 30);
-            $pdf->Cell(/* X */10, 5, "TOTAL DE INGRESO", 0, 1, 'L');
-            $pdf->SetX(165);
+            $pdf->SetX(120);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_ingreso, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
 
+            $pdf->SetX(170);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGADO (DEPOSITADO)");
+            $pdf->SetX(175);
+            $pdf->SetTextColor(0,89,178);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada + $incremento, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetY($YX);
+
+
+            $pdf->SetX(220);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */35, 5, "TOTAL DE DIFERENCIAS (" . ($diferencias_a_favor + $diferencias_en_contra) . ")");
             $pdf->SetX(225);
-            $pdf->SetTextColor(1, 87, 155);
-            $pdf->Cell(/* X */10, 5, "TOTAL DISPERSADO", 0, 1, 'L');
-            $pdf->SetX(230);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada, 2, '.', ', '), 0, 1, 'L');
+            $pdf->SetTextColor(178, 0, 14);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 1, 'L');
+
+            $pdf->SetTextColor(0, 0, 0);
 
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+
+            $pdf->SetY($pdf->GetY() + 10);
+            $pdf->SetTextColor(4, 71, 136);
+            $pdf->SetX(30);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell(50, 10, utf8_decode("DIFERENCIAS"), 0, 0);
+            $pdf->SetX(167);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell(50, 10, utf8_decode("AJUSTE PRECIO DE TERRENO"), 0, 0);
+            $pdf->SetFont('Arial', 'B', 10);
+
+            $pdf->SetY($pdf->GetY() + 15);
             $YX = $pdf->GetY();
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 12, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */60, /* Top-Y */ $pdf->GetY(), /* Largo */ 60, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */110, /* Top-Y */ $pdf->GetY(), /* Largo */ 110, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */165, /* Top-Y */ $pdf->GetY(), /* Largo */ 165, $pdf->GetY() + 18);
+//            $pdf->Line(/* Izq-X */215, /* Top-Y */ $pdf->GetY(), /* Largo */ 215, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */280, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $pdf->SetX(15);
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Cell(/* X */10, 5, "TOTAL A FAVOR", 0, 1, 'L');
-            $pdf->SetX(20);
+            $pdf->MultiCell(/* X */30, 5, "DIFERENCIA A FAVOR ($diferencias_a_favor)");
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+            $pdf->SetX(15);
+            $pdf->SetTextColor(51, 105, 30);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetTextColor(0, 0, 0);
             $pdf->SetY($YX);
 
-            $pdf->SetX(50);
-            $pdf->Cell(/* X */10, 5, "TOTAL EN CONTRA", 0, 1, 'L');
-            $pdf->SetX(55);
+            $pdf->SetX(60);
+            $pdf->MultiCell(/* X */35, 5, "DIFERENCIA EN CONTRA ($diferencias_en_contra)");
+            $pdf->SetX(60);
+            $pdf->SetTextColor(178, 0, 14);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_en_contra, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetTextColor(0, 0, 0);
             $pdf->SetY($YX);
 
-            $pdf->SetX(90);
-            $pdf->Cell(/* X */10, 5, "TOTAL DE DIFERENCIAS", 0, 1, 'L');
-            $pdf->SetX(95);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
-            $pdf->SetY($YX);
+//            $pdf->SetX(110);
+//            $pdf->MultiCell(/* X */30, 5, "TOTAL DE DIFERENCIAS");
+//            $pdf->SetX(110);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
 
-            $pdf->SetX(145);
-            $pdf->Cell(/* X */10, 5, "INCREMENTO POR AJUSTE DE PRECIO DEL TERRENO", 0, 1, 'L');
-            $pdf->SetX(150);
+            $pdf->SetX(170);
+            $pdf->MultiCell(/* X */60, 10, "TOTAL PAGADO ($numero_de_incrementos)");
+            $pdf->SetX(175);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($incremento, 2, '.', ', '), 0, 1, 'L');
-         
+
 
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $YX = $pdf->GetY();
-            $pdf->SetX(15);
-            $pdf->Cell(/* X */10, 5, "TOTAL PAGADO (POR AJUSTE DE PRECIO)(DIFERENCIAS)", 0, 1, 'L');
-            $pdf->SetX(20);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format(($total_de_cantidad_dispersada + $incremento) + ($total_a_favor - $total_en_contra), 2, '.', ', '), 0, 0, 'L'); 
-
-            $pdf->SetY($YX);
-            $pdf->SetX(145);
-            $pdf->Cell(/* X */10, 5, "TOTAL PAGADO(AJUSTE DE PRECIO) ", 0, 1, 'L');
-            $pdf->SetX(150);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format(($total_de_cantidad_dispersada + $incremento), 2, '.', ', '), 0, 1, 'L');
+//            $pdf->SetX(15);
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGADO (POR AJUSTE DE PRECIO)(DIFERENCIAS)", 0, 1, 'L');
+//            $pdf->SetX(20);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format(($total_de_cantidad_dispersada) + ($total_a_favor - $total_en_contra), 2, '.', ', '), 0, 0, 'L');
+//
+//            $pdf->SetY($YX);
+//            $pdf->SetX(145);
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGADO(AJUSTE DE PRECIO) ", 0, 1, 'L');
+//            $pdf->SetX(150);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format(($total_de_cantidad_dispersada + $incremento), 2, '.', ', '), 0, 1, 'L');
 
             $top += 20;
             $pdf->SetFont('Arial', '', 10);
@@ -1350,7 +1480,7 @@ class ctrlTransmisiones extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
-    
+
     public function getReporteDispersionesXProyectoYEtapa() {
         try {
             extract(filter_input_array(INPUT_POST));
@@ -1375,7 +1505,7 @@ class ctrlTransmisiones extends CI_Controller {
             $total_en_contra = 0.0;
 
             $top = 0;
-            $rows = $this->transmisiones_model->getReporteDispersiones($PROYECTO, $INICIO, $FIN);
+            $rows = $this->transmisiones_model->getReporteDispersionesMasIncremento($PROYECTO, $INICIO, $FIN);
             $pdf->SetY(15);
             $pdf->SetX(130);
             $pdf->SetFont('Arial', '', 25);
@@ -1437,6 +1567,13 @@ class ctrlTransmisiones extends CI_Controller {
                 $pdf->AddPage();
                 $top = 0;
             }
+            $numero_total_pago_terreno = 0;
+            $diferencias_a_favor = 0;
+            $diferencias_en_contra = 0;
+            $numero_de_dispersiones = 0;
+            $numero_de_incrementos = 0;
+            
+            $incremento = 0.0;
 //            for ($index = 0; $index < 1000; $index++) {
             foreach ($rows as $row) {
                 if ($top > $page_height) {
@@ -1501,14 +1638,40 @@ class ctrlTransmisiones extends CI_Controller {
                 $pdf->SetY($YY);
                 $pdf->Cell(10, 1, "", 0, 1, 'L');
                 $pdf->Line(/* Izq-X */15, /* Top-Y */ $pdf->GetY(), /* Largo */ 275, $pdf->GetY());
-
-
+//
+//
+//                $total_pago_de_terreno += $row->{"PAGO DE TERRENO"};
+//                $total_pago_de_rendimientos += $row->{"PAGO DE RENDIMIENTOS"};
+//                $total_de_ingreso += $row->{"TOTAL DE INGRESO"};
+//                $total_de_cantidad_dispersada += $row->{"CANTIDAD DISPERSADA"};
+//                $total_a_favor += $row->{"DIFERENCIA A FAVOR"};
+//                $total_en_contra += $row->{"DIFERENCIA EN CONTRA"};
+                
+                
                 $total_pago_de_terreno += $row->{"PAGO DE TERRENO"};
+                if ($row->{"PAGO DE TERRENO"} > 0) {
+                    $numero_total_pago_terreno += 1;
+                }
                 $total_pago_de_rendimientos += $row->{"PAGO DE RENDIMIENTOS"};
                 $total_de_ingreso += $row->{"TOTAL DE INGRESO"};
+                if ($row->{"CANTIDAD DISPERSADA"} > 0) {
+                    $numero_de_dispersiones += 1;
+                }
                 $total_de_cantidad_dispersada += $row->{"CANTIDAD DISPERSADA"};
+
+                if ($row->{"DIFERENCIA A FAVOR"} > 0) {
+                    $diferencias_a_favor += 1;
+                }
                 $total_a_favor += $row->{"DIFERENCIA A FAVOR"};
+                if ($row->{"DIFERENCIA EN CONTRA"} > 0) {
+                    $diferencias_en_contra += 1;
+                }
                 $total_en_contra += $row->{"DIFERENCIA EN CONTRA"};
+
+                if ($row->INCREMENTO > 0) {
+                    $numero_de_incrementos += 1;
+                }
+                $incremento += $row->INCREMENTO;
             }
 
             if ($top > $page_height) {
@@ -1522,57 +1685,181 @@ class ctrlTransmisiones extends CI_Controller {
             $pdf->SetFont('Arial', 'B', 6.5);
             $pdf->SetX(20);
             $pdf->Cell(/* X */10, 8, (count($rows) == 1) ? "1 REGISTRO" : count($rows) . " REGISTROS", 0, 1, 'L');
-            $pdf->SetFont('Arial', 'B', 20);
+            
+            
+            $top += 80;
+
+            if ($top > $page_height) {
+                $page_height = 650;
+                $pdf->AddPage();
+                $top = 0;
+            }
+            $pdf->SetTextColor(4, 71, 136);
+            $pdf->SetFont('Arial', '', 25);
             $pdf->SetX(115);
-            $pdf->Cell(/* X */10, 8, "TOTAL ACUMULADO", 0, 1, 'L');
+            $pdf->Cell(/* X */10, 8, "TOTALES ACUMULADOS", 0, 1, 'L');
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 12, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */60, /* Top-Y */ $pdf->GetY(), /* Largo */ 60, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */110, /* Top-Y */ $pdf->GetY(), /* Largo */ 110, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */165, /* Top-Y */ $pdf->GetY(), /* Largo */ 165, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */215, /* Top-Y */ $pdf->GetY(), /* Largo */ 215, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */280, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY() + 18);
             $pdf->SetX(15);
             $pdf->SetFont('Arial', 'B', 10);
-            $pdf->SetTextColor(183, 28, 28);
+            $pdf->SetTextColor(0, 0, 0);
             $YX = $pdf->GetY();
-            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGOS DE TERRENO", 0, 1, 'L');
+
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGOS DE TERRENO ($numero_total_pago_terreno)");
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGOS DE TERRENO", 0, 1, 'L');
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $pdf->SetX(20);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_terreno, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
-            $pdf->SetX(80);
-            $pdf->SetTextColor(230, 81, 0);
-            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGO DE RENDIMIENTOS", 0, 1, 'L');
-            $pdf->SetX(85);
+            $pdf->SetX(65);
+//            $pdf->Cell(/* X */10, 5, "TOTAL PAGO DE RENDIMIENTOS", 0, 1, 'L');
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGO DE RENDIMIENTOS");
+            $pdf->SetX(70);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_rendimientos, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
 
-            $pdf->SetX(160);
+            $pdf->SetX(115);
+            $pdf->MultiCell(/* X */40, 5, "TOTAL DE INGRESO A RECIBIR");
             $pdf->SetTextColor(51, 105, 30);
-            $pdf->Cell(/* X */10, 5, "TOTAL DE INGRESO", 0, 1, 'L');
-            $pdf->SetX(165);
+            $pdf->SetX(120);
             $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_ingreso, 2, '.', ', '), 0, 0, 'L');
             $pdf->SetY($YX);
 
+            $pdf->SetX(170);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */35, 5, "TOTAL PAGADO (DEPOSITADO)");
+            $pdf->SetX(175);
+            $pdf->SetTextColor(0,89,178);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada + $incremento, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetY($YX);
+
+
+            $pdf->SetX(220);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */35, 5, "TOTAL DE DIFERENCIAS (" . ($diferencias_a_favor + $diferencias_en_contra) . ")");
             $pdf->SetX(225);
-            $pdf->SetTextColor(1, 87, 155);
-            $pdf->Cell(/* X */10, 5, "TOTAL DISPERSADO", 0, 1, 'L');
-            $pdf->SetX(230);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada, 2, '.', ', '), 0, 1, 'L');
+            $pdf->SetTextColor(178, 0, 14);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 1, 'L');
+
+            $pdf->SetTextColor(0, 0, 0);
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+
+            if ($top > $page_height) {
+                $page_height = 650;
+                $pdf->AddPage();
+                $top = 0;
+            }
+            $pdf->SetY($pdf->GetY() + 10);
+            $pdf->SetTextColor(4, 71, 136);
+            $pdf->SetX(30);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell(50, 10, utf8_decode("DIFERENCIAS"), 0, 0);
+            $pdf->SetX(167);
+            $pdf->SetFont('Arial', '', 20);
+            $pdf->Cell(50, 10, utf8_decode("AJUSTE PRECIO DE TERRENO"), 0, 0);
+            $pdf->SetFont('Arial', 'B', 10);
+
+            $pdf->SetY($pdf->GetY() + 15);
+            $YX = $pdf->GetY();
+
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 12, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */60, /* Top-Y */ $pdf->GetY(), /* Largo */ 60, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */110, /* Top-Y */ $pdf->GetY(), /* Largo */ 110, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */165, /* Top-Y */ $pdf->GetY(), /* Largo */ 165, $pdf->GetY() + 18);
+//            $pdf->Line(/* Izq-X */215, /* Top-Y */ $pdf->GetY(), /* Largo */ 215, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */280, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY() + 18);
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+            $pdf->SetX(15);
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->MultiCell(/* X */30, 5, "DIFERENCIA A FAVOR ($diferencias_a_favor)");
+            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+            $pdf->SetX(15);
+            $pdf->SetTextColor(51, 105, 30);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetY($YX);
+
+            $pdf->SetX(60);
+            $pdf->MultiCell(/* X */35, 5, "DIFERENCIA EN CONTRA ($diferencias_en_contra)");
+            $pdf->SetX(60);
+            $pdf->SetTextColor(178, 0, 14);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_en_contra, 2, '.', ', '), 0, 0, 'L');
+            $pdf->SetTextColor(0, 0, 0);
+            $pdf->SetY($YX);
+
+//            $pdf->SetX(110);
+//            $pdf->MultiCell(/* X */30, 5, "TOTAL DE DIFERENCIAS");
+//            $pdf->SetX(110);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
+
+            $pdf->SetX(170);
+            $pdf->MultiCell(/* X */60, 10, "TOTAL PAGADO ($numero_de_incrementos)");
+            $pdf->SetX(175);
+            $pdf->Cell(/* X */10, 8, "$ " . number_format($incremento, 2, '.', ', '), 0, 1, 'L');
+
 
             $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
             $YX = $pdf->GetY();
-            $pdf->SetX(15);
-            $pdf->SetTextColor(0, 0, 0);
-            $pdf->Cell(/* X */10, 5, "TOTAL A FAVOR", 0, 1, 'L');
-            $pdf->SetX(20);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor, 2, '.', ', '), 0, 0, 'L');
-            $pdf->SetY($YX);
-
-            $pdf->SetX(80);
-            $pdf->Cell(/* X */10, 5, "TOTAL EN CONTRA", 0, 1, 'L');
-            $pdf->SetX(82);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_en_contra, 2, '.', ', '), 0, 0, 'L');
-            $pdf->SetY($YX);
-
-            $pdf->SetX(160);
-            $pdf->Cell(/* X */10, 5, "RESUMEN DE DIFERENCIAS", 0, 1, 'L');
-            $pdf->SetX(165);
-            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
+            
+//            $pdf->SetFont('Arial', 'B', 20);
+//            $pdf->SetX(115);
+//            $pdf->Cell(/* X */10, 8, "TOTAL ACUMULADO", 0, 1, 'L');
+//            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+//            $pdf->SetX(15);
+//            $pdf->SetFont('Arial', 'B', 10);
+//            $pdf->SetTextColor(183, 28, 28);
+//            $YX = $pdf->GetY();
+//            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGOS DE TERRENO", 0, 1, 'L');
+//            $pdf->SetX(20);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_terreno, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
+//            $pdf->SetX(80);
+//            $pdf->SetTextColor(230, 81, 0);
+//            $pdf->Cell(/* X */10, 5, "TOTAL EN PAGO DE RENDIMIENTOS", 0, 1, 'L');
+//            $pdf->SetX(85);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_pago_de_rendimientos, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
+//
+//            $pdf->SetX(160);
+//            $pdf->SetTextColor(51, 105, 30);
+//            $pdf->Cell(/* X */10, 5, "TOTAL DE INGRESO", 0, 1, 'L');
+//            $pdf->SetX(165);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_ingreso, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
+//
+//            $pdf->SetX(225);
+//            $pdf->SetTextColor(1, 87, 155);
+//            $pdf->Cell(/* X */10, 5, "TOTAL DISPERSADO", 0, 1, 'L');
+//            $pdf->SetX(230);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_de_cantidad_dispersada, 2, '.', ', '), 0, 1, 'L');
+//
+//            $pdf->Line(/* Izq-X */12, /* Top-Y */ $pdf->GetY(), /* Largo */ 280, $pdf->GetY());
+//            $YX = $pdf->GetY();
+//            $pdf->SetX(15);
+//            $pdf->SetTextColor(0, 0, 0);
+//            $pdf->Cell(/* X */10, 5, "TOTAL A FAVOR", 0, 1, 'L');
+//            $pdf->SetX(20);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
+//
+//            $pdf->SetX(80);
+//            $pdf->Cell(/* X */10, 5, "TOTAL EN CONTRA", 0, 1, 'L');
+//            $pdf->SetX(82);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_en_contra, 2, '.', ', '), 0, 0, 'L');
+//            $pdf->SetY($YX);
+//
+//            $pdf->SetX(160);
+//            $pdf->Cell(/* X */10, 5, "RESUMEN DE DIFERENCIAS", 0, 1, 'L');
+//            $pdf->SetX(165);
+//            $pdf->Cell(/* X */10, 8, "$ " . number_format($total_a_favor - $total_en_contra, 2, '.', ', '), 0, 0, 'L');
 
             $top += 20;
             $pdf->SetFont('Arial', '', 10);
@@ -1749,7 +2036,7 @@ class ctrlTransmisiones extends CI_Controller {
             $mail->isHTML(true);  // Set email format to HTML
 
             $mail->Subject = $Subject;
-            $mail->AddEmbeddedImage('media/Rabina.png', 'RabinaLogo');
+            $mail->AddEmbeddedImage('media/LogoRabina2017.png', 'RabinaLogo');
 
             $mail->Body = utf8_decode($bodyContent);
             if (!$mail->send()) {

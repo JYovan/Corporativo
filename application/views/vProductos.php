@@ -64,6 +64,13 @@
                             <span class="fa fa-usd fa-3x bluegrey-icon"></span>
                             <span class="fa fa-pencil fa-3x bluegrey-icon"></span> 
                         </button>
+                        <button id="btnEliminarPrecio" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="ELIMINAR PRECIO">
+                            <span class="fa fa-ban fa-3x success-icon"></span>
+                        </button>
                         <button id="btnAsignar" class="btn btn-default btn-lg fa-lg" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
@@ -170,6 +177,7 @@
     </div><!-- /.modal-dialog -->
 </div>
 <script>
+
     $(document).ready(function () {
         var rFile = $("#rFile");
         var rIcon = $("#rIcon");
@@ -395,8 +403,35 @@
     var master_url = base_url + 'index.php/ctrlProductos/';
 
     var btnEliminar = $("#btnEliminar");
+    var btnEliminarPrecio = $("#btnEliminarPrecio");
 
     $(document).ready(function () {
+
+        btnEliminarPrecio.click(function () {
+            console.log(temp);
+            if (temp !== undefined && temp !== null && temp !== 0) {
+                HoldOn.open({
+                    theme: "sk-bounce",
+                    message: "ELIMINANDO... POR FAVOR ESPERE..."
+                });
+                $.ajax({
+                    url: master_url + 'onEliminarPrecio',
+                    type: "POST",
+                    data: {
+                        ID: temp
+                    }
+                }).done(function (data, x, jq) {
+                    $("#btnPrecios").trigger('click');
+                    onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'PRECIO, ELIMINADO', 'success');
+                }).fail(function (x, y, z) {
+                    console.log(x, y, z);
+                }).always(function () {
+                    HoldOn.close();
+                });
+            } else {
+                onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'DEBE DE SELECCIONAR UN REGISTRO', 'danger');
+            }
+        });
 
         btnEliminar.click(function () {
             console.log(temp);
@@ -531,7 +566,8 @@
         $("#btnPrecios").click(function () {
             $("#btnEditarPrecio").removeClass("disabled");
             onGetRecordsByPrice("tblPrecioXProducto", master_url + "getPreciosXProducto", "rProductos", "msgProductos", "NO SE ENCONTRARON REGISTROS");
-
+            btnEliminar.addClass("hide");
+            btnEliminarPrecio.removeClass("hide");
         });
 
         $("#mdlNuevo #btnGuardar").click(function () {
@@ -549,16 +585,12 @@
                 type: "POST",
                 data: frm
             }).done(function (data, x, jq) {
-                console.log(data)
-                console.log(parseInt(data) === 1)
-                if (parseInt(data) === 1) {
-                    onRefresh();
-                    $("#mdlNuevo").modal('toggle');
-                } else {
-                    $("#msgNuevo").html('<div class="alert alert-dismissible alert-danger"><h2>NO SE HA PODIDO AGREGAR EL PRODUCTO, REVISE QUE ESTE BIEN CAPTURADO, SIN CARACTERES ESPECIALES O VACIOS</h2></div>')
-                }
+                console.log(data);
+                console.log(parseInt(data) === 1);
+                $("#mdlNuevo").modal('toggle');
+                $("#btnRefresh").trigger('click');
             }).fail(function (x, y, z) {
-                console.log(x, y, z)
+                console.log(x, y, z);
             }).always(function () {
                 $("#mdlNuevo #btnGuardar").find("span").removeClass("fa-cog fa-spin").addClass("fa-check");
                 $("#mdlNuevo #btnGuardar").removeClass("disabled");
@@ -613,6 +645,9 @@
     });
 
     function onRefresh() {
+
+        btnEliminar.removeClass("hide");
+        btnEliminarPrecio.addClass("hide");
         getEtiquetas();
         getProductos();
         getProveedores();

@@ -1056,10 +1056,24 @@ tfac.Importe AS IMPORTE,tfac.ImportePagado AS "MONTO PAGADO", (tfac.Importe - tf
         $this->db->select('TF.IdTramiteFactura, TF.Folio', false);
         $this->db->from('tramitefactura AS TF');
         $this->db->where('TF.Proveedor', $ID);
-        $ignore = array('INACTIVO', 'CANCELADA','CANCELADO');
+        $ignore = array('INACTIVO', 'CANCELADA', 'CANCELADO');
         $this->db->where_not_in('TF.Estatus', $ignore);
         $this->db->limit(1);
         $this->db->order_by('TF.IdTramiteFactura', 'DESC');
+        $query = $this->db->get();
+        $str = $this->db->last_query();
+        $data = $query->result();
+        /*
+         * FOR DEBUG ONLY
+         */
+        return $data;
+    }
+
+    function getModeloNegocioXProyectoID($ID) {
+        $this->db->select('A.Clave,P.IdEmpresa AS EMPRESA', false);
+        $this->db->from('proyectos AS P');
+        $this->db->join('Actividadestf AS A','P.Modelo = A.ID');
+        $this->db->where('P.ID', $ID);
         $query = $this->db->get();
         $str = $this->db->last_query();
         $data = $query->result();

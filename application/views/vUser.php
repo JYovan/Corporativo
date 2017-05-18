@@ -1,6 +1,6 @@
 <div class="row">	 
     <div class="col-md-12 margin-15-top">
-        <div class="panel panel-info container-fluid">
+        <div class="panel panel-primary container-fluid">
             <div class="panel-heading row">
                 <div class="col-md-2 panel-title">
                     <a  href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>

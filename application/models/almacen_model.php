@@ -97,6 +97,23 @@ class almacen_model extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
+    public function getInmuebles() {
+        try {
+            $this->db->select('IR.ID, UPPER(IR.Propietario) AS INMUEBLE', false);
+            $this->db->from('inmuebleregistro AS IR');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 
     public function getOrdenesDeCompra($ID) {
         try {
@@ -162,6 +179,26 @@ class almacen_model extends CI_Model {
         try {
             $this->db->select('A.ID, CONCAT(A.Nombre," (",(SELECT P.Proyecto FROM Proyectos AS P WHERE P.ID = A.Proyecto),")") AS ALMACEN', false);
             $this->db->from('Almacen AS A');
+            $this->db->where_in('A.Estatus', 'ACTIVO');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getAlmacenesXProyecto($ID) {
+        try {
+            $this->db->select('A.ID, A.Nombre AS ALMACEN', false);
+            $this->db->from('Almacen AS A');
+            $this->db->where('A.Proyecto', $ID);
             $this->db->where_in('A.Estatus', 'ACTIVO');
             $query = $this->db->get();
             /*
@@ -254,6 +291,48 @@ class almacen_model extends CI_Model {
     }
 
     public function getProductosXAlmacen($ID) {
+        try {
+            $this->db->select('P.ID, CONCAT(UPPER(P.Producto)," (",PXA.Proveedor,")") AS PRODUCTO', false);
+            $this->db->from('Productos AS P');
+            $this->db->join('ProductosXAlmacen AS PXA', 'P.ID = PXA.IdProducto');
+            $this->db->where('PXA.IdAlmacen = ' . $ID . ' AND PXA.Estatus LIKE \'ACTIVO\'', NULL, FALSE);
+            $this->db->where_in('P.Estatus', array('ACTIVO'));
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getProductoInformacion($ID) {
+        try {
+            $this->db->select('PRO.UnidadMedida AS "UNIDAD DE MEDIDA", C.Precio AS PRECIO', false);
+            $this->db->from('Productos AS PRO');
+            $this->db->join('Catalogo AS C', 'PRO.ID = C.IdProducto');
+            $this->db->where("PRO.ID = $ID AND PRO.Estatus IN ('ACTIVO') AND C.Estatus NOT IN ('INACTIVO','CANCELADO')", NULL, FALSE);
+            $this->db->where_in('PRO.Estatus', array('ACTIVO'));
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getProductosXAlmacenXPerdida($ID) {
         try {
             $this->db->select('P.ID, CONCAT(UPPER(P.Producto)," (",PXA.Proveedor,")") AS PRODUCTO', false);
             $this->db->from('Productos AS P');
@@ -791,7 +870,7 @@ class almacen_model extends CI_Model {
              * FOR DEBUG ONLY
              */
             $str = $this->db->last_query();
-//        print $str;
+//.        print $str;
             $data = $query->result();
 //        var_dump($str);
             return $data;
@@ -1044,7 +1123,7 @@ class almacen_model extends CI_Model {
              * FOR DEBUG ONLY
              */
             $str = $this->db->last_query();
-//        print $str;         
+        print $str;         
             $data = $query->result();
 //        var_dump($str);
             return $data;
@@ -1052,7 +1131,6 @@ class almacen_model extends CI_Model {
             echo $exc->getTraceAsString();
         }
     }
-
 
     public function getDevolucionesXFecha($INICIO, $FIN, $PROYECTO, $ALMACEN, $PRODUCTO) {
         try {
@@ -1123,4 +1201,157 @@ class almacen_model extends CI_Model {
         }
     }
 
+    public function getPerdidas() {
+        try {
+            $query = $this->db->query("CALL SP_GETPERDIDAS()");
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+            $data = $query->result();
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    public function getPerdidasXID($ID) {
+        try {
+            $query = $this->db->query("CALL SP_GETPERDIDASBYID($ID)");
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+            $data = $query->result();
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getProyectosConPerdidas() {
+        try {
+            $this->db->select('P.ID,P.Proyecto AS PROYECTO', false);
+            $this->db->from('Proyectos AS P');
+            $this->db->where("P.ID IN(SELECT PER.IdProyecto FROM Perdidas AS PER WHERE PER.Estatus IN('ACTIVO'))");
+            $this->db->where_in('P.Estatus', 'ACTIVO');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getAlmacenConPerdidasXProyecto($ID) {
+        try {
+            $this->db->select('A.ID,A.Nombre AS ALMACEN', false);
+            $this->db->from('Almacen AS A');
+            $this->db->where("A.ID IN(SELECT PER.IdAlmacen FROM Perdidas AS PER WHERE PER.Estatus IN('ACTIVO'))");
+            $this->db->where_in('A.Estatus', 'ACTIVO');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getGenerarReporteDePerdidas($INICIO, $FIN, $PROYECTO, $ALMACEN) {
+        try {
+            $this->db->select('P.ID, 
+        P.Fecha AS FECHA, 
+        P.Hora AS HORA, 
+        (CASE
+        WHEN P.IdProyecto IS NOT NULL THEN (SELECT PROY.Proyecto FROM Proyectos AS PROY WHERE PROY.ID = P.IdProyecto)
+        ELSE "NO ESPECIFICO"
+        END) AS PROYECTO,
+        P.AlmacenT AS ALMACEN, 
+        P.ProductoT AS PRODUCTO, 
+        P.TipoT AS TIPO, 
+        P.Cantidad AS CANTIDAD, 
+        P.Descripcion AS "DESCRIPCIÓN DE LAS CAUSAS DE LA PERDIDA",
+        P.PersonaDetectaT AS "PERSONA QUE DETECTA LA PERDIDA", 
+        P.ResponsableT AS "RESPONSABLE DE ALMACÉN QUE REGISTRA LA PERDIDA",
+        P.Registro', false);
+            $this->db->from('Perdidas AS P');
+            if ($INICIO != '') {
+                $this->db->where('str_to_date(P.Fecha, \'%d/%m/%Y\') >= str_to_date(\'' . $INICIO . '\', \'%d/%m/%Y\') ');
+            }
+            if ($FIN != '') {
+                $this->db->where('str_to_date(P.Fecha, \'%d/%m/%Y\') <= str_to_date(\'' . $FIN . '\', \'%d/%m/%Y\') ');
+            }
+            if ($PROYECTO != '') {
+                $this->db->where('P.IdProyecto', $PROYECTO);
+            }
+            if ($ALMACEN != '') {
+                $this->db->where('P.IdAlmacen', $ALMACEN);
+            }
+
+            $this->db->where_in('P.Estatus', 'ACTIVO');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getDevolucionesX() {
+        try { $this->db->select('DX.ID, DX.FechaDevolucion AS FECHA, DX.HoraDevolucion AS HORA, '
+                . 'DX.IdProyectoT AS PROYECTO,  DX.IdAlmacenT AS ALMACEN, DX.OrdenDeCompraReferencia AS "ORDEN DE COMPA DE REFERENCIA", '
+                . 'DX.Factura AS "ORDEN DE FACTURA DE REFERENCIA",  DX.Producto, DX.MotivoT AS "MOTIVO DE DEVOLUCIÓN", DX.CantidadDevuelta AS "CANTIDAD DEVUELTA", '
+                . 'DX.CantidadCajas, DX.CantidadUnidades, DX.CantidadPaquetes, DX.UnidadMedida AS "UNIDAD DE MEDIDA", DX.Precio AS PRECIO, '
+                . 'DX.Observaciones AS OBSERVACIONES, DX.PersonaDetectaT AS "PERSONA QUE IDENTIFICA EL MOTIVO DE DEVOLUCIÓN",DX.ResponsableT AS "RESPONSABLE DE ALMACÉN QUE REGISTRA LA DEVOLUCIÓN",DX.Estatus, DX.Registro', false);
+            $this->db->from('devolucionesx AS DX'); 
+            $this->db->where_in('DX.Estatus', 'ACTIVO');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+    
+    public function getDevolucionXID($ID) {
+        try { $this->db->select('DX.*', false);
+            $this->db->from('devolucionesx AS DX'); 
+            $this->db->where('DX.ID', $ID);
+            $this->db->where_in('DX.Estatus', 'ACTIVO');
+            $query = $this->db->get();
+            /*
+             * FOR DEBUG ONLY
+             */
+            $str = $this->db->last_query();
+//        print $str;
+            $data = $query->result();
+//        var_dump($str);
+            return $data;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
 }

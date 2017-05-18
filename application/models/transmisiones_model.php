@@ -65,12 +65,20 @@ class transmisiones_model extends CI_Model {
         ELSE T.PagoTerreno END) AS "PAGO DE TERRENO", 
      
         (CASE WHEN (SELECT COUNT(*) FROM incrementoterreno AS IT WHERE IT.IdTransmision = T.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\')) > 0 THEN 
+        
         (SELECT IT.PagoRendimientos  FROM incrementoterreno AS IT WHERE IT.IdTransmision = T.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\') ORDER BY IT.ID DESC LIMIT 1)
+        
         ELSE T.PagoRendimientos END) AS "PAGO DE RENDIMIENTOS", '
                 
         . '(CASE WHEN (SELECT COUNT(*) FROM incrementoterreno AS IT WHERE IT.IdTransmision = T.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\')) > 0 THEN 
+            
         (SELECT IT.TotalIngresoTerrenoVenta  FROM incrementoterreno AS IT WHERE IT.IdTransmision = T.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\') ORDER BY IT.ID DESC LIMIT 1)  
-        ELSE T.TotalIng END) AS "TOTAL DE INGRESO", 
+        ELSE T.TotalIng END) AS "TOTAL DE INGRESOX", 
+        (CASE  
+        WHEN (SELECT COUNT(*) FROM incrementoterreno AS IT WHERE IT.IdDispersion = D.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\')) > 0 THEN 
+        ((SELECT SUM(IT.Incremento) FROM incrementoterreno AS IT 
+        WHERE IT.IdDispersion = D.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\')) + T.TotalIng)
+        ELSE T.TotalIng END)  AS "TOTAL DE INGRESO",
         
         (CASE WHEN (SELECT COUNT(*) FROM incrementoterreno AS IT WHERE IT.IdTransmision = T.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\')) > 0 THEN 
         (SELECT IT.CantidadDispersada   FROM incrementoterreno AS IT WHERE IT.IdTransmision = T.ID AND IT.Estatus NOT IN(\'INACTIVO\', \'CANCELADO\') ORDER BY IT.ID DESC LIMIT 1)  

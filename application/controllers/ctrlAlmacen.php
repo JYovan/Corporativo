@@ -13,6 +13,7 @@ class ctrlAlmacen extends CI_Controller {
         $this->load->model("almacen_model");
         $this->load->model("resource_model");
         $almacen_models = $this->almacen_model;
+        require_once APPPATH . "/third_party/fpdf17/fpdf.php";
     }
 
     private $defaultData = array(
@@ -116,6 +117,26 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             $data = $this->almacen_model->getRecordByID($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getPerdidasXID() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getPerdidasXID($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getDevolucionXID() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getDevolucionXID($ID);
             print json_encode($data);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
@@ -661,7 +682,6 @@ class ctrlAlmacen extends CI_Controller {
             extract(filter_input_array(INPUT_POST));
 //            var_dump(filter_input_array(INPUT_POST)); 
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $pdf = new FPDF('L');
             $pdf->AddPage();
             $image = "log_1o.png";
@@ -878,7 +898,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $pdf = new FPDF('L');
             $pdf->AddPage();
             $image = "log_1o.png";
@@ -1104,7 +1123,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
 //            $rows = $this->almacen_model->getExistenciasXAlmacenYProveedor($PROYECTO, $ALMACEN, $PROVEEDOR, $INICIO, $FIN);
             $rows = $this->almacen_model->getAlmacenesConExistencias($INICIO, $FIN, $PROYECTO, $ALMACEN, $PROVEEDOR, $PRODUCTO);
             $pdf = new FPDF('L');
@@ -1330,7 +1348,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $rows = $this->almacen_model->getExistenciasXAlmacenYProveedor($PROYECTO, $ALMACEN, $PROVEEDOR, $INICIO, $FIN);
             $pdf = new FPDF('L');
             $pdf->AddPage();
@@ -1560,7 +1577,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $rows = $this->almacen_model->getExistenciasXAlmacenYProveedor($PROYECTO, $ALMACEN, $PROVEEDOR, $INICIO, $FIN);
             $pdf = new FPDF('L');
             $pdf->AddPage();
@@ -2033,7 +2049,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $pdf = new FPDF('L');
             $pdf->AddPage();
             $image = "log_1o.png";
@@ -2270,7 +2285,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $pdf = new FPDF('L');
             $pdf->AddPage();
             $image = "log_1o.png";
@@ -2493,7 +2507,6 @@ class ctrlAlmacen extends CI_Controller {
         try {
             extract(filter_input_array(INPUT_POST));
             date_default_timezone_set('America/Mexico_City');
-            require_once APPPATH . "/third_party/fpdf17/fpdf.php";
             $pdf = new FPDF('L');
             $pdf->AddPage();
             $image = "log_1o.png";
@@ -2566,30 +2579,30 @@ class ctrlAlmacen extends CI_Controller {
             $pdf->SetFont('Arial', 'B', 6.5);
             $pages = 1;
             for ($i = 0; $i < 500; $i++) {
-            for ($index = 0; $index < count($rows); $index++) {
+                for ($index = 0; $index < count($rows); $index++) {
 //                if ($rows[$index]->{"CANTIDAD DISPONIBLE"} > 0) {
-                $pdf->setX(5);
-                $Y = $pdf->GetY();
-                $pdf->SetDrawColor(96, 96, 96);
+                    $pdf->setX(5);
+                    $Y = $pdf->GetY();
+                    $pdf->SetDrawColor(96, 96, 96);
 //                $pdf->Line(41, $pdf->GetY() + 1, 41, $pdf->GetY() + 9);
-                $pdf->MultiCell(35, 4, utf8_decode($rows[$index]->PROYECTO . " " . $rows[$index]->ALMACEN));
-                $YY = $pdf->GetY();
+                    $pdf->MultiCell(35, 4, utf8_decode($rows[$index]->PROYECTO . " " . $rows[$index]->ALMACEN));
+                    $YY = $pdf->GetY();
 
-                $pdf->SetY($Y);
-                $pdf->SetX(42);
-                $pdf->MultiCell(35, 4, utf8_decode($rows[$index]->PROVEEDOR));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+                    $pdf->SetY($Y);
+                    $pdf->SetX(42);
+                    $pdf->MultiCell(35, 4, utf8_decode($rows[$index]->PROVEEDOR));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
 
-                $pdf->SetY($Y);
-                $pdf->SetX(80);
-                if (strlen($rows[$index]->PRODUCTO) > 100) {
-                    $pdf->SetFont('Arial', 'B', 5);
-                }
-                $pdf->MultiCell(57, 4, utf8_decode($rows[$index]->PRODUCTO));
+                    $pdf->SetY($Y);
+                    $pdf->SetX(80);
+                    if (strlen($rows[$index]->PRODUCTO) > 100) {
+                        $pdf->SetFont('Arial', 'B', 5);
+                    }
+                    $pdf->MultiCell(57, 4, utf8_decode($rows[$index]->PRODUCTO));
 //                $pdf->MultiCell(50, 5, utf8_decode('TAPA DE CISTERNA DE 50X50 CM. (SEGÚN DISEÑO), FABRICADA EN ANGULO DE 1/8"X1" Y 2" REFUERZOS DE CUADRADO DE 1/2" CON LAMINA NEGRA CAL. 18 AL RAZ, LA BOCA DE LA TAPA ES DE 45X45. INCLUYE 2 BISAGRAS DE CILINDRO SOLDADAS A LA BOCA Y TAPA, Y JALADERA DE SOLERA (PORTACANDADO) DE 1/8" X 1", PINTADA EN FONDO ESTRUCTURAL COLOR NEGRO. SIN INSTALACION EN OBRA (ENVIAR DISEÑO A PROVEEDOR PARA TENER EL CONCEPTO DEFINIDO). P.U.O.T.'));
-                $pdf->SetFont('Arial', 'B', 6.5);
+                    $pdf->SetFont('Arial', 'B', 6.5);
 
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
 
 //                $pdf->SetY($Y);
 //                if (strlen($rows[$index]->PRECIO) == 6) {
@@ -2600,97 +2613,97 @@ class ctrlAlmacen extends CI_Controller {
 //                $pdf->MultiCell(20, 4, utf8_decode($rows[$index]->PRECIO));
 //                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
 
-                $pdf->SetFont('Arial', 'B', 5.5);
-                $pdf->SetY($Y);
-                $pdf->SetX(140);
-                $pdf->MultiCell(30, 4, utf8_decode($rows[$index]->{"CONDICION DEL ARTICULO"}));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
-
-                $pdf->SetFont('Arial', 'B', 6.5);
-                $pdf->SetY($Y);
-                $pdf->SetX(168);
-                $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"UNIDAD DE MEDIDA"}));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
-
-                $pdf->SetY($Y);
-                $pdf->SetX(193);
-                if ($rows[$index]->CANTIDAD > 0) {
-                    $pdf->SetTextColor(0, 64, 32);
-                    $pdf->SetFont('Arial', 'B', 6.5);
-                } else {
-                    $pdf->SetTextColor(178, 0, 0);
-                    $pdf->SetFont('Arial', '', 6.5);
-                }
-                $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->CANTIDAD));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
-
-                $pdf->SetY($Y);
-                $pdf->SetX(215);
-                if ($rows[$index]->{"CANTIDAD EN CAJAS"} > 0) {
-                    $pdf->SetTextColor(0, 64, 32);
-                    $pdf->SetFont('Arial', 'B', 6.5);
-                } else {
-                    $pdf->SetTextColor(178, 0, 0);
-                    $pdf->SetFont('Arial', '', 6.5);
-                }
-                $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"CANTIDAD EN CAJAS"}));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
-
-                $pdf->SetY($Y);
-                $pdf->SetX(235);
-                if ($rows[$index]->{"CANTIDAD EN PAQUETES"} > 0) {
-                    $pdf->SetTextColor(0, 64, 32);
-                    $pdf->SetFont('Arial', 'B', 6.5);
-                } else {
-                    $pdf->SetTextColor(178, 0, 0);
-                    $pdf->SetFont('Arial', '', 6.5);
-                }
-                $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"CANTIDAD EN PAQUETES"}));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
-
-                $pdf->SetY($Y);
-                $pdf->SetX(255);
-                if ($rows[$index]->{"CANTIDAD EN UNIDADES"} > 0) {
-                    $pdf->SetTextColor(0, 64, 32);
-                    $pdf->SetFont('Arial', 'B', 6.5);
-                } else {
-                    $pdf->SetTextColor(178, 0, 0);
-                    $pdf->SetFont('Arial', '', 6.5);
-                }
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"CANTIDAD EN UNIDADES"}));
-                $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
-                $pdf->SetFont('Arial', 'B', 6.5);
-
-                $pdf->SetY($Y);
-                $pdf->SetX(270);
-                $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"FECHA DE SALIDA"}));
-
-                /*                 * ********SE ASIGNA LA ULTIMA POSICION MÁS ALTA EN "YY" A LA POSICION POR DEFECTO EN "Y" ******* */
-                $Y = $pdf->SetY($YY);
-                $pdf->Cell(0, 0, "", 0, 1, 'L');
-                $pdf->SetTextColor(0, 0, 0);
-                $pdf->SetDrawColor(96, 96, 96);
-                $pdf->Line(5, $pdf->GetY(), $X + 20, $pdf->GetY());
-
-
-                /*                 * SE VALIDA SI SE ESTA AL BORDE FINAL DE LA PÁGINA* */
-                if ($pdf->GetY() > 190) {
                     $pdf->SetFont('Arial', 'B', 5.5);
-                    $pdf->SetY(195);
+                    $pdf->SetY($Y);
                     $pdf->SetX(140);
-                    $pdf->MultiCell(25, 10, $pages);
-                    $pdf->AddPage();
+                    $pdf->MultiCell(30, 4, utf8_decode($rows[$index]->{"CONDICION DEL ARTICULO"}));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
 
-                    $pages += 1;
-                } else {
+                    $pdf->SetFont('Arial', 'B', 6.5);
+                    $pdf->SetY($Y);
+                    $pdf->SetX(168);
+                    $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"UNIDAD DE MEDIDA"}));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+
+                    $pdf->SetY($Y);
+                    $pdf->SetX(193);
+                    if ($rows[$index]->CANTIDAD > 0) {
+                        $pdf->SetTextColor(0, 64, 32);
+                        $pdf->SetFont('Arial', 'B', 6.5);
+                    } else {
+                        $pdf->SetTextColor(178, 0, 0);
+                        $pdf->SetFont('Arial', '', 6.5);
+                    }
+                    $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->CANTIDAD));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+
+                    $pdf->SetY($Y);
+                    $pdf->SetX(215);
+                    if ($rows[$index]->{"CANTIDAD EN CAJAS"} > 0) {
+                        $pdf->SetTextColor(0, 64, 32);
+                        $pdf->SetFont('Arial', 'B', 6.5);
+                    } else {
+                        $pdf->SetTextColor(178, 0, 0);
+                        $pdf->SetFont('Arial', '', 6.5);
+                    }
+                    $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"CANTIDAD EN CAJAS"}));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+
+                    $pdf->SetY($Y);
+                    $pdf->SetX(235);
+                    if ($rows[$index]->{"CANTIDAD EN PAQUETES"} > 0) {
+                        $pdf->SetTextColor(0, 64, 32);
+                        $pdf->SetFont('Arial', 'B', 6.5);
+                    } else {
+                        $pdf->SetTextColor(178, 0, 0);
+                        $pdf->SetFont('Arial', '', 6.5);
+                    }
+                    $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"CANTIDAD EN PAQUETES"}));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+
+                    $pdf->SetY($Y);
+                    $pdf->SetX(255);
+                    if ($rows[$index]->{"CANTIDAD EN UNIDADES"} > 0) {
+                        $pdf->SetTextColor(0, 64, 32);
+                        $pdf->SetFont('Arial', 'B', 6.5);
+                    } else {
+                        $pdf->SetTextColor(178, 0, 0);
+                        $pdf->SetFont('Arial', '', 6.5);
+                    }
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"CANTIDAD EN UNIDADES"}));
+                    $YY = (($pdf->GetY() > $YY) ? $pdf->GetY() : $YY );
+                    $pdf->SetFont('Arial', 'B', 6.5);
+
+                    $pdf->SetY($Y);
+                    $pdf->SetX(270);
+                    $pdf->MultiCell(25, 4, utf8_decode($rows[$index]->{"FECHA DE SALIDA"}));
+
+                    /*                     * ********SE ASIGNA LA ULTIMA POSICION MÁS ALTA EN "YY" A LA POSICION POR DEFECTO EN "Y" ******* */
+                    $Y = $pdf->SetY($YY);
+                    $pdf->Cell(0, 0, "", 0, 1, 'L');
+                    $pdf->SetTextColor(0, 0, 0);
+                    $pdf->SetDrawColor(96, 96, 96);
+                    $pdf->Line(5, $pdf->GetY(), $X + 20, $pdf->GetY());
+
+
+                    /*                     * SE VALIDA SI SE ESTA AL BORDE FINAL DE LA PÁGINA* */
+                    if ($pdf->GetY() > 190) {
+                        $pdf->SetFont('Arial', 'B', 5.5);
+                        $pdf->SetY(195);
+                        $pdf->SetX(140);
+                        $pdf->MultiCell(25, 10, $pages);
+                        $pdf->AddPage();
+
+                        $pages += 1;
+                    } else {
 //                        $pdf->SetFont('Arial', 'B', 5.5);
 //                        $pdf->SetY(195);
 //                        $pdf->SetX(140);
 //                        $pdf->MultiCell(25, 10, $pages);  
-                }
+                    }
 //                }
-            }
+                }
             }
             if ($pages === 1) {
                 $pdf->SetFont('Arial', 'B', 5.5);
@@ -2711,7 +2724,7 @@ class ctrlAlmacen extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
-    
+
     public function getProyectosConDevolucion() {
         try {
             $data = $this->almacen_model->getProyectosConDevolucion();
@@ -2720,11 +2733,495 @@ class ctrlAlmacen extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
-    
+
     public function getProductosConDevolucion() {
         try {
             $data = $this->almacen_model->getProductosConDevolucion();
             print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getProductosXAlmacenXPerdida() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getProductosXAlmacenXPerdida($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getAlmacenesXProyecto() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getAlmacenesXProyecto($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getProductoInformacion() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getProductoInformacion($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function onGuardarPerdida() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = array(
+                'Fecha' => ((isset($Fecha) && $Fecha !== '') ? $Fecha : NULL),
+                'Hora' => ((isset($Hora) && $Hora !== '') ? $Hora : NULL),
+                'IdProyecto' => ((isset($IdProyecto) && $IdProyecto !== '') ? $IdProyecto : NULL),
+                'IdAlmacen' => ((isset($IdAlmacen) && $IdAlmacen !== '') ? $IdAlmacen : NULL),
+                'AlmacenT' => ((isset($AlmacenT) && $AlmacenT !== '') ? $AlmacenT : NULL),
+                'IdProducto' => ((isset($IdProducto) && $IdProducto !== '') ? $IdProducto : NULL),
+                'ProductoT' => ((isset($ProductoT) && $ProductoT !== '') ? strtoupper($ProductoT) : NULL),
+                'Tipo' => ((isset($Tipo) && $Tipo !== '') ? $Tipo : NULL),
+                'TipoT' => ((isset($TipoT) && $TipoT !== '') ? $TipoT : NULL),
+                'Cantidad' => ((isset($Cantidad) && $Cantidad !== '') ? $Cantidad : NULL),
+                'Descripcion' => ((isset($Descripcion) && $Descripcion !== '') ? strtoupper($Descripcion) : NULL),
+                'PersonaDetecta' => ((isset($PersonaDetecta) && $PersonaDetecta !== '') ? $PersonaDetecta : NULL),
+                'PersonaDetectaT' => ((isset($PersonaDetectaT) && $PersonaDetectaT !== '') ? strtoupper($PersonaDetectaT) : NULL),
+                'Responsable' => ((isset($Responsable) && $Responsable !== '') ? $Responsable : NULL),
+                'ResponsableT' => ((isset($ResponsableT) && $ResponsableT !== '') ? strtoupper($ResponsableT) : NULL),
+                'UnidadDeMedida' => ((isset($UnidadDeMedida) && $UnidadDeMedida !== '') ? strtoupper($UnidadDeMedida) : NULL),
+                'Precio' => ((isset($Precio) && $Precio !== '') ? strtoupper($Precio) : NULL),
+                'Total' => ((isset($Total) && $Total !== '') ? strtoupper($Total) : NULL),
+                'Estatus' => 'ACTIVO',
+                'Registro' => strtoupper(Date('d/m/Y h:i:s a'))
+            );
+            $this->resource_model->onAction('Perdidas', $data, 'save', 0);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getGenerarReporteDePerdidas() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getGenerarReporteDePerdidas($INICIO, $FIN, $PROYECTO, $ALMACEN);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getPerdidas() {
+        try {
+            $data = $this->almacen_model->getPerdidas();
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getDevolucionesX() {
+        try {
+            $data = $this->almacen_model->getDevolucionesX();
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getProyectosConPerdidas() {
+        try {
+            $data = $this->almacen_model->getProyectosConPerdidas();
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getAlmacenConPerdidasXProyecto() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = $this->almacen_model->getAlmacenConPerdidasXProyecto($ID);
+            print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getReporteDePerdidas() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            date_default_timezone_set('America/Mexico_City');
+            $rows = $this->almacen_model->getGenerarReporteDePerdidas($INICIO, $FIN, $PROYECTO, $ALMACEN);
+            $pdf = new FPDF('L');
+            $pdf->AddPage();
+            $image = "log_1o.png";
+            $pdf->Image('media/' . $image, /* LEFT */ 5, 5/* TOP */, /* ANCHO */ 63.5, /* ALTO */ 20.5);
+            $pdf->SetAutoPageBreak(false);
+            $pdf->SetX(239);
+            $pdf->SetFont('Arial', 'B', 6);
+            $pdf->Cell(100, 15, utf8_decode('FECHA DE IMPRESIÓN'), 0, 1, 'L');
+            $pdf->SetY(5);
+            $pdf->SetX(120);
+            $pdf->SetFont('Arial', '', 25);
+            $pdf->Cell(100, 15, 'PERDIDAS', 0, 0, 'L');
+            $pdf->SetFont('Arial', '', 10);
+
+            if ($ALMACEN !== '' && $PROYECTO !== '') {
+                $pdf->SetY(12);
+                $pdf->SetX(120);
+                $pdf->Cell(100, 15, $rows[0]->PROYECTO . " - " . $rows[0]->ALMACEN, 0, 0, 'L');
+            } else if ($PROYECTO !== '') {
+                $pdf->SetY(12);
+                $pdf->SetX(130);
+                $pdf->Cell(100, 15, $rows[0]->PROYECTO, 0, 0, 'L');
+            }
+
+            $pdf->SetX(238);
+            $pdf->SetFont('Arial', '', 8);
+            $pdf->Cell(100, 20, date("d/m/Y ") . ' ' . date("h:i:s a"), 0, 1, 'L');
+            $pdf->SetFont('Arial', 'B', 8);
+            $space = 15;
+            $Y = 30;
+            $YY = 30;
+            /*             * **************************ENCABEZADO*************************** */
+            $pdf->Line(15, 30, 280, 30);
+            $pdf->Cell(20, 2, '', 0, 1, 'L');
+            $pdf->SetY($Y);
+            $X = $pdf->GetX();
+            $pdf->SetX($space);
+            $pdf->MultiCell(15, 5, 'FECHA Y HORA');
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->SetY($Y);
+            $pdf->SetX($space += 21);
+            $pdf->MultiCell(30, 5, utf8_decode("DETECTÓ"));
+            $pdf->SetFont('Arial', 'B', 8);
+            $pdf->SetY($Y);
+            $pdf->SetX($space += 32.5);
+            $pdf->Cell(30, 5, 'RESPONSABLE', 0, 0, 'L');
+            $pdf->SetY($Y);
+            $pdf->SetX($space += 35);
+            $pdf->Cell(20, 5, utf8_decode('PRODUCTO'), 0, 0, 'L');
+            $pdf->SetY($Y);
+            $pdf->SetX($space += 52.5);
+            $X = $pdf->GetX();
+            $pdf->MultiCell(25, 5, utf8_decode('TIPO'));
+            $pdf->SetY($Y);
+            $pdf->SetX($X += 20);
+            $pdf->MultiCell(17, 5, utf8_decode('CANTIDAD'));
+            $pdf->SetY($Y);
+            $pdf->SetX($X += 20);
+            $pdf->MultiCell(25, 5, utf8_decode("DESCRIPCIÓN DE LA PERDIDA"));
+            $pdf->SetY($Y);
+            $pdf->SetX($X += 20);
+//            $pdf->MultiCell(30, 5, utf8_decode('PERSONA QUE DETECTA LA PERDIDA'));
+            $pdf->SetY($Y);
+            $pdf->SetX($X += 35);
+//            $pdf->MultiCell(25, 5, utf8_decode('PERSONA QUE DETECTA LA PERDIDA'));
+            $YY = $pdf->GetY();
+            $pdf->SetY($Y);
+            $pdf->SetX($X += 20);
+//            $pdf->MultiCell(30, 5, utf8_decode('RESPONSABLE'));
+            $pdf->SetY($YY);
+            $pdf->Cell(15, 5, '', 0, 1, 'L');
+            $pdf->Line(15, 40, 280, 40);
+            /*             * *************************FIN ENCABEZADO************************ */
+
+            /*             * ****************************DETALLE***************************** */
+            $pdf->SetFont('Arial', '', 8);
+            $pages = 1;
+            $Y = 40;
+            $YY = 40;
+            $YYY = 40;
+            $pdf->SetY($Y);
+            $top = 0;
+            $x = "";
+            $page = 1;
+            $nrows = count($rows);
+            $nrows_displayed = 0;
+            foreach ($rows as $k => $v) {
+                $nrows_displayed ++;
+                $pdf->SetFont('Arial', '', 8);
+                if ($pdf->GetY() > 180) {
+                    $pdf->AddPage();
+                    $pdf->SetY(10);
+                    $Y = 10;
+                    $YY = 10;
+                }
+                if ($pdf->GetY() > 120 && $page === 2) {
+                    $pdf->AddPage();
+                    $pdf->SetY(10);
+                    $Y = 10;
+                    $YY = 10;
+                    $page = 2;
+                }
+                $pdf->SetY($Y);
+                $pdf->SetX(15);
+                $pdf->MultiCell(25, 5, strtoupper($v->FECHA . " " . $v->HORA));
+                if (strlen($v->{"PERSONA QUE DETECTA LA PERDIDA"}) > 20) {
+                    $pdf->SetFont('Arial', '', 6.5);
+                } else {
+                    $pdf->SetFont('Arial', '', 8);
+                }
+                $YY = ($pdf->GetY() > $YY) ? $pdf->GetY() : $YY;
+                $pdf->SetY($Y);
+                $pdf->SetX(38);
+                $pdf->MultiCell(27.5, 5, utf8_decode($v->{"PERSONA QUE DETECTA LA PERDIDA"}));
+                $pdf->SetFont('Arial', '', 8);
+                $YY = ($pdf->GetY() > $YY) ? $pdf->GetY() : $YY;
+                $pdf->SetY($Y);
+                $pdf->SetX(67.5);
+                $pdf->MultiCell(27.5, 5, utf8_decode($v->{"RESPONSABLE DE ALMACÉN QUE REGISTRA LA PERDIDA"}));
+                $YY = ($pdf->GetY() > $YY) ? $pdf->GetY() : $YY;
+                $pdf->SetY($Y);
+                $pdf->SetX(97.5);
+                if (strlen($v->PRODUCTO) > 20) {
+                    $pdf->SetFont('Arial', '', 6.5);
+                } else {
+                    $pdf->SetFont('Arial', '', 8);
+                }
+                $pdf->MultiCell(55, 5, utf8_decode($v->PRODUCTO));
+                $pdf->SetFont('Arial', '', 8);
+                $YY = ($pdf->GetY() > $YY) ? $pdf->GetY() : $YY;
+                $pdf->SetY($Y);
+                $pdf->SetX(156);
+                $pdf->MultiCell(19, 5, utf8_decode(($v->TIPO !== NULL) ? $v->TIPO : "OTRO"));
+                $pdf->SetY($Y);
+                $pdf->SetX(180);
+                $pdf->MultiCell(50, 5, utf8_decode($v->CANTIDAD));
+                $pdf->SetY($Y);
+                $pdf->SetX(197.5);
+                if (strlen($v->{"DESCRIPCIÓN DE LAS CAUSAS DE LA PERDIDA"}) > 30) {
+                    $pdf->SetFont('Arial', '', 5);
+                }
+
+                $pdf->MultiCell(80, 5, utf8_decode($v->{"DESCRIPCIÓN DE LAS CAUSAS DE LA PERDIDA"}));
+                $YY = ($pdf->GetY() > $YY) ? $pdf->GetY() : $YY;
+                $Y = $YY;
+                if ($pdf->GetY() > 120 && $page === 1) {
+                    $pdf->Line(15, $YY, 280, $YY);
+                    $pdf->Line(15, 30, 15, $YY);
+                    $pdf->Line(35, 30, 35, $YY);
+                    $pdf->Line(65, 30, 65, $YY);
+                    $pdf->Line(95, 30, 95, $YY);
+                    $pdf->Line(155, 30, 155, $YY);
+                    $pdf->Line(175, 30, 175, $YY);
+                    $pdf->Line(195, 30, 195, $YY);
+                    $pdf->Line(280, 30, 280, $YY);
+                    if ($nrows_displayed < $nrows) {
+                        $pdf->AddPage();
+                        $pdf->SetY(10);
+                        $Y = 10;
+                        $YY = 10;
+                        $page = 2;
+                        $pdf->Line(15, 10, 280, 10);
+                        $pdf->Line(15, $YY, 280, $YY);
+                        $pdf->Line(15, 30, 15, $YY);
+                        $pdf->Line(35, 30, 35, $YY);
+                        $pdf->Line(65, 30, 65, $YY);
+                        $pdf->Line(95, 30, 95, $YY);
+                        $pdf->Line(155, 30, 155, $YY);
+                        $pdf->Line(175, 30, 175, $YY);
+                        $pdf->Line(195, 30, 195, $YY);
+                        $pdf->Line(280, 30, 280, $YY);
+                    }
+                } else {
+                    $pdf->Line(15, $YY, 280, $YY);
+                    $pdf->Line(15, 30, 15, $YY);
+                    $pdf->Line(35, 30, 35, $YY);
+                    $pdf->Line(65, 30, 65, $YY);
+                    $pdf->Line(95, 30, 95, $YY);
+                    $pdf->Line(155, 30, 155, $YY);
+                    $pdf->Line(175, 30, 175, $YY);
+                    $pdf->Line(195, 30, 195, $YY);
+                    $pdf->Line(280, 30, 280, $YY);
+                }
+                if ($pdf->GetY() > 120 && $page === 2 && $nrows_displayed < $nrows) {
+                    $pdf->AddPage();
+                    $pdf->SetY(10);
+                    $Y = 10;
+                    $YY = 10;
+                    $page = 2;
+                    $pdf->Line(15, 10, 280, 10);
+                    $pdf->Line(15, $YY, 280, $YY);
+                    $pdf->Line(15, 30, 15, $YY);
+                    $pdf->Line(35, 30, 35, $YY);
+                    $pdf->Line(65, 30, 65, $YY);
+                    $pdf->Line(95, 30, 95, $YY);
+                    $pdf->Line(155, 30, 155, $YY);
+                    $pdf->Line(175, 30, 175, $YY);
+                    $pdf->Line(195, 30, 195, $YY);
+                    $pdf->Line(280, 30, 280, $YY);
+                }
+            }
+
+            /*             * ***************************FIN DETALLE************************** */
+            if (!file_exists('uploads/Almacen')) {
+                mkdir('uploads/Almacen', 0777, true);
+            }
+            $file_name = "PERDIDAS_" . Date('d_m_Y_h_i_s_a');
+            $url = 'uploads/Almacen/' . $file_name . '.pdf';
+
+            $pdf->Output($url);
+            print base_url() . $url;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function getComprobanteDeArticulosMaterialesYEquipoDeTrabajo() {
+        try {
+            date_default_timezone_set('America/Mexico_City');
+            $pdf = new FPDF();
+            $pdf->AddPage();
+            $image = "log_1o.png";
+            $pdf->Image('media/' . $image, /* LEFT */ 5, 5/* TOP */, /* ANCHO */ 31.8, /* ALTO */ 10.25);
+            $pdf->SetAutoPageBreak(false);
+            $pdf->SetX(239);
+            $pdf->SetFont('Arial', 'B', 6);
+            $pdf->Cell(100, 15, utf8_decode('FECHA DE IMPRESIÓN'), 0, 1, 'L');
+            $pdf->SetY(10);
+            $pdf->SetX(45);
+            $pdf->SetFont('Arial', '', 16);
+            $pdf->MultiCell(150, 5, utf8_decode("COMPROBANTE DE SALIDA DE ARTÍCULOS, MATERIALES Y EQUIPO DE TRABAJO"), 0, 'C');
+            $pdf->SetFont('Arial', 'B', 10);
+            $pdf->SetY(30);
+            $pdf->SetX(15);
+            $pdf->MultiCell(150, 5, utf8_decode("PROYECTO"));
+            $pdf->Rect(43, 30, 70, 15);
+            $pdf->SetY(30);
+            $pdf->SetX(115);
+            $pdf->MultiCell(150, 5, utf8_decode("ALMACEN"));
+            $pdf->Rect(140, 30, 50, 15);
+            $pdf->SetY(50);
+            $pdf->SetX(15);
+            $pdf->MultiCell(150, 5, utf8_decode("TIPO DE SALIDA"));
+            $pdf->SetFont('Arial', '', 8);
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("CONSTRUCCIÓN DE INMUEBLES "));
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("CONSTRUCCIÓN DE MUEBLES "));
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("ELABORACIÓN DE TRABAJOS"));
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("USO EN EL TRABAJO"));
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("CONSUMO EN EL TRABAJO"));
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("VENTA"));
+            $pdf->SetX(20);
+            $pdf->MultiCell(150, 5, utf8_decode("CAMBIO DE ALMACÉN"));
+            $Y_TOP = 58.5;
+            $Y_BOTTOM = 55.5;
+            for ($index = 0; $index < 7; $index++) {
+//            $pdf->Line($x1, $y1, $x2, $y2)
+                $pdf->Line(82.5, $Y_TOP, 85.5, $Y_TOP);
+                $pdf->Line(82.5, $Y_BOTTOM, 85.5, $Y_BOTTOM);
+                $pdf->Line(82.5, $Y_BOTTOM, 82.5, $Y_TOP);
+                $pdf->Line(85.5, $Y_BOTTOM, 85.5, $Y_TOP);
+                $Y_TOP += 5;
+                $Y_BOTTOM += 5;
+            }
+
+            $pdf->SetFont('Arial', 'B', 10);
+            $pdf->SetY(50);
+            $pdf->SetX(88);
+            $pdf->MultiCell(150, 5, utf8_decode("FECHA"));
+            $pdf->Rect(103, 50, 35, 8);
+            $pdf->SetY(50);
+            $pdf->SetX(140);
+            $pdf->MultiCell(150, 5, utf8_decode("HORA"));
+            $pdf->Rect(155, 50, 35, 8);
+
+            $pdf->SetY(95);
+            $pdf->SetX(15);
+            $pdf->MultiCell(150, 5, utf8_decode("ARTÍCULO, MATERIAL O EQUIPO"));
+            $pdf->Rect(15, 105, 175, 16);
+
+            $pdf->SetY(125);
+            $pdf->SetX(15);
+            $pdf->MultiCell(150, 5, utf8_decode("CANTIDAD"));
+            $pdf->SetY(125);
+            $pdf->SetX(55);
+            $pdf->MultiCell(150, 5, utf8_decode("CAJA"));
+            $pdf->SetY(125);
+            $pdf->SetX(105);
+            $pdf->MultiCell(150, 5, utf8_decode("PAQUETE"));
+            $pdf->SetY(125);
+            $pdf->SetX(155);
+            $pdf->MultiCell(150, 5, utf8_decode("UNIDADES"));
+            $pdf->Rect(40, 125, 150, 16);
+            $pdf->Rect(40, 130, 150, 11);
+            $pdf->Rect(90, 125, 50, 16);
+            $pdf->SetY(145);
+            $pdf->SetX(15);
+            $pdf->MultiCell(150, 5, utf8_decode("OBSERVACIÓN"));
+            $pdf->Rect(15, 150, 175, 32);
+            $pdf->Line(20, 155, 185, 155);
+            $pdf->Line(20, 160, 185, 160);
+            $pdf->Line(20, 165, 185, 165);
+            $pdf->Line(20, 170, 185, 170);
+            $pdf->Line(20, 175, 185, 175);
+
+            $pdf->Line(15, 205, 100, 205);
+            $pdf->SetY(210);
+            $pdf->SetX(25);
+            $pdf->MultiCell(150, 5, utf8_decode("NOMBRE Y FIRMA DE QUIEN ENTREGA"));
+
+            $pdf->Line(110, 205, 190, 205);
+            $pdf->SetY(210);
+            $pdf->SetX(125);
+            $pdf->MultiCell(150, 5, utf8_decode("NOMBRE DE QUIEN RECIBE"));
+//            $pdf->Line($x1, $y1, $x2, $y2);            
+            /*             * ***************************FIN DETALLE************************** */
+            if (!file_exists('uploads/Almacen')) {
+                mkdir('uploads/Almacen', 0777, true);
+            }
+            $file_name = "COMPROBANTE";
+            $url = 'uploads/Almacen/' . $file_name . '.pdf';
+
+            $pdf->Output($url);
+            print base_url() . $url;
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function onGuardarDevolucionX() {
+        try {
+            extract($this->input->post());
+            $data = array(
+                'FechaDevolucion' => ($FechaDevolucion !== '') ? $FechaDevolucion : NULL,
+                'HoraDevolucion' => ($HoraDevolucion !== '') ? $HoraDevolucion : NULL,
+                'IdProyecto' => ($IdProyecto !== '') ? $IdProyecto : NULL,
+                'IdProyectoT' => ($IdProyectoT !== '') ? $IdProyectoT : NULL,
+                'IdAlmacen' => ($IdAlmacen !== '') ? $IdAlmacen : NULL,
+                'IdAlmacenT' => ($IdAlmacenT !== '') ? $IdAlmacenT : NULL,
+                'OrdenDeCompraReferencia' => ($OrdenDeCompraReferencia !== '') ? strtoupper($OrdenDeCompraReferencia) : NULL,
+                'Factura' => ($Factura !== '') ? strtoupper($Factura) : NULL,
+                'IdProducto' => ($IdProducto !== '') ? $IdProducto : NULL,
+                'Producto' => ($Producto !== '') ? $Producto : NULL,
+                'Motivo' => ($Motivo !== '') ? $Motivo : NULL,
+                'MotivoT' => ($MotivoT !== '') ? $MotivoT : NULL,
+                'CantidadDevuelta' => ($CantidadDevuelta !== '') ? $CantidadDevuelta : 0,
+                'CantidadCajas' => (isset($CantidadCajas) && $CantidadCajas !== '') ? $CantidadCajas : 0,
+                'CantidadUnidades' => (isset($CantidadUnidades) && $CantidadUnidades !== '') ? $CantidadUnidades : 0,
+                'CantidadPaquetes' => (isset($CantidadPaquetes) && $CantidadPaquetes !== '') ? $CantidadPaquetes : 0,
+                'UnidadMedida' => ($UnidadDeMedida !== '') ? $UnidadDeMedida : NULL,
+                'Precio' => ($Precio !== '') ? $Precio : 0,
+                'Observaciones' => ($Observaciones !== '') ? strtoupper($Observaciones) : "SIN OBSERVACIONES",
+                'PersonaDetecta' => ($PersonaDetecta !== '') ? strtoupper($PersonaDetecta) : NULL,
+                'PersonaDetectaT' => ($PersonaDetectaT !== '') ? strtoupper($PersonaDetectaT) : NULL,
+                'Responsable' => ($Responsable !== '') ? strtoupper($Responsable) : NULL,
+                'ResponsableT' => ($ResponsableT !== '') ? strtoupper($ResponsableT) : NULL,
+                'rDocumento' => (isset($rDocumento) && $rDocumento !== '') ? $rDocumento : "",
+                'Estatus' => 'ACTIVO',
+                'Registro' => Date('d/m/Y h:i:s a')
+            );
+            $this->resource_model->onAction('Devolucionesx', $data, 'save', 0);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }

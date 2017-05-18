@@ -327,10 +327,13 @@ class ctrlSeguridadSocial extends CI_Controller {
             if (!file_exists('uploads/SSNomina/Scan')) {
                 mkdir('uploads/SSNomina/Scan', 0777, true);
             }
+            if (!file_exists('uploads/SSNomina/' . strtoupper($dtm[0]->RAZON) . '/' . utf8_decode(strtoupper($EstatusT)) )) {
+                mkdir('uploads/SSNomina/' . strtoupper($dtm[0]->RAZON) . '/' . utf8_decode(strtoupper($EstatusT)) , 0777, true);
+            }
             if (!file_exists('uploads/SSNomina/' . strtoupper($dtm[0]->RAZON) . '/' . utf8_decode(strtoupper($EstatusT)) . '/' . $dmyhsia)) {
                 mkdir('uploads/SSNomina/' . strtoupper($dtm[0]->RAZON) . '/' . utf8_decode(strtoupper($EstatusT)) . '/' . $dmyhsia, 0777, true);
             }
-            if (move_uploaded_file($_FILES["rArchivo"]["tmp_name"], 'uploads/SSNomina/' . strtoupper($dtm[0]->RAZON) . '/' . utf8_decode(strtoupper($EstatusT)) . '/' . $dmyhsia . '/' . utf8_decode($_FILES["rArchivo"]["name"]))) {
+            if (move_uploaded_file($_FILES["rArchivo"]["tmp_name"], 'uploads/SSNomina/' . strtoupper($dtm[0]->RAZON) . '/' . utf8_decode(strtoupper($EstatusT)) . '/' . $dmyhsia . '/' . ($_FILES["rArchivo"]["name"]))) {
                 echo "EL ARCHIVO ES VÁLIDO Y SE SUBIÓ CON EXITO.\n";
             } else {
                 echo "¡NO SE PUDO SUBIR EL ARCHIVO, VERIFIQUE LA CONSOLA PARA MÁS DETALLES!";

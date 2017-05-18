@@ -203,7 +203,11 @@ if (session_status() == 1) {
                             .columns.adjust();
                 });
                 $("label").addClass('bounceIn');
+                
             });
+            function onMenu(){ 
+        $("#wrapper").toggleClass("toggled");
+    }
             function startTime() {
                 var today = new Date();
                 var h = today.getHours();
@@ -279,19 +283,48 @@ if (session_status() == 1) {
         <script src="<?php echo base_url(); ?>js/vegas/vegas.min.js"></script>
         <script src="<?php echo base_url(); ?>js/gmaps-master/gmaps.min.js"></script>
         <!--<script src="<?php echo base_url(); ?>js/snow/snowstorm.js"></script>-->
-<!--        <script>
-            snowStorm.snowColor = '#ffffff';   // blue-ish snow!?
-            snowStorm.flakesMaxActive = 8;    // show more snow on screen at once
-            snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
-            snowStorm.snowCharacter = '❇'; //"❄","❅","❆","❇","✶","✷","✻"
-        </script>-->
                 <!--<script src="<?php echo base_url(); ?>js/shortcut.js"></script>-->
+        <link rel="stylesheet" href="<?php echo base_url(); ?>js/sidebar/css/simple-sidebar.css">
         <!------------------------------END CUSTOM SCRIPTS-------------------------->
     </head>
     <?php
     if (isset($_SESSION["ID"])) {
         ?>
-        <nav class="navbar navbar-inverse">
+    
+       <div id="wrapper">
+        <div id="sidebar-wrapper" align="center">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="<?php print base_url(); ?>index.php/">
+                        <img src="<?php print base_url() ?>media/logo.png" class="img-responsive" width="60%">
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/ctrlCobranza/">COBRANZA</a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/ctrlCompras/">COMPRAS Y SUMINISTROS</a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/ctrlContratos/">CONTRATOS</a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/controlador/Menu?ID=14&i=35">PAGO A TERCEROS</a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/ctrlPrestamos/">PRESTAMOS</a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/ctrlTramiteFactura/">TRAMITE DE FACTURAS</a>
+                </li>
+                <li>
+                    <a href="<?php print base_url(); ?>index.php/ctrlTransmisiones">TRASNMISIÓN Y DISPERSIÓN</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    
+        <nav class="navbar navbar-inverse ">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -301,7 +334,7 @@ if (session_status() == 1) {
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData">
-                        <img alt="Brand" src="<?php echo base_url(); ?>media/logox.png" class="img-responsive" 
+                        <img alt="Brand" src="<?php echo base_url(); ?>media/logo.png" class="img-responsive" 
                              width="90">
                     </a>
                 </div>
@@ -411,9 +444,7 @@ if (session_status() == 1) {
                     </ul>
                 </div>
             </div>
-        </nav>
-
-       
+        </nav>  
         <?php
     }
     ?>

@@ -340,19 +340,19 @@ class ctrlContratos extends CI_Controller {
             );
 
             if (isset($E["RepresentanteContratista"]) && $E["RepresentanteContratista"] !== '' && $E["RepresentanteContratista"] !== NULL) {
-                $data['RepresentanteContratista'] = $E["RepresentanteContratista"]; 
-            } 
+                $data['RepresentanteContratista'] = $E["RepresentanteContratista"];
+            }
 
             if (isset($E["RepresentanteContratante"]) && $E["RepresentanteContratante"] !== '' && $E["RepresentanteContratante"] !== NULL) {
-                $data['RepresentanteContratante'] = $E["RepresentanteContratante"]; 
+                $data['RepresentanteContratante'] = $E["RepresentanteContratante"];
             }
             if (isset($E["IdEtapa"]) && $E["IdEtapa"] !== '' && $E["IdEtapa"] !== NULL) {
-                $data['IdEtapa'] = $E["IdEtapa"]; 
-            } 
+                $data['IdEtapa'] = $E["IdEtapa"];
+            }
             if (isset($E["TipoContrato"]) && $E["TipoContrato"] !== '' && $E["TipoContrato"] !== NULL) {
                 $data['TipoContrato'] = $E["TipoContrato"];
                 $data['TipoContratoT'] = $E["TipoContratoT"];
-            } 
+            }
             if (isset($E["IdProyecto"]) && $E["IdProyecto"] !== '' && $E["IdProyecto"] !== NULL) {
                 $data['IdProyecto'] = $E["IdProyecto"];
             }
@@ -435,6 +435,18 @@ class ctrlContratos extends CI_Controller {
             extract(filter_input_array(INPUT_POST));
             $data = $this->contratos_model->getContratosDeObraDByID($ID);
             print json_encode($data);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }
+
+    public function onCancelarContrato() {
+        try {
+            extract(filter_input_array(INPUT_POST));
+            $data = array(
+                'Estatus'=>'CANCELADO'
+            );
+            $this->contratos_model->onAction('ContratosDeObra', $data, 'update', array('ID', $ID));
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
