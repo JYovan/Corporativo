@@ -511,7 +511,7 @@
          * */
 
         btnBack.click(function () {
-            window.location.href = base_url + "index.php/ctrlsesion/onLoadData";
+            window.location.href = base_url + "index.php/";
         });
 
         cPortada.click(function () {

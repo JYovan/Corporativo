@@ -12,11 +12,13 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Corporativo/application/views/layout/base/lytBaseHead.php</file>
-            <file>file:/C:/wamp64/www/Corporativo/application/models/resource_model.php</file>
-            <file>file:/C:/wamp64/www/Corporativo/css/styles.css</file>
+            <file>file:/C:/wamp64/www/Corporativo/application/views/vPromesaDeCompraVenta.php</file>
+            <file>file:/C:/wamp64/www/Corporativo/application/views/vClientes.php</file>
+            <file>file:/C:/wamp64/www/Corporativo/application/controllers/ctrlPromesaDeCompraVenta.php</file>
             <file>file:/C:/wamp64/www/Corporativo/application/controllers/ctrlAlmacen.php</file>
-            <file>file:/C:/wamp64/www/Corporativo/application/views/vAlmacen.php</file>
+            <file>file:/C:/wamp64/www/Corporativo/application/views/Comerc_2_1.php</file>
+            <file>file:/C:/wamp64/www/Corporativo/application/views/Comerc_2_2.php</file>
+            <file>file:/C:/wamp64/www/Corporativo/application/views/Comerc_2.php</file>
         </group>
     </open-files>
 </project-private>

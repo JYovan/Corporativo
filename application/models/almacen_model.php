@@ -64,7 +64,9 @@ class almacen_model extends CI_Model {
                 MXA.FechaIngreso AS "FECHA DE INGRESO", MXA.ProveedorT AS "PROVEEDOR", MXA.NombreEntrega AS "NOMBRE DE QUIEN ENTREGA",
                 MXA.ReferenciaOC AS "REFERENCIA DE ORDEN DE COMPRA", MXA.RecibeInstPro AS "RECIBE EN INSTALACIONES DEL PROVEEDOR", 
                 MXA.RecibeAlmacenT AS "RECIBE EN ALMACÉN", MXA.ReferenciaFactura AS "REFERENCIA DE FACTURA", 
-                MXA.Observaciones, MXA.Estatus, MXA.Registro, (CASE WHEN MXA.Cancelacion IS NULL THEN "SIN DATO" ELSE MXA.Cancelacion END) AS "FECHA DE CANCELACIÓN",(CASE WHEN  MXA.Modificacion IS NULL THEN "SIN DATO" ELSE  MXA.Modificacion END) "ULTIMA MODIFICACIÓN"', false);
+                MXA.Observaciones, MXA.Estatus, MXA.Registro, 
+                (CASE WHEN MXA.Cancelacion IS NULL THEN "SIN DATO" ELSE MXA.Cancelacion END) AS "FECHA DE CANCELACIÓN",
+                (CASE WHEN  MXA.Modificacion IS NULL THEN "SIN DATO" ELSE  MXA.Modificacion END) "ULTIMA MODIFICACIÓN"', false);
             $this->db->from('MovimientosXAlmacen AS MXA');
             $query = $this->db->get();
             /*
@@ -1314,13 +1316,25 @@ class almacen_model extends CI_Model {
         }
     }
 
-    public function getDevolucionesX() {
+    public function getDevolucionesX($INICIO, $FIN, $PROYECTO, $ALMACEN){
         try { $this->db->select('DX.ID, DX.FechaDevolucion AS FECHA, DX.HoraDevolucion AS HORA, '
-                . 'DX.IdProyectoT AS PROYECTO,  DX.IdAlmacenT AS ALMACEN, DX.OrdenDeCompraReferencia AS "ORDEN DE COMPA DE REFERENCIA", '
+                . 'DX.IdProyectoT AS PROYECTO,  DX.IdAlmacenT AS ALMACEN, DX.OrdenDeCompraReferencia AS "ORDEN DE COMPRA DE REFERENCIA", '
                 . 'DX.Factura AS "ORDEN DE FACTURA DE REFERENCIA",  DX.Producto, DX.MotivoT AS "MOTIVO DE DEVOLUCIÓN", DX.CantidadDevuelta AS "CANTIDAD DEVUELTA", '
                 . 'DX.CantidadCajas, DX.CantidadUnidades, DX.CantidadPaquetes, DX.UnidadMedida AS "UNIDAD DE MEDIDA", DX.Precio AS PRECIO, '
                 . 'DX.Observaciones AS OBSERVACIONES, DX.PersonaDetectaT AS "PERSONA QUE IDENTIFICA EL MOTIVO DE DEVOLUCIÓN",DX.ResponsableT AS "RESPONSABLE DE ALMACÉN QUE REGISTRA LA DEVOLUCIÓN",DX.Estatus, DX.Registro', false);
             $this->db->from('devolucionesx AS DX'); 
+            if ($INICIO != '') {
+                $this->db->where('str_to_date(DX.FechaDevolucion, \'%d/%m/%Y\') >= str_to_date(\'' . $INICIO . '\', \'%d/%m/%Y\') ');
+            }
+            if ($FIN != '') {
+                $this->db->where('str_to_date(DX.FechaDevolucion, \'%d/%m/%Y\') <= str_to_date(\'' . $FIN . '\', \'%d/%m/%Y\') ');
+            }
+            if ($PROYECTO != '') {
+                $this->db->where('DX.IdProyecto', $PROYECTO);
+            }
+            if ($ALMACEN != '') {
+                $this->db->where('DX.IdAlmacen', $ALMACEN);
+            }
             $this->db->where_in('DX.Estatus', 'ACTIVO');
             $query = $this->db->get();
             /*

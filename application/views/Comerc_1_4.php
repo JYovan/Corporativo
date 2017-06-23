@@ -1,6 +1,6 @@
 <!-- configuramos el plugin-->
 
-<div class="container">	
+<div class="container">
     <table width="100%">
         <tr>
             <td>
@@ -18,11 +18,11 @@
         </tr>
     </table>
 
-<?php echo form_open_multipart('controlador/ClienteReferencia'); ?> 
+    <?php echo form_open_multipart('controlador/ClienteReferencia'); ?>
     <table width="100%" border="1" bordercolor="#FF6633">
         <tr>
             <td>
-                <table width="100%">    
+                <table width="100%">
                     <tr>
                         <td bgcolor="#ff6600" align="center">
                             <div class="col-xs-12 col-sm-12">
@@ -39,9 +39,9 @@
                                 <div class="col-md-9 col-xs-12">
                                     <select class="form-control" id="Cliente" name="Cliente" >
                                         <option value="0">Selecciona</option>
-                                        <?php foreach ($Clientes as $Clientes1) { ?> 
+                                        <?php foreach ($Clientes as $Clientes1) { ?>
                                             <option value="<?php echo $Clientes1->ID; ?>"><?php echo $Clientes1->Ncliente; ?></option>
-<?php } ?>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -60,21 +60,21 @@
                                 </br>
                             </div>
                         </td>
-                    </tr> 
+                    </tr>
                     <tr>
                         <td>
                             <div class="col-xs-12 col-sm-12" style="background-color:#99A79A">
                                 Primer Referencia
                             </div>
                         </td>
-                    </tr>  
+                    </tr>
                     <tr>
                         <td>
                             <div class="col-md-3 col-xs-12">
-                                <label for="Colonia" class="control-label">Nombre completo</label><br>		
+                                <label for="Colonia" class="control-label">Nombre completo</label><br>
                             </div>
                             <div class="col-md-9 col-xs-12">
-                                <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Referencia1" id="Referencia1" required>
+                                <input  class="form-control" type="text" name="Referencia1" id="Referencia1" required>
                             </div>
                         </td>
                     </tr>
@@ -86,7 +86,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>    
+                        <td>
                             <div class="col-md-6 col-xs-12">
                                 <div class="col-md-6 col-xs-12">
                                     <label for="Colonia" class="control-label">Profesión u oficio</label><br>
@@ -105,7 +105,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>    
+                        <td>
                             <div class="col-md-6 col-xs-12">
                                 <div class="col-md-6 col-xs-12">
                                     <label for="Colonia" class="control-label">Lugar de trabajo</label><br>
@@ -124,7 +124,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>    
+                        <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-6 col-xs-12">
                                     <label for="Colonia" class="control-label">Teléfono de casa</label><br>
@@ -165,11 +165,11 @@
                                 Segunda Referencia
                             </div>
                         </td>
-                    </tr>  
+                    </tr>
                     <tr>
                         <td>
                             <div class="col-md-3 col-xs-12">
-                                <label for="Colonia" class="control-label">Nombre completo</label><br>		
+                                <label for="Colonia" class="control-label">Nombre completo</label><br>
                             </div>
                             <div class="col-md-9 col-xs-12">
                                 <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Referencia2" id="Refrencia2" required>
@@ -184,7 +184,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>    
+                        <td>
                             <div class="col-md-6 col-xs-12">
                                 <div class="col-md-6 col-xs-12">
                                     <label for="Colonia" class="control-label">Profesión u oficio</label><br>
@@ -203,7 +203,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>    
+                        <td>
                             <div class="col-md-6 col-xs-12">
                                 <div class="col-md-6 col-xs-12">
                                     <label for="Colonia" class="control-label">Lugar de trabajo</label><br>
@@ -222,7 +222,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>    
+                        <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-6 col-xs-12">
                                     <label for="Colonia" class="control-label">Teléfono de casa</label><br>
@@ -273,14 +273,14 @@
                             </div>
                         </td>
                     </tr>
-                </table>  
+                </table>
             </td>
         </tr>
     </table>
 </form>
 
-<?php echo form_open_multipart('controlador/xxx'); ?>     
-<table width="100%">    
+<?php echo form_open_multipart('controlador/xxx'); ?>
+<table width="100%">
     <tr>
         <td>
             <div class="col-md-12 col-xs-12">
@@ -292,8 +292,8 @@
             </div>
         </td>
     </tr>
-</table> 
-</form> 
+</table>
+</form>
 </div>
 <script>
     cli.config.Estado();

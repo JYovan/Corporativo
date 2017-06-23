@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 
 if (!defined('BASEPATH'))
@@ -12,43 +12,44 @@ class compras_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-    } 
-    
+    }
+
     function getRecords() {
         try {
             $query = $this->db->query("CALL SP_GETCOMPRAS()");
             /*
              * FOR DEBUG ONLY
              */
-            $str = $this->db->last_query(); 
-            $data = $query->result(); 
+            $str = $this->db->last_query();
+            $data = $query->result();
             return $data;
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
     }
+
     function getOrdenesDeCompra() {
         try {
             $query = $this->db->query("CALL SP_GETORDENESDECOMPRAS()");
             /*
              * FOR DEBUG ONLY
              */
-            $str = $this->db->last_query(); 
-            $data = $query->result(); 
+            $str = $this->db->last_query();
+            $data = $query->result();
             return $data;
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
     }
-    
+
     function getOrdenesDeCompraADetalle() {
         try {
             $query = $this->db->query("CALL SP_GETORDENESDECOMPRASADETALLE()");
             /*
              * FOR DEBUG ONLY
              */
-            $str = $this->db->last_query(); 
-            $data = $query->result(); 
+            $str = $this->db->last_query();
+            $data = $query->result();
             return $data;
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
@@ -178,6 +179,7 @@ class compras_model extends CI_Model {
 //        print $str;
         return $query->result();
     }
+
     function getProductosXProveedor($PROVEEDOR) {
         $this->db->select("P.*,C.Precio");
         $this->db->from("Productos AS P");
@@ -259,7 +261,7 @@ class compras_model extends CI_Model {
             $this->db->join("Ciudad AS CIU", "DIR.Ciudad = CIU.id_ciudad");
             $this->db->where("C.ID", $ID);
             $this->db->where_not_in("CD.Estatus", array('ELIMINADO'));
-//            $this->db->group_by("PROD.ID"); 
+//            $this->db->group_by("PROD.ID");
             $this->db->group_by("CD.IdCotizacionD", "CD.IdProveedor", "PROD.ID");
             $this->db->order_by("CD.IdCotizacionD", "ASC");
             $query = $this->db->get();
@@ -303,7 +305,7 @@ class compras_model extends CI_Model {
             $this->db->join("Productos AS PROD", "OCD.IdProducto = PROD.ID");
             $this->db->where("CO.ID", $ID);
             $this->db->where_not_in("OCD.Estatus", array('ELIMINADO'));
-//            $this->db->group_by("PROD.ID"); 
+//            $this->db->group_by("PROD.ID");
 //            $this->db->group_by("OCD.ID");
 //            $this->db->order_by("OCD.IDOrdenDeCompra", "ASC");
             $query = $this->db->get();
@@ -353,6 +355,7 @@ class compras_model extends CI_Model {
         try {
             $this->db->select('*');
             $this->db->from('usuarios AS USR');
+            $this->db->where("USR.Estatus", "ACTIVO");
             $this->db->order_by('USR.nombre', 'ASC');
             $query = $this->db->get();
             return $query->result();

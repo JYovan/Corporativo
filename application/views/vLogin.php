@@ -1,14 +1,14 @@
 <div class="col-md-12 top100">
-    <div class="row"> 
+    <div class="row">
         <form id="frmLogin" name="frmLogin">
-            <fieldset>  
+            <fieldset>
                 <div class="col-md-4"></div>
                 <div class="col-md-4 animated fadeInUp" align="center">
                     <div id="vLogin" class="">
-                        <div id="form-login" class="shadow-effect zoomInDown"> 
-                            <div class="panel panel-primary pbr">
+                        <div id="form-login" class="shadow-effect zoomInDown">
+                            <div class="panel panel-info pbr">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">BIENVENIDO</h3> 
+                                    <h3 class="panel-title">BIENVENIDO</h3>
                                 </div>
                                 <div class="panel-body">
                                     <div class="form-group has-primary glow-blue animated fadeInUp">
@@ -16,16 +16,17 @@
                                     </div>
                                     <div class="form-group has-primary glow-blue animated fadeInUp">
                                         <input type="password"  id="txtPwd" name="password" placeholder="CONTRASEÑA" required="" class="form-control input-lg chat-input" />
-                                    </div> 
-                                    <div class="">  
-                                        <label class="">
-                                            <input id="chkRobot" name="chkRobot" type="checkbox" required="" class="option-input-check checkbox"> No soy un robot
-                                        </label>  
                                     </div>
                                     <div class="">
-                                        <span class="group-btn">     
-                                            <button id="btnReset" type="reset" class="btn btn-default btn3d btn-lg fa-lg"  data-toggle="tooltip" data-placement="top" title="" data-original-title="BORRAR"><i class="fa fa-exclamation faa-vertical fa-2x animated danger-icon"></i></button>  
-                                            <button id="btnOnLogIn" type="button" class="btn btn-success btn-lg fa-lg"  data-toggle="tooltip" data-placement="top" title="" data-original-title="ACCEDER"><span class="fa fa-check faa-horizontal fa-2x animated success-icon"></span></button>  
+                                        <label class="">
+                                            <input id="chkRobot" name="chkRobot" type="checkbox" required="" class="option-input-check checkbox"> No soy un robot
+                                        </label>
+                                    </div>
+                                    <div class="">
+                                        <span class="group-btn">
+                                            <br>
+                                            <button id="btnReset" type="reset" class="btn btn-default btn3d btn-lg fa-lg"  data-toggle="tooltip" data-placement="top" title="" data-original-title="BORRAR"><i class="fa fa-exclamation faa-vertical fa-2x animated danger-icon"></i></button>
+                                            <button id="btnOnLogIn" type="button" class="btn btn-success btn-lg fa-lg"  data-toggle="tooltip" data-placement="top" title="" data-original-title="ACCEDER"><span class="fa fa-check faa-horizontal fa-2x animated success-icon"></span></button>
                                         </span>
                                         <br>
                                         <div id="msgOnLogIn"><?php
@@ -50,22 +51,22 @@
                                         LOMA DEL PEDREGAL #417, COL. LOMAS DEL CAMPESTRE<br>
                                         LEÓN GUANAJUATO, MÉXICO. <br>
                                         TEL. +52 (477) 779 72 21   &nbsp; | &nbsp;  +52 (477) 779 72 27
-                                    </p> 
-                                </div> 
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
                 <div class="col-md-4"></div>
-                <canvas id="canvaxs">Canvas is not supported in your browser.</canvas> 
+                <canvas id="canvaxs">Canvas is not supported in your browser.</canvas>
             </fieldset>
         </form>
-    </div> 
-</div> 
+    </div>
+</div>
 
 <script>
     var navID = $("#navID");
-    $(document).ready(function () {
+    $(document).ready(function() {
         navID.addClass("hide");
 
         navID.addClass("hide");
@@ -81,7 +82,7 @@
         var txtUsr = $("#frmLogin #txtUsr");
         var txtPwd = $("#frmLogin #txtPwd");
 
-        btnLogin.click(function (e) {
+        btnLogin.click(function(e) {
             var frm = $("#frmLogin");
             console.log(frm);
             if (txtUsr.val() !== '' && txtPwd.val() !== '') {
@@ -94,16 +95,16 @@
                     url: base_url + 'index.php/ctrlsesion/onLogIn',
                     type: "POST",
                     data: frm.serialize()
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
 //                    console.log(data);
 //                    if (parseInt(data) === 1) {
                     location.href = base_url + 'index.php/ctrlsesion/';
 //                    } else {
 //                        onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'USUARIO O CONTRASEÑA INVÁLIDO.', 'danger');
 //                    }
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                     btnLogin.removeClass("disabled").find("span").removeClass("fa-cog fa-spin").addClass("fa-check");
                     console.log('PROCESADO LOGIN');
@@ -140,11 +141,11 @@
 
     /* when animating on canvas, it is best to use requestAnimationFrame instead of setTimeout or setInterval
      not supported in all browsers though and sometimes needs a prefix, so we need a shim*/
-    window.requestAnimFrame = (function () {
+    window.requestAnimFrame = (function() {
         return window.requestAnimationFrame ||
                 window.webkitRequestAnimationFrame ||
                 window.mozRequestAnimationFrame ||
-                function (callback) {
+                function(callback) {
                     window.setTimeout(callback, 1000 / 60);
                 };
     })();
@@ -222,7 +223,7 @@
     }
 
 // update firework
-    Firework.prototype.update = function (index) {
+    Firework.prototype.update = function(index) {
         // remove last item in coordinates array
         this.coordinates.pop();
         // add current coordinates to the start of the array
@@ -257,7 +258,7 @@
     };
 
 // draw firework
-    Firework.prototype.draw = function () {
+    Firework.prototype.draw = function() {
         ctx.beginPath();
         // move to the last tracked coordinate in the set, then draw a line to the current x and y
         ctx.moveTo(this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ]);
@@ -297,7 +298,7 @@
     }
 
 // update particle
-    Particle.prototype.update = function (index) {
+    Particle.prototype.update = function(index) {
         // remove last item in coordinates array
         this.coordinates.pop();
         // add current coordinates to the start of the array
@@ -317,7 +318,7 @@
     };
 
 // draw particle
-    Particle.prototype.draw = function () {
+    Particle.prototype.draw = function() {
         ctx.beginPath();
         // move to the last tracked coordinates in the set, then draw a line to the current x and y
         ctx.moveTo(this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ]);
@@ -393,18 +394,18 @@
 
 // mouse event bindings
 // update the mouse coordinates on mousemove
-    canvas.addEventListener('mousemove', function (e) {
+    canvas.addEventListener('mousemove', function(e) {
         mx = e.pageX - canvas.offsetLeft;
         my = e.pageY - canvas.offsetTop;
     });
 
 // toggle mousedown state and prevent canvas from being selected
-    canvas.addEventListener('mousedown', function (e) {
+    canvas.addEventListener('mousedown', function(e) {
         e.preventDefault();
         mousedown = true;
     });
 
-    canvas.addEventListener('mouseup', function (e) {
+    canvas.addEventListener('mouseup', function(e) {
         e.preventDefault();
         mousedown = false;
     });
@@ -416,9 +417,9 @@
 </script>
 
 <style>
-    canvas { 
+    canvas {
         cursor: crosshair;
-        display: block; 
+        display: block;
         position: absolute;
         left: 0px;
         top: 0px;

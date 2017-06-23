@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -216,7 +216,7 @@ class ctrlCobranza extends CI_Controller {
     public function addOrdenDeCobro() {
         try {
             extract(filter_input_array(INPUT_POST));
-//            var_dump(filter_input_array(INPUT_POST));
+            var_dump(filter_input_array(INPUT_POST));
             if (filter_var(filter_input(INPUT_POST, 'Folio'), FILTER_SANITIZE_STRING)) {
                 $data = array(
                     'Folio' => $Folio,
@@ -235,7 +235,29 @@ class ctrlCobranza extends CI_Controller {
                     'MontoContrato' => $MontoContrato
                 );
                 $ID = $this->cobranza_model->onAction("Cobranza", $data, "save", 0);
+//                var_dump($_FILES);
                 print 1;
+                $tmpFilePath = $_FILES['Factura']['tmp_name'];
+                if (!file_exists('uploads/Cobranza')) {
+                    mkdir('uploads/Cobranza', 0777, true);
+                }
+                if (!file_exists('uploads/Cobranza/OrdenesDeCobro')) {
+                    mkdir('uploads/Cobranza/OrdenesDeCobro', 0777, true);
+                }
+                if (!file_exists('uploads/Cobranza/OrdenesDeCobro/' . $ID)) {
+                    mkdir('uploads/Cobranza/OrdenesDeCobro/' . $ID, 0777, true);
+                }
+                $newFilePath = "uploads/Cobranza/OrdenesDeCobro/$ID/" . $_FILES['Factura']['name'];
+
+                //Upload the file into the temp dir
+                if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+                    print 'ARCHIVO SUBIDO CON EXITO';
+                    $data = array(
+                        'Url' => $newFilePath);
+                    $this->cobranza_model->onAction('Cobranza', $data, "update", array('ID', $ID));
+                } else {
+                    print 'NO SE SUBIO NI VERGA';
+                }
             } else {
                 print 0;
             }
@@ -312,11 +334,11 @@ class ctrlCobranza extends CI_Controller {
 
     public function onCancelarOrden() {
         try {
-            extract(filter_input_array(INPUT_POST)); 
-                $data = array(
-                    'Estatus' => 'INACTIVO'
-                );
-                $this->cobranza_model->onAction("CobranzaIngresos", $data, "update", array('ID', $ID)); 
+            extract(filter_input_array(INPUT_POST));
+            $data = array(
+                'Estatus' => 'INACTIVO'
+            );
+            $this->cobranza_model->onAction("Cobranza", $data, "update", array('ID', $ID));
         } catch (Exception $exc) {
             print $exc->getMessage();
         }
@@ -365,7 +387,30 @@ class ctrlCobranza extends CI_Controller {
                     'IdContrato' => $IdContratoU,
                     'MontoContrato' => $MontoContratoU
                 );
-                $ID = $this->cobranza_model->onAction("Cobranza", $data, "update", array('ID', $ID));
+                $this->cobranza_model->onAction("Cobranza", $data, "update", array('ID', $ID));
+                if (isset($_FILES['Factura']['name'])) {
+                    $tmpFilePath = $_FILES['Factura']['tmp_name'];
+                    if (!file_exists('uploads/Cobranza')) {
+                        mkdir('uploads/Cobranza', 0777, true);
+                    }
+                    if (!file_exists('uploads/Cobranza/OrdenesDeCobro')) {
+                        mkdir('uploads/Cobranza/OrdenesDeCobro', 0777, true);
+                    }
+                    if (!file_exists('uploads/Cobranza/OrdenesDeCobro/' . $ID)) {
+                        mkdir('uploads/Cobranza/OrdenesDeCobro/' . $ID, 0777, true);
+                    }
+                    $newFilePath = "uploads/Cobranza/OrdenesDeCobro/$ID/" . $_FILES['Factura']['name'];
+
+                    //Upload the file into the temp dir
+                    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+                        print 'ARCHIVO SUBIDO CON EXITO: ' . $_FILES['Factura']['name'];
+                        $data = array(
+                            'Url' => $newFilePath);
+                        $this->cobranza_model->onAction('Cobranza', $data, "update", array('ID', $ID));
+                    } else {
+                        print 'NO SE SUBIO: ' . $_FILES['Factura']['name'];
+                    }
+                }
             } else {
                 print 0;
             }
@@ -552,7 +597,7 @@ class ctrlCobranza extends CI_Controller {
 //                    for ($index = 0; $index < 500; $index++) {
 //                        $STR .="12345 ";
 //                    }
-//                    $pdf->MultiCell(175, 5, $STR); 
+//                    $pdf->MultiCell(175, 5, $STR);
                     $pdf->MultiCell(175, 5, utf8_decode($rdata->CONCEPTO . ' ' . $this->getNumeroXLetra(1)));
 
                     $pdf->SetTextColor(0, 0, 0);
@@ -864,7 +909,7 @@ class ctrlCobranza extends CI_Controller {
                 $pdf->SetY($YY);
                 $pdf->SetY($Y);
                 $pdf->SetX(143);
-//                $pdf->MultiCell(35, 3, utf8_decode("1234567890123456789012345678901234567890.")); 
+//                $pdf->MultiCell(35, 3, utf8_decode("1234567890123456789012345678901234567890."));
                 $pdf->MultiCell(30, 3, strtoupper(utf8_decode($rows[$index]->{"FACTURA"})));
                 $YY = ($YY > $pdf->GetY()) ? $YY : $pdf->GetY();
                 $pdf->SetFont('Arial', 'B', 5);
@@ -927,7 +972,7 @@ class ctrlCobranza extends CI_Controller {
 //                        $pdf->SetFont('Arial', 'B', 5.5);
 //                        $pdf->SetY(195);
 //                        $pdf->SetX(140);
-//                        $pdf->MultiCell(25, 10, $pages);  
+//                        $pdf->MultiCell(25, 10, $pages);
                 }
             }
             $YC = $pdf->GetY();
@@ -1200,7 +1245,7 @@ class ctrlCobranza extends CI_Controller {
 //                        $pdf->SetFont('Arial', 'B', 5.5);
 //                        $pdf->SetY(195);
 //                        $pdf->SetX(140);
-//                        $pdf->MultiCell(25, 10, $pages);  
+//                        $pdf->MultiCell(25, 10, $pages);
                 }
             }
             $YC = $pdf->GetY();
@@ -1750,7 +1795,7 @@ class ctrlCobranza extends CI_Controller {
 //                        $pdf->SetFont('Arial', 'B', 5.5);
 //                        $pdf->SetY(195);
 //                        $pdf->SetX(140);
-//                        $pdf->MultiCell(25, 10, $pages);  
+//                        $pdf->MultiCell(25, 10, $pages);
                 }
             }
             if ($pages === 1) {

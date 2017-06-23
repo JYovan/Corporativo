@@ -8,73 +8,73 @@ $indice = $_SESSION["ID"];
                 <div class="col-md-2 panel-title">
                     <a  href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
                         <span class="fa fa-arrow-left"></span>
-                    </a> 
+                    </a>
                 </div>
-                <div class="col-md-8"> 
+                <div class="col-md-8">
                     <div class="text-center cursor-hand" onclick="onHideFunctions()"><h3 class="text-white">MÓDULO PRECIOS DEL CEMENTO<span class="fa fa-chevron-up" ></span></h3></div>
                 </div>
-                
-                    <div class="col-md-2 panel-title" align="right">
-                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                    </div>
+
+                <div class="col-md-2 panel-title" align="right">
+                    <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                </div>
             </div>
             <div class="panel-body">
                 <fieldset  align="center">
-                    <div class="col-md-12" id="btnAccions">   
-                        <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo" > 
-                            <button class="btn btn-info btn-lg fa-lg" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
+                    <div class="col-md-12" id="btnAccions">
+                        <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo" >
+                            <button class="btn btn-info btn-lg fa-lg"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
                                     title=""  type="button"
                                     data-original-title="NUEVO">
                                 <span class="fa fa-plus fa-3x info-icon"></span>
                             </button>
                         </span>
-                        <button id="btnEdit" class="btn btn-success btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        <button id="btnEdit" class="btn btn-success btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="EDITAR">
                             <span class="fa fa-pencil fa-3x success-icon"></span>
                         </button>
-                        <button id="btnRefresh" class="btn btn-warning btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        <button id="btnRefresh" class="btn btn-warning btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="REFRESCAR">
                             <span class="fa fa-refresh fa-3x warning-icon"></span>
-                        </button> 
-                        <button id="btnEliminar" class="btn btn-danger btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        </button>
+                        <button id="btnEliminar" class="btn btn-danger btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="ELIMINAR">
                             <span class="fa fa-trash fa-3x danger-icon"></span>
-                        </button> 
-                        <button id="btnBuscar" class="btn btn-default btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        </button>
+                        <button id="btnBuscar" class="btn btn-default btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="BUSQUEDA">
                             <span class="fa fa-search fa-3x lime-icon"></span>
-                        </button> 
-                        <button id="btnComercializador" class="btn btn-default btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        </button>
+                        <button id="btnComercializador" class="btn btn-default btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="AGREGAR COMERCIALIZADOR">
                             <span class="fa fa-phone fa-3x purple-icon"></span>
                         </button>
-                        <button id="btnEditarComercializador" class="btn btn-default btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        <button id="btnEditarComercializador" class="btn btn-default btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="EDITAR COMERCIALIZADOR DE CEMENTO">
                             <span class="fa fa-pencil fa-3x cyan-icon"></span>
                         </button>
-                        <button id="btnVerComercializador" class="btn btn-default btn-lg fa-lg" 
-                                data-toggle="tooltip" 
-                                data-placement="top" 
+                        <button id="btnVerComercializador" class="btn btn-default btn-lg fa-lg"
+                                data-toggle="tooltip"
+                                data-placement="top"
                                 title=""  type="button"
                                 data-original-title="COMERCIALIZADORES DE CEMENTO">
                             <span class="fa fa-eye fa-3x brown-icon"></span>
@@ -83,35 +83,35 @@ $indice = $_SESSION["ID"];
                         <!--<hr>-->
                     </div>
                 </fieldset>
-                <div class="hide" id="dSearch"> 
+                <div class="hide" id="dSearch">
                     <form id="fSearch">
                         <div class="col-md-5">
-                            <input type="text" id="Inicio" name="Inicio" class="form-control cursor-hand" placeholder="FECHA INICIAL" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly=""> 
+                            <input type="text" id="Inicio" name="Inicio" class="form-control cursor-hand" placeholder="FECHA INICIAL" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
                         </div>
                         <div class="col-md-5">
-                            <input type="text" id="Fin" name="Fin" class="form-control cursor-hand" placeholder="FECHA FINAL" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly=""> 
+                            <input type="text" id="Fin" name="Fin" class="form-control cursor-hand" placeholder="FECHA FINAL" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
                         </div>
                         <div class="col-md-2">
-                            <button type="button" id="btnBuscarAhora" class="btn btn3d btn-default btn-lg fa-lg" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
+                            <button type="button" id="btnBuscarAhora" class="btn btn3d btn-default btn-lg fa-lg"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
                                     title=""  type="button"
                                     data-original-title="BUSCAR"><span class="fa fa-search fa-2x sea-icon"></span></button>
-                            <button type="button" class="btn btn3d btn-default fa-lg" id="btnReportePrecioCemento" name="btnReportePrecioCemento" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
+                            <button type="button" class="btn btn3d btn-default fa-lg" id="btnReportePrecioCemento" name="btnReportePrecioCemento"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
                                     title=""  type="button"
                                     data-original-title="GENERAR REPORTE"><span class="fa fa-check fa-2x"></span></button>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-12" id="msgCemento"></div> 
-                <div class="col-md-12" id="rCemento"></div> 
+                <div class="col-md-12" id="msgCemento"></div>
+                <div class="col-md-12" id="rCemento"></div>
 
             </div>
         </div>
     </div>
-</div>  
+</div>
 <div class="col-md-6 margin-15-top">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -132,14 +132,14 @@ $indice = $_SESSION["ID"];
         </div>
     </div>
 </div>
-</div> 
-<!--CHART--> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script> 
+</div>
+<!--CHART-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script>
 <script>
                         var optionsBar = {
                             responsive: true,
                             tooltips: {
-                                custom: function (tooltip) {
+                                custom: function(tooltip) {
                                     // tooltip will be false if tooltip is not visible or should be hidden
                                     if (!tooltip) {
                                         return;
@@ -251,7 +251,7 @@ $indice = $_SESSION["ID"];
 
 
                         Chart.plugins.register({
-                            beforeDraw: function (chartInstance) {
+                            beforeDraw: function(chartInstance) {
                                 var ctx = chartInstance.chart.ctx;
                                 ctx.fillStyle = "white";
                                 ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
@@ -275,7 +275,7 @@ $indice = $_SESSION["ID"];
 
                         <div class="col-md-6">
                             <label for="">FECHA</label>
-                            <input id="Fecha" name="Fecha" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly=""> 
+                            <input id="Fecha" name="Fecha" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
                         </div>
 
                         <div class="col-md-6">
@@ -286,7 +286,7 @@ $indice = $_SESSION["ID"];
                         <DIV class="col-md-12"></DIV>
                         <div class="col-md-6">
                             <label for="">NOMBRE DE QUIEN ATIENDE</label>
-                            <input type="text" id="Atiende" name="Atiende" class="form-control" placeholder="EJ: FULANITO PEREZ" > 
+                            <input type="text" id="Atiende" name="Atiende" class="form-control" placeholder="EJ: FULANITO PEREZ" >
                         </div>
 
                         <div class="col-md-6">
@@ -306,13 +306,12 @@ $indice = $_SESSION["ID"];
                         <div class="col-md-4">
                             <label for="">CEMENTO MORTERO</label>
                             <input type="number" id="PrecioCmortero" name="PrecioCmortero" class="form-control"  min="0" placeholder="0.0">
-                        </div> 
-                        <div id="msgNuevo" class="col-md-12"></div> 
+                        </div>
+                        <div id="msgNuevo" class="col-md-12"></div>
                     </fieldset>
                 </div>
-            </form> 
+            </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-2x"></span></button>
                 <button class="btn btn-lg fa-lg btn-success btn-lg fa-lg" type="button" id="btnGuardar" name="btnGuardar"  data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR" ><span class="fa fa-check fa-2x"></span></button>
             </div>
         </div><!-- /.modal-content -->
@@ -332,12 +331,12 @@ $indice = $_SESSION["ID"];
 
                         <div class="col-md-12">
                             <label for="">ID</label>
-                            <input id="ID" name="ID" class="form-control" readonly=""> 
+                            <input id="ID" name="ID" class="form-control" readonly="">
                         </div>
 
                         <div class="col-md-6">
                             <label for="">FECHA</label>
-                            <input id="Fecha" name="Fecha" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly=""> 
+                            <input id="Fecha" name="Fecha" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
                         </div>
 
                         <div class="col-md-6">
@@ -348,7 +347,7 @@ $indice = $_SESSION["ID"];
                         <div class="col-md-12"></div>
                         <div class="col-md-6">
                             <label for="">NOMBRE DE QUIEN ATIENDE</label>
-                            <input type="text" id="Atiende" name="Atiende" class="form-control" placeholder="EJ: FULANITO PEREZ" > 
+                            <input type="text" id="Atiende" name="Atiende" class="form-control" placeholder="EJ: FULANITO PEREZ" >
                         </div>
 
                         <div class="col-md-6">
@@ -368,13 +367,12 @@ $indice = $_SESSION["ID"];
                         <div class="col-md-4">
                             <label for="">CEMENTO MORTERO</label>
                             <input type="number" id="PrecioCmortero" name="PrecioCmortero" class="form-control"  min="0" placeholder="0.0">
-                        </div> 
-                        <div id="msgNuevo" class="col-md-12"></div> 
+                        </div>
+                        <div id="msgNuevo" class="col-md-12"></div>
                     </fieldset>
                 </div>
-            </form> 
+            </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-2x"></span></button>
                 <button class="btn btn-lg fa-lg btn-success btn-lg fa-lg" type="button" id="btnSave" name="btnSave"  data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR" ><span class="fa fa-check fa-2x"></span></button>
             </div>
         </div><!-- /.modal-content -->
@@ -387,7 +385,7 @@ $indice = $_SESSION["ID"];
             <div id="hmsgModals" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h2 class="text-center modal-title" id="myModalLabel">NUEVO COMERCIALIZADOR</h2>
-            </div> 
+            </div>
             <form id="frmComercializador">
                 <div id="messages-result" class="modal-body text-center">
                     <fieldset>
@@ -395,23 +393,23 @@ $indice = $_SESSION["ID"];
                         <div class="col-md-12">
                             <label for="">NOMBRE</label>
                             <input type="text" id="Nombre" name="Nombre" class="form-control" placeholder="EJ: MARCIANITO" />
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">TELEFONO</label>
                             <input type="tel" id="Tel" name="Tel" class="form-control" placeholder="EJ: 4771408263" />
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">PAGINA</label>
                             <input type="text" id="Pagina" name="Pagina" class="form-control" placeholder="EJ: MARCIANITO.COM" />
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">CALLE</label>
                             <input type="text" id="Direccion" name="Direccion" class="form-control" placeholder="EJ: CALLE, ENTRE CALLES"/>
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">NUMERO</label>
                             <input type="text" id="Numero" name="Numero" class="form-control" placeholder="EJ: CALLE, ENTRE CALLES"/>
-                        </div> 
+                        </div>
                         <div class="col-md-4">
                             <label for="">PAIS</label>
                             <select id="Pais" name="Pais" class="form-control"></select>
@@ -424,12 +422,11 @@ $indice = $_SESSION["ID"];
                             <label for="">MUNICIPIO</label>
                             <select id="Ciudad" name="Ciudad" class="form-control"></select>
                         </div>
-                    </fieldset> 
+                    </fieldset>
 
                 </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
                 <button class="btn btn-lg fa-lg btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnSave" name="btnSave" ><span class="fa fa-check fa-3x"></span></button>
             </div>
         </div>
@@ -442,7 +439,7 @@ $indice = $_SESSION["ID"];
             <div id="hmsgModals" class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h2 class="text-center modal-title" id="myModalLabel">MODIFICAR COMERCIALIZADOR</h2>
-            </div> 
+            </div>
             <form id="frmComercializador">
                 <div id="messages-result" class="modal-body text-center">
                     <fieldset>
@@ -453,23 +450,23 @@ $indice = $_SESSION["ID"];
                         <div class="col-md-12">
                             <label for="">NOMBRE</label>
                             <input type="text" id="Nombre" name="Nombre" class="form-control" placeholder="EJ: MARCIANITO" />
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">TELEFONO</label>
                             <input type="tel" id="Tel" name="Tel" class="form-control" placeholder="EJ: 4771408263" />
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">PAGINA</label>
                             <input type="text" id="Pagina" name="Pagina" class="form-control" placeholder="EJ: MARCIANITO.COM" />
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">CALLE</label>
                             <input type="text" id="Direccion" name="Direccion" class="form-control" placeholder="EJ: CALLE, ENTRE CALLES"/>
-                        </div> 
+                        </div>
                         <div class="col-md-6">
                             <label for="">NUMERO</label>
                             <input type="text" id="Numero" name="Numero" class="form-control" placeholder="EJ: CALLE, ENTRE CALLES"/>
-                        </div> 
+                        </div>
                         <div class="col-md-4">
                             <label for="">PAIS</label>
                             <input type="text" id="txtPais" name="txtPais" class="form-control " readonly="">
@@ -489,7 +486,6 @@ $indice = $_SESSION["ID"];
                 </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
                 <button class="btn btn-lg fa-lg btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnSave" name="btnSave" ><span class="fa fa-check fa-3x"></span></button>
             </div>
         </div>
@@ -525,9 +521,9 @@ $indice = $_SESSION["ID"];
 
     var btnReportePrecioCemento = $("#btnReportePrecioCemento");
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        btnReportePrecioCemento.click(function () {
+        btnReportePrecioCemento.click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "ESPERE..."
@@ -535,18 +531,18 @@ $indice = $_SESSION["ID"];
 
             $.ajax({
                 url: master_url + 'onGenerarReporteDePrecios',
-                type: "POST", 
+                type: "POST",
                 data: {
                     Inicio: Inicio.val(),
                     Fin: Fin.val()
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
-                console.log(data,x,jq);
+                console.log(data, x, jq);
                 window.open(data, '_blank');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('OPERACION COMPLETADA: REPORTE GENERAL ACUMULADO');
                 HoldOn.close();
                 $("#btnReporteAcumuladoGeneral").find("span").addClass("fa-file-text");
@@ -558,20 +554,20 @@ $indice = $_SESSION["ID"];
         getComercializadores();
 
 //        START BUTTONS
-        mdlComercializadorUpdate.find("#Pais").change(function () {
+        mdlComercializadorUpdate.find("#Pais").change(function() {
             mdlComercializadorUpdate.find("#txtPais").val(mdlComercializadorUpdate.find("#Pais").val());
         });
 
-        mdlComercializadorUpdate.find("#Estado").change(function () {
+        mdlComercializadorUpdate.find("#Estado").change(function() {
             mdlComercializadorUpdate.find("#txtEstado").val(mdlComercializadorUpdate.find("#Estado").val());
         });
 
-        mdlComercializadorUpdate.find("#Ciudad").change(function () {
+        mdlComercializadorUpdate.find("#Ciudad").change(function() {
             mdlComercializadorUpdate.find("#txtCiudad").val(mdlComercializadorUpdate.find("#Ciudad").val());
         });
 
 
-        btnUpdateComercializador.click(function () {
+        btnUpdateComercializador.click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "GUARDANDO..."
@@ -584,19 +580,19 @@ $indice = $_SESSION["ID"];
                 contentType: false,
                 processData: false,
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 btnVerComercializador.trigger('click');
                 mdlComercializadorUpdate.modal('hide');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('OK');
                 HoldOn.close();
             });
         });
 
-        btnEditarComercializador.click(function () {
+        btnEditarComercializador.click(function() {
             getPaises();
             getEstados();
             $.ajax({
@@ -606,7 +602,7 @@ $indice = $_SESSION["ID"];
                 data: {
                     ID: temp
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 var dtm = data[0];
                 console.log(dtm);
                 getCiudadesXID(dtm.Estado);
@@ -623,18 +619,18 @@ $indice = $_SESSION["ID"];
                 mdlComercializadorUpdate.find("#frmComercializador #Ciudad").select2("val", mdlComercializadorUpdate.find("#frmComercializador #txtCiudad").val());
 
                 mdlComercializadorUpdate.modal('show');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnVerComercializador.click(function () {
+        btnVerComercializador.click(function() {
             getRecordsComercializadores();
         });
 
-        btnSaveComercializador.click(function () {
+        btnSaveComercializador.click(function() {
 
             HoldOn.open({
                 theme: "sk-bounce",
@@ -648,34 +644,34 @@ $indice = $_SESSION["ID"];
                 contentType: false,
                 processData: false,
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 btnVerComercializador.trigger('click');
                 mdlComercializador.modal('hide');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('OK');
                 HoldOn.close();
             });
         });
 
-        btnComercializador.click(function () {
+        btnComercializador.click(function() {
             getPaises();
             getCiudades();
             getEstados();
             mdlComercializador.modal('show');
         });
 
-        btnBuscarAhora.click(function () {
+        btnBuscarAhora.click(function() {
             getRecordsByDate();
         });
 
-        btnBuscar.click(function () {
+        btnBuscar.click(function() {
             $("#dSearch").toggleClass("hide");
         });
 
-        btnEliminar.click(function () {
+        btnEliminar.click(function() {
             console.log(temp);
             if (temp !== undefined && temp !== null && temp !== '') {
                 $.ajax({
@@ -685,13 +681,13 @@ $indice = $_SESSION["ID"];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     onNotify('<span class="fa fa-check fa-lg"></span>', 'REGISTRO ELIMINADO', 'success');
                     btnRefresh.trigger('click');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     console.log('')
                 });
             } else {
@@ -699,11 +695,11 @@ $indice = $_SESSION["ID"];
             }
         });
 
-        btnRefresh.click(function () {
+        btnRefresh.click(function() {
             onGetRecords();
         });
 
-        btnSavemdlUpdate.click(function () {
+        btnSavemdlUpdate.click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "ESPERE..."
@@ -713,20 +709,20 @@ $indice = $_SESSION["ID"];
                 type: "POST",
                 url: master_url + 'onUpdatePrecioCemento',
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 btnRefresh.trigger('click');
                 mdlUpdate.modal('hide');
                 onNotify('<span class="fa fa-check fa-lg"></span>', 'REGISTRO ACTUALIZADO', 'success');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SE PUDO ACTUALIZAR.', 'danger');
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
                 console.log('ACTION COMPLETADA');
             });
         });
-        btnGuardar.click(function () {
+        btnGuardar.click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "ESPERE..."
@@ -736,21 +732,21 @@ $indice = $_SESSION["ID"];
                 type: "POST",
                 url: master_url + 'onAddPrecioCemento',
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 btnRefresh.trigger('click');
                 mdlNuevo.modal('hide');
                 onNotify('<span class="fa fa-check fa-lg"></span>', 'REGISTRO AGREGADO', 'success');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SE PUDO REGISTRAR.', 'danger');
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
                 console.log('ACTION COMPLETADA');
             });
         });
 
-        btnEdit.click(function () {
+        btnEdit.click(function() {
             if (temp !== undefined && temp !== null && temp !== '') {
                 HoldOn.open({
                     theme: "sk-bounce",
@@ -763,7 +759,7 @@ $indice = $_SESSION["ID"];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     var dtm = data[0];
                     if (dtm !== undefined) {
@@ -777,9 +773,9 @@ $indice = $_SESSION["ID"];
                         mdlUpdate.find("#PrecioCmortero").val(dtm.PrecioCmortero);
                         mdlUpdate.modal('show');
                     }
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
 
                 });
@@ -808,12 +804,12 @@ $indice = $_SESSION["ID"];
                     Inicio: Inicio.val(),
                     Fin: Fin.val()
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 var tblName = "tblCemento";
                 if (data.length > 0) {
                     $("#rCemento").html(getTable("tblCemento", data));
 
-                    $('#tblCemento tfoot th').each(function () {
+                    $('#tblCemento tfoot th').each(function() {
                         var title = $(this).text();
                         $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                     });
@@ -821,7 +817,7 @@ $indice = $_SESSION["ID"];
                     var tblSelected = $('#tblCemento').DataTable(tableOptions);
 
                     //CLICK SELECTED ROW
-                    $('#tblCemento tbody').on('click', 'tr', function () {
+                    $('#tblCemento tbody').on('click', 'tr', function() {
                         $("#tblCemento").find("tr").removeClass("success");
                         $("#tblCemento").find("tr").removeClass("warning");
                         var id = this.id;
@@ -838,7 +834,7 @@ $indice = $_SESSION["ID"];
                     });
 
                     //DB CLICK FOR EDIT
-                    $('#tblCemento tbody').on('dblclick', 'tr', function () {
+                    $('#tblCemento tbody').on('dblclick', 'tr', function() {
                         $("#" + tblName).find("tr").removeClass("warning");
                         $(this).addClass('warning');
                         var dtm = tblSelected.row(this).data();
@@ -851,9 +847,9 @@ $indice = $_SESSION["ID"];
                     });
 
                     // Apply the search
-                    tblSelected.columns().every(function () {
+                    tblSelected.columns().every(function() {
                         var that = this;
-                        $('input', this.footer()).on('keyup change', function () {
+                        $('input', this.footer()).on('keyup change', function() {
                             if (that.search() !== this.value) {
                                 that.search(this.value).draw();
                             }
@@ -867,9 +863,9 @@ $indice = $_SESSION["ID"];
                             '</div>');
                     console.log(data, x, jq);
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('ACTION COMPLETADA');
                 HoldOn.close();
             });
@@ -887,12 +883,12 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getRecords',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             var tblName = "tblCemento";
             if (data.length > 0) {
                 $("#rCemento").html(getTable("tblCemento", data));
 
-                $('#tblCemento tfoot th').each(function () {
+                $('#tblCemento tfoot th').each(function() {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
@@ -900,7 +896,7 @@ $indice = $_SESSION["ID"];
                 var tblSelected = $('#tblCemento').DataTable(tableOptions);
 
                 //CLICK SELECTED ROW
-                $('#tblCemento tbody').on('click', 'tr', function () {
+                $('#tblCemento tbody').on('click', 'tr', function() {
                     $("#tblCemento").find("tr").removeClass("success");
                     $("#tblCemento").find("tr").removeClass("warning");
                     var id = this.id;
@@ -917,7 +913,7 @@ $indice = $_SESSION["ID"];
                 });
 
                 //DB CLICK FOR EDIT
-                $('#tblCemento tbody').on('dblclick', 'tr', function () {
+                $('#tblCemento tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -930,9 +926,9 @@ $indice = $_SESSION["ID"];
                 });
 
                 // Apply the search
-                tblSelected.columns().every(function () {
+                tblSelected.columns().every(function() {
                     var that = this;
-                    $('input', this.footer()).on('keyup change', function () {
+                    $('input', this.footer()).on('keyup change', function() {
                         if (that.search() !== this.value) {
                             that.search(this.value).draw();
                         }
@@ -946,9 +942,9 @@ $indice = $_SESSION["ID"];
                         '</div>');
                 console.log(data, x, jq);
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -964,12 +960,12 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getRecordsComercializadores',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             var tblName = "tblComercializadores";
             if (data.length > 0) {
                 $("#rCemento").html(getTable("tblComercializadores", data));
 
-                $('#tblComercializadores tfoot th').each(function () {
+                $('#tblComercializadores tfoot th').each(function() {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
@@ -977,7 +973,7 @@ $indice = $_SESSION["ID"];
                 var tblSelected = $('#tblComercializadores').DataTable(tableOptions);
 
                 //CLICK SELECTED ROW
-                $('#tblComercializadores tbody').on('click', 'tr', function () {
+                $('#tblComercializadores tbody').on('click', 'tr', function() {
                     $("#tblComercializadores").find("tr").removeClass("success");
                     $("#tblComercializadores").find("tr").removeClass("warning");
                     var id = this.id;
@@ -994,7 +990,7 @@ $indice = $_SESSION["ID"];
                 });
 
                 //DB CLICK FOR EDIT
-                $('#tblComercializadores tbody').on('dblclick', 'tr', function () {
+                $('#tblComercializadores tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -1007,9 +1003,9 @@ $indice = $_SESSION["ID"];
                 });
 
                 // Apply the search
-                tblSelected.columns().every(function () {
+                tblSelected.columns().every(function() {
                     var that = this;
-                    $('input', this.footer()).on('keyup change', function () {
+                    $('input', this.footer()).on('keyup change', function() {
                         if (that.search() !== this.value) {
                             that.search(this.value).draw();
                         }
@@ -1023,9 +1019,9 @@ $indice = $_SESSION["ID"];
                         '</div>');
                 console.log(data, x, jq);
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -1035,10 +1031,10 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getMarcas',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.ID + '">' + v.MARCA + '</option>';
                     });
                     $(".modal #Marca").html(options);
@@ -1046,7 +1042,7 @@ $indice = $_SESSION["ID"];
                 } else {
                 }
             },
-            error: function (x, y, z) {
+            error: function(x, y, z) {
                 console.log(x, y, z);
             }
         });
@@ -1056,10 +1052,10 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getPaises',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.ID + '">' + v.PAIS + '</option>';
                     });
                     $(".modal #Pais").html(options);
@@ -1067,7 +1063,7 @@ $indice = $_SESSION["ID"];
                 } else {
                 }
             },
-            error: function (x, y, z) {
+            error: function(x, y, z) {
                 console.log(x, y, z);
             }
         });
@@ -1078,10 +1074,10 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getCiudades',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.ID + '">' + v.CIUDAD + '</option>';
                     });
                     $(".modal #Ciudad").html(options);
@@ -1089,7 +1085,7 @@ $indice = $_SESSION["ID"];
                 } else {
                 }
             },
-            error: function (x, y, z) {
+            error: function(x, y, z) {
                 console.log(x, y, z);
             }
         });
@@ -1103,10 +1099,10 @@ $indice = $_SESSION["ID"];
             data: {
                 ID: ID
             }
-        }).done(function (data) {
+        }).done(function(data) {
             var options = '<option value=""></option>';
             if (data !== undefined) {
-                $.each(data, function (k, v) {
+                $.each(data, function(k, v) {
                     options = options + '<option value="' + v.ID + '">' + v.CIUDAD + '</option>';
 //                    console.log(v);
                 });
@@ -1114,7 +1110,7 @@ $indice = $_SESSION["ID"];
 
             } else {
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
         });
     }
@@ -1124,10 +1120,10 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getEstados',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.ID + '">' + v.ESTADOS + '</option>';
                     });
                     $(".modal #Estado").html(options);
@@ -1135,7 +1131,7 @@ $indice = $_SESSION["ID"];
                 } else {
                 }
             },
-            error: function (x, y, z) {
+            error: function(x, y, z) {
                 console.log(x, y, z);
             }
         });
@@ -1146,10 +1142,10 @@ $indice = $_SESSION["ID"];
             url: master_url + 'getComercializadores',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.ID + '">' + v.COMERCIALIZADOR + '</option>';
                     });
                     $(".modal #Comercializador").html(options);
@@ -1157,7 +1153,7 @@ $indice = $_SESSION["ID"];
                 } else {
                 }
             },
-            error: function (x, y, z) {
+            error: function(x, y, z) {
                 console.log(x, y, z);
             }
         });

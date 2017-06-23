@@ -1,6 +1,6 @@
 <!-- configuramos el plugin-->
 
-<div class="container">	
+<div class="container">
     <table width="100%">
         <tr>
             <td>
@@ -18,11 +18,11 @@
         </tr>
     </table>
 
-<?php echo form_open_multipart('controlador/RegistroVivi'); ?> 
+    <?php echo form_open_multipart('controlador/RegistroVivi'); ?>
     <table width="100%" border="1" bordercolor="#FF6633">
         <tr>
             <td>
-                <table width="100%">    
+                <table width="100%">
                     <tr>
                         <td bgcolor="#ff6600" align="center">
                             <div class="col-xs-12 col-sm-12">
@@ -39,9 +39,9 @@
                                 <div class="col-md-8 col-xs-12">
                                     <select class="form-control" id="Cliente" name="Cliente" >
                                         <option value="0">Selecciona</option>
-                                        <?php foreach ($Clientes as $Clientes1) { ?> 
+                                        <?php foreach ($Clientes as $Clientes1) { ?>
                                             <option value="<?php echo $Clientes1->ID; ?>"><?php echo $Clientes1->Ncliente; ?></option>
-<?php } ?>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -70,9 +70,8 @@
                                 <div class="col-md-8 col-xs-12">
                                     <select class="form-control" id="Ndesarrollo" name="Ndesarrollo" >
                                         <option value="0">Selecciona</option>
-                                        <?php foreach ($Proyectos as $Proyectos1) { ?> 
-                                            <option value="<?php echo $Proyectos1->ID; ?>"><?php echo $Proyectos1->Proyecto; ?></option>
-<?php } ?>
+                                        <?php foreach ($Proyectos as $Proyectos1) { ?>
+                                            <option value="<?php echo $Proyectos1->ID; ?>"><?php echo $Proyectos1->Proyecto; ?></option><?php } ?>
                                     </select>
                                 </div>
                             </div>
@@ -87,9 +86,9 @@
                                 <div class="col-md-9 col-xs-12">
                                     <select class="form-control" id="Vivienda" name="Vivienda" >
                                         <option value="0">Selecciona</option>
-                                        <?php foreach ($Modelo as $Modelo1) { ?> 
+                                        <?php foreach ($Modelo as $Modelo1) { ?>
                                             <option value="<?php echo $Modelo1->ID; ?>"><?php echo $Modelo1->Modelo; ?></option>
-<?php } ?>
+                                        <?php } ?>
                                     </select>
                                     </br>
                                 </div>
@@ -105,15 +104,15 @@
                                 <div class="col-md-8 col-xs-12">
                                     <select class="form-control" id="Prototipo" name="Prototipo" >
                                         <option value="0">Selecciona</option>
-                                        <?php foreach ($Prototipo as $Prototipo1) { ?> 
+                                        <?php foreach ($Prototipo as $Prototipo1) { ?>
                                             <option value="<?php echo $Prototipo1->ID; ?>"><?php echo $Prototipo1->Prototipo; ?></option>
-<?php } ?>
+                                        <?php } ?>
                                     </select>
                                     </br>
                                 </div>
                             </div>
                         </td>
-                    </tr>    
+                    </tr>
                     <tr>
                         <td>
                             <div class="col-xs-12 col-sm-12">
@@ -125,33 +124,33 @@
                         <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Lote:</label><br>		
+                                    <label for="Calle" class="control-label">Lote:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Lote" id="Lote" required>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Lote" id="Lote" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Esquina:</label><br>		
+                                    <label for="Calle" class="control-label">Esquina:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <input type="radio" value="Sí" name="Esquina" id="Esquina" required/>
                                     Sí
                                     <input type="radio" value="No" name="Esquina" id="Esquina" required/>
-                                    No		
-                                </div>		
+                                    No
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Terreno excedente:</label><br>		
+                                    <label for="Calle" class="control-label">Terreno excedente:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <input type="radio" value="Sí" name="Excedente" id="Excedente" required/>
                                     Sí
                                     <input type="radio" value="No" name="Excedente" id="Excedente" required/>
-                                    No		
-                                </div>		
+                                    No
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -159,55 +158,27 @@
                         <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Número de vivienda:</label><br>		
+                                    <label for="Calle" class="control-label">Número de vivienda:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Nvivienda" id="Nvivienda" required>		
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-xs-12">
-                                <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Manzana:</label><br>		
-                                </div>
-                                <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Manzana" id="Manzana" required>		
-                                </div>		
-                            </div>
-                            <div class="col-md-4 col-xs-12">
-                                <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Calle:</label><br>		
-                                </div>
-                                <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="NCalle" id="NCalle" required>	
-                                </div>		
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="col-md-4 col-xs-12">
-                                <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Superficie del terreno excedente:</label><br>		
-                                </div>
-                                <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Sexcedente" id="Sexcedente" required>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Nvivienda" id="Nvivienda" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Precio del terreno excedente:</label><br>		
+                                    <label for="Calle" class="control-label">Manzana:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Pexcedente" id="Pexcedente" required>		
-                                </div>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Manzana" id="Manzana" required>
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Precio total de la vivienda:</label><br>		
+                                    <label for="Calle" class="control-label">Calle:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Pvivienda" id="Pvivienda" required>	
-                                </div>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="NCalle" id="NCalle" required>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -215,15 +186,43 @@
                         <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Cantidad que entrega para apartar vivienda:</label><br>		
+                                    <label for="Calle" class="control-label">Superficie del terreno excedente:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Capartado" id="Capartado" required>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Sexcedente" id="Sexcedente" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Forma de entrega de apartado:</label><br>		
+                                    <label for="Calle" class="control-label">Precio del terreno excedente:</label><br>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Pexcedente" id="Pexcedente" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                                <div class="col-md-12 col-xs-12">
+                                    <label for="Calle" class="control-label">Precio total de la vivienda:</label><br>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Pvivienda" id="Pvivienda" required>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="col-md-4 col-xs-12">
+                                <div class="col-md-12 col-xs-12">
+                                    <label for="Calle" class="control-label">Cantidad que entrega para apartar vivienda:</label><br>
+                                </div>
+                                <div class="col-md-12 col-xs-12">
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Capartado" id="Capartado" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                                <div class="col-md-12 col-xs-12">
+                                    <label for="Calle" class="control-label">Forma de entrega de apartado:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <select class="form-control" id="Fapartado" name="Fapartado" >
@@ -234,16 +233,16 @@
                                         <option value="Cheque">Cheque</option>
                                         <option value="Especie">Especie</option>
                                         <option value="Contrarecibos">Contrarecibos</option>
-                                    </select>		
-                                </div>		
+                                    </select>
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Referencia:</label><br>		
+                                    <label for="Calle" class="control-label">Referencia:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Referencia" id="Referencia" required>	
-                                </div>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Referencia" id="Referencia" required>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -251,19 +250,19 @@
                         <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Fecha de entrega del apartado:</label><br>		
+                                    <label for="Calle" class="control-label">Fecha de entrega del apartado:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input value="<?php echo date("d/m/Y") ?>" class="form-control" type="text" name="Fechaapartado" id="datepicker" required>		
+                                    <input value="<?php echo date("d/m/Y") ?>" class="form-control" type="text" name="Fechaapartado" id="datepicker" required>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Cliente que entrega el apartado:</label><br>		
+                                    <label for="Calle" class="control-label">Cliente que entrega el apartado:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Clientapartado" id="Clientapartado" required>		
-                                </div>		
+                                    <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="Clientapartado" id="Clientapartado" required>
+                                </div>
                             </div>
 
 
@@ -288,24 +287,24 @@
                         <td>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Personal de la corporación que recibe el apartado:</label><br>		
+                                    <label for="Calle" class="control-label">Personal de la corporación que recibe el apartado:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
                                     <select class="form-control" id="Papartado" name="Papartado" >
                                         <option value="0">Selecciona</option>
-                                        <?php foreach ($USUARIOS as $USUARIOS1) { ?> 
+                                        <?php foreach ($USUARIOS as $USUARIOS1) { ?>
                                             <option value="<?php echo $USUARIOS1->Id; ?>"><?php echo $USUARIOS1->nombre . " " . $USUARIOS1->apaterno . " " . $USUARIOS1->amaterno; ?></option>
-<?php } ?>
-                                    </select>		
+                                        <?php } ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                                 <div class="col-md-12 col-xs-12">
-                                    <label for="Calle" class="control-label">Fecha de termino para traer la documentación para trámite de crédito de compraventa:</label><br>		
+                                    <label for="Calle" class="control-label">Fecha de termino para traer la documentación para trámite de crédito de compraventa:</label><br>
                                 </div>
                                 <div class="col-md-12 col-xs-12">
-                                    <input  value="<?php echo date("d/m/Y") ?>"class="form-control" type="text" name="FtCredito" id="datepicker2" required>		
-                                </div>		
+                                    <input  value="<?php echo date("d/m/Y") ?>"class="form-control" type="text" name="FtCredito" id="datepicker2" required>
+                                </div>
                             </div>
                             <div class="col-md-4 col-xs-12">
                             </div>
@@ -321,14 +320,14 @@
                             </div>
                         </td>
                     </tr>
-                </table>  
+                </table>
             </td>
         </tr>
     </table>
 </form>
 
-<?php echo form_open_multipart('controlador/xxx'); ?>     
-<table width="100%">    
+<?php echo form_open_multipart('controlador/xxx'); ?>
+<table width="100%">
     <tr>
         <td>
             <div class="col-md-12 col-xs-12">
@@ -340,8 +339,8 @@
             </div>
         </td>
     </tr>
-</table> 
-</form> 
+</table>
+</form>
 </div>
 <script>
     cli.config.Estado();
@@ -349,4 +348,3 @@
     cli.config.RCliente();
     cli.config.Proyecto();
 </script>
-

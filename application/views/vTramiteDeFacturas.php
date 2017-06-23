@@ -1,276 +1,261 @@
-<div class="row"> 
-    <div class="col-md-12 margin-15-top-bottom">  
-        <!------------------------OPTIONS------------------------------------------>
-        <div class="panel panel-primary container-fluid">
-            <div class="panel-heading row">
-                <div class="col-md-2 panel-title">
-                    <a  href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
-                        <span class="fa fa-arrow-left"></span>
-                    </a> 
-                </div>
-                <div class="col-md-8"> 
-                    <div class="text-center cursor-hand " onclick="onHideFunctions()"><h3 class="text-white">MÓDULO DE TRÁMITE DE FACTURAS <span class="fa fa-chevron-up" ></span></h3></div>
-                </div> 
-                    <div class="col-md-2 panel-title" align="right">
-                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                    </div>
-            </div>
-            <div class="panel-body">
+
+<!------------------------OPTIONS------------------------------------------>
+<div class="panel panel-success">
+    <div class="panel-heading" align="center">
+        <h3 class="panel-title">TRAMITE DE FACTURAS</h3>
+    </div>
+    <div class="panel-body">
+        <fieldset>
+
+            <div id="btnAccions" align="center" class="col-md-12">
                 <fieldset>
+                    <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo" >
+                        <button id="btnNuevo" class="btn  btn-default "  data-toggle="tooltip" data-placement="top" title="" data-original-title="NUEVO">
+                            <span class="fa fa-plus  info-icon"></span><br>NUEVO</button>
+                    </span>
+                    <button id="btnEditarTramiteFactura" class="btn btn3d  btn-default animated fadeInDown  "
+                            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MODIFICAR"  >
+                        <span class="fa fa-pencil  success-icon"></span><br>EDITAR</button>
+                    <button id="btnReCargarTramiteFactura" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="REFRESCAR"  >
+                        <span class="fa fa-refresh  warning-icon"></span><br>REFRESCAR</button>
+                    <button id="btnCancelarFactura" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CANCELAR FACTURA"  >
+                        <span class="fa fa-times  danger-icon"></span><br>CANCELAR FACTURA</button>
+                    <button id="btnFacturasCanceladas" class="btn btn3d  btn-default animated fadeInDown  hide"
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="FACTURAS CANCELADAS"  >
+                        <span class="fa fa-eye-slash  sea-icon"></span><br>CANCELAR FACTURA</button>
+                    <button id="btnReporteAcumuladoGeneral" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="REPORTE ACUMULADO GENERAL"  >
+                        <span class="fa fa-file-text  brown-icon"></span><br>ACUMULADO GENERAL
+                    </button>
+                    <button id="btnReporteTramiteFactura" class="btn btn3d  btn-default animated fadeInDown"
+                            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ACUSE DE FACTURA"  >
+                        <span class="fa fa-file-text purple-icon"></span><br>ACUSE DE FACTURA
+                    </button>
+                    <span  data-toggle="hide" data-easein="swoopIn" data-target="#content-busqueda" >
+                        <button id="btnBusquedaEspecifica" class="btn btn3d  btn-default animated fadeInDown " data-toggle="tooltip" data-placement="top" title="" data-original-title="BUSQUEDA ESPECIFICA"  >
+                            <span class="fa fa-search "></span><br>BUSQUEDA
+                        </button>
+                    </span>
+                    <button id="btnNC" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="APLICACIÓN DE NOTA DE CREDITO"  >
+                        <span class="fa fa-eraser  cyan-icon"></span><br>APLICAR NOTA DE CRÉDITO
+                    </button>
+                    <button id="btnNotasDeCredito" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="VER NOTAS DE CRÉDITO APLICADAS">
+                        <span class="fa fa-eye  ligth-green-icon"></span><br>VER NOTAS DE CRÉDITO
+                    </button>
+                    <button id="btnEditarNC" class="btn btn3d  btn-default animated fadeInDown  hide"
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="EDITAR NOTAS DE CRÉDITO APLICADAS">
+                        <span class="fa fa-pencil  ligth-green-icon"></span>
+                    </button>
 
-                    <div id="btnAccions" align="center" class="col-md-12">
-                        <fieldset>
-                            <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo" >
-                                <button id="btnNuevo" class="btn btn-lg btn-default fa-lg box-shadow"  data-toggle="tooltip" data-placement="top" title="" data-original-title="NUEVO">
-                                    <span class="fa fa-plus fa-3x info-icon"></span></button>
-                            </span>
-                            <button id="btnEditarTramiteFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg "
-                                    data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MODIFICAR"  ><span class="fa fa-pencil fa-3x success-icon"></span></button>
-                            <button id="btnReCargarTramiteFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="REFRESCAR"  ><span class="fa fa-refresh fa-3x warning-icon"></span></button>
-                            <button id="btnCancelarFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CANCELAR FACTURA"  ><span class="fa fa-times fa-3x danger-icon"></span></button>
-                            <button id="btnFacturasCanceladas" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="FACTURAS CANCELADAS"  >
-                                <span class="fa fa-eye-slash fa-3x sea-icon"></span></button>
-                            <button id="btnReporteAcumuladoGeneral" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="REPORTE ACUMULADO GENERAL"  >
-                                <span class="fa fa-file-text fa-3x brown-icon"></span>
-                            </button>
-                            <button id="btnReporteTramiteFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ACUSE DE FACTURA"  >
-                                <span class="fa fa-file-text fa-3x purple-icon"></span>
-                            </button>
-                            <span  data-toggle="hide" data-easein="swoopIn" data-target="#content-busqueda" >
-                                <button id="btnBusquedaEspecifica" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="BUSQUEDA ESPECIFICA"  >
-                                    <span class="fa fa-search fa-3x"></span>
-                                </button> 
-                            </span>
-                            <button id="btnNC" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="bottom" title="" data-original-title="APLICACIÓN DE NOTA DE CREDITO"  >
-                                <span class="fa fa-eraser fa-3x cyan-icon"></span>
-                            </button> 
-                            <button id="btnNotasDeCredito" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="VER NOTAS DE CRÉDITO APLICADAS">
-                                <span class="fa fa-eye fa-3x ligth-green-icon"></span>
-                            </button> 
-                            <button id="btnEditarNC" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="EDITAR NOTAS DE CRÉDITO APLICADAS">
-                                <span class="fa fa-pencil fa-3x ligth-green-icon"></span>
-                            </button> 
-
-                            <button id="btnCancelarNC" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="CANCELAR NOTA DE CRÉDITO">
-                                <span class="fa fa-eraser fa-3x danger-icon"></span>
-                            </button> 
-                            <button id="btnAvance" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="bottom" title="" data-original-title="AVANZAR"  >
-                                <span class="fa fa-forward fa-3x bluegrey-icon"></span>
-                            </button>
-                            <button id="btnPagadas" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="VER FACTURAS PAGADAS"  >
-                                <span class="fa fa-eye fa-3x success-icon"></span>
-                            </button>
-                            <button id="btnCancelarPagada" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="CANCELAR FACTURA PAGADA"  >
-                                <span class="fa fa-ban fa-3x success-icon"></span>
-                            </button>
-                            <button id="btnCanceladas" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="VER FACTURAS CANCELADAS"  >
-                                <span class="fa fa-eye fa-3x danger-icon"></span>
-                            </button>
-                            <button id="btnPagarFactura" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="PAGAR FACTURA"  >
-                                <span class="fa fa-fast-forward fa-3x kingblue-icon"></span>
-                            </button>
-                            <button id="btnHistorialPagos" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="VER HISTORIAL DE PAGOS"  >
-                                <span class="fa fa-eye fa-3x"></span>
-                            </button>
-                            <button id="btnFacturaAGasto" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="CONVERTIR EN GASTO"  >
-                                <span class="fa fa-random fa-3x"></span>
-                            </button>
-                            <button id="btnAvance" class="btn btn3d btn-lg btn-default animated fadeInDown fa-lg hide"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="FINALIZAR"  >
-                                <span class="fa fa-fast-forward fa-3x"></span> 
-                            </button>
-                            <button class="btn btn3d btn-lg btn-info fa-3x hide" type="button" onclick="location.href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MENU PRINCIPAL"  > 
-                                <span class="fa fa-th-large fa-3x"></span>
-                            </button>
-                        </fieldset>
-                    </div>
-                    <div id="content-busqueda" class="col-md-12 ui-widget-content hide ztop">
-                        <form id="frmBusquedaEspecifica">
-                            <div class="col-md-2">
-                                <label for="">INICIO</label> 
-                                <input type="text" data-provide="datepicker" id="FechaInicioH" name="FechaInicioH" class="form-control" required="" data-date-format="dd/mm/yyyy" readonly="">
-
-                            </div>
-                            <div class="col-md-2">
-                                <label for="">TERMINO</label>
-                                <input type="text" data-provide="datepicker" id="FechaTerminoH" name="FechaInicioH" class="form-control" required="" data-date-format="dd/mm/yyyy" readonly="">
-
-                            </div>
-                            <div class="col-md-3">
-                                <label for="">EMPRESA</label>
-                                <select id="cmbEmpresaBusqueda" name="cmbEmpresaBusqueda" class="form-control"> 
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="">PROVEEDOR</label>
-                                <select id="cmbProveedorFactura" name="cmbProveedorFactura" class="form-control">
-                                </select>
-                            </div>
-                            <div class="col-md-1" align="center" > 
-                                <button id="btnReporteBusqueda" class="btn btn3d btn-lg  btn-default fa-lg"
-                                        data-toggle="tooltip" data-placement="top" title="" data-original-title="BUSCAR" type="button" >
-                                    <span class="fa fa-search fa-3x"></span>
-                                </button>
-                            </div>
-                            <div class="col-md-1" align="center" > 
-                                <button id="btnResetBusqueda" class="btn btn3d btn-lg  btn-default fa-lg"
-                                        data-toggle="tooltip" data-placement="top" title="" data-original-title="RESETEAR"  type="button" >
-                                    <span class="fa fa-trash fa-3x"></span>
-                                </button>
-                                <script>
-                                    $(document).ready(function () {
-                                        $("#btnResetBusqueda").click(function () {
-                                            $("#frmBusquedaEspecifica")[0].reset();
-                                            $("#frmBusquedaEspecifica select").select2("val", "");
-                                        });
-                                        $("#content-busqueda").draggable({scroll: false});
-                                    });
-                                </script>
-                                <!--</span>-->
-                            </div>
-                            <div class="col-md-12" align="center" >
-                                <div id="msgReportsTF"></div>
-
-
-                                <button id="btnCRIndividual" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO"  type="button" >
-                                    <span class="fa fa-exclamation fa-building-black fa-3x"></span>
-                                </button> 
-                                <button id="btnCROBRA" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO (OBRA)"  type="button" >
-                                    <span class="fa fa-building fa-3x fa-building-black"></span>
-                                </button>  
-                                <button id="btnCRMATERIAL" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO (MATERIALES)"  type="button" >
-                                    <span class="fa fa-puzzle-piece fa-puzzle-piece-invert fa-3x"></span>
-                                </button>  
-                                <button id="btnReportesFacturasSinAvanzar" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO GENERAL(REGISTRADA)"  type="button" >
-                                    <span class="fa fa-exclamation fa-invert-negative fa-3x"></span>
-                                </button>
-                                <button id="btnReportesFacturasSinAvanzarOBRA" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO GENERAL (REGISTRADA)(OBRA)"  type="button" >
-                                    <span class="fa fa-building fa-invert-negative fa-3x"></span>
-                                </button>
-                                <button id="btnReportesFacturasSinAvanzarMATERIAL" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO GENERAL (REGISTRADA)(MATERIAL)"  type="button" >
-                                    <span class="fa fa-puzzle-piece fa-invert-negative fa-3x"></span>
-                                </button>  
-
-
-                                <button id="btnReportesFacturas" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO GENERAL(EN ELABORACIÓN DE FORMA DE PAGO)"  type="button" >
-                                    <span class="fa fa-exclamation fa-3x"></span>
-                                </button> 
-                                <button id="btnReportesFacturasOBRA" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO GENERAL (EN ELABORACIÓN DE FORMA DE PAGO)(OBRA)"  type="button" >
-                                    <span class="fa fa-building fa-3x"></span>
-                                </button>
-                                <button id="btnReportesFacturasMATERIAL" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO GENERAL (EN ELABORACIÓN DE FORMA DE PAGO)(MATERIAL)"  type="button" >
-                                    <span class="fa fa-puzzle-piece fa-3x"></span>
-                                </button>
-
-                                <button id="btnAcumuladoPorProveedor" class="btn btn3d btn-lg  btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ACUMULADO ESPECÍFICO"  type="button" >
-                                    <span class="fa fa-check lime-icon fa-3x"></span>
-                                </button> 
-
-                                <!--</span>-->
-                            </div>
-                        </form>
-                    </div>
-                    <div id="msgTramiteFactura" class="col-md-12"></div>
-                    <div id="rTramiteFactura" class=""></div> 
+                    <button id="btnCancelarNC" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="CANCELAR NOTA DE CRÉDITO">
+                        <span class="fa fa-eraser  danger-icon"></span><br>CANCELAR NOTA DE CRÉDITO
+                    </button>
+                    <button id="btnAvance" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="bottom" title="" data-original-title="AVANZAR"  >
+                        <span class="fa fa-forward  bluegrey-icon"></span><br>AVANZAR
+                    </button>
+                    <button id="btnPagadas" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="VER FACTURAS PAGADAS"  >
+                        <span class="fa fa-eye  success-icon"></span><br>FACTURAS PAGADAS
+                    </button>
+                    <button id="btnCancelarPagada" class="btn btn3d  btn-default animated fadeInDown  hide"
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="CANCELAR FACTURA PAGADA"  >
+                        <span class="fa fa-ban  success-icon"></span><br>CANCELAR FACTURA PAGADA
+                    </button>
+                    <button id="btnCanceladas" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="VER FACTURAS CANCELADAS"  >
+                        <span class="fa fa-eye  danger-icon"></span><br>FACTURAS CANCELADAS
+                    </button>
+                    <button id="btnPagarFactura" class="btn btn3d  btn-default animated fadeInDown "
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="PAGAR FACTURA"  >
+                        <span class="fa fa-fast-forward  kingblue-icon"></span><br>PAGAR FACTURA(AUTORIZADA)
+                    </button>
+                    <button id="btnHistorialPagos" class="btn btn3d  btn-default animated fadeInDown  hide"
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="VER HISTORIAL DE PAGOS"  >
+                        <span class="fa fa-eye "></span>
+                    </button>
+                    <button id="btnFacturaAGasto" class="btn btn3d  btn-default animated fadeInDown hide"
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="CONVERTIR EN GASTO"  >
+                        <span class="fa fa-random "></span><br>CONVERTIR EN GASTO
+                    </button>
+                    <button id="btnAvance" class="btn btn3d  btn-default animated fadeInDown  hide"
+                            data-toggle="tooltip" data-placement="top" title="" data-original-title="FINALIZAR"  >
+                        <span class="fa fa-fast-forward "></span>
+                    </button>
+                    <button class="btn btn3d  btn-info  hide" type="button" onclick="location.href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="MENU PRINCIPAL"  >
+                        <span class="fa fa-th-large "></span>
+                    </button>
                 </fieldset>
             </div>
-        </div>
-        <div class="panel panel-primary hide">
-            <div class="panel-heading">
-                <h3 class="panel-title">INFORMACIÓN ADICIONAL</h3>
-            </div>
-            <div class="panel-body">
+            <div id="content-busqueda" class="col-md-12 ui-widget-content hide ztop">
+                <form id="frmBusquedaEspecifica">
+                    <div class="col-md-2">
+                        <label for="">INICIO</label>
+                        <input type="text" data-provide="datepicker" id="FechaInicioH" name="FechaInicioH" class="form-control" required="" data-date-format="dd/mm/yyyy" readonly="">
 
-                <div class="col-md-3">
-                    <div class="panel panel-danger" id="pnlFacturasRegistradas">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <i class="fa fa-thumbs-o-up fa-4x"></i>
-                                </div>
-                                <div class="col-md-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>FACTURAS REGISTRADAS</div>
-                                </div>
-                            </div>
-                        </div> 
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="panel panel-primary" id="pnlFacturasPagadas">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <i class="fa fa-check fa-4x"></i>
-                                </div>
-                                <div class="col-md-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>FACTURAS PAGADAS</div>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="panel panel-info" id="pnlFacturasGastos">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <i class="fa fa-cc-mastercard fa-4x"></i>
-                                </div>
-                                <div class="col-md-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>GASTOS</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="panel panel-warning" id="pnlFacturasAutorizadas">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <i class="fa fa-shield fa-5x"></i>
-                                </div>
-                                <div class="col-md-9 text-right">
-                                    <div class="huge">0</div>
-                                    <div>FACTURAS AUTORIZADAS</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    <div class="col-md-2">
+                        <label for="">TERMINO</label>
+                        <input type="text" data-provide="datepicker" id="FechaTerminoH" name="FechaInicioH" class="form-control" required="" data-date-format="dd/mm/yyyy" readonly="">
 
-        <fieldset> 
-            <div class="col-md-10"></div>
-            <div class="col-md-1">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">EMPRESA</label>
+                        <select id="cmbEmpresaBusqueda" name="cmbEmpresaBusqueda" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">PROVEEDOR</label>
+                        <select id="cmbProveedorFactura" name="cmbProveedorFactura" class="form-control">
+                        </select>
+                    </div>
+                    <div class="col-md-1" align="center" >
+                        <button id="btnReporteBusqueda" class="btn btn3d   btn-default fa-lg"
+                                data-toggle="tooltip" data-placement="top" title="" data-original-title="BUSCAR" type="button" >
+                            <span class="fa fa-search fa-3x"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-1" align="center" >
+                        <button id="btnResetBusqueda" class="btn btn3d   btn-default fa-lg"
+                                data-toggle="tooltip" data-placement="top" title="" data-original-title="RESETEAR"  type="button" >
+                            <span class="fa fa-trash fa-3x"></span>
+                        </button>
+                        <script>
+                            $(document).ready(function() {
+                                $("#btnResetBusqueda").click(function() {
+                                    $("#frmBusquedaEspecifica")[0].reset();
+                                    $("#frmBusquedaEspecifica select").select2("val", "");
+                                });
+                                $("#content-busqueda").draggable({scroll: false});
+                            });
+                        </script>
+                        <!--</span>-->
+                    </div>
+                    <div class="col-md-12" align="center" >
+                        <div id="msgReportsTF"></div>
+
+
+                        <button id="btnCRIndividual" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO"  type="button" >
+                            <span class="fa fa-exclamation fa-building-black fa-3x"></span>
+                        </button>
+                        <button id="btnCROBRA" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO (OBRA)"  type="button" >
+                            <span class="fa fa-building fa-3x fa-building-black"></span>
+                        </button>
+                        <button id="btnCRMATERIAL" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO (MATERIALES)"  type="button" >
+                            <span class="fa fa-puzzle-piece fa-puzzle-piece-invert fa-3x"></span>
+                        </button>
+                        <button id="btnReportesFacturasSinAvanzar" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO GENERAL(REGISTRADA)"  type="button" >
+                            <span class="fa fa-exclamation fa-invert-negative fa-3x"></span>
+                        </button>
+                        <button id="btnReportesFacturasSinAvanzarOBRA" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO GENERAL (REGISTRADA)(OBRA)"  type="button" >
+                            <span class="fa fa-building fa-invert-negative fa-3x"></span>
+                        </button>
+                        <button id="btnReportesFacturasSinAvanzarMATERIAL" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO GENERAL (REGISTRADA)(MATERIAL)"  type="button" >
+                            <span class="fa fa-puzzle-piece fa-invert-negative fa-3x"></span>
+                        </button>
+
+
+                        <button id="btnReportesFacturas" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO GENERAL(EN ELABORACIÓN DE FORMA DE PAGO)"  type="button" >
+                            <span class="fa fa-exclamation fa-3x"></span>
+                        </button>
+                        <button id="btnReportesFacturasOBRA" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="CONTRA RECIBO GENERAL (EN ELABORACIÓN DE FORMA DE PAGO)(OBRA)"  type="button" >
+                            <span class="fa fa-building fa-3x"></span>
+                        </button>
+                        <button id="btnReportesFacturasMATERIAL" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="top" title="" data-original-title="CONTRA RECIBO GENERAL (EN ELABORACIÓN DE FORMA DE PAGO)(MATERIAL)"  type="button" >
+                            <span class="fa fa-puzzle-piece fa-3x"></span>
+                        </button>
+
+                        <button id="btnAcumuladoPorProveedor" class="btn btn3d   btn-default fa-lg" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="ACUMULADO ESPECÍFICO"  type="button" >
+                            <span class="fa fa-check lime-icon fa-3x"></span>
+                        </button>
+
+                        <!--</span>-->
+                    </div>
+                </form>
             </div>
+            <div id="msgTramiteFactura" class="col-md-12"></div>
+            <div id="rTramiteFactura" class=""></div>
         </fieldset>
-    </div> 
+    </div>
 </div>
+<div class="panel panel-primary hide">
+    <div class="panel-heading">
+        <h3 class="panel-title">INFORMACIÓN ADICIONAL</h3>
+    </div>
+    <div class="panel-body">
+
+        <div class="col-md-3">
+            <div class="panel panel-danger" id="pnlFacturasRegistradas">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="fa fa-thumbs-o-up fa-4x"></i>
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <div class="huge">0</div>
+                            <div>FACTURAS REGISTRADAS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-primary" id="pnlFacturasPagadas">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="fa fa-check fa-4x"></i>
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <div class="huge">0</div>
+                            <div>FACTURAS PAGADAS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-info" id="pnlFacturasGastos">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="fa fa-cc-mastercard fa-4x"></i>
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <div class="huge">0</div>
+                            <div>GASTOS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-warning" id="pnlFacturasAutorizadas">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <i class="fa fa-shield fa-5x"></i>
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <div class="huge">0</div>
+                            <div>FACTURAS AUTORIZADAS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal -->
 
-<div id="mdlNuevo" class="modal animated rubberBand"  data-easein="swoopIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="mdlNuevo" class="modal animated fadeInDown"  data-easein="swoopIn"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg fullscreen" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -296,38 +281,38 @@
                             <label for="Fecha">FECHA</label>
                             <input type="text" data-provide="datepicker" id="Fecha" name="Fecha" class="form-control" required="" data-date-format="dd/mm/yyyy" readonly="">
                         </div>
-                        <div class="col-md-4">    
+                        <div class="col-md-4">
                             <label for="Hora">HORA</label>
                             <input type="text" id="Hora" name="Hora" class="form-control" required="" data-date-format="dd/mm/yyyy">
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                             <label for="Actividad">PROYECTO</label>
                             <select id="Actividad" name="Actividad" class="form-control">
                                 <option value=""></option>
 
                             </select>
                         </div>
-                        <div class="col-md-6">  
+                        <div class="col-md-4">
                             <label for="Empresa">EMPRESA</label>
                             <select id="Empresa" name="Empresa" class="form-control">
-                                <option value=""></option> 
-                            </select>   
+                                <option value=""></option>
+                            </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="ModeloNegocio">ACTIVIDAD</label>
                             <!--<input type="text" id="ModeloNegocio" name="ModeloNegocio" class="form-control" required="" data-date-format="dd/mm/yyyy">-->
                             <select id="ModeloNegocio" name="ModeloNegocio" class="form-control">
                                 <option value=""></option>
                             </select>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="NumeroDeContrato">NÚMERO DE CONTRATO</label>
                             <input type="text" id="NumeroDeContrato" name="NumeroDeContrato" class="form-control" required="" >
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <label for="Proveedor">PROVEEDOR</label>
                             <select id="Proveedor" name="Proveedor" class="form-control">
-                                <option value=""></option> 
+                                <option value=""></option>
                             </select>
                         </div>
                         <div class="col-md-3">
@@ -355,9 +340,9 @@
                             </label>
                         </div>
                         <script>
-                            $(document).ready(function () {
+                            $(document).ready(function() {
                                 var chk = $("#chkObservacion");
-                                chk.change(function () {
+                                chk.change(function() {
                                     if (chk[0].checked) {
                                         $("#Observacion").val("SIN OBSERVACION");
                                         $("#Observacion").attr("readonly", true);
@@ -380,7 +365,7 @@
                                 foreach ($Empleados as $value) {
                                     print '<option value="' . $value->ID . '">' . $value->Nombre . ' ' . $value->apaterno . '</option>';
                                 }
-                                ?> 
+                                ?>
                             </select>
                         </div>
                         <div class="col-md-12">
@@ -401,62 +386,65 @@
 
                         <div id="msgfacturas" class="col-md-12"></div>
 
-                        <div class="col-md-12" align="center">
+                        <div class="col-md-12 cursor-hand" align="center" onclick="onMostrarPanelNC()">
                             <h1 class="font100">NOTAS DE CRÉDITO</h1>
+                            <h4>*Haga click aqui*</h4>
                         </div>
-                        <div class="col-md-4">
-                            <label for="">FOLIO DE NOTA DE CRÉDITO</label>
-                            <input typw="text" id="FolioNC" name="FolioNC" class="form-control" placeholder="NC000001">
-                        </div>
-                        <div class="col-md-4">
-                            <label for="">TIPO DE NOTA DE CRÉDITO</label>
-                            <select class="form-control" id="Concepto" name="Concepto">
-                                <option value=""></option>
-                                <option value="1">DESCUENTO POSTERIOR A LA EMISIÓN DE LA FACTURA</option>
-                                <option value="2">ANULACIÓN TOTAL DE LA FACTURA</option>
-                                <option value="3">COBRO DE GASTOS INCURRIDO DE MÁS(AJUSTE DE PRECIO)</option>
-                                <option value="4">PAGO PARCIAL DE LA COMPRAVENTA</option>
-                                <option value="5">DEVOLUCIÓN DE BIENES</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="">MONTO DE NOTA DE CRÉDITO (APLICAR A LA FACTURA)</label>
-                            <input type="number" id="MontoNCR" name="MontoNCR" class="form-control" placeholder="$0.0">
-                        </div>
-                        <div class="col-md-12">
-                            <label for="">IMPORTE FINAL A PAGAR</label>
-                            <input type="number" id="ImporteFacturaFinal" name="ImporteFacturaFinal" class="form-control" placeholder="$0.0" readonly="">
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn3d  btn-default fa-lg" id="btnAddNCXF" name="btnAddNCXF" data-toggle="tooltip" data-placement="top" title="" data-original-title="APLICAR NOTA"  ><span class="fa fa-check purple-icon fa-3x"></span></button>
-                        </div>
+                        <div id="pnlNotasDeCredito" class="hide">
+                            <div class="col-md-4">
+                                <label for="">FOLIO DE NOTA DE CRÉDITO</label>
+                                <input typw="text" id="FolioNC" name="FolioNC" class="form-control" placeholder="NC000001">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">TIPO DE NOTA DE CRÉDITO</label>
+                                <select class="form-control" id="Concepto" name="Concepto">
+                                    <option value=""></option>
+                                    <option value="1">DESCUENTO POSTERIOR A LA EMISIÓN DE LA FACTURA</option>
+                                    <option value="2">ANULACIÓN TOTAL DE LA FACTURA</option>
+                                    <option value="3">COBRO DE GASTOS INCURRIDO DE MÁS(AJUSTE DE PRECIO)</option>
+                                    <option value="4">PAGO PARCIAL DE LA COMPRAVENTA</option>
+                                    <option value="5">DEVOLUCIÓN DE BIENES</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">MONTO DE NOTA DE CRÉDITO (APLICAR A LA FACTURA)</label>
+                                <input type="number" id="MontoNCR" name="MontoNCR" class="form-control" placeholder="$0.0">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="">IMPORTE FINAL A PAGAR</label>
+                                <input type="number" id="ImporteFacturaFinal" name="ImporteFacturaFinal" class="form-control" placeholder="$0.0" readonly="">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn3d  btn-default fa-lg" id="btnAddNCXF" name="btnAddNCXF" data-toggle="tooltip" data-placement="top" title="" data-original-title="APLICAR NOTA"  ><span class="fa fa-check purple-icon fa-3x"></span></button>
+                            </div>
 
-                        <div id="msgestatusNC" class="col-md-12">
+                            <div id="msgestatusNC" class="col-md-12">
 
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover " id="tblNotasDeCreditoXFactura">
-                                <thead>
-                                    <tr>
-                                        <th class="hide">ID</th>
-                                        <th>Folio</th>
-                                        <th>Concepto</th>
-                                        <th>MONTO</th>
-                                        <th class="hide">SALDO FINAL</th>
-                                        <th>DOCUMENTO</th>
-                                        <th class="col-md-6">VISTA PREVIA</th>
-                                        <th>quitar</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>TOTAL EN NOTAS DE CRÉDITO</th>
-                                        <th class="ttf" colspan="7">0</th> 
-                                    </tr>
-                                </tfoot>
-                            </table> 
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover " id="tblNotasDeCreditoXFactura">
+                                    <thead>
+                                        <tr>
+                                            <th class="hide">ID</th>
+                                            <th>Folio</th>
+                                            <th>Concepto</th>
+                                            <th>MONTO</th>
+                                            <th class="hide">SALDO FINAL</th>
+                                            <th>DOCUMENTO</th>
+                                            <th class="col-md-6">VISTA PREVIA</th>
+                                            <th>quitar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>TOTAL EN NOTAS DE CRÉDITO</th>
+                                            <th class="ttf" colspan="7">0</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </fieldset>
                 </div>
@@ -480,10 +468,10 @@
                 var btnPagadas = $("#btnPagadas");
                 var btnCancelarPagada = $("#btnCancelarPagada");
                 var btnEditarNC = $("#btnEditarNC");
-                $(document).ready(function () {
+                $(document).ready(function() {
 
 
-                    btnAddNCXF.click(function () {
+                    btnAddNCXF.click(function() {
                         var importe_x = 0.0;
                         HoldOn.open({
                             theme: "sk-bounce",
@@ -492,7 +480,7 @@
                         var rows_in = tblNotasDeCreditoXFactura.find("tbody > tr").length;
                         var tt = 0.0;
                         if (rows_in > 0) {
-                            tblNotasDeCreditoXFactura.find("tbody > tr").each(function (k, v) {
+                            tblNotasDeCreditoXFactura.find("tbody > tr").each(function(k, v) {
                                 var row = $(v).find(".ImporteNC");
                                 var vt = parseFloat(row[0].innerText);
                                 tt += parseFloat(vt);
@@ -530,7 +518,7 @@
                             }
 
                             var tt = 0.0;
-                            tblNotasDeCreditoXFactura.find("tbody > tr").each(function (k, v) {
+                            tblNotasDeCreditoXFactura.find("tbody > tr").each(function(k, v) {
                                 var row = $(v).find(".ImporteNC");
                                 var vt = parseFloat(row[0].innerText);
                                 tt += parseFloat(vt);
@@ -543,7 +531,7 @@
 
                         HoldOn.close();
                     });
-                    MontoNCR.keyup(function () {
+                    MontoNCR.keyup(function() {
                         var importe = parseFloat(ImporteF.val());
                         var montocr = parseFloat(MontoNCR.val());
                         if (importe > 0 && montocr > 0 && montocr <= importe) {
@@ -551,11 +539,11 @@
                             ImporteFacturaFinal.val(rt);
                         }
                     });
-                    mdlNuevo.find("#fileuploadtf").click(function () {
+                    mdlNuevo.find("#fileuploadtf").click(function() {
                         console.log('ok');
                         var Archivo = mdlNuevo.find("#rtImagen");
                         var VistaPreviaX = mdlNuevo.find("#frtImagen");
-                        Archivo.change(function () {
+                        Archivo.change(function() {
                             HoldOn.open({
                                 theme: 'sk-bounce',
                                 message: 'ESPERE...'
@@ -563,7 +551,7 @@
                             var imageType = /image.*/;
                             if (Archivo[0].files[0] !== undefined && Archivo[0].files[0].type.match(imageType)) {
                                 var reader = new FileReader();
-                                reader.onload = function (e) {
+                                reader.onload = function(e) {
                                     console.log(Archivo[0].files[0]);
                                     var preview = '<img src="' + reader.result + '" class="img-responsive" >';
                                     VistaPreviaX.html(preview);
@@ -573,7 +561,7 @@
                                 if (Archivo[0].files[0] !== undefined && Archivo[0].files[0].type.match('application/pdf')) {
                                     console.log('ES UN PDF');
                                     var readerpdf = new FileReader();
-                                    readerpdf.onload = function (e) {
+                                    readerpdf.onload = function(e) {
                                         VistaPreviaX.html('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="100%" height="600px"' +
                                                 ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
                                     };
@@ -587,28 +575,28 @@
                         Archivo.trigger('click');
 //                        $("#rtImagen").trigger('click');
                     });
-                    $("#rtImagen").change(function () {
+                    $("#rtImagen").change(function() {
 
                         $("#rtImagenText").addClass("updated");
                         $("#rtImagenText").val($(this).val());
                     });
-                    $('#mdlNuevo').on('hidden.bs.modal', function (e) {
+                    $('#mdlNuevo').on('hidden.bs.modal', function(e) {
                         $("#fTramiteFactura")[0].reset();
                         $('#fTramiteFactura select').select2("val", "");
-                        tblNotasDeCreditoXFactura.find("tbody > tr").each(function (k, v) {
+                        tblNotasDeCreditoXFactura.find("tbody > tr").each(function(k, v) {
                             $(v).remove();
                         });
                         tblNotasDeCreditoXFactura.find("tfoot th.ttf").html("0");
                     });
-                    $('#mdlRFPTDP').on('hidden.bs.modal', function (e) {
+                    $('#mdlRFPTDP').on('hidden.bs.modal', function(e) {
                         $("#fObservacionRDFPTDP")[0].reset();
                         $('#fObservacionRDFPTDP select').select2("val", "");
                     });
-                    $('#mdlADFPEDFDP').on('hidden.bs.modal', function (e) {
+                    $('#mdlADFPEDFDP').on('hidden.bs.modal', function(e) {
                         $("#fObservacionADFPEDFDP")[0].reset();
                         $('#fObservacionADFPEDFDP select').select2("val", "");
                     });
-                    $('#mdlADMPPDF').on('hidden.bs.modal', function (e) {
+                    $('#mdlADMPPDF').on('hidden.bs.modal', function(e) {
                         $("#fObservacionADMPPDF")[0].reset();
                         $('#fObservacionADMPPDF select').select2("val", "");
                     });
@@ -617,11 +605,11 @@
                     var item = $(e).parent().parent();
                     var fbutton = $(item).find("#rNC");
                     var rArchivo = $(item).find("#rArchivo");
-                    fbutton.change(function () {
+                    fbutton.change(function() {
                         var imageType = /image.*/;
                         if (fbutton[0].files[0] !== undefined && fbutton[0].files[0].type.match(imageType)) {
                             var reader = new FileReader();
-                            reader.onload = function (e) {
+                            reader.onload = function(e) {
                                 rArchivo.html('<img src="' + reader.result + '" width=\"450\" height=\"600\">');
                             };
                             reader.readAsDataURL(fbutton[0].files[0]);
@@ -629,7 +617,7 @@
                             if (fbutton[0].files[0] !== undefined && fbutton[0].files[0].type.match('application/pdf')) {
                                 console.log('ES UN PDF');
                                 var readerpdf = new FileReader();
-                                readerpdf.onload = function (e) {
+                                readerpdf.onload = function(e) {
                                     rArchivo.html('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="600px" height="800px"' +
                                             ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
                                 };
@@ -646,7 +634,7 @@
                 function onRemoveNCRow(e) {
                     $(e).parent().parent().remove();
                     var tt = 0.0;
-                    tblNotasDeCreditoXFactura.find("tbody > tr").each(function (k, v) {
+                    tblNotasDeCreditoXFactura.find("tbody > tr").each(function(k, v) {
                         var row = $(v).find(".ImporteNC");
                         var vt = parseFloat(row[0].innerText);
                         tt += parseFloat(vt);
@@ -656,7 +644,7 @@
                 function onRemoveNCRRow(e) {
                     $(e).parent().parent().remove();
                     var tt = 0.0;
-                    tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function (k, v) {
+                    tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function(k, v) {
                         var row = $(v).find(".ImporteNC");
                         var vt = parseFloat(row[0].innerText);
                         tt += parseFloat(vt);
@@ -694,7 +682,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn  btn-default fa-lg" data-dismiss="modal">CERRAR</button> 
+                <button type="button" class="btn  btn-default fa-lg" data-dismiss="modal">CERRAR</button>
             </div>
         </div>
     </div>
@@ -724,7 +712,7 @@
                         <div class="col-md-4">
                             <label for="">ESTATUS ACTUAL:</label>
                             <input type="text" id="txtEstatus" name="txtEstatus" class="form-control" readonly="">
-                        </div> 
+                        </div>
                         <div class="col-md-12">
                             <label for="ObservacionesYN">TIENE OBSERVACIONES</label>
                             <select id="ObservacionesYN" class="form-control" name="ObservacionesYN">
@@ -741,7 +729,7 @@
                             <div class="col-md-12">
                                 <label for="">SEGUIMIENTO QUE SE BRINDARA A LA OBSERVACIÓN:</label>
                                 <input type="textarea" id="ContenidoObservacion" name="ContenidoObservacion" class="form-control" >
-                            </div> 
+                            </div>
                         </div>
 
                         <div class="col-md-12">
@@ -787,7 +775,7 @@
                         <div class="col-md-4">
                             <label for="">ESTATUS ACTUAL:</label>
                             <input type="text" id="txtEstatus" name="txtEstatus" class="form-control" readonly="">
-                        </div> 
+                        </div>
                         <div class="col-md-12">
                             <label for="ObservacionesYN">TIENE OBSERVACIONES</label>
                             <select id="ObservacionesYN" class="form-control" name="ObservacionesYN">
@@ -804,8 +792,8 @@
                             <div class="col-md-12">
                                 <label for="">SEGUIMIENTO QUE SE BRINDARA A LA OBSERVACIÓN:</label>
                                 <input type="textarea" id="ContenidoObservacion" name="ContenidoObservacion" class="form-control" >
-                            </div> 
-                        </div>  
+                            </div>
+                        </div>
                         <div class="col-md-12" align="center">
                             <h1 class="font100">NOTAS DE CRÉDITO</h1>
                         </div>
@@ -844,7 +832,7 @@
 
                             <div class="alert alert-dismissible alert-danger">
                                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <strong>*ESTE PROCEDIMIENTO TIENE QUE HACERSE CON RESPONSABILIDAD*</strong> 
+                                <strong>*ESTE PROCEDIMIENTO TIENE QUE HACERSE CON RESPONSABILIDAD*</strong>
                             </div>
 
                         </div>
@@ -871,10 +859,10 @@
                                 <tfoot>
                                     <tr>
                                         <th>TOTAL EN NOTAS DE CRÉDITO</th>
-                                        <th class="ttf" colspan="7">0</th> 
+                                        <th class="ttf" colspan="7">0</th>
                                     </tr>
                                 </tfoot>
-                            </table> 
+                            </table>
                         </div>
 
                         <div class="col-md-12">
@@ -904,9 +892,9 @@
     var msgestatusNCR = fRevision.find("#msgestatusNC");
     var btnAddNCXFR = fRevision.find("#btnAddNCXFR");
     var tblNotasDeCreditoXFacturaR = fRevision.find("#tblNotasDeCreditoXFacturaR");
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        btnAddNCXFR.click(function () {
+        btnAddNCXFR.click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "ESPERE..."
@@ -916,7 +904,7 @@
             var tt = 0.0;
 
             if (rows_in > 0) {
-                tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function (k, v) {
+                tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function(k, v) {
                     var row = $(v).find(".ImporteNC");
                     var vt = parseFloat(row[0].innerText);
                     tt += parseFloat(vt);
@@ -958,7 +946,7 @@
                 <button type="button" class="close" data-dismiss="alert">&times;</button><h1>NECESITA CAPTURAR UN IMPORTE</h1></div>');
                 }
                 var tt = 0.0;
-                tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function (k, v) {
+                tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function(k, v) {
                     var row = $(v).find(".ImporteNC");
                     var vt = parseFloat(row[0].innerText);
                     tt += parseFloat(vt);
@@ -974,7 +962,7 @@
             HoldOn.close();
         });
 
-        RMontoNCR.keyup(function () {
+        RMontoNCR.keyup(function() {
             var importe = parseFloat(RImporteF.val());
             var montocr = parseFloat(RMontoNCR.val());
             if (importe > 0 && montocr > 0 && montocr <= importe) {
@@ -983,10 +971,10 @@
             }
         });
 
-        mdlRevision.on('hidden.bs.modal', function (e) {
+        mdlRevision.on('hidden.bs.modal', function(e) {
             $("#fRevision")[0].reset();
             $('#fRevision select').select2("val", "");
-            tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function (k, v) {
+            tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function(k, v) {
                 $(v).remove();
             });
             tblNotasDeCreditoXFacturaR.find("tfoot th.ttf").html("0");
@@ -1140,7 +1128,7 @@
                     <li class="active"><a href="#rPAY" data-toggle="tab" class="factura">FACTURA</a></li>
                     <li><a href="#rNC" data-toggle="tab" class="nc">NOTA DE CRÉDITO</a></li>
                 </ul>
-                <div id="myTabContent" class="tab-content"> 
+                <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="rPAY">
                         <form id="fObservacionADMPPDF">
                             <fieldset>
@@ -1155,7 +1143,7 @@
                                 <div class="col-md-6">
                                     <label for="">ESTATUS ACTUAL:</label>
                                     <input type="text" id="txtEstatusADMPPDF" name="txtEstatusADMPPDF" class="form-control" readonly="">
-                                </div>  
+                                </div>
                                 <div class="col-md-12">
                                     <label for="rDeterminaImporte">MONTO A PAGAR:</label>
                                     <select id="rDeterminaImporte" name="rDeterminaImporte" class="form-control" required="">
@@ -1215,7 +1203,7 @@
                                     <label for="">ESTATUS PROXIMO AL SER UN PAGO INFERIOR AL IMPORTE:</label><label class="text-danger"> PARCIAL</label>
                                 </div>
                                 <div class="col-md-12">
-                                    <div class="panel-group" id="accordion"> 
+                                    <div class="panel-group" id="accordion">
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
                                                 <h4 class="panel-title">
@@ -1230,14 +1218,14 @@
 
                                                 </div>
                                             </div>
-                                        </div> 
-                                    </div> 
+                                        </div>
+                                    </div>
                                 </div>
                             </fieldset>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="rNC"> 
-                        <form id="fNC"> 
+                    <div class="tab-pane fade" id="rNC">
+                        <form id="fNC">
                             <!--                            <fieldset>
                                                             <div id="vAddNC" class="col-md-12">
                                                                 <div class="col-md-12">
@@ -1273,16 +1261,16 @@
                                                                 <div class="col-md-12 hide">
                                                                     <input type="file" class="form-control" id="RDocumentoFileD" name="RDocumentoFileD">
                                                                 </div>
-                            
+
                                                                 <div class="col-md-12" id="RDocumentoDisplayD" name="RDocumentoFileD"></div>
-                            
+
                                                                 <div class="col-md-12 cursor-hand" align="center" id="RDocumentoImgD">
                                                                     <span class="fa fa-upload fa-3x"></span>
                                                                     <p>SELECCIONAR ARCHIVO</p>
                                                                 </div>
                                                                 <div class="col-md-12">
                                                                 </div>
-                            
+
                                                             </div>
                                                         </fieldset>-->
                         </form>
@@ -1310,8 +1298,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">ESTATUS DEL TRAMITE</h4>
             </div>
-            <div class="modal-body">  
-                <fieldset> 
+            <div class="modal-body">
+                <fieldset>
                     <div id="tMessages" class="col-md-12"></div>
                     <div id="cMessages" class="col-md-12"></div>
                     <div id="rContent" class="col-md-12" ></div>
@@ -1322,7 +1310,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn  btn-default fa-lg" data-dismiss="modal">CERRAR</button> 
+                <button type="button" class="btn  btn-default fa-lg" data-dismiss="modal">CERRAR</button>
             </div>
         </div>
     </div>
@@ -1339,7 +1327,7 @@
                 <div id="result-preview"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn  btn-default fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button> 
+                <button type="button" class="btn  btn-default fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button>
             </div>
         </div>
     </div>
@@ -1353,7 +1341,7 @@
                 <h2 class="modal-title" id="myModalLabel">APLICACIÓN DE NOTAS DE CRÉDITO</h2>
             </div>
             <div class="modal-body">
-                <form id="fNotaDeCredito"> 
+                <form id="fNotaDeCredito">
                     <fieldset>
                         <div class="col-md-12">
                             <label for="">ID FACTURA</label>
@@ -1381,7 +1369,7 @@
                             <div class="col-md-6">
                                 <label for="">CONCEPTO</label>
                                 <input type="text" class="form-control" id="ConceptoNC" name="ConceptoNC" onkeyup="" placeholder="DEVOLUCION, DESCUENTO, BONIFICACIÓN, AJUSTE DE PRECIO, DIFERENCIA EN PRECIO, ERROR DE CAPTURA, ETC.">
-                            </div> 
+                            </div>
                             <div class="col-md-6">
                                 <label for="">MONTO TOTAL DE LA FACTURA(INICIAL)</label>
                                 <input type="number" class="form-control" id="Importe" name="Importe" readonly=""/>
@@ -1440,7 +1428,7 @@
                 <h2 class="modal-title" id="myModalLabel">VER NOTA DE CRÉDITO</h2>
             </div>
             <div class="modal-body">
-                <form id="fNotaDeCredito"> 
+                <form id="fNotaDeCredito">
                     <fieldset>
                         <div class="col-md-12">
                             <label for="">ID FACTURA</label>
@@ -1475,7 +1463,7 @@
                         <div class="col-md-6">
                             <label for="">CONCEPTO</label>
                             <input type="text" class="form-control" id="ConceptoNC" readonly="" name="ConceptoNC" onkeyup="" placeholder="DEVOLUCION, DESCUENTO, BONIFICACIÓN, AJUSTE DE PRECIO, DIFERENCIA EN PRECIO, ERROR DE CAPTURA, ETC.">
-                        </div> 
+                        </div>
 
                         <!--HIDE FIELDS-->
                         <div class="col-md-6 hide">
@@ -1547,40 +1535,40 @@
                             <label for="">FOLIO</label>
                             <input type="text" id="FolioFactura" name="FolioFactura" class="form-control" readonly="">
                             <hr>
-                            <div id="FOLIO"> <h1></h1></div> 
+                            <div id="FOLIO"> <h1></h1></div>
                         </div>
                         <div class="col-md-6">
                             <label for="">FACTURA</label>
                             <input type="text" id="Factura" name="Factura" class="form-control" readonly="">
                             <hr>
-                            <div id="FACTURAT"> <h1></h1></div> 
+                            <div id="FACTURAT"> <h1></h1></div>
                         </div>
                         <div class="col-md-12">
                             <br>
                         </div>
                         <div class="col-md-6" align="center">
                             <label for="">EMPRESA</label>
-                            <input type="text" class="form-control" id="EmpresaPagadoraID" name="EmpresaPagadoraID"> 
+                            <input type="text" class="form-control" id="EmpresaPagadoraID" name="EmpresaPagadoraID">
                             <hr>
-                            <div id="EmpresaPagadora"> <h1></h1></div> 
-                        </div> 
+                            <div id="EmpresaPagadora"> <h1></h1></div>
+                        </div>
 
 
-                        <div class="col-md-6" align="center"> 
+                        <div class="col-md-6" align="center">
 
                             <label for="">PROVEEDOR</label>
-                            <input type="text" class="form-control" id="PROVEEDORID" name="PROVEEDORID"> 
+                            <input type="text" class="form-control" id="PROVEEDORID" name="PROVEEDORID">
                             <hr>
-                            <div id="PROVEEDOR"> <h1></h1></div> 
-                        </div> 
+                            <div id="PROVEEDOR"> <h1></h1></div>
+                        </div>
 
 
-                        <div class="col-md-12" align="center"> 
+                        <div class="col-md-12" align="center">
                             <label for="">MONTO A PAGAR </label>
-                            <input type="text" class="form-control" id="ImporteXPagar" name="ImporteXPagar"> 
+                            <input type="text" class="form-control" id="ImporteXPagar" name="ImporteXPagar">
                             <hr>
                             <div id="TotalImporteXPagar"> <h1>$ 0.00</h1></div>
-                        </div> 
+                        </div>
 
                         <div class="col-md-12">
                             <br>
@@ -1589,36 +1577,36 @@
                         <div class="col-md-4">
                             <label for="">Forma del pago: </label>
                             <select class="form-control" id="Forma" name="Forma"  required>
-                                <option value="">Selecciona</option> 
+                                <option value="">Selecciona</option>
                                 <option value="Efectivo">Efectivo</option>
                                 <option value="Cheque">Cheque</option>
                                 <option value="Deposito">Depósito</option>
                                 <option value="Transferencia">Transferencia</option>
-                            </select> 
-                        </div> 
+                            </select>
+                        </div>
                         <div class="col-md-4">
                             <label for="">Referencia de pago </label>
                             <input  style="text-transform:uppercase" onkeyup="" class="form-control" type="text" name="ReferenciaDePago" id="ReferenciaDePago" placeholder="12134785" >
-                        </div>  
-                        <div class="col-md-4"> 
+                        </div>
+                        <div class="col-md-4">
                             <label for="">Cuenta de donde saldrá el ingreso para el pago </label>
                             <select class="form-control" id="IDCuentaFuente" name="IDCuentaFuente" >
-                                <option value="0">Selecciona</option> 
-                            </select> 
+                                <option value="0">Selecciona</option>
+                            </select>
                         </div>
                         <div class="col-md-12"></div>
-                        <div class="col-md-3"> 
+                        <div class="col-md-3">
                             <label for="">Fecha en que se debe realizar el pago</label>
                             <input class="form-control" type="text" name="FechaPago" id="FechaPago"  value=""  data-provide="datepicker"  data-date-format="dd/mm/yyyy"  placeholder="XX/XX/XXXX">
                         </div>
-                        <div class="col-md-3">  
+                        <div class="col-md-3">
                             <label for="">Fecha de realización del pago </label>
                             <input  value="" class="form-control" type="text" name="FechaRPago" id="FechaRPago" data-provide="datepicker"  data-date-format="dd/mm/yyyy" placeholder="XX/XX/XXXX">
                         </div>
-                        <div class="col-md-3">   
+                        <div class="col-md-3">
                             <label for="">Tipo de comprobante de pago</label>
                             <select class="form-control" id="Comprobante" name="Comprobante"  required>
-                                <option value="">Selecciona</option> 
+                                <option value="">Selecciona</option>
                                 <option value="Factura">Factura</option>
                                 <option value="Recibo">Recibo</option>
                             </select>
@@ -1626,15 +1614,15 @@
                         <div class="col-md-3">
                             <label for="">Nombre de quien emite la orden de pago </label>
                             <select class="form-control" id="Emisor" name="Emisor">
-                                <option value="">Selecciona</option> 
-                            </select> 
+                                <option value="">Selecciona</option>
+                            </select>
                         </div>
                         <div id="mdlMessagesXPago" class="col-md-12">
 
                         </div>
                     </fieldset>
                 </div>
-            </form> 
+            </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-2x"></span></button>
                 <button type="button" class="btn btn-default btn-lg fa-lg" id="btnGuardar" name="btnGuardar"><span class="fa fa-check fa-3x success-icon"></span></button>
@@ -1677,9 +1665,9 @@
     var btnReCargarTramiteFactura = $("#btnReCargarTramiteFactura");
     var btnFacturaAGasto = $("#btnFacturaAGasto");
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        mdlNuevo.find("#Actividad").change(function () {
+        mdlNuevo.find("#Actividad").change(function() {
             HoldOn.open({
                 theme: 'sk-bounce',
                 message: 'ESPERE...'
@@ -1692,21 +1680,21 @@
                 data: {
                     ID: mdlNuevo.find("#Actividad").val()
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 var dtm = data[0];
                 console.log(dtm);
                 if (dtm.Clave !== undefined && dtm.Clave !== null) {
                     mdlNuevo.find("#ModeloNegocio").select2("val", dtm.Clave);
                     mdlNuevo.find("#Empresa").select2("val", dtm.EMPRESA);
 
-                }else{
+                } else {
                     mdlNuevo.find("#ModeloNegocio").select2("val", "");
                     mdlNuevo.find("#Empresa").select2("val", "");
                 }
                 console.log(data);
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
@@ -1722,7 +1710,7 @@
         getProyectos();
         getCuentas();
 
-        btnFacturaAGasto.click(function () {
+        btnFacturaAGasto.click(function() {
             if (temp !== undefined && temp !== null && temp !== "" && temp > 0) {
                 HoldOn.open({
                     theme: "sk-bounce",
@@ -1735,7 +1723,7 @@
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     var dtm = data[0];
                     console.log(dtm);
                     if (dtm.ESTATUS === 'REGISTRADA') {
@@ -1746,22 +1734,22 @@
                             data: {
                                 ID: temp
                             }
-                        }).done(function (data, x, jq) {
+                        }).done(function(data, x, jq) {
                             btnReCargarTramiteFactura.trigger('click');
                             onNotify('<span class="fa fa-exclamation fa-3x"></span>', 'SE HA CONVERTIDO LA FACTURA EN UN GASTO', 'danger');
-                        }).fail(function (x, y, z) {
+                        }).fail(function(x, y, z) {
                             console.log(x, y, z);
                             console.log(x.responseText);
-                        }).always(function () {
+                        }).always(function() {
                             HoldOn.close();
                         });
                     } else {
                         onNotify('<span class="fa fa-exclamation fa-3x"></span>', 'SOLO SE PUEDE CONVERTIR EN GASTO UNA FACTURA REGISTRADA', 'danger');
                     }
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
                     console.log(x.responseText);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -1769,7 +1757,7 @@
             }
         });
 
-        btnCancelarPagada.click(function () {
+        btnCancelarPagada.click(function() {
 
             if (temp !== undefined && temp !== null && temp !== "" && temp > 0) {
                 HoldOn.open({
@@ -1783,13 +1771,13 @@
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     btnPagadas.trigger('click');
                     onNotify('<span class="fa fa-exclamation fa-3x"></span>', 'SE HA CANCELADO LA FACTURA PAGADA', 'danger');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
                     console.log(x.responseText);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -1798,7 +1786,7 @@
         });
 
         /**/
-        btnGuardarPagoRapido.click(function () {
+        btnGuardarPagoRapido.click(function() {
             var frm = new FormData(mdlAvanceRapido.find("form")[0]);
 
             HoldOn.open({
@@ -1812,19 +1800,19 @@
                 contentType: false,
                 processData: false,
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 mdlAvanceRapido.modal('hide');
                 onNotify('<span class="fa fa-check fa-3x"></span>', 'FACTURA PAGADA', 'success');
 
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnPagarFactura.click(function () {
+        btnPagarFactura.click(function() {
 
             if (temp !== undefined && temp !== null && temp !== "" && temp > 0) {
                 HoldOn.open({
@@ -1838,7 +1826,7 @@
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data);
                     var dtm = data[0];
                     if (dtm.ESTATUS === 'AUTORIZADA') {
@@ -1857,10 +1845,10 @@
                     } else {
                         onNotify('<span class="fa fa-exclamation fa-3x"></span>', 'LA FACTURA DEBE DE ESTAR "AUTORIZADA"', 'danger');
                     }
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
                     console.log(x.responseText);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -1868,7 +1856,7 @@
             }
         });
         /**/
-        btnEditarNC.click(function () {
+        btnEditarNC.click(function() {
             if (temp !== undefined && temp !== null && temp !== "" && temp > 0) {
                 HoldOn.open({
                     theme: "sk-bounce",
@@ -1881,7 +1869,7 @@
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     var dtm = data[0];
                     if (dtm !== undefined) {
@@ -1920,9 +1908,9 @@
                         onNotify('<span class="fa fa-exclamation fa-3x"></span>', 'OCURRIO UN PROBLEMA MIENTRAS SE OBTENIAN LOS DATOS, COMUNIQUESE CON EL ADMINISTRADOR DEL SISTEMA.', 'danger');
                     }
 
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -1930,13 +1918,13 @@
             }
         });
 
-        mdlNotaDeCreditoV.on('hidden.bs.modal', function () {
+        mdlNotaDeCreditoV.on('hidden.bs.modal', function() {
             mdlNotaDeCreditoV.find("#RDocumentoDisplayD").html('');
             mdlNotaDeCreditoV.find("#RDocumentoImgD").addClass("hide");
 
         });
 
-        btnCanceladas.click(function () {
+        btnCanceladas.click(function() {
 
             btnCancelarPagada.addClass("hide");
             HoldOn.open({
@@ -1948,18 +1936,18 @@
                 url: master_url + 'getRecordsCancelados',
                 type: "POST",
                 dataType: "JSON"
-            }).done(function (data) {
+            }).done(function(data) {
                 var tblName = "tblFacturasCanceladas";
                 if (data.length > 0) {
                     $("#rTramiteFactura").html(getTable('tblFacturasCanceladas', data));
-                    $('#tblFacturasCanceladas tfoot th').each(function () {
+                    $('#tblFacturasCanceladas tfoot th').each(function() {
                         var title = $(this).text();
                         $(this).html('<fieldset><div><label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" /></div></div>');
                     });
                     var tblSelected = $('#tblFacturasCanceladas').DataTable(tableOptions);
                     var detailRows = [];
                     /*CLICK SELECTED ROW*/
-                    $('#tblFacturasCanceladas tbody').on('click', 'tr', function () {
+                    $('#tblFacturasCanceladas tbody').on('click', 'tr', function() {
 
                         $("#tblFacturasCanceladas").find("tr").removeClass("success");
                         $("#tblFacturasCanceladas").find("tr").removeClass("warning");
@@ -1977,7 +1965,7 @@
                         temp = parseInt($(dtm[0])[0].innerText);
                     });
                     /*DB CLICK FOR EDIT*/
-                    $('#tblFacturasCanceladas tbody').on('dblclick', 'tr', function () {
+                    $('#tblFacturasCanceladas tbody').on('dblclick', 'tr', function() {
                         $("#tblFacturasCanceladas").find("tr").removeClass("warning");
                         $(this).addClass('warning');
                         var dtm = tblSelected.row(this).data();
@@ -1988,9 +1976,9 @@
                         console.log('IDFACT: ' + temp);
                     });
                     /* Apply the search*/
-                    tblSelected.columns().every(function () {
+                    tblSelected.columns().every(function() {
                         var that = this;
-                        $('input', this.footer()).on('keyup change', function () {
+                        $('input', this.footer()).on('keyup change', function() {
                             if (that.search() !== this.value) {
                                 that.search(this.value).draw();
                             }
@@ -2002,14 +1990,14 @@
                             '<h1 class="text-center">' + fail_message + '</h1>' +
                             '</div>');
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnPagadas.click(function () {
+        btnPagadas.click(function() {
 
             HoldOn.open({
                 theme: "sk-bounce",
@@ -2020,19 +2008,19 @@
                 url: master_url + 'getRecordsPagados',
                 type: "POST",
                 dataType: "JSON"
-            }).done(function (data) {
+            }).done(function(data) {
                 btnCancelarPagada.removeClass("hide");
                 var tblName = "tblFacturasPagadas";
                 if (data.length > 0) {
                     $("#rTramiteFactura").html(getTable('tblFacturasPagadas', data));
-                    $('#tblFacturasPagadas tfoot th').each(function () {
+                    $('#tblFacturasPagadas tfoot th').each(function() {
                         var title = $(this).text();
                         $(this).html('<fieldset><div><label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" /></div></fieldset>');
                     });
                     var tblSelected = $('#tblFacturasPagadas').DataTable(tableOptions);
                     var detailRows = [];
                     /*CLICK SELECTED ROW*/
-                    $('#tblFacturasPagadas tbody').on('click', 'tr', function () {
+                    $('#tblFacturasPagadas tbody').on('click', 'tr', function() {
 
                         $("#tblFacturasPagadas").find("tr").removeClass("success");
                         $("#tblFacturasPagadas").find("tr").removeClass("warning");
@@ -2050,7 +2038,7 @@
                         temp = parseInt($(dtm[0])[0].innerText);
                     });
                     /*DB CLICK FOR EDIT*/
-                    $('#tblFacturasPagadas tbody').on('dblclick', 'tr', function () {
+                    $('#tblFacturasPagadas tbody').on('dblclick', 'tr', function() {
                         $("#tblFacturasPagadas").find("tr").removeClass("warning");
                         $(this).addClass('warning');
                         var dtm = tblSelected.row(this).data();
@@ -2061,9 +2049,9 @@
                         console.log('IDFACT: ' + temp);
                     });
                     /* Apply the search*/
-                    tblSelected.columns().every(function () {
+                    tblSelected.columns().every(function() {
                         var that = this;
-                        $('input', this.footer()).on('keyup change', function () {
+                        $('input', this.footer()).on('keyup change', function() {
                             if (that.search() !== this.value) {
                                 that.search(this.value).draw();
                             }
@@ -2075,19 +2063,19 @@
                             '<h1 class="text-center">' + fail_message + '</h1>' +
                             '</div>');
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnNotasDeCredito.click(function () {
+        btnNotasDeCredito.click(function() {
             btnCancelarPagada.addClass("hide");
             getNotasDeCreditoXFacturas();
         });
 
-        btnSaveNC.click(function () {
+        btnSaveNC.click(function() {
             var frm = new FormData($('#fNotaDeCredito')[0]);
             HoldOn.open({
                 theme: "sk-bounce",
@@ -2100,19 +2088,19 @@
                 contentType: false,
                 processData: false,
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 mdlNotaDeCredito.modal('hide');
                 getNotasDeCreditoXFacturas();
                 getInformacionAdicional();
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnSaveRevision.click(function () {
+        btnSaveRevision.click(function() {
 
             console.log('revisando...');
             dataf = new FormData($("#fRevision")[0]);
@@ -2120,8 +2108,8 @@
             var rows_in = tblNotasDeCreditoXFacturaR.find("tbody > tr").length;
             var tnc = 0.0;
             if (rows_in > 0) {
-                tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function (k, v) {
-                    $(this).each(function (k, v) {
+                tblNotasDeCreditoXFacturaR.find("tbody > tr").each(function(k, v) {
+                    $(this).each(function(k, v) {
                         var nc = {
                             FOLIO: $(v).find(".Folio")[0].innerText,
                             CONCEPTO: $(v).find(".ConceptoT")[0].innerText,
@@ -2143,36 +2131,36 @@
                 contentType: false,
                 processData: false,
                 data: dataf
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 $("#btnReCargarTramiteFactura").trigger('click');
                 getInformacionAdicional();
                 mdlRevision.modal('hide');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('ACTION COMPLETADA');
             });
         });
 
-        btnSaveAutorizacion.click(function () {
+        btnSaveAutorizacion.click(function() {
             var frm = mdlAutorizacion.find("#fAutorizacion").serialize();
             $.ajax({
                 type: "POST",
                 url: master_url + 'onAutorizacion',
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 $("#btnReCargarTramiteFactura").trigger('click');
                 getInformacionAdicional();
                 mdlAutorizacion.modal('hide');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('ACTION COMPLETADA');
             });
         });
 
-        mdlAutorizacion.on('show.bs.modal', function () {
+        mdlAutorizacion.on('show.bs.modal', function() {
 
             $.ajax({
                 url: master_url + 'getRecordsHistoryByID',
@@ -2181,29 +2169,29 @@
                 data: {
                     ID: temp
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 var tbl = mdlAutorizacion.find("#tblObservacionesRevisadas");
                 tbl.html(getTable('tblOR', data));
                 /*        $("#tblObservacionesRevisadas").html(data); */
                 var tblSelected = $("#tblOR").DataTable(tableOptions);
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 getInformacionAdicional();
                 console.log("CONSULTA DE HISTORIAL PROCESADA");
             });
         });
 
-        RDocumentoImgD.click(function () {
+        RDocumentoImgD.click(function() {
             RDocumentoFileD.trigger('click');
         });
 
-        RDocumentoFileD.change(function () {
+        RDocumentoFileD.change(function() {
             var imageType = /image.*/;
             if (RDocumentoFileD[0].files[0] !== undefined && RDocumentoFileD[0].files[0].type.match(imageType)) {
                 var reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     RDocumentoDisplayD.html('<img src="' + reader.result + '" class="img-responsive">');
                 };
                 reader.readAsDataURL(RDocumentoFileD[0].files[0]);
@@ -2211,7 +2199,7 @@
                 if (RDocumentoFileD[0].files[0] !== undefined && RDocumentoFileD[0].files[0].type.match('application/pdf')) {
                     console.log('ES UN PDF');
                     var readerpdf = new FileReader();
-                    readerpdf.onload = function (e) {
+                    readerpdf.onload = function(e) {
                         RDocumentoDisplayD.html('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="90%" height="800px"' +
                                 ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
                     };
@@ -2222,7 +2210,7 @@
             }
         });
 
-        mdlPagoFactura.find("#btnNotaDeCredito").click(function () {
+        mdlPagoFactura.find("#btnNotaDeCredito").click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "CARGANDO... POR FAVOR ESPERE"
@@ -2239,7 +2227,7 @@
                     MontoF: mdlPagoFactura.find("#MontoAplicado").val(),
                     MontoRF: mdlPagoFactura.find("#MontoFacturaRestante").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 if (parseInt(data) > 0) {
                     onGetRecords("tblTramiteFactura", master_url + "onLoad", 1, "rTramiteFactura", "msgTramiteFactura", "NO SE ENCONTRARON REGISTROS");
                     mdlPagoFactura.modal('hide');
@@ -2247,15 +2235,15 @@
                     mdlPagoFactura.find("#msgADMPPDF").html('<div class="alert alert-dismissible alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>ERROR! NO SE HA PODIDO PROCESAR LA SOLICITUD. CONSULTE LA CONSOLA DE ERRORES.</div>');
                     console.log(data);
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 getInformacionAdicional();
                 HoldOn.close();
             });
         });
 
-        btnNC.click(function () {
+        btnNC.click(function() {
             if (temp !== undefined && temp !== null && temp !== "" && parseInt(temp) > 0) {
                 HoldOn.open({
                     theme: "sk-bounce",
@@ -2268,7 +2256,7 @@
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     var dtm = data[0];
                     mdlNotaDeCredito.find('#ID').val(temp);
@@ -2279,9 +2267,9 @@
                     mdlNotaDeCredito.find('#ImportePagado').val(dtm["IMPORTE PAGADO"]);
                     mdlNotaDeCredito.find('#Importe').val(dtm.IMPORTE);
                     mdlNotaDeCredito.modal('show');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     getInformacionAdicional();
                     HoldOn.close();
                 });
@@ -2290,7 +2278,7 @@
             }
         });
 
-        MontoAplicado.keyup(function () {
+        MontoAplicado.keyup(function() {
             console.log('MONTO APLICADO: ' + MontoAplicado.val() + ', MONTO TOTAL NC: ' + MontoFactura.val());
             if (parseFloat(MontoAplicado.val()) > 0 && parseFloat(MontoAplicado.val()) <= parseFloat(MontoFactura.val())) {
                 var rt = parseFloat(MontoFactura.val()) - parseFloat(MontoAplicado.val());
@@ -2313,7 +2301,7 @@
          */
         onGetRecords("tblTramiteFactura", master_url + "onLoad", 1, "rTramiteFactura", "msgTramiteFactura", "NO SE ENCONTRARON REGISTROS");
 
-        $('#mdlADFPEDFDP').on('show.bs.modal', function (e) {
+        $('#mdlADFPEDFDP').on('show.bs.modal', function(e) {
             $.ajax({
                 url: master_url + 'getRecordsHistoryByID',
                 type: "POST",
@@ -2321,19 +2309,19 @@
                 data: {
                     ID: temp
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 var tbl = $("#tblObservacionesRevisadas");
                 tbl.html(getTable('tblOR', data));
 
                 var tblSelected = $("#tblOR").DataTable(tableOptions);
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log("CONSULTA DE HISTORIAL PROCESADA");
             });
         });
-        $('#mdlADMPPDF').on('show.bs.modal', function (e) {
+        $('#mdlADMPPDF').on('show.bs.modal', function(e) {
             $.ajax({
                 url: master_url + 'getRecordsHistoryByID',
                 type: "POST",
@@ -2341,13 +2329,13 @@
                 data: {
                     ID: temp
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 var tbl = $("#rObservaciones");
                 tbl.html(getTable('tblOA', data));
 
                 var tblSelected = $("#tblOA").DataTable(tableOptions);
-                $("#tblOA tbody > tr").each(function (k, v) {
+                $("#tblOA tbody > tr").each(function(k, v) {
                     var row_value = $(this).find("td");
                     var status = row_value[4].innerText;
                     if (status === 'NO AUTORIZADA') {
@@ -2361,15 +2349,15 @@
                     }
 
                 });
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log("CONSULTA DE HISTORIAL PROCESADA");
             });
         });
 
         /*ABRE EL MODAL DE NUEVO REGISTRO*/
-        btnNuevo.on('click', function () {
+        btnNuevo.on('click', function() {
             $("#fTramiteFactura")[0].reset();
             $("#nIdSesion").parent("div").addClass("hide");
 
@@ -2380,7 +2368,7 @@
             $("#fObservaciones").addClass("hide");
         });
 
-        $("#btnRegistrarTramiteFactura").on('click', function () {
+        $("#btnRegistrarTramiteFactura").on('click', function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "CARGANDO... POR FAVOR ESPERE"
@@ -2393,7 +2381,7 @@
                     ID: mdlNuevo.find("#NumeroFactura").val(),
                     PROVEEDOR: mdlNuevo.find("#Proveedor").val()
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 if (parseInt(data) === 1) {
                     console.log('SE ENCONTRARON FACTURAS');
                     $("#msgfacturas").html('<div class="alert alert-dismissible alert-danger">  <button type="button" class="close" data-dismiss="alert"><span class="fa fa-times fa-3x"></button><H3>ERROR! <br>INTENTO DE DUPLICIDAD DE DATOS. <br>ESTA FACTURA YA HA SIDO REGISTRADA.</H3></div>');
@@ -2415,8 +2403,8 @@
                     var rows_in = tblNotasDeCreditoXFactura.find("tbody > tr").length;
                     var tnc = 0.0;
                     if (rows_in > 0) {
-                        tblNotasDeCreditoXFactura.find("tbody > tr").each(function (k, v) {
-                            $(this).each(function (k, v) {
+                        tblNotasDeCreditoXFactura.find("tbody > tr").each(function(k, v) {
+                            $(this).each(function(k, v) {
                                 var nc = {
                                     FOLIO: $(v).find(".Folio")[0].innerText,
                                     CONCEPTO: $(v).find(".ConceptoT")[0].innerText,
@@ -2444,7 +2432,7 @@
                         contentType: false,
                         processData: false,
                         data: dataf
-                    }).done(function (data) {
+                    }).done(function(data) {
                         console.log(data);
                         console.log('SE HA SUBIDO EL ARCHIVO');
                         $("#btnReCargarTramiteFactura").trigger('click');
@@ -2455,15 +2443,15 @@
                         mdlNuevo.find("select").select2("val", "");
                         mdlNuevo.find("#btnRegistrarTramiteFactura").removeClass("hide");
                         mdlNuevo.find("#btnActualizarTramiteFactura").addClass("hide");
-                    }).fail(function (x, y, z) {
+                    }).fail(function(x, y, z) {
                         console.log(x, y, z);
                         console.log('ERROR NO SE HA SUBIDO EL ARCHIVO');
                         console.log(arguments);
                     });
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 getInformacionAdicional();
                 HoldOn.close();
                 console.log('COMPROBACION COMPLETADA');
@@ -2472,17 +2460,17 @@
         /*
          * OBTENER
          */
-        $("#btnReCargarTramiteFactura").on('click', function () {
+        $("#btnReCargarTramiteFactura").on('click', function() {
 
             btnCancelarPagada.addClass("hide");
             onGetRecords("tbl" + doc, base_url + "index.php/ctrl" + doc + "/onLoad", 1, "rTramiteFactura", "msgTramiteFactura", "NO SE ENCONTRARON REGISTROS");
         });
-        $("#btnEditar" + doc).on('click', function () {
+        $("#btnEditar" + doc).on('click', function() {
             onBeforeSend(base_url + "index.php/ctrl" + doc + "/onLoad", 5, "mdlNuevo", "mdlMessages", "msg" + doc, "NO HA ELEGIDO NINGUN REGISTRO.", ["btnActualizar" + doc, "btnRegistrar" + doc]);
             $("#btnActualizarTramiteFactura").removeClass("hide");
             $("#btnRegistrarTramiteFactura").addClass("hide");
         });
-        $("#btnActualizarTramiteFactura").on('click', function () {
+        $("#btnActualizarTramiteFactura").on('click', function() {
             dataf = new FormData($('#fTramiteFactura')[0]);
             console.log(dataf);
             HoldOn.open({
@@ -2496,15 +2484,15 @@
                 contentType: false,
                 processData: false,
                 data: dataf
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 console.log('SE HA ACTUALIZADO EL ARCHIVO');
                 $('#mdlNuevo').modal('hide');
                 $("#btnReCargarTramiteFactura").trigger('click');
-            }).fail(function () {
+            }).fail(function() {
                 console.log('ERROR NO SE HA ACTUALIZADO EL ARCHIVO');
                 console.log(arguments);
-            }).always(function () {
+            }).always(function() {
                 getInformacionAdicional();
                 HoldOn.close();
             });
@@ -2513,7 +2501,7 @@
         /*
          * ELIMINAR
          */
-        $('#btnEliminarTramiteFactura').on('click', function () {
+        $('#btnEliminarTramiteFactura').on('click', function() {
             onDeleteVYR();
         });
 
@@ -2521,12 +2509,12 @@
          * VALIDATE FORM
          */
 
-        $("#mdlADMPPDF").on('hidden.bs.modal', function () {
+        $("#mdlADMPPDF").on('hidden.bs.modal', function() {
             $("#fObservacionADMPPDF")[0].reset();
             $("#btnGuardarADMPPDF").addClass("disabled");
             $("select").select2("val", "");
         });
-        $("#rDeterminaImporte").on('change', function () {
+        $("#rDeterminaImporte").on('change', function() {
             var mxp = $("#MontoXPagarADMPPDF");
             switch (parseInt($("#rDeterminaImporte").val())) {
                 case 1:
@@ -2543,7 +2531,7 @@
             }
         });
 
-        $("#FormaDePago").on('change', function () {
+        $("#FormaDePago").on('change', function() {
             if ($("#rDeterminaImporte").val() !== '' && $("#FormaDePago").val() !== '' && $("#MontoXPagarADMPPDF").val() !== '') {
                 $("#btnGuardarADMPPDF").removeClass("disabled");
             } else {
@@ -2554,7 +2542,7 @@
          * REPORTS
          */
 
-        $("#btnReporteAcumuladoGeneral").click(function () {
+        $("#btnReporteAcumuladoGeneral").click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "CARGANDO... POR FAVOR ESPERE"
@@ -2562,20 +2550,20 @@
             $.ajax({
                 url: master_url + 'getSaldosGenerales',
                 type: "POST"
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 window.open(data, '_blank');
 
 
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('OPERACION COMPLETADA: REPORTE GENERAL ACUMULADO');
                 HoldOn.close();
                 $("#btnReporteAcumuladoGeneral").find("span").addClass("fa-file-text");
             });
         });
-        $("#btnAcumuladoPorProveedor").click(function () {
+        $("#btnAcumuladoPorProveedor").click(function() {
             if ($("#cmbProveedorFactura").val() !== undefined && $("#cmbProveedorFactura").val() !== '' || $("#cmbEmpresaBusqueda").val() !== undefined && $("#cmbEmpresaBusqueda").val() !== '') {
 
                 HoldOn.open({
@@ -2590,13 +2578,13 @@
                         IDEMPRESA: ($("#cmbEmpresaBusqueda").val() !== undefined && $("#cmbEmpresaBusqueda").val() !== '') ? $("#cmbEmpresaBusqueda").val() : '',
                         INICIO: $("#FechaInicioH").val(),
                         TERMINO: $("#FechaTerminoH").val()}
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data);
 
                     window.open(data, '_blank');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     console.log('OPERACION COMPLETADA: ACUMULADO POR EMPRESA O PROVEEDOR ');
                     HoldOn.close();
                 });
@@ -2617,19 +2605,19 @@
             }
         });
 
-        $("#btnReporteTramiteFactura").on('click', function (e) {
+        $("#btnReporteTramiteFactura").on('click', function(e) {
             onCreateReport("mdlMessages", "bMessages", "NO HA ELEGIDO NINGUN REGISTRO");
         });
 
-        $("#btnReportes").on('click', function (e) {
+        $("#btnReportes").on('click', function(e) {
             onGetRecordReport("tblREVFTP", base_url + "index.php/ctrl" + doc + "/onLoad", 7, "rREVFTP", "rREVFTP", "NO SE ENCONTRARON REGISTROS");
         });
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function () {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function() {
             onGetRecordReport("tblREPFTP", base_url + "index.php/ctrl" + doc + "/onLoad", 7, "rREPFTP", "rREPFTP", "NO SE ENCONTRARON REGISTROS");
         });
 
-        $("#btnAvance").on('click', function () {
+        $("#btnAvance").on('click', function() {
 
             HoldOn.open({
                 theme: "sk-bounce",
@@ -2647,7 +2635,7 @@
             }
             HoldOn.close();
         });
-        $("#fObservacionRDFPTDP").submit(function (e) {
+        $("#fObservacionRDFPTDP").submit(function(e) {
             e.preventDefault();
             $("#btnGuardarObservacionRDFPTDP").addClass("hide");
             $("#btnGuardarObservacionRDFPTDPProgress").removeClass("hide");
@@ -2669,7 +2657,7 @@
             }
         });
 
-        /*METODO QUE GUARDA EL AVANCE DE LA FACTURA A PAGO PARCIAL O A ELABORACION DE FORMA DE PAGO*/         mdlPagoFactura.find("#btnSave").click(function () {
+        /*METODO QUE GUARDA EL AVANCE DE LA FACTURA A PAGO PARCIAL O A ELABORACION DE FORMA DE PAGO*/         mdlPagoFactura.find("#btnSave").click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "CARGANDO... POR FAVOR ESPERE"
@@ -2679,27 +2667,27 @@
                 type: "POST",
                 url: master_url + 'onPagar',
                 data: formdata
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 $("#btnReCargarTramiteFactura").trigger('click');
                 mdlPagoFactura.modal("hide");
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('ACTION COMPLETADA');
                 HoldOn.close();
             });
         });
 
 
-        $("#ObservacionesYN").on('change', function (e) {
+        $("#ObservacionesYN").on('change', function(e) {
             if (parseInt($("#ObservacionesYN").val()) === 1) {
                 $("#divObservaciones").removeClass("hide");
             } else {
                 $("#divObservaciones").addClass("hide");
             }
         });
-        $("#ObservacionesYNAU").on('change', function (e) {
+        $("#ObservacionesYNAU").on('change', function(e) {
             if (parseInt($("#ObservacionesYNAU").val()) === 1) {
                 $("#divObservacionesAU").removeClass("hide");
             } else {
@@ -2707,15 +2695,15 @@
             }
         });
 
-        $("#btnBusquedaEspecifica").on('click', function (e) {
+        $("#btnBusquedaEspecifica").on('click', function(e) {
             $("#content-busqueda").toggleClass('hide');
         });
 
-        $("#btnReporteBusqueda").click(function (e) {
+        $("#btnReporteBusqueda").click(function(e) {
             onSearchByBusinessAndSuppliers("tbl" + doc, base_url + "index.php/ctrl" + doc + "/onCreateByBussines", 1, "rTramiteFactura", "msgTramiteFactura", "NO SE ENCONTRARON REGISTROS");
         });
 
-        $("#btnNotaDeCreditoS").click(function () {
+        $("#btnNotaDeCreditoS").click(function() {
             $("#btnNotaDeCredito").addClass("hide");
             $("#btnNotaDeCreditoProgress").removeClass("hide");
             $.ajax({url: base_url + 'index.php/ctrl' + doc + "/onLoad",
@@ -2730,7 +2718,7 @@
                     MontoF: $("#MontoAplicado").val(),
                     MontoRF: $("#MontoFacturaRestante").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 if (parseInt(data) > 0) {
                     onGetRecords("tblTramiteFactura", master_url + "onLoad", 1, "rTramiteFactura", "msgTramiteFactura", "NO SE ENCONTRARON REGISTROS");
                     $("#mdlADMPPDF").modal('toggle');
@@ -2738,15 +2726,15 @@
                     $("#msgADMPPDF").html('<div class="alert alert-dismissible alert-danger"> <button type="button" class="close" data-dismiss="alert">&times;</button>ERROR! NO SE HA PODIDO PROCESAR LA SOLICITUD. CONSULTE LA CONSOLA DE ERRORES.</div>');
                     console.log(data);
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 $("#btnNotaDeCreditoProgress").addClass("hide");
                 $("#btnNotaDeCredito").removeClass("hide");
             });
         });
 
-        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
             var target = $(e.target).attr("class"); /* activated tab*/
             console.log(target);
             if (target === 'nc') {
@@ -2758,7 +2746,7 @@
             }
         });
 
-        $("#btnReportesFacturas").click(function (e) {
+        $("#btnReportesFacturas").click(function(e) {
             $("#btnReportesFacturas").find("span").removeClass("fa-eye").addClass("fa-cog fa-spin");
             $("#btnReportesFacturas").addClass("disabled");
             console.log($("#cmbEmpresaBusqueda").val());
@@ -2771,7 +2759,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS.');
@@ -2779,13 +2767,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnReportesFacturas").find("span").removeClass("fa-cog fa-spin").addClass("fa-eye");
                 $("#btnReportesFacturas").removeClass("disabled");
             });
         });
 
-        $("#btnReportesFacturasOBRA").click(function (e) {
+        $("#btnReportesFacturasOBRA").click(function(e) {
             $("#btnReportesFacturasOBRA").find("span").removeClass("fa-eye").addClass("fa-cog fa-spin");
             $("#btnReportesFacturasOBRA").addClass("disabled");
             console.log($("#cmbEmpresaBusqueda").val());
@@ -2797,7 +2785,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS.');
@@ -2805,13 +2793,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnReportesFacturasOBRA").find("span").removeClass("fa-cog fa-spin").addClass("fa-eye");
                 $("#btnReportesFacturasOBRA").removeClass("disabled");
             });
         });
 
-        $("#btnReportesFacturasMATERIAL").click(function (e) {
+        $("#btnReportesFacturasMATERIAL").click(function(e) {
             $("#btnReportesFacturasMATERIAL").find("span").removeClass("fa-eye").addClass("fa-cog fa-spin");
             $("#btnReportesFacturasMATERIAL").addClass("disabled");
             console.log($("#cmbEmpresaBusqueda").val());
@@ -2823,7 +2811,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS.');
@@ -2831,13 +2819,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnReportesFacturasMATERIAL").find("span").removeClass("fa-cog fa-spin").addClass("fa-eye");
                 $("#btnReportesFacturasMATERIAL").removeClass("disabled");
             });
         });
 
-        $("#btnReportesFacturasSinAvanzar").click(function (e) {
+        $("#btnReportesFacturasSinAvanzar").click(function(e) {
             console.log($("#cmbEmpresaBusqueda").val());
             $("#btnReportesFacturasSinAvanzar").find("span").removeClass("fa-eye-slash").addClass("fa-cog fa-spin");
             $("#btnReportesFacturasSinAvanzar").addClass("disabled");
@@ -2850,7 +2838,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS.');
@@ -2858,13 +2846,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnReportesFacturasSinAvanzar").find("span").removeClass("fa-cog fa-spin").addClass("fa-eye-slash");
                 $("#btnReportesFacturasSinAvanzar").removeClass("disabled");
             });
         });
 
-        $("#btnReportesFacturasSinAvanzarOBRA").click(function (e) {
+        $("#btnReportesFacturasSinAvanzarOBRA").click(function(e) {
             console.log($("#cmbEmpresaBusqueda").val());
             $("#btnReportesFacturasSinAvanzarOBRA").find("span").removeClass("fa-eye-slash").addClass("fa-cog fa-spin");
             $("#btnReportesFacturasSinAvanzarOBRA").addClass("disabled");
@@ -2876,7 +2864,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS.');
@@ -2884,13 +2872,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnReportesFacturasSinAvanzarOBRA").find("span").removeClass("fa-cog fa-spin").addClass("fa-eye-slash");
                 $("#btnReportesFacturasSinAvanzarOBRA").removeClass("disabled");
             });
         });
 
-        $("#btnReportesFacturasSinAvanzarMATERIAL").click(function (e) {
+        $("#btnReportesFacturasSinAvanzarMATERIAL").click(function(e) {
             console.log($("#cmbEmpresaBusqueda").val());
             $("#btnReportesFacturasSinAvanzarMATERIAL").find("span").removeClass("fa-eye-slash").addClass("fa-cog fa-spin");
             $("#btnReportesFacturasSinAvanzarMATERIAL").addClass("disabled");
@@ -2902,7 +2890,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS.');
@@ -2910,18 +2898,18 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnReportesFacturasSinAvanzarMATERIAL").find("span").removeClass("fa-cog fa-spin").addClass("fa-eye-slash");
                 $("#btnReportesFacturasSinAvanzarMATERIAL").removeClass("disabled");
             });
         });
         /*
-         * 
+         *
          * CR POR PROVEEDOR
-         * 
+         *
          */
 
-        $("#btnCRIndividual").click(function (e) {
+        $("#btnCRIndividual").click(function(e) {
             console.log('CR POR PROVEEDOR...');
             $("#btnCRIndividual").find("span").removeClass("fa-exclamation").addClass("fa-cog fa-spin");
             $("#btnCRIndividual").addClass("disabled");
@@ -2934,7 +2922,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS CON EL PROVEEDOR SELECCIONADO.');
@@ -2942,13 +2930,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnCRIndividual").find("span").removeClass("fa-cog fa-spin").addClass("fa-exclamation");
                 $("#btnCRIndividual").removeClass("disabled");
             });
         });
 
-        $("#btnCROBRA").click(function (e) {
+        $("#btnCROBRA").click(function(e) {
 
             $("#btnCROBRA").find("span").removeClass("fa-building").addClass("fa-cog fa-spin");
             $("#btnCROBRA").addClass("disabled");
@@ -2960,7 +2948,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS CON EL PROVEEDOR SELECCIONADO.');
@@ -2968,13 +2956,13 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnCROBRA").find("span").removeClass("fa-cog fa-spin").addClass("fa-building");
                 $("#btnCROBRA").removeClass("disabled");
             });
         });
 
-        $("#btnCRMATERIAL").click(function (e) {
+        $("#btnCRMATERIAL").click(function(e) {
 
             $("#btnCRMATERIAL").find("span").removeClass("fa-puzzle-piece").addClass("fa-cog fa-spin");
             $("#btnCRMATERIAL").addClass("disabled");
@@ -2986,7 +2974,7 @@
                     FECHATERMINO: $("#FechaTerminoH").val(),
                     IDPRO: $("#cmbProveedorFactura").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 if (parseInt(data) === 0) {
                     $("#msgReportsTF").html('LA EMPRESA NO TIENE MOVIMIENTOS CON EL PROVEEDOR SELECCIONADO.');
@@ -2994,7 +2982,7 @@
                     $("#msgReportsTF").html('');
                     window.open(data, '_blank');
                 }
-            }).always(function () {
+            }).always(function() {
                 $("#btnCRMATERIAL").find("span").removeClass("fa-cog fa-spin").addClass("fa-puzzle-piece");
                 $("#btnCRMATERIAL").removeClass("disabled");
             });
@@ -3002,14 +2990,14 @@
         /**
          * FIN DE CR'S
          */
-        $("#btnCancelarFactura").click(function () {
+        $("#btnCancelarFactura").click(function() {
             if (temp !== undefined && temp !== null && temp !== 0 && temp !== '') {
                 $.ajax({
                     url: master_url + 'onCancelarFactura',
                     type: "POST",
                     data: {
                         ID: temp}
-                }).done(function (data) {
+                }).done(function(data) {
                     console.log(data);
                     if (parseInt(data) === 1) {
                         onNotify('<span class="fa fa-check lime-icon fa-3x"></span>', 'FACTURA CANCELADA', 'danger');
@@ -3027,7 +3015,7 @@
 
     });
     /*
-     * CHANGES IN FORM 
+     * CHANGES IN FORM
      */
     function onLoad() {
     }
@@ -3047,18 +3035,18 @@
                 FECHAINICIO: $("#FechaInicioH").val(),
                 FECHATERMINO: $("#FechaTerminoH").val()
             }
-        }).done(function (data) {
+        }).done(function(data) {
             console.log(data);
             var tblName = tblname;
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
-                $("#" + target_result + "  tbody > tr").each(function (k, v) {
+                $("#" + target_result + "  tbody > tr").each(function(k, v) {
                     var row_value = $(this).find("td")[0].innerText;
                     $(this).find("td")[0].innerHTML = '<div class="text-center"><span class="label label-primary">' + row_value + '</span></div>';
                 });
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 /*CLICK SELECTED ROW*/
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
 
@@ -3074,7 +3062,7 @@
                     temp = parseInt($(dtm[0]).find("span")[0].innerText);
                 });
                 /*DB CLICK FOR EDIT*/
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -3087,9 +3075,9 @@
                         '<h1 class="text-center">' + fail_message + '</h1>' +
                         '</div>');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             $("#btnReporteBusqueda").removeClass("disabled");
             $("#btnReporteBusqueda").find("span").removeClass("fa-cog fa-spin");
             $("#btnReporteBusqueda").find("span").addClass("fa-search");
@@ -3101,7 +3089,7 @@
             url: master_url + "getProyectos",
             type: "POST",
             dataType: "JSON"
-        }).done(function (data) {
+        }).done(function(data) {
 
             var options = "<option></option>";
             for (var x = 0; x < data.length; x++) {
@@ -3118,7 +3106,7 @@
             url: master_url + "getProveedores",
             type: "POST",
             dataType: "JSON"
-        }).done(function (data) {
+        }).done(function(data) {
 
             var options = "<option></option>";
             for (var x = 0; x < data.length; x++) {
@@ -3135,7 +3123,7 @@
             url: master_url + "getActividades",
             type: "POST",
             dataType: "JSON"
-        }).done(function (data) {
+        }).done(function(data) {
 
             var options = "<option></option>";
             for (var x = 0; x < data.length; x++) {
@@ -3143,7 +3131,7 @@
                 options += '<option value="' + data[x].Clave + '">' + data[x].Actividad + '</option>';
             }
             $("#ModeloNegocio").html(options);
-        }).fail(function () {
+        }).fail(function() {
             console.log('ERROR');
             console.log(arguments);
         });
@@ -3154,7 +3142,7 @@
             url: master_url + "getEmpresas",
             type: "POST",
             dataType: "JSON"
-        }).done(function (data) {
+        }).done(function(data) {
             var options = "<option></option>";
             for (var x = 0; x < data.length; x++) {
 
@@ -3170,9 +3158,9 @@
             url: master_url + "getInformacionAdicional",
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             console.log(data);
-            $.each(data, function (k, v) {
+            $.each(data, function(k, v) {
                 console.log(v);
                 switch (v.Estatus) {
                     case  "PAGADA":
@@ -3190,9 +3178,9 @@
                 }
             });
 
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             console.log('COMPLETADO');
         });
     }
@@ -3207,28 +3195,28 @@
                 data: {indice: 6,
                     ID: temp
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log(errorThrown);
                     console.log(textStatus);
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 $.ajax({url: base_url + "index.php/ctrl" + doc + "/onCreatePDF",
                     type: "POST",
                     data: {
                         DATA: JSON.stringify(data[0])
                     },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
                         console.log(errorThrown);
                         console.log(textStatus);
                     }
-                }).done(function (data) {
+                }).done(function(data) {
                     console.log(data);
                     window.open(data, '_blank');
                 });
             });
         } else {
-            setTimeout(function () {
+            setTimeout(function() {
                 $(this).find("span").removeClass("fa-cog fa-spin disabled");
                 $(this).find("span").addClass("fa-file-text");
             }, 2500);
@@ -3242,7 +3230,7 @@
     function onValidateData(frm, component) {
         var tf = false;
         $('#' + frm + ' input, #' + frm + ' select').each(
-                function (index) {
+                function(index) {
                     var input = $(this);
 
                     if ($("#" + input.attr('id')).val().length > 0) {
@@ -3253,7 +3241,7 @@
                 }
         );
         $('#' + frm + ' input, #' + frm + ' select').each(
-                function (index) {
+                function(index) {
                     var input = $(this);
                     if ($("#" + input.attr('id')).parent("div").hasClass("has-error")) {
                         tf = false;
@@ -3285,23 +3273,23 @@
             data: {
                 indice: indicex
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(errorThrown);
                 console.log(textStatus);
                 console.log(errorThrown);
             }
-        }).done(function (data) {
+        }).done(function(data) {
             var tblName = tblname;
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
-                $('#' + tblName + ' tfoot th').each(function () {
+                $('#' + tblName + ' tfoot th').each(function() {
                     var title = $(this).text();
                     $(this).html('<fieldset><div><label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" /></div></fieldset>');
                 });
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 var detailRows = [];
                 /*CLICK SELECTED ROW*/
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
 
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
@@ -3318,7 +3306,7 @@
                     temp = parseInt($(dtm[0])[0].innerText);
                 });
                 /*DB CLICK FOR EDIT*/
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -3330,9 +3318,9 @@
                     $("#btnEditar" + doc).trigger("click");
                 });
                 /* Apply the search*/
-                tblSelected.columns().every(function () {
+                tblSelected.columns().every(function() {
                     var that = this;
-                    $('input', this.footer()).on('keyup change', function () {
+                    $('input', this.footer()).on('keyup change', function() {
                         if (that.search() !== this.value) {
                             that.search(this.value).draw();
                         }
@@ -3345,9 +3333,9 @@
                         '</div>');
             }
             console.log('FETCHING...' + tblname);
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -3368,18 +3356,18 @@
                 FPago: dtms[2],
                 Proveedor: dtms[3]
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(errorThrown);
                 console.log(textStatus);
             }
-        }).done(function (data) {
+        }).done(function(data) {
             var tblName = tblname;
 
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 /*CLICK SELECTED ROW*/
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
 
@@ -3395,7 +3383,7 @@
                     temp = parseInt($(dtm[0]).find("span")[0].innerText);
                 });
                 /*DB CLICK FOR EDIT*/
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -3423,19 +3411,19 @@
                 indice: indicex,
                 ID: id
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest);
                 console.log(errorThrown);
                 console.log(textStatus);
             }
-        }).done(function (data) {
+        }).done(function(data) {
             $("#rHistoryPayments").append(data);
             var tblName = tblname;
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 /*CLICK SELECTED ROW*/
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
                     var id = this.id;
@@ -3451,7 +3439,7 @@
                 });
                 if (dbclick) {
                     /*DB CLICK FOR EDIT*/
-                    $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                    $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                         $("#" + tblName).find("tr").removeClass("warning");
                         $(this).addClass('warning');
                         var dtm = tblSelected.row(this).data();
@@ -3478,13 +3466,13 @@
             type: "POST",
             url: url,
             data: formdata + assets_url
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             console.log(data);
             onSuccess(data);
             $("#btnReCargarTramiteFactura").trigger('click');
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             console.log('ACTION COMPLETADA');
             HoldOn.close();
         });
@@ -3500,7 +3488,7 @@
                 indice: 5,
                 ID: temp
             },
-            success: function (data) {
+            success: function(data) {
                 console.log(data);
                 json = data[0];
                 var status_record = json.ESTATUS;
@@ -3556,7 +3544,7 @@
                                 indice: 11,
                                 ID: json.ID
                             },
-                            success: function (data) {
+                            success: function(data) {
 
                                 if (data[0].ImporteRestanteXPagar !== '') {
                                     mdlPagoFactura.find("#ImporteADMPPDF").val(data[0].ImporteRestanteXPagar);
@@ -3568,7 +3556,7 @@
 
                                 }
                             }
-                        }).fail(function (x, y, z) {
+                        }).fail(function(x, y, z) {
                             console.log(x, y, z);
                         });
                         onGetRecordsById("tblHistory" + doc + "Payments", base_url + "index.php/ctrl" + doc + "/onLoad", 12, json.ID, "rHistoryPayments", "msgHistory" + doc, "NO SE ENCONTRARON REGISTROS", true);
@@ -3590,7 +3578,7 @@
                                 indice: 16,
                                 ID: json.ID
                             },
-                            success: function (data) {
+                            success: function(data) {
                                 console.log(data);
                                 var tbl = "tbltHC" + doc;
                                 $("#rxContent").html('<h1 class="text-center">OBSERVACIONES DEL PROCESO</h1><hr>');
@@ -3598,7 +3586,7 @@
                                 $('#' + tbl).DataTable(tableOptions);
 
                             },
-                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            error: function(XMLHttpRequest, textStatus, errorThrown) {
                                 console.log(errorThrown);
                                 console.log(textStatus);
                             }
@@ -3613,7 +3601,7 @@
                 btnAvance.find("span").removeClass("fa-spin");
                 btnAvance.find("span").addClass("fa-forward");
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(errorThrown);
                 console.log(textStatus);
             }
@@ -3638,18 +3626,18 @@
         var parent = $(e).parent().parent();
         var btnFile = parent.find("input[type='file']");
         var rArchivo = parent.find("#frtArchivo");
-        btnFile.change(function () {
+        btnFile.change(function() {
             var imageType = /image.*/;
             if (btnFile[0].files[0] !== undefined && btnFile[0].files[0].type.match(imageType)) {
                 var reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     rArchivo.html('<img src="' + reader.result + '" width=\"450\" height=\"600\">');
                 };
                 reader.readAsDataURL(btnFile[0].files[0]);
             } else {
                 if (btnFile[0].files[0] !== undefined && btnFile[0].files[0].type.match('application/pdf')) {
                     var readerpdf = new FileReader();
-                    readerpdf.onload = function (e) {
+                    readerpdf.onload = function(e) {
                         rArchivo.html('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="900px" height="1200px"' +
                                 ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
                     };
@@ -3720,7 +3708,7 @@
                     indice: indicex,
                     ID: temp
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 status_document = 'u';
                 if (data[0] !== undefined) {
@@ -3736,9 +3724,9 @@
                 } else {
                     $("#" + modal_messages).modal('toggle');
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         } else {
@@ -3802,11 +3790,11 @@
                     indice: indicex,
                     ID: temp
                 },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log(errorThrown);
                     console.log(textStatus);
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
                 status_document = 'u';
                 if (data[0] !== undefined) {
@@ -3835,16 +3823,16 @@
                                  {text: 'FACTURA PARA TRAMITE DE PAGO', style: 'title_style'},
                                  {text: 'DATOS DEL REGISTRO', style: 'stitle_style'},
                                  {
-                                 text: [ 
+                                 text: [
                                  'FOLIO: ', {text: data[0].FOLIO, style: 'bcontent_style'},
-                                 'FECHA: ', {text: data[0].FECHA, style: 'bcontent_style'}, 
+                                 'FECHA: ', {text: data[0].FECHA, style: 'bcontent_style'},
                                  {text: 'HORA', style: 'bcontent_style'},
                                  {text: 'EMPRESA RABINA', style: 'bcontent_style'},
                                  {text: 'MODELO DE NEGOCIO', style: 'bcontent_style'},
                                  {text: 'PROYECTO DE TRABAJO O ACTIVIDAD', style: 'bcontent_style'},
                                  {text: 'NÚMERO DE CONTRATO', style: 'bcontent_style'},
                                  ]
-                                 }, 
+                                 },
                                  ]*/
                         , styles: {
                             header: {
@@ -3882,7 +3870,7 @@
                     pdfMake.createPdf(docDefinition).open();
                     /* print the PDF (temporarily Chrome-only)
                      pdfMake.createPdf(docDefinition).print();
-                     
+
                      download the PDF (temporarily Chrome-only)
                      pdfMake.createPdf(docDefinition).download('optionalName.pdf');   */
                 } else {
@@ -3915,11 +3903,11 @@
             data: {
                 indice: indicex
             },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(errorThrown);
                 console.log(textStatus);
             }
-        }).done(function (data) {
+        }).done(function(data) {
             var tblName = tblname;
 
             if (data.length > 0) {
@@ -3927,7 +3915,7 @@
                 $("#" + target_result).html(getTable(tblName, data));
                 var tblSelected = $('#' + tblName).DataTable(tableOptionsResume);
                 /*CLICK SELECTED ROW*/
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
                     console.log(this);
@@ -4020,18 +4008,18 @@
             url: master_url + "getNotasDeCreditoXFacturas",
             type: "POST",
             dataType: "JSON"
-        }).done(function (data) {
+        }).done(function(data) {
             var tblName = "tblNotasDeCreditoXFacturas";
             if (data.length > 0) {
                 $("#rTramiteFactura").html(getTable(tblName, data));
-                $('#' + tblName + ' tfoot th').each(function () {
+                $('#' + tblName + ' tfoot th').each(function() {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 var detailRows = [];
                 /*CLICK SELECTED ROW*/
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
 
@@ -4047,7 +4035,7 @@
                     temp = parseInt($(dtm[0])[0].innerText);
                 });
                 /*DB CLICK FOR EDIT*/
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -4057,9 +4045,9 @@
                     $("#btnEditarNC").trigger("click");
                 });
                 /* Apply the search*/
-                tblSelected.columns().every(function () {
+                tblSelected.columns().every(function() {
                     var that = this;
-                    $('input', this.footer()).on('keyup change', function () {
+                    $('input', this.footer()).on('keyup change', function() {
                         if (that.search() !== this.value) {
                             that.search(this.value).draw();
                         }
@@ -4071,7 +4059,7 @@
                         '<h1 class="text-center">NO SE ENCONTRARON REGISTROS</h1>' +
                         '</div>');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
         });
     }
@@ -4090,18 +4078,18 @@
             url: master_url + 'getCuentas',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             var options = '<option></option>';
             console.log('* * * * * OPTIONS * * * * * ')
-            $.each(data, function (k, v) {
+            $.each(data, function(k, v) {
 //                console.log(v)
                 options += '<option value="' + v.ID + '">' + v.CUENTA + '</option>';
             });
             console.log('* * * * * OPTIONS * * * * * ')
             mdlAvanceRapido.find("#IDCuentaFuente").html(options);
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
         getEmpleados();
@@ -4112,17 +4100,20 @@
             url: master_url + 'getEmpleados',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             var options = '<option></option>';
-            $.each(data, function (k, v) {
+            $.each(data, function(k, v) {
                 options += '<option value="' + v.ID + '">' + v.Nombre + ' ' + v.apaterno + ' ' + v.amaterno + '</option>';
             });
             mdlAvanceRapido.find("#Emisor").html(options);
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
+    }
+    function onMostrarPanelNC() {
+        mdlNuevo.find("#pnlNotasDeCredito").toggleClass("hide");
     }
 </script>
 <?php

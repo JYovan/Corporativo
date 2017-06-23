@@ -3,47 +3,47 @@
 $indice = $_SESSION["ID"];
 $PERMISOS = $_SESSION["PERMISOS"][22];
 ?>
-<div class="row">	  
+<div class="row">
     <div class="col-md-12 margin-15-top">
         <div class="panel panel-primary container-fluid">
             <div class="panel-heading row">
                 <div class="col-md-2 panel-title">
                     <a  href = '<?php echo base_url(); ?>index.php/ctrlsesion/onLoadData'>
                         <span class="fa fa-arrow-left" data-toggle="tooltip" data-placement="top" title="" data-original-title="ATRAS"></span>
-                    </a> 
+                    </a>
                 </div>
-                <div class="col-md-8"> 
+                <div class="col-md-8">
                     <div class="text-center cursor-hand" onclick="onHideFunctions()">MÓDULO DE COBRANZA <span class="fa fa-chevron-up" data-toggle="tooltip" data-placement="top" title="" data-original-title="OCULTAR/MOSTRAR BOTONES"></span></div>
-                </div> 
-                    <div class="col-md-2 panel-title" align="right">
-                        <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
-                    </div>
+                </div>
+                <div class="col-md-2 panel-title" align="right">
+                    <span class="fa fa-navicon cursor-hand" onclick="onMenu()" data-toggle="tooltip" data-placement="top" title="" data-original-title="MENU PRINCIPAL"></span>
+                </div>
             </div>
-            <?php echo form_open_multipart(base_url() . 'index.php/ctrlCobranza/Cobranza'); ?>  
+            <?php echo form_open_multipart(base_url() . 'index.php/ctrlCobranza/Cobranza'); ?>
             <div class="panel-body">
 
                 <fieldset>
-                    <div class="" align="center"> 
+                    <div class="" align="center">
                         <?php
                         if ($PERMISOS->Crear === '1') {
                             ?>
-                            <span  data-toggle="modal" data-easein="swoopIn"> 
-                                <button class="btn btn-info btn-lg fa-lg" id="btnNuevaOrdenDecobro" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
+                            <span  data-toggle="modal" data-easein="swoopIn">
+                                <button class="btn btn-info btn-lg fa-lg" id="btnNuevaOrdenDecobro"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
                                         title=""  type="button"
                                         data-original-title="NUEVA ORDEN DE COBRO">
                                     <span class="fa fa-plus fa-3x info-icon"></span>
                                 </button>
-                            </span> 
+                            </span>
                             <?php
                         }
 
                         if ($PERMISOS->Modificar === '1') {
                             ?>
-                            <button id="btnEditar" class="btn btn-default btn-lg fa-lg" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
+                            <button id="btnEditar" class="btn btn-default btn-lg fa-lg"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
                                     title=""  type="button"
                                     data-original-title="EDITAR">
                                 <span class="fa fa-pencil fa-3x success-icon"></span>
@@ -54,10 +54,10 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         if ($PERMISOS->Eliminar === '1') {
                             ?>
                             <button class="btn btn-default btn-lg fa-lg" type="button" id="btnCancelar"
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
-                                    data-original-title="CANCELAR">
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
+                                    data-original-title="CANCELAR ORDEN DE COBRO">
                                 <span class="fa fa-ban fa-3x danger-icon"></span>
                             </button>
                             <?php
@@ -65,12 +65,12 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         if ($PERMISOS->Consultar === '1') {
                             ?>
                             <button class="btn btn-default btn-lg fa-lg"  id="btnRefrescar"
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
+                                    data-toggle="tooltip"
+                                    data-placement="top"
                                     title=""  type="button"
                                     data-original-title="REFRESCAR">
                                 <span class="fa fa-refresh fa-3x warning-icon"></span>
-                            </button>  
+                            </button>
 
                             <?php
                         }
@@ -78,22 +78,22 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         if ($PERMISOS->Crear === '1') {
                             ?>
                             <button class="btn btn-default btn-lg fa-lg"  id="btnPagoSinAsignar"
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
+                                    data-toggle="tooltip"
+                                    data-placement="top"
                                     title=""  type="button"
                                     data-original-title="PAGO SIN ASIGNAR">
                                 <span class="fa fa-unlink fa-3x lime-icon"></span>
-                            </button>  
+                            </button>
 
                             <?php
                         }
 
                         if ($PERMISOS->Reportes === '1') {
                             ?>
-                            <button id="btnGenerarOrdenDeCobro" type="button" class="btn btn-default btn-lg fa-lg" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
+                            <button id="btnGenerarOrdenDeCobro" type="button" class="btn btn-default btn-lg fa-lg"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
                                     data-original-title="GENERAR ORDEN DE COBRO">
                                 <span class="fa fa-print fa-3x danger-icon"></span>
                             </button>
@@ -102,20 +102,20 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         if ($PERMISOS->Crear === '1') {
                             ?>
                             <button class="btn btn-default btn-lg fa-lg" type="button" id="btnIngresosCobrados"
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
                                     data-original-title="INGRESOS COBRADOS">
                                 <span class="fa fa-dollar fa-3x  purple-icon"></span>
                             </button>
                             <?php
                         }
                         if ($PERMISOS->Eliminar === '1') {
-                            ?> 
+                            ?>
                             <button class="btn btn-default btn-lg fa-lg hide" type="button" id="btnCancelarIngresosCobrado"
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
                                     data-original-title="CANCELAR INGRESO">
                                 <span class="fa fa-warning fa-3x"></span>
                             </button>
@@ -124,23 +124,23 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         if ($PERMISOS->Consultar === '1') {
                             ?>
                             <button class="btn btn-default btn-lg fa-lg" type="button" id="btnHIC"
-                                    data-toggle="tooltip" 
+                                    data-toggle="tooltip"
                                     data-placement="top"
-                                    title="" 
+                                    title=""
                                     data-original-title="HISTORIAL DE INGRESOS">
                                 <span class="fa fa-eye fa-3x bluegrey-icon"></span>
                             </button>
                             <button class="btn btn-default btn-lg fa-lg" type="button" id="btnBuscarYExportar"
-                                    data-toggle="tooltip" 
+                                    data-toggle="tooltip"
                                     data-placement="top"
-                                    title="" 
+                                    title=""
                                     data-original-title="BUSCAR Y EXPORTAR">
                                 <span class="fa fa-search fa-3x bluegrey-icon"></span>
                             </button>
                             <button class="btn btn-default btn-lg fa-lg" type="button" id="btnSaldosEnContratos"
-                                    data-toggle="tooltip" 
+                                    data-toggle="tooltip"
                                     data-placement="top"
-                                    title="" 
+                                    title=""
                                     data-original-title="SALDOS EN CONTRATOS">
                                 <span class="fa fa-file-text fa-3x cyan-icon"></span>
                             </button>
@@ -149,12 +149,12 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         if ($PERMISOS->Reportes === '1') {
                             ?>
                             <button class="btn btn-default btn-lg fa-lg hide" type="button" id="btnReciboDePago"
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
                                     data-original-title="GENERAR RECIBO DE PAGO">
                                 <span class="fa fa-print fa-3x cyan-icon"></span>
-                            </button> 
+                            </button>
                             <?php
                         }
                         ?>
@@ -162,59 +162,59 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
 
 
                             <span data-toggle="modal" data-easing="swoopIn" data-target="#mdlEstadoDeCuenta">
-                                <button class="btn btn-danger btn-lg fa-lg" type="button" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button class="btn btn-danger btn-lg fa-lg" type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="ESTADO DE CUENTA DE CLIENTE">
                                     <span class="fa fa-list-alt fa-3x"></span>
                                 </button>
                             </span>
 
                             <span data-toggle="modal" data-easing="swoopIn" data-target="#">
-                                <button class="btn btn-king-blue btn-lg fa-lg" type="button" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button class="btn btn-king-blue btn-lg fa-lg" type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="DEPÓSITOS EN CUENTAS BANCARIAS">
                                     <span class="fa fa-sliders fa-3x"></span>
                                 </button>
                             </span>
 
                             <span data-toggle="modal" data-easing="swoopIn" data-target="#">
-                                <button class="btn btn-brown btn-lg fa-lg" type="button" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button class="btn btn-brown btn-lg fa-lg" type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="INGRESOS A CAJA DE ADMINISTRACIÓN">
                                     <span class="fa fa-archive fa-3x"></span>
                                 </button>
                             </span>
 
                             <span data-toggle="modal" data-easing="swoopIn" data-target="#">
-                                <button class="btn btn-a-blue btn-lg fa-lg" type="button" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button class="btn btn-a-blue btn-lg fa-lg" type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="ESTADO DE CUENTA TOTAL">
                                     <span class="fa fa-sort-numeric-desc fa-3x"></span>
                                 </button>
                             </span>
                             <span data-toggle="modal" data-easing="swoopIn" data-target="#">
-                                <button class="btn btn-a-green btn-lg fa-lg" type="button" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button class="btn btn-a-green btn-lg fa-lg" type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="TABULADOR DE INGRESOS POR SERVICIOS">
                                     <span class="fa fa-list-ol  fa-3x"></span>
                                 </button>
                             </span>
 
                             <span data-toggle="modal" data-easing="swoopIn" data-target="#">
-                                <button class="btn btn-red btn-lg fa-lg" type="button" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button class="btn btn-red btn-lg fa-lg" type="button"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="CANCELAR COBROS PENDIENTES">
                                     <span class="fa fa-minus fa-3x"></span>
                                 </button>
@@ -265,7 +265,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <div class="col-md-3">
                                 <label for="">CONTRATO</label>
                                 <select id="cmbContrato" name="cmbContrato" class="form-control">
-                                    <option></option> 
+                                    <option></option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -279,62 +279,62 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             </div>
                             <div class="col-md-12" align="center">
                                 <button id="btnCobranza"
-                                        type="button" class="btn btn3d btn-default fa-lg" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                        type="button" class="btn btn3d btn-default fa-lg"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="REPORTE COBRANZA">
                                     <span class="fa fa-ticket fa-2x yellow-icon"></span>
                                 </button>
                                 <button id="btnCobranzaXContratos"
-                                        type="button" class="btn btn3d btn-default fa-lg" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                        type="button" class="btn btn3d btn-default fa-lg"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="COBRANZA POR CONTRATOS">
                                     <span class="fa fa-ticket fa-2x kingblue-icon"></span>
                                 </button>
                                 <button id="btnCobranzaXContratosTotales"
-                                        type="button" class="btn btn3d btn-default fa-lg hide" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                        type="button" class="btn btn3d btn-default fa-lg hide"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="COBRANZA POR CONTRATOS(TOTALES)">
                                     <span class="fa fa-ticket fa-2x black-icon"></span>
                                 </button>
-                                <button type="button" class="btn btn3d btn-default fa-lg hide" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" 
+                                <button type="button" class="btn btn3d btn-default fa-lg hide"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title=""
                                         data-original-title="BUSCAR">
                                     <span class="fa fa-check fa-3x purple-icon"></span>
                                 </button>
-                                <button type="button" class="btn btn3d btn-default fa-lg" 
-                                        data-toggle="tooltip" 
-                                        data-placement="top" 
-                                        title="" id="btnReset" 
+                                <button type="button" class="btn btn3d btn-default fa-lg"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="" id="btnReset"
                                         data-original-title="REINICIAR">
                                     <span class="fa fa-trash fa-2x black-icon"></span>
                                 </button>
                             </div>
-                        </form> 
+                        </form>
                         <div class="col-md-12">
                             <button id="btnCobranzaTotales"
-                                    type="button" class="btn btn3d btn-default fa-lg hide" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
+                                    type="button" class="btn btn3d btn-default fa-lg hide"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
                                     data-original-title="REPORTE DE COBRANZA (SOLO TOTALES)">
                                 <span class="fa fa-ticket fa-2x kingblue-icon"></span>
                             </button>
                             <button id="btnHistorialIngresosCobrados"
-                                    type="button" class="btn btn3d btn-default fa-lg hide" 
-                                    data-toggle="tooltip" 
-                                    data-placement="top" 
-                                    title="" 
+                                    type="button" class="btn btn3d btn-default fa-lg hide"
+                                    data-toggle="tooltip"
+                                    data-placement="top"
+                                    title=""
                                     data-original-title="REPORTE DE INGRESOS COBRADOS">
                                 <span class="fa fa-ticket fa-2x lime-icon"></span>
-                            </button> 
+                            </button>
                         </div>
                     </div>
                     <div class="col-md-12" align="center" id="msgContadoresCobranza">
@@ -344,7 +344,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     </div>
                     <div id="msgCobranza" class="col-md-12" align="center">
                     </div>
-                    <div id="rtblCobranza"> 
+                    <div id="rtblCobranza">
                         <div align="center">
                             <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
                         </div>
@@ -378,7 +378,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                                         <tr>
                                             <td class="col-md-4 hide"><input type="radio" value="C2" name="CobranzaID" id="CobranzaID" required class="form-control"/></td>
                                             <td>REGISTRO DE INGRESOS COBRADOS </td>
-                                        </tr>                                                                                                            
+                                        </tr>
                                     <?php }
                                     ?>
                                     <tr>
@@ -418,19 +418,19 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         </div>
                     </div>
                     <div id=""
-                         <div class="col-md-4" align="center"> 
-                            <button class="btn btn-lg fa-lg btn-success hide" type="submit"  id="btnOK" name="btnOK" value="<?php echo $indice; ?>"><span class="fa fa-arrow-right fa-5x"></span></button>		
+                         <div class="col-md-4" align="center">
+                            <button class="btn btn-lg fa-lg btn-success hide" type="submit"  id="btnOK" name="btnOK" value="<?php echo $indice; ?>"><span class="fa fa-arrow-right fa-5x"></span></button>
                         </div>
                 </fieldset>
             </div>
             </form>
         </div>
-    </div>  
+    </div>
 </div>
 
 <script>
-    $(document).ready(function () {
-        $(".tblOptions > tbody > tr").click(function (e) {
+    $(document).ready(function() {
+        $(".tblOptions > tbody > tr").on('click', function(e) {
             $(this).find("td > input#CobranzaID").attr("checked", true);
             $("#btnOK").trigger("click");
         });
@@ -472,17 +472,17 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         <div class="col-md-6">
                             <label for="">CONTRATO</label>
                             <select id="IdContrato" name="IdContrato" class="form-control">
-                            </select> 
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label for="">MONTO DEL CONTRATO</label>
                             <input type="text" id="MontoContrato" name="MontoContrato" readonly="" class="form-control" placeholder="$0.0">
                         </div>
                         <div class="col-md-4">
-                            <label for="">Tarifa</label> 
+                            <label for="">Tarifa</label>
                             <select class="form-control" id="Tarifa" name="Tarifa"  required>
                                 <option value="">Selecciona</option>
-                                <?php foreach ($Tarifa as $Tarifa1) { ?> 
+                                <?php foreach ($Tarifa as $Tarifa1) { ?>
                                     <option value="<?php echo $Tarifa1->id_tarifa; ?>"><?php echo $Tarifa1->dsc_tarifa; ?></option>
                                 <?php } ?>
                             </select>
@@ -499,7 +499,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <label for="">QUIEN PRESTÓ EL SERVICIO </label>
                             <select class="form-control" id="IdPrestadorDelServicio" name="IdPrestadorDelServicio" onchange="onValidateFormRC()" required>
                                 <option value="">Selecciona</option>
-                                <?php foreach ($USUARIOS as $temporal) { ?> 
+                                <?php foreach ($USUARIOS as $temporal) { ?>
                                     <option value="<?php echo $temporal->Id; ?>"><?php echo $temporal->nombre . " " . $temporal->apaterno . " " . $temporal->amaterno; ?></option>
                                 <?php } ?>
                             </select>
@@ -508,20 +508,25 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <label for="">QUIEN EMITE LA ORDEN DE COBRO</label>
                             <select class="form-control" id="IdEmisorDeLaOrden" name="IdEmisorDeLaOrden" onchange="onValidateFormRC()" required>
                                 <option value="">Selecciona</option>
-                                <?php foreach ($USUARIOS as $temporal) { ?> 
+                                <?php foreach ($USUARIOS as $temporal) { ?>
                                     <option value="<?php echo $temporal->Id; ?>"><?php echo $temporal->nombre . " " . $temporal->apaterno . " " . $temporal->amaterno; ?></option>
                                 <?php } ?>
                             </select>
                             <br>
-                        </div> 
+                        </div>
+                        <input type="file" id="Factura" name="Factura" class="hide">
+                        <div id="btnAdjunto" class="col-md-12 cursor-hand" align="center">
+                            <span class="fa fa-upload fa-5x"></span>
+                            <h1>ADJUNTAR FACTURA</h1>
+                        </div>
+                        <div id="VistaPreviaFactura" class="col-md-12"></div>
                         <div id="msgResult"></div>
                     </fieldset>
-
                 </div>
             </form>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button>
                 <button class="btn btn-lg fa-lg btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardar" name="btnGuardar" ><span class="fa fa-check fa-3x"></span></button>
                 <!--<button class="btn btn-lg fa-lg btn-success hide hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardando" name="btnGuardando" value="" ><span class="fa fa-cog fa-spin fa-3x fa-fw"></span></button>-->
             </div>
@@ -567,17 +572,17 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         <div class="col-md-6">
                             <label for="">CONTRATO</label>
                             <select id="IdContratoU" name="IdContratoU" class="form-control">
-                            </select> 
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label for="">MONTO DEL CONTRATO</label>
                             <input type="text" id="MontoContratoU" name="MontoContratoU" readonly="" class="form-control" placeholder="$0.0">
                         </div>
                         <div class="col-md-4">
-                            <label for="">Tarifa</label> 
+                            <label for="">Tarifa</label>
                             <select class="form-control" id="Tarifa" name="Tarifa"  required>
                                 <option value="">Selecciona</option>
-                                <?php foreach ($Tarifa as $Tarifa1) { ?> 
+                                <?php foreach ($Tarifa as $Tarifa1) { ?>
                                     <option value="<?php echo $Tarifa1->id_tarifa; ?>"><?php echo $Tarifa1->dsc_tarifa; ?></option>
                                 <?php } ?>
                             </select>
@@ -594,7 +599,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <label for="">QUIEN PRESTÓ EL SERVICIO</label>
                             <select class="form-control" id="IdPrestadorDelServicio" name="IdPrestadorDelServicio" onchange="onValidateFormRC()" required>
                                 <option value="">Selecciona</option>
-                                <?php foreach ($USUARIOS as $temporal) { ?> 
+                                <?php foreach ($USUARIOS as $temporal) { ?>
                                     <option value="<?php echo $temporal->Id; ?>"><?php echo $temporal->nombre . " " . $temporal->apaterno . " " . $temporal->amaterno; ?></option>
                                 <?php } ?>
                             </select>
@@ -603,12 +608,18 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <label for="">QUIEN EMITE LA ORDEN DE COBRO</label>
                             <select class="form-control" id="IdEmisorDeLaOrden" name="IdEmisorDeLaOrden" onchange="onValidateFormRC()" required>
                                 <option value="">Selecciona</option>
-                                <?php foreach ($USUARIOS as $temporal) { ?> 
+                                <?php foreach ($USUARIOS as $temporal) { ?>
                                     <option value="<?php echo $temporal->Id; ?>"><?php echo $temporal->nombre . " " . $temporal->apaterno . " " . $temporal->amaterno; ?></option>
                                 <?php } ?>
                             </select>
                             <br>
-                        </div> 
+                        </div>
+                        <input type="file" id="Factura" name="Factura" class="hide">
+                        <div id="btnAdjunto" class="col-md-12 cursor-hand" align="center">
+                            <span class="fa fa-upload fa-5x"></span>
+                            <h1>ADJUNTAR FACTURA</h1>
+                        </div>
+                        <div id="VistaPreviaFactura" class="col-md-12"></div>
                         <div id="msgResult"></div>
                     </fieldset>
 
@@ -616,7 +627,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             </form>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button>
                 <button class="btn btn-lg fa-lg btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardar" name="btnGuardar" ><span class="fa fa-check fa-3x"></span></button>
                 <!--<button class="btn btn-lg fa-lg btn-success hide hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardando" name="btnGuardando" value="" ><span class="fa fa-cog fa-spin fa-3x fa-fw"></span></button>-->
             </div>
@@ -672,7 +683,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <label for="">REFERENCIA</label>
                             <input type="text" id="Referencia" name="Referencia" class="form-control" placeholder="XXXXXXXXXX">
                         </div>
-                        <div class="col-md-3">  
+                        <div class="col-md-3">
                             <label for="">EMITE</label>
                             <select id="Emisor" name="Emisor" class="form-control">
                                 <option value="0"></option>
@@ -712,7 +723,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         <div class="col-md-6 hide">
                             <label>FOLIO DE ACUSE DE ENTREGA DE EFECTIVO CAJA DE INGRESOS ADMINISTRACIÓN</label>
                             <input type="text" class="form-control" id="FolioIngresoAdministracion" name="FolioIngresoAdministracion" placeholder="FO00001">
-                        </div> 
+                        </div>
                         <div class="col-md-4 hide">
                             <label>BANCO</label>
                             <input type="text" class="form-control" id="Banco" name="Banco" placeholder="BAN BAJIO, BANAMEX, BANCOMER...">
@@ -735,14 +746,12 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 </div>
             </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button>
                 <button class="btn btn-lg fa-lg btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardar" name="btnGuardar" value="" ><span class="fa fa-check fa-3x"></span></button>
             </div>
         </div>
     </div>
 </div>
-
-
 
 <div id="mdlPagoSinAsignar" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg fullscreen" role="document">
@@ -752,7 +761,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 <h4 class="modal-title" id="myModalLabel">PAGO SIN ASIGNAR O CON OBSERVACIÓN</h4>
             </div>
             <form id="frmPagoSinAsignar">
-                <div class="modal-body text-center"> 
+                <div class="modal-body text-center">
                     <fieldset>
                         <div class="col-md-6">
                             <label for="">EMPRESA RABINA</label>
@@ -763,7 +772,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                             <select id="Cliente" name="Cliente" class="form-control"></select>
                         </div>
                         <div class="col-md-4">
-                            <label for="">FECHA DE PAGO(OPERACION BANCARIA)</label>    
+                            <label for="">FECHA DE PAGO(OPERACION BANCARIA)</label>
                             <input type="text" id="FechaDePago" name="FechaDePago" class="form-control cursor-hand" placeholder="FECHA DE PAGO" readonly="" data-provide="datepicker" data-date-format="dd/mm/yyyy" >
                         </div>
                         <div class="col-md-4">
@@ -804,12 +813,238 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
         </form>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
+            <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button>
             <button class="btn btn-lg fa-lg btn-success hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardar" name="btnGuardar" value="<?php echo $indice; ?>" ><span class="fa fa-check fa-3x"></span></button>
             <button class="btn btn-lg fa-lg btn-success hide hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardando" name="btnGuardando" value="" ><span class="fa fa-cog fa-spin fa-3x fa-fw"></span></button>
         </div>
     </div>
 </div>
+</div>
+
+
+
+
+
+<div id="mdlEmisionReciboPago" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="myModalLabel">EMISIÓN DE RECIBOS DE PAGO</h2>
+            </div>
+            <form id="frmReciboAGenerar">
+                <div class="modal-body text-center">
+                    <fieldset>
+                        <div class="col-md-12">
+                            <label for="">EMPRESAS / CLIENTES</label>
+                            <select class="form-control" id="cmbEmpresaCliente" name="cmbEmpresaCliente"  required>
+                                <option value="">Selecciona</option>
+                                <?php foreach ($ID_cliente as $ID_cliente1) { ?>
+                                    <option value="<?php echo $ID_cliente1->Folio; ?>"><?php echo $ID_cliente1->NombreC; ?></option>
+                                <?php } ?>
+                            </select>
+                            <input  type="hidden" name="user" id="user" value="<?php echo $indice; ?>" >
+                        </div>
+                        <div id="Resultado" class=" col-md-12 hide" >
+
+                        </div>
+                        <div id="dLoader" class="col-md-12 hide">
+                            <h1 class="text-center"><span class="fa fa-circle-o faa-burst animated"></span> Espere...</h1>
+                        </div>
+                        <div id="ResultadoRecibo" class="col-md-12 hide">
+                            <div class="col-md-12">
+                                <input class="form-control hide" type="text" name="CobranzaIDR" id="CobranzaIDR"  value="">
+                            </div>
+                            <div class="col-md-4  hide" align="center">
+                                <div class="well">
+                                    <img src="<?php echo base_url(); ?>media/logo.png" width="80%" height="auto" >
+                                    <p class="span6">LOMA DEL PEDREGAL #417</p>
+                                    <p class="span6">COL. LOMAS DEL CAMPESTRE</p>
+                                    <p class="span6">LEÓN GTO. MÉXICO. </p>
+                                    <p class="span6">TEL. +52 (477) 779 72 21</p>
+                                    <p class="span6">+52 (477) 779 72 27</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <label for="NoRecibo" class="control-label">No. de Recibo:</label>
+                                <input  style="text-transform:uppercase; color:#F30" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="ReciboNoRecibo" id="ReciboNoRecibo" value="">
+                            </div>
+                            <div class="col-md-4 ">
+                                <label for="ReciboFechaPago" class="control-label">Fecha de pago:</label>
+                                <input  style="text-transform:uppercase" onkeyup="" data-provide="datepicker" data-date-format="dd/mm/yyyy" class="form-control" type="text" name="ReciboFechaPago" id="ReciboFechaPago" value=" " required>
+                            </div>
+                            <div class="col-md-4 ">
+                                <label for="ReciboNombre" class="control-label">Recibí de:</label>
+                                <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="ReciboNombre" id="ReciboNombre" value=" ">
+                            </div>
+                            <div class="col-md-4 ">
+                                <label for="MontoTotal" class="control-label">Monto a cobrar:</label>
+                                <input  style="text-transform:uppercase" onkeyup="" class="form-control" readonly="" type="text" name="MontoTotal" id="MontoTotal" value=" ">
+                            </div>
+                            <div class="col-md-8 ">
+                                <label for="ReciboHonorarios" class="control-label">Por concepto de: </label>
+                                <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="ReciboHonorarios" id="ReciboHonorarios" value=" ">
+                            </div>
+                            <div class="col-md-4 ">
+                                <label for="ReciboCantidad" class="control-label">La cantidad de:</label>
+                                <input  style="text-transform:uppercase" class="form-control" type="text" name="ReciboCantidad" id="ReciboCantidad" value="" onblur="onChangeAmount()" onkeyup="onChangeAmount()">
+                            </div>
+                            <div class="col-md-3">
+                                <br>
+                                <span class="label label-default">TOTAL</span>
+                                <span class="label label-primary tt">$ 0.00</span>
+                            </div>
+                            <div class="col-md-3">
+                                <br>
+                                <span class="label label-default">RESTANTE</span>
+                                <span class="label label-success rtt">$ 0.00</span>
+                            </div>
+                            <div id="ModificarRecibo" class="col-md-4 hide">
+                                <label for="ReciboTotal" class="control-label">TOTAL</label>
+                                <input class="form-control" type="text" name="ReciboTotal" id="ReciboTotal" value=" ">
+                            </div>
+                            <div class=" col-md-2 margin-15-top">
+                                <button class="btn btn-lg fa-lg btn-success btn-lg fa-lg" type="button"  id="generar" name="generar"
+                                        data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR" >
+                                    <span class="fa fa-check fa-3x"></span></button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mdlCobroPorHonorariosMensuales" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg fullscreen" role="document">
+        <div class="modal-content">
+
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">ORDEN DE COBRO POR HONORARIOS MENSUALES</h4>
+            </div>
+
+            <form id="frmReciboAGenerar">
+                <div class="modal-body text-center">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#home" data-toggle="tab">ORDEN DE COBRO POR HONORARIOS MENSUALES</a></li>
+                        <li><a href="#profile" data-toggle="tab">
+                                ORDEN DE COBRO POR HONORARIOS MENSUALES POR CLIENTE</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane  animated zoomInUp active in" id="home">
+
+                            <fieldset>
+                                <div class="col-md-12">
+                                    <h2>LA SIGUIENTE INSTRUCCIÓN EMITIRÁ EL COBRO POR LOS HONORARIOS MENSUALES CORRESPONDIENTES A LA TOTALIDAD DE LOS CLIENTES POR SU RESPONSABLE, ES UNA INSTRUCCIÓN MENSUAL Y SOLO SE PODRÁ EMITIR UNA VEZ.</h2>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="">MES A COBRAR</label>
+                                    <select class="form-control" id="meses" name="meses"  required="required">
+                                        <option value="">Selecciona</option>
+                                        <?php foreach ($Meses as $Meses1) { ?>
+                                            <option value="<?php echo $Meses1->id_meses; ?>"><?php echo $Meses1->dsc_meses; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="">EJERCICIO A COBRAR</label>
+                                    <input  class="form-control" type="text" name="anio" id="anio"  value="<?php echo date("Y") ?>" required="required">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="tab-pane  animated zoomInUp" id="profile">
+                            <fieldset>
+                                <div class="col-md-12 margin-15-top">
+
+                                    <select class="form-control" id="ID_cliente" name="ID_cliente"  required="required">
+                                        <option value="">Selecciona</option>
+                                        <?php foreach ($ID_cliente as $ID_cliente1) { ?>
+                                            <option value="<?php echo $ID_cliente1->Folio; ?>"><?php echo $ID_cliente1->NombreC; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">MES A COBRAR</label>
+                                    <select class="form-control" id="meses2" name="meses2"  required="required">
+                                        <option value="">Selecciona</option>
+                                        <?php foreach ($Meses as $Meses1) { ?>
+                                            <option value="<?php echo $Meses1->id_meses; ?>"><?php echo $Meses1->dsc_meses; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">EJERCICIO A COBRAR</label>
+                                    <input  class="form-control" type="text" name="anio2" id="anio2"  value="<?php echo date("Y") ?>" required="required">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button>
+                <button type="button" class="btn btn-success btn-lg fa-lg" data-dismiss="modal" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR" ><span class="fa fa-check fa-3x"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="mdlEstadoDeCuenta" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg fullscreen" role="document">
+        <div class="modal-content">
+            <div id="hmsgModals" class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">ESTADO DE CUENTA</h4>
+            </div>
+            <form id="frmIngresosCobrados">
+                <div id="msg-result-ingresoscobrados" class="modal-body text-center">
+                    <fieldset>
+                        <div class="col-md-4">
+                            <label for="Cliente" class="control-label">cliente:</label>
+                            <select class="form-control" id="Cliente" name="Cliente"  required>
+                                <option value="">Selecciona</option>
+                                <?php foreach ($ID_cliente as $ID_cliente1) { ?>
+                                    <option value="<?php echo $ID_cliente1->ID; ?>"><?php echo $ID_cliente1->NombreC; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="NombreActividad" class="control-label">Fecha de inicio </label>
+                            <input class="form-control" type="text" name="FechaInicioEdo" id="FechaInicioEdo" data-provide="datepicker" data-date-format="dd/mm/yyyy"  value="<?php echo date("d/m/Y") ?>">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="NombreActividad" class="control-label">Fecha de término </label>
+                            <input class="form-control" type="text" name="FechaTerminoEdo" id="FechaTerminoEdo" data-provide="datepicker" data-date-format="dd/mm/yyyy" value="<?php echo date("d/m/Y") ?>">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-emerald btn-lg fa-lg" id="btnEstadoDeCuenta" name="btnEstadoDeCuenta">
+                                <span class="fa fa-search fa-3x"></span>
+                            </button>
+                            <button type="button" class="btn btn-emerald btn-lg fa-lg hide hide" id="btnEstadoDeCuentaProgress" name="btnEstadoDeCuentaProgress">
+                                <span class="fa fa-refresh fa-spin fa-3x"></span>
+                            </button>
+                        </div>
+                    </fieldset>
+                    <div id="msg-result-edocuenta" class="table-responsive">
+                    </div>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button>
+                <button class="btn btn-lg fa-lg btn-success hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardar" name="btnGuardar" value="<?php echo $indice; ?>" ><span class="fa fa-check fa-3x"></span></button>
+                <button class="btn btn-lg fa-lg btn-success hide hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardando" name="btnGuardando" value="" ><span class="fa fa-cog fa-spin fa-3x fa-fw"></span></button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -826,10 +1061,160 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
     var btnSaldosEnContratos = $("#btnSaldosEnContratos");
     var btnCobranzaXContratosTotales = $("#btnCobranzaXContratosTotales");
     var btnCancelar = $("#btnCancelar");
+    var btnAdjunto = mdlOrdenDeCobro.find("#btnAdjunto");
+    var Factura = mdlOrdenDeCobro.find("#Factura");
+    var VistaPreviaFactura = mdlOrdenDeCobro.find("#VistaPreviaFactura");
+    var btnRefrescar = $("#btnRefrescar");
+    var btnEditar = $("#btnEditar");
+    var mdlOrdenDeCobroU = $("#mdlOrdenDeCobroU");
+    var btnAdjuntoEditar = mdlOrdenDeCobroU.find("#btnAdjunto");
+    var FacturaEditar = mdlOrdenDeCobroU.find("#Factura");
+    var VistaPreviaFacturaEditar = mdlOrdenDeCobroU.find("#VistaPreviaFactura");
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        btnCancelar.click(function () {
+        FacturaEditar.on('change', function() {
+            var imageType = /image.*/;
+            if (FacturaEditar[0].files[0] !== undefined && FacturaEditar[0].files[0].type.match(imageType)) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    VistaPreviaFacturaEditar.html('<img src="' + reader.result + '" class="img-responsive">');
+                };
+                reader.readAsDataURL(FacturaEditar[0].files[0]);
+            } else {
+                if (FacturaEditar[0].files[0] !== undefined && FacturaEditar[0].files[0].type.match('application/pdf')) {
+                    var readerpdf = new FileReader();
+                    readerpdf.onload = function(e) {
+                        VistaPreviaFacturaEditar.append('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="900px" height="1200px"' +
+                                ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
+                    };
+                    readerpdf.readAsDataURL(FacturaEditar[0].files[0]);
+                } else {
+                    var extension = getExt(FacturaEditar[0].files[0].name);
+                    switch (extension) {
+                        case "rar":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/rar.png" class="image-responsive">');
+                            break;
+                        case "zip":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/zip.png" class="image-responsive">');
+                            break;
+                        case "zip":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/zip.png" class="image-responsive">');
+                            break;
+                        case "xml":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/xml.png" class="image-responsive">');
+                            break;
+                        case "doc":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/word.png" class="image-responsive">');
+                            break;
+                        case "docx":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/word.png" class="image-responsive">');
+                            break;
+                        case "xls":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/excel.png" class="image-responsive">');
+                            break;
+                        case "xlsx":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/excel.png" class="image-responsive">');
+                            break;
+                        case "txt":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/txt.png" class="image-responsive">');
+                            break;
+                        case "css":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/css.png" class="image-responsive">');
+                            break;
+                        case "html":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/html.png" class="image-responsive">');
+                            break;
+                        case "htm":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/html.png" class="image-responsive">');
+                            break;
+                        case "sql":
+                            VistaPreviaFacturaEditar.html('<img src="../../media/overlays/sql.png" class="image-responsive">');
+                            break;
+                        default:
+                            VistaPreviaFacturaEditar.html('EL ARCHIVO SE SUBIRÁ, PERO NO ES POSIBLE RECONOCER SI ES UN PDF O UNA IMAGEN');
+                            break;
+                    }
+                }
+            }
+        });
+
+        btnAdjuntoEditar.on('click', function() {
+            FacturaEditar.trigger('click');
+        });
+
+
+        Factura.on('change', function() {
+            var imageType = /image.*/;
+            if (Factura[0].files[0] !== undefined && Factura[0].files[0].type.match(imageType)) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    VistaPreviaFactura.html('<img src="' + reader.result + '"  class="img-responsive">');
+                };
+                reader.readAsDataURL(Factura[0].files[0]);
+            } else {
+                if (Factura[0].files[0] !== undefined && Factura[0].files[0].type.match('application/pdf')) {
+                    var readerpdf = new FileReader();
+                    readerpdf.onload = function(e) {
+                        VistaPreviaFactura.append('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="900px" height="1200px"' +
+                                ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
+                    };
+                    readerpdf.readAsDataURL(Factura[0].files[0]);
+                } else {
+                    var extension = getExt(Factura[0].files[0].name);
+                    switch (extension) {
+                        case "rar":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/rar.png" class="image-responsive">');
+                            break;
+                        case "zip":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/zip.png" class="image-responsive">');
+                            break;
+                        case "zip":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/zip.png" class="image-responsive">');
+                            break;
+                        case "xml":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/xml.png" class="image-responsive">');
+                            break;
+                        case "doc":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/word.png" class="image-responsive">');
+                            break;
+                        case "docx":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/word.png" class="image-responsive">');
+                            break;
+                        case "xls":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/excel.png" class="image-responsive">');
+                            break;
+                        case "xlsx":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/excel.png" class="image-responsive">');
+                            break;
+                        case "txt":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/txt.png" class="image-responsive">');
+                            break;
+                        case "css":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/css.png" class="image-responsive">');
+                            break;
+                        case "html":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/html.png" class="image-responsive">');
+                            break;
+                        case "htm":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/html.png" class="image-responsive">');
+                            break;
+                        case "sql":
+                            VistaPreviaFactura.html('<img src="../../media/overlays/sql.png" class="image-responsive">');
+                            break;
+                        default:
+                            VistaPreviaFactura.html('EL ARCHIVO SE SUBIRÁ, PERO NO ES POSIBLE RECONOCER SI ES UN PDF O UNA IMAGEN');
+                            break;
+                    }
+                }
+            }
+        });
+
+        btnAdjunto.on('click', function() {
+            Factura.trigger('click');
+        });
+
+        btnCancelar.on('click', function() {
             if (temp !== undefined && temp !== 0 && temp > 0) {
                 HoldOn.open({
                     theme: 'sk-bounce',
@@ -841,13 +1226,13 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data);
                     onRefresh();
                     onNotify('<span class="fa fa-check fa-lg"></span>', 'ORDEN DE COBRO CANCELADA', 'success');
-                }).fail(function (x,y,z) {
-                    console.log(x,y,z);
-                }).always(function () {
+                }).fail(function(x, y, z) {
+                    console.log(x, y, z);
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -857,7 +1242,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
 
         onRefresh();
 
-        btnCobranzaXContratosTotales.click(function () {
+        btnCobranzaXContratosTotales.on('click', function() {
             console.log('Espere...');
             HoldOn.open({
                 theme: "sk-bounce",
@@ -876,22 +1261,22 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     CONTRATO: (divFiltros.find("#cmbContrato").val() > 0) ? divFiltros.find("#cmbContrato").val() : 0,
                     TIPO: (divFiltros.find("#cmbTipo").val() > 0) ? divFiltros.find("#cmbTipo").val() : 0
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 console.log(divFiltros.find("#cmbEmpresa").val(), divFiltros.find("#cmbEmpresaCliente").val(),
                         divFiltros.find("#cmbProyecto").val(), divFiltros.find("#cmbEtapa").val());
                 //                HoldOn.close();
                 console.log('Reporte "COBRANZA POR CONTRATOS TOTALES" generado!');
                 window.open(data, '_blank');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 //                HoldOn.close();
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnSaldosEnContratos.click(function () {
+        btnSaldosEnContratos.on('click', function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "POR FAVOR ESPERE..."
@@ -904,19 +1289,19 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 url: master_url + 'getContratosConSaldo',
                 type: "POST",
                 dataType: "JSON"
-            }).done(function (data) {
+            }).done(function(data) {
                 var tblName = 'tblCobranza';
                 if (data.length > 0) {
                     $("#rtblCobranza").html(getTable(tblName, data));
 
-                    $('#tblCobranza tfoot th').each(function () {
+                    $('#tblCobranza tfoot th').each(function() {
                         var title = $(this).text();
                         $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                     });
 
                     var tblSelected = $('#' + tblName).DataTable(tableOptions);
                     //CLICK SELECTED ROW
-                    $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                    $('#' + tblName + ' tbody').on('click', 'tr', function() {
                         $("#" + tblName).find("tr").removeClass("success");
                         $("#" + tblName).find("tr").removeClass("warning");
                         //                console.log(this)
@@ -930,9 +1315,9 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         $(this).addClass('success');
                     });
                     // Apply the search
-                    tblSelected.columns().every(function () {
+                    tblSelected.columns().every(function() {
                         var that = this;
-                        $('input', this.footer()).on('keyup change', function () {
+                        $('input', this.footer()).on('keyup change', function() {
                             if (that.search() !== this.value) {
                                 that.search(this.value).draw();
                             }
@@ -941,15 +1326,15 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 } else {
                     onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO EXISTEN MOVIMIENTOS  CON SALDO O NO HAY CONTRATOS REGISTRADOS (POSIBLE ERROR EN LA CONEXION A LA BASE DE DATOS)', 'danger');
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log("ERROR AL OBTENER LOS REGISTROS");
                 console.log(x.responseText, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnCobranzaXContratos.click(function () {
+        btnCobranzaXContratos.on('click', function() {
             console.log('Espere...');
             HoldOn.open({
                 theme: "sk-bounce",
@@ -968,22 +1353,22 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     CONTRATO: (divFiltros.find("#cmbContrato").val() > 0) ? divFiltros.find("#cmbContrato").val() : 0,
                     TIPO: (divFiltros.find("#cmbTipo").val() > 0) ? divFiltros.find("#cmbTipo").val() : 0
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 console.log(divFiltros.find("#cmbEmpresa").val(), divFiltros.find("#cmbEmpresaCliente").val(),
                         divFiltros.find("#cmbProyecto").val(), divFiltros.find("#cmbEtapa").val());
                 //                HoldOn.close();
                 console.log('Reporte "COBRANZA POR CONTRATOS" generado!');
                 window.open(data, '_blank');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 //                HoldOn.close();
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnCobranza.click(function () {
+        btnCobranza.on('click', function() {
             console.log('Espere...');
             HoldOn.open({
                 theme: "sk-bounce",
@@ -1002,7 +1387,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     CONTRATO: (divFiltros.find("#cmbContrato").val() > 0) ? divFiltros.find("#cmbContrato").val() : 0,
                     TIPO: (divFiltros.find("#cmbTipo").val() > 0) ? divFiltros.find("#cmbTipo").val() : 0
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(
                         divFiltros.find("#cmbEmpresa").val(), divFiltros.find("#cmbEmpresaCliente").val(),
                         divFiltros.find("#cmbProyecto").val(), divFiltros.find("#cmbEtapa").val());
@@ -1010,15 +1395,15 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 console.log('Reporte generado!');
                 console.log(data, x, jq);
                 window.open(data, '_blank');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 //                HoldOn.close();
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnHistorialIngresosCobrados.click(function () {
+        btnHistorialIngresosCobrados.on('click', function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "POR FAVOR ESPERE..."
@@ -1032,26 +1417,26 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     PROYECTO: (divFiltros.find("#cmbProyecto").val() > 0) ? divFiltros.find("#cmbProyecto").val() : 0,
                     ETAPA: (divFiltros.find("#cmbEtapa").val() > 0) ? divFiltros.find("#cmbEtapa").val() : 0
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 window.open(data, '_blank');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnNuevaOrdenDecobro.click(function () {
+        btnNuevaOrdenDecobro.on('click', function() {
             mdlOrdenDeCobro.modal('show');
         });
 
-        btnPagoSinAsignar.click(function () {
+        btnPagoSinAsignar.on('click', function() {
             mdlPagoSinAsignar.modal('show');
         });
 
         var IdContrato = $("#mdlOrdenDeCobro #IdContrato");
-        var IdContratoU = $("#mdlOrdenDeCobroU #IdContratoU");
-        IdContrato.change(function () {
+        var IdContratoU = mdlOrdenDeCobroU.find("#IdContratoU");
+        IdContrato.change(function() {
 
             HoldOn.open({
                 theme: "sk-bounce",
@@ -1064,21 +1449,21 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 data: {
                     ID: IdContrato.val()
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 if (data[0] !== undefined) {
                     var dtm = data[0];
                     var MontoContrato = $("#MontoContrato");
                     MontoContrato.val(dtm.TOTAL);
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('OPERACION FINALIZADA');
                 HoldOn.close();
             });
         });
-        IdContratoU.change(function () {
+        IdContratoU.change(function() {
             $.ajax({
                 url: base_url + 'index.php/ctrlCobranza/getMontoByID',
                 type: "POST",
@@ -1086,21 +1471,21 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 data: {
                     ID: IdContratoU.val()
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 if (data[0] !== undefined) {
                     var dtm = data[0];
                     var MontoContratoU = $("#MontoContratoU");
                     MontoContratoU.val(dtm.TOTAL);
                 }
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 console.log('OPERACION FINALIZADA');
             });
         });
 
-        $("#btnReciboDePago").click(function () {
+        $("#btnReciboDePago").on('click', function() {
             if (temp !== undefined && temp !== 0 && temp > 0) {
                 $("#btnReciboDePago").addClass("hide").find("span").removeClass("fa-print").addClass("fa-cog fa-spin");
                 $.ajax({
@@ -1109,13 +1494,13 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     getContadoresDeCobranzaXEstatus();
                     console.log(data, x, jq);
                     window.open(data, '_blank');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     $("#btnReciboDePago").removeClass("hide").find("span").addClass("fa-print").removeClass("fa-cog fa-spin");
                 });
             } else {
@@ -1123,28 +1508,28 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             }
         });
 
-        btnReset.click(function () {
+        btnReset.on('click', function() {
             divFiltros.find('select').select2("val", "");
             divFiltros.find('input').val('');
         });
 
-        $("#btnHIC").click(function () {
+        $("#btnHIC").on('click', function() {
             if (divFiltros.hasClass("hide")) {
                 divFiltros.removeClass("hide");
             }
             getEmpresasEnCobranza();
-            $("#btnEditar").addClass("hide");
+            btnEditar.addClass("hide");
             $("#btnHistorialIngresosCobrados").addClass("hide").find("span").removeClass("fa-eye").addClass("fa-cog fa-spin");
             $("#rtblCobranza").html("");
             onGetRecordsHistory("tblCobranzaIngresos", base_url + "index.php/ctrlCobranza/getHistorialDeIngresos", 0, "rtblCobranza", "msgCobranza", "NO SE ENCONTRARON REGISTROS");
-            setTimeout(function () {
+            setTimeout(function() {
                 $("#btnCancelarIngresosCobrado").removeClass("hide");
                 $("#btnReciboDePago").removeClass("hide");
 
                 $("#btnHistorialIngresosCobrados").removeClass("hide").find("span").addClass("fa-eye").removeClass("fa-cog fa-spin");
             }, 1250);
         });
-        $("#btnBuscarYExportar").click(function () {
+        $("#btnBuscarYExportar").on('click', function() {
             if (divFiltros.hasClass("hide")) {
                 divFiltros.removeClass("hide");
             }
@@ -1152,7 +1537,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             getEmpresasEnCobranza();
         });
 
-        $("#btnCancelarIngresosCobrado").click(function () {
+        $("#btnCancelarIngresosCobrado").on('click', function() {
             if (temp !== undefined && temp !== 0 && temp > 0) {
                 $("#btnCancelarIngresosCobrado").addClass("hide").find("span").removeClass("fa-times").addClass("fa-cog fa-spin");
                 onNotify('<span class="fa fa-check fa-lg"></span>', 'INGRESO CANCELADO', 'info');
@@ -1163,13 +1548,13 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     getContadoresDeCobranzaXEstatus();
                     $("#btnHIC").trigger('click');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     $("#btnCancelarIngresosCobrado").removeClass("hide").find("span").addClass("fa-times").removeClass("fa-cog fa-spin");
                 });
             } else {
@@ -1177,40 +1562,40 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             }
         });
 
-        $("#mdlIngresosCobrados #btnGuardar").click(function () {
+        $("#mdlIngresosCobrados #btnGuardar").on('click', function() {
             $("#mdlIngresosCobrados #btnGuardar").addClass("hide").find("span").removeClass("fa-check").addClass("fa-cog fa-spin");
             var frm = $("#mdlIngresosCobrados #frmIngresosCobrados").serialize();
             $.ajax({
                 url: base_url + 'index.php/ctrlCobranza/addCobro',
                 type: "POST",
                 data: frm
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 $("#mdlIngresosCobrados").modal("hide");
                 onRefresh();
                 getContadoresDeCobranzaXEstatus();
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 $("#mdlIngresosCobrados #btnGuardar").removeClass("hide").find("span").addClass("fa-check").removeClass("fa-cog fa-spin");
             });
         });
 
-        $("#btnIngresosCobrados").click(function () {
+        $("#btnIngresosCobrados").on('click', function() {
             if (temp !== undefined && temp !== 0 && temp > 0) {
                 $.ajax({
                     url: base_url + "index.php/ctrlCobranza/getNumeroDeCobro",
                     type: "POST",
                     dataType: "JSON"
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data);
                     getContadoresDeCobranzaXEstatus();
                     $("#NoRecibo").removeClass("hide");
                     $("#NoRecibo").next().remove();
                     $("#NoRecibo").val(data[0].COBRO);
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     console.log('OPERACION CONCLUIDA');
                 });
                 $("#btnIngresosCobrados").addClass("hide").find("span").removeClass("fa-dollar").addClass("fa-cog fa-spin");
@@ -1221,7 +1606,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     var dtm = data[0];
                     if (dtm.Estatus === 'ACTIVO' || dtm.Estatus === 'PAGOS PARCIALES') {
@@ -1235,9 +1620,9 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     } else {
                         onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'ESTA ORDEN YA ESTA PAGADA', 'danger');
                     }
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     console.log('');
                     $("#btnIngresosCobrados").removeClass("hide").find("span").addClass("fa-dollar").removeClass("fa-cog fa-spin");
                 });
@@ -1247,7 +1632,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
         });
 
         var fdcm = $("#FormaDeConsignarMonto");
-        fdcm.change(function () {
+        fdcm.change(function() {
             console.log($(fdcm).val());
             var v = $(fdcm).val();
             if (parseInt(v) === 1) {
@@ -1279,12 +1664,12 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             }
         });
 
-        $("#btnRefrescar").click(function () {
+        btnRefrescar.on('click', function() {
             onRefresh();
         });
 
         var btnGRDP = $("#btnGenerarOrdenDeCobro");
-        btnGRDP.click(function () {
+        btnGRDP.on('click', function() {
             if (temp !== undefined && temp !== 0 && temp > 0) {
                 btnGRDP.find("span").removeClass("fa-print").addClass("fa-cog fa-spin");
                 $.ajax({
@@ -1293,12 +1678,12 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data);
                     window.open(data, '_blank');
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     getContadoresDeCobranzaXEstatus();
                     btnGRDP.find("span").removeClass("fa-cog fa-spin").addClass("fa-print");
                 });
@@ -1307,7 +1692,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             }
         });
 
-        $("#btnEditar").click(function () {
+        btnEditar.on('click', function() {
             HoldOn.open({
                 theme: "sk-cube-grid"
             });
@@ -1319,13 +1704,13 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     data: {
                         ID: temp
                     }
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     var mdl = $("#mdlOrdenDeCobroU");
                     var dtm = data[0];
                     if (dtm.Estatus === 'ACTIVO' || dtm.Estatus === 'SIN PAGOS') {
-                        $("#mdlOrdenDeCobroU #btnGuardar").removeClass("hide");
+                        mdlOrdenDeCobroU.find("#btnGuardar").removeClass("hide");
                     } else {
-                        $("#mdlOrdenDeCobroU #btnGuardar").addClass("hide");
+                        mdlOrdenDeCobroU.find("#btnGuardar").addClass("hide");
                     }
                     $(mdl).find("#ID").val(dtm.ID);
                     $(mdl).find("#Folio").val(dtm.Folio);
@@ -1339,12 +1724,28 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     $(mdl).find("#IdEmisorDeLaOrden").select2("val", dtm.IdEmisorDeLaOrden);
                     $(mdl).find("#IdPrestadorDelServicio").select2("val", dtm.IdPrestadorDelServicio);
                     $(mdl).find("#MontoContratoU").val(dtm.MontoContrato);
+                    if (dtm.Url !== null && dtm.Url !== undefined && dtm.Url !== '') {
+                        var ext = getExt(dtm.Url);
+                        console.log(ext);
+                        if (ext === "gif" || ext === "jpg" || ext === "png") {
+                            mdlOrdenDeCobroU.find("#VistaPreviaFactura").html("<hr><img id='trtImagen' src='" + (base_url + dtm.Url) + "' class ='img-responsive'/>");
+                        }
+                        if (ext === "PDF" || ext === "Pdf" || ext === "pdf") {
+                            mdlOrdenDeCobroU.find("#VistaPreviaFactura").html('<hr> <embed src="' + (base_url + dtm.Url) + '" type="application/pdf" width="90%" height="800px"' +
+                                    ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
+                        }
+                        if (ext !== "gif" && ext !== "jpg" && ext !== "png" && ext !== "PDF" && ext !== "Pdf" && ext !== "pdf") {
+                            mdlOrdenDeCobroU.find("#VistaPreviaFactura").html('<h1>NO EXISTE ARCHIVO ADJUNTO</h1>');
+                        }
+                    } else {
+                        mdlOrdenDeCobroU.find("#VistaPreviaFactura").html('<h3>NO EXISTE ARCHIVO ADJUNTO</h3>');
 
-                    $("#mdlOrdenDeCobroU").modal('toggle');
+                    }
+                    mdlOrdenDeCobroU.modal('toggle');
                     console.log(data, x, jq);
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -1353,131 +1754,97 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             }
         });
 
-        $("#mdlOrdenDeCobro #btnGuardar").click(function () {
-            $("#mdlOrdenDeCobro #btnGuardar").addClass("hide").find("span").removeClass("fa-check").addClass("fa-cog fa-spin");
-
-            var frm = $("#frmCobranzaOrden").serializeArray();
-            var validation_form = false;
-            $.each(frm, function (k, v) {
-                console.log(v.value.length);
-                if (v.value.length >= 1) {
-                    validation_form = true;
-                } else {
-                    console.log(k, v);
-                    validation_form = false;
-                    return false;
-                }
+        mdlOrdenDeCobro.find("#btnGuardar").on('click', function() {
+            HoldOn.open({
+                theme: 'sk-cube',
+                message: 'GUARDANDO...'
             });
-            if (validation_form) {
-                $.ajax({
-                    url: base_url + 'index.php/ctrlCobranza/addOrdenDeCobro',
-                    type: "POST",
-                    data: frm
-                }).done(function (data, x, jq) {
-                    console.log(data);
-                    console.log(jq);
-                    $("#msgResult").html(data);
-                    if (parseInt(data) === 1) {
-                        $("#btnRefrescar").trigger('click');
-                        $("#mdlOrdenDeCobro").modal('toggle');
-                        getContadoresDeCobranzaXEstatus();
-                        $.notify({
-                            title: '<span class="fa fa-check fa-lg"></span>',
-                            message: 'EXITO! ORDEN GUARDADA'
-                        }, {
-                            type: 'success'
-                        }, {
-                            animate: {
-                                enter: 'animated bounceIn',
-                                exit: 'animated bounceOut'
-                            }
-                        });
-                        $("#msgResult").html('<span class="label label-success">EXITO! ORDEN GUARDADA</span>');
-                    } else {
-                        $.notify({
-                            title: '<span class="fa fa-exclamation fa-lg"></span>',
-                            message: 'ERROR! ORDEN NO GUARDADA'
-                        }, {
-                            type: 'danger'
-                        }, {
-                            animate: {
-                                enter: 'animated bounceIn',
-                                exit: 'animated bounceOut'
-                            }
-                        });
-                        $("#msgResult").html('<span class="label label-danger">ERROR! ORDEN NO GUARDADA</span>');
+            var fdta = new FormData(mdlOrdenDeCobro.find("#frmCobranzaOrden")[0]);
+            console.log('mdlOrdenDeCobro.find("#Factura")[0].files)');
+            console.log(mdlOrdenDeCobro.find("#Factura")[0].files)
+            fdta.append('FACTURA', mdlOrdenDeCobro.find("#Factura")[0].files);
+            $.ajax({
+                url: base_url + 'index.php/ctrlCobranza/addOrdenDeCobro',
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: fdta
+            }).done(function(data, x, jq) {
+                console.log(data);
+                console.log(jq);
+                btnRefrescar.trigger('click');
+                mdlOrdenDeCobro.modal('hide');
+                getContadoresDeCobranzaXEstatus();
+                $.notify({
+                    title: '<span class="fa fa-check fa-lg"></span>',
+                    message: 'EXITO! ORDEN GUARDADA'
+                }, {
+                    type: 'success'
+                }, {
+                    animate: {
+                        enter: 'animated bounceIn',
+                        exit: 'animated bounceOut'
                     }
-                }).fail(function (x, y, z) {
-                    console.log(x, y, z);
-                }).always(function () {
-                    setTimeout(function () {
-                        $("#mdlOrdenDeCobro #btnGuardar").removeClass("hide").find("span").addClass("fa-check").removeClass("fa-cog fa-spin");
-                    }, 2500);
                 });
-            } else {
-                setTimeout(function () {
-                    $("#mdlOrdenDeCobro #btnGuardar").removeClass("hide").find("span").addClass("fa-check").removeClass("fa-cog fa-spin");
-                }, 2500);
-                console.log('ERROR! ORDEN DE COBRO NO GUARDADA');
-            }
+                $("#msgResult").html('<span class="label label-success">EXITO! ORDEN GUARDADA</span>');
+
+            }).fail(function(x, y, z) {
+                console.log(x, y, z);
+            }).always(function() {
+                HoldOn.close();
+            });
         });
 
-        $("#mdlOrdenDeCobroU #btnGuardar").click(function () {
-            $("#mdlOrdenDeCobroU #btnGuardar").addClass("hide").find("span").removeClass("fa-check").addClass("fa-cog fa-spin");
-
-            var frm = $("#frmCobranzaOrdenU").serialize();
+        mdlOrdenDeCobroU.find("#btnGuardar").on('click', function() {
+            HoldOn.open({
+                theme: 'sk-cube',
+                message: 'GUARDANDO...'
+            });
+            var fdta = new FormData(mdlOrdenDeCobroU.find("#frmCobranzaOrdenU")[0]);
+            console.log('mdlOrdenDeCobroU.find("#Factura")[0].files)');
+            console.log(mdlOrdenDeCobroU.find("#Factura")[0].files);
+            fdta.append('FACTURA', mdlOrdenDeCobroU.find("#Factura")[0].files);
             $.ajax({
                 url: base_url + 'index.php/ctrlCobranza/onUpdateOrdenDeCobro',
                 type: "POST",
-                data: frm
-            }).done(function (data, x, jq) {
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: fdta
+            }).done(function(data, x, jq) {
                 console.log(data);
                 console.log(jq);
-                $("#msgResult").html(data);
-                if (parseInt(data) === 1) {
-                    $("#btnRefrescar").trigger('click');
-                    $("#mdlOrdenDeCobroU").modal('toggle');
-                    $.notify({
-                        title: '<span class="fa fa-check fa-lg"></span>',
-                        message: 'EXITO! ORDEN GUARDADA'
-                    }, {
-                        type: 'success'
-                    }, {
-                        animate: {
-                            enter: 'animated bounceIn',
-                            exit: 'animated bounceOut'
-                        }
-                    });
-                    $("#msgResult").html('<span class="label label-success">EXITO! ORDEN GUARDADA</span>');
-                } else {
-                    $.notify({
-                        title: '<span class="fa fa-exclamation fa-lg"></span>',
-                        message: 'ERROR! ORDEN NO GUARDADA'
-                    }, {
-                        type: 'danger'
-                    }, {
-                        animate: {
-                            enter: 'animated bounceIn',
-                            exit: 'animated bounceOut'
-                        }
-                    });
-                    $("#msgResult").html('<span class="label label-danger">ERROR! ORDEN NO GUARDADA</span>');
-                }
-            }).fail(function (x, y, z) {
-                console.log(x, y, z);
-            }).always(function () {
+                btnRefrescar.trigger('click');
+                mdlOrdenDeCobroU.modal('hide');
                 getContadoresDeCobranzaXEstatus();
-                $("#mdlOrdenDeCobroU #btnGuardar").removeClass("hide").find("span").addClass("fa-check").removeClass("fa-cog fa-spin");
+                $.notify({
+                    title: '<span class="fa fa-check fa-lg"></span>',
+                    message: 'EXITO! ORDEN GUARDADA'
+                }, {
+                    type: 'success'
+                }, {
+                    animate: {
+                        enter: 'animated bounceIn',
+                        exit: 'animated bounceOut'
+                    }
+                });
+                $("#msgResult").html('<span class="label label-success">EXITO! ORDEN GUARDADA</span>');
+
+            }).fail(function(x, y, z) {
+                console.log(x, y, z);
+            }).always(function() {
+                HoldOn.close();
             });
         });
 
-        $("#mdlOrdenDeCobro").on('hidden.bs.modal', function (e) {
+        $("#mdlOrdenDeCobro").on('hidden.bs.modal', function(e) {
             $("#mdlOrdenDeCobro input").val("");
             $("#mdlOrdenDeCobro select").select2("val", "");
 
         });
 
-        $("#cmbEmpresaCliente").change(function (e) {
+        $("#cmbEmpresaCliente").change(function(e) {
             $("#Resultado").removeClass("hide");
             $("#Resultado").html('<h1 class="text-center"><span class="fa fa-circle-o faa-burst animated"></span> Espere...</h1>');
             $.ajax({
@@ -1486,28 +1853,28 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 data: {
                     ID: $("#cmbEmpresaCliente").val()
                 }
-            }).done(function (data) {
+            }).done(function(data) {
                 $("#Resultado").html(data);
             });
         });
 
-        $("#generar").click(function () {
+        $("#generar").on('click', function() {
             var formdata = $("#frmReciboAGenerar").serialize();
             $.ajax({
                 url: base_url + 'index.php/ctrlCobranza/Recibo',
                 type: "POST",
                 data: formdata
-            }).done(function (data) {
+            }).done(function(data) {
                 console.log(data);
 
-            }).fail(function (XMLHttpRequest, textStatus, errorThrown) {
+            }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest.responseText);
                 console.log(errorThrown);
                 console.log(textStatus);
             });
         });
 
-        $("#btnEstadoDeCuenta").click(function () {
+        $("#btnEstadoDeCuenta").on('click', function() {
             $("#btnEstadoDeCuenta").addClass("hide");
             $("#btnEstadoDeCuentaProgress").removeClass("hide");
 
@@ -1515,7 +1882,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             $("#msg-result-edocuenta").html('<div align="center"><i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i></div>');
             //            $("#ResultadoEdoCuenta").html('<div class="text-center" align="center"><h2><i class="fa fa-circle-o faa-burst animated"></i> ESPERE...</h2></div>');
             getEstadoDeCuenta();
-            setTimeout(function () {
+            setTimeout(function() {
                 $("#btnEstadoDeCuentaProgress").addClass("hide");
                 $("#btnEstadoDeCuenta").removeClass("hide");
             }, 2500);
@@ -1527,7 +1894,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
     function onValidateFormRC() {
         var frm = $("#frmCobranzaOrden").serializeArray();
         var validation_form = false;
-        $.each(frm, function (k, v) {
+        $.each(frm, function(k, v) {
             if (v.value.length >= 1) {
                 validation_form = true;
             } else {
@@ -1554,7 +1921,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             data: {
                 CobroPendiente: cp
             }
-        }).done(function (data) {
+        }).done(function(data) {
             console.log(data);
             $("#dLoader").addClass("hide");
             $("#ResultadoRecibo").removeClass("hide");
@@ -1619,19 +1986,19 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             data: {
                 INDICE: indicex
             }
-        }).done(function (data) {
+        }).done(function(data) {
             var tblName = tblname;
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
 
-                $('#' + tblName + ' tfoot th').each(function () {
+                $('#' + tblName + ' tfoot th').each(function() {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
 
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 //CLICK SELECTED ROW
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
                     //                console.log(this)
@@ -1649,7 +2016,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     temp = parseInt(dtm[0]);
                 });
                 //DB CLICK FOR EDIT
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -1657,12 +2024,12 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     console.log(dtm[0]);
 
                     temp = parseInt(dtm[0]);
-                    $("#btnEditar").trigger("click");
+                    btnEditar.trigger("click");
                 });
                 // Apply the search
-                tblSelected.columns().every(function () {
+                tblSelected.columns().every(function() {
                     var that = this;
-                    $('input', this.footer()).on('keyup change', function () {
+                    $('input', this.footer()).on('keyup change', function() {
                         if (that.search() !== this.value) {
                             that.search(this.value).draw();
                         }
@@ -1674,7 +2041,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         '<h1 class="text-center">' + fail_message + '</h1>' +
                         '</div>');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log("ERROR AL OBTENER LOS REGISTROS");
             console.log(x.responseText, y, z);
         });
@@ -1691,7 +2058,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             data: {
                 INDICE: indicex
             }
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
 
             //        console.log(data)
             var tblName = tblname;
@@ -1699,13 +2066,13 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             //        console.log(data.length);
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
-                $("#" + target_result + " tfoot th").each(function () {
+                $("#" + target_result + " tfoot th").each(function() {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
                 var tblSelected = $('#' + tblName).DataTable(tableOptions);
                 //CLICK SELECTED ROW
-                $('#' + tblName + ' tbody').on('click', 'tr', function () {
+                $('#' + tblName + ' tbody').on('click', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("success");
                     $("#" + tblName).find("tr").removeClass("warning");
                     //                console.log(this)
@@ -1723,7 +2090,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     temp = parseInt(dtm[0]);
                 });
                 //DB CLICK FOR EDIT
-                $('#' + tblName + ' tbody').on('dblclick', 'tr', function () {
+                $('#' + tblName + ' tbody').on('dblclick', 'tr', function() {
                     $("#" + tblName).find("tr").removeClass("warning");
                     $(this).addClass('warning');
                     var dtm = tblSelected.row(this).data();
@@ -1738,7 +2105,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                         '<h1 class="text-center">' + fail_message + '</h1>' +
                         '</div>');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x.responseText);
             console.log(x, y, z);
         });
@@ -1758,7 +2125,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 FechaInicioEdo: FechaInicioEdo,
                 FechaTerminoEdo: FechaTerminoEdo
             }
-        }).done(function (data) {
+        }).done(function(data) {
             $('#ResultadoEdoCuenta').html(data);
         });
     }
@@ -1774,19 +2141,19 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 FECHAINICIO: $("#FechaInicioEdo").val(),
                 FECHAFINAL: $("#FechaTerminoEdo").val()
             }
-        }).done(function (data) {
+        }).done(function(data) {
             //            console.log('EDO CUENTA');
             //            console.log(data);
             $("#msg-result-edocuenta").html(getTable("tblEstadoDeCuenta", data));
             $('#tblEstadoDeCuenta').DataTable(tableOptions);
             $("#msg-result-edocuenta").addClass("table-responsive");
-            $("#tblEstadoDeCuenta > tbody > tr").each(function (k, v) {
+            $("#tblEstadoDeCuenta > tbody > tr").each(function(k, v) {
                 $(this).find("td")[2].innerHTML = '<span class="label label-success">' + $(this).find("td")[2].innerText + '</span>';
                 $(this).find("td")[6].innerHTML = '<span class="label label-warning">' + $(this).find("td")[6].innerText + '</span>';
                 $(this).find("td")[7].innerHTML = '<span class="label label-info">' + $(this).find("td")[7].innerText + '</span>';
                 $(this).find("td")[9].innerHTML = '<span class="label label-danger">' + $(this).find("td")[9].innerText + '</span>';
             });
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x.responseText);
         });
     }
@@ -1796,11 +2163,11 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: master_url + 'getDirectorio',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             //            console.log(data)
             var options = '<option value=""></option>';
             if (data !== undefined) {
-                $.each(data, function (k, v) {
+                $.each(data, function(k, v) {
                     options = options + '<option value="' + v.ID + '">' + v.RazonS + '</option>';
                 });
                 $(".modal #Cliente").html(options);
@@ -1808,9 +2175,9 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             } else {
                 onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SÉ ENCONTRARON REGISTROS EN DIRECTORIO', 'danger');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -1824,11 +2191,11 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: master_url + 'getEmpresasEnCobranza',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             //            console.log(data)
             var options = '<option value=""></option>';
             if (data !== undefined) {
-                $.each(data, function (k, v) {
+                $.each(data, function(k, v) {
                     options = options + '<option value="' + v.ID + '">' + v.RazonS + '</option>';
                 });
                 $("#cmbEmpresa").html(options);
@@ -1838,9 +2205,9 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             getClientesEnCobranza();
             getProyectosXContratosDeObra();
             getContratosDeObraEnCobranza();
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -1850,20 +2217,20 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: master_url + 'getClientesEnCobranza',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             //            console.log(data)
             var options = '<option value=""></option>';
             if (data !== undefined) {
-                $.each(data, function (k, v) {
+                $.each(data, function(k, v) {
                     options = options + '<option value="' + v.ID + '">' + v.RazonS + '</option>';
                 });
                 $("#cmbEmpresaCliente").html(options);
             } else {
                 onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SÉ ENCONTRARON REGISTROS EN DIRECTORIO', 'danger');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             //            HoldOn.close();
         });
     }
@@ -1876,16 +2243,16 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: master_url + 'getProyectosXContratosDeObra',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             //            console.log(data)
             var options = '<option value=""></option>';
-            $.each(data, function (k, v) {
+            $.each(data, function(k, v) {
                 options = options + '<option value="' + v.ID + '">' + (v.PROYECTO) + '</option>';
             });
             divFiltros.find("#cmbProyecto").html(options);
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             //            HoldOn.close();
         });
     }
@@ -1895,11 +2262,11 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: base_url + 'index.php/ctrlCobranza/getContratosDeObra',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             //            console.log(data)
             var options = '<option value=""></option>';
             if (data !== undefined) {
-                $.each(data, function (k, v) {
+                $.each(data, function(k, v) {
                     options = options + '<option value="' + v.ID + '">' + v.CONTRATODEOBRA + '</option>';
                 });
                 $(".modal #IdContrato").html(options);
@@ -1907,33 +2274,33 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             } else {
                 onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SÉ ENCONTRARON REGISTROS EN DIRECTORIO', 'danger');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
         });
     }
 
     function getContratosDeObraEnCobranza() {
-//        HoldOn.open({
-//            theme: "sk-cube-grid"
-        //        });
+        HoldOn.open({
+            theme: "sk-cube-grid"
+        });
         $.ajax({
             url: master_url + 'getContratosDeObraEnCobranza',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             var options = '<option value=""></option>';
             if (data !== undefined) {
-                $.each(data, function (k, v) {
-                    options = options + '<option value="' + v.ID + '">' + v.CONTRATODEOBRA + '</option>';
+                $.each(data, function(k, v) {
+                    options = options + '<option value="' + v.ID + '">' + v.CONTRATODEOBRA + ' ' + ((v["TOTAL FACTURAS"] <= 0) ? '(NO TIENE FACTURAS)' : '') + '</option>';
                 });
                 divFiltros.find("#cmbContrato").html(options);
             } else {
                 onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SÉ ENCONTRARON REGISTROS EN DIRECTORIO', 'danger');
             }
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
-            //           HoldOn.close(); 
+        }).always(function() {
+            HoldOn.close();
         });
     }
 
@@ -1942,11 +2309,11 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: base_url + 'index.php/ctrlCobranza/getUsuarios',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 //                console.log(data)
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.Id + '">' + v.nombre + ' ' + v.apaterno + ' ' + v.amaterno + '</option>';
                     });
                     $("#CobradorDelTramite").html(options);
@@ -1954,7 +2321,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                     onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO SÉ ENCONTRARON REGISTROS DE USUARIOS', 'danger');
                 }
             },
-            error: function (x, y, z) {
+            error: function(x, y, z) {
                 console.log(x, y, z);
             }
         });
@@ -1965,10 +2332,10 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: base_url + 'index.php/ctrlCompras/getFormaDePago',
             type: "POST",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 var options = '<option value=""></option>';
                 if (data !== undefined) {
-                    $.each(data, function (k, v) {
+                    $.each(data, function(k, v) {
                         options = options + '<option value="' + v.ID + '">' + v.FORMADEPAGO + '</option>';
                     });
                     $("#FormaDePago").html(options);
@@ -1991,7 +2358,7 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
     function onRefresh() {
         $("#btnCancelarIngresosCobrado").addClass("hide");
         $("#btnIngresosCobrados").removeClass("hide");
-        $("#btnEditar").removeClass("hide");
+        btnEditar.removeClass("hide");
         $("#btnReciboDePago").addClass("hide");
         divFiltros.addClass("hide");
         //        onGetRecords("tblCobranza", base_url + "index.php/ctrlCobranza/onLoadData", 1, "rtblCobranza", "msgCobranza", "NO SE ENCONTRARON REGISTROS");
@@ -2008,15 +2375,15 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: base_url + 'index.php/ctrlCobranza/getContadoresDeCobranzaXEstatus',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             //            console.log(data)
             var msg = '<label class="label label-danger">' + (data[0]["SIN PAGOS"]) + ' REGISTROS SIN PAGOS</label>';
             msg += '<label class="label label-king-blue">' + (data[0]["PAGOS PARCIALES"]) + ' REGISTROS CON PAGOS PARCIALES</label>';
             msg += '<label class="label label-success">' + (data[0].PAGADA) + ' REGISTROS PAGADOS</label>';
             $("#msgContadoresCobranza").html(msg);
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             console.log('OPERACION CONTADORES FINALIZADA');
             HoldOn.close();
         });
@@ -2032,15 +2399,14 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
             url: master_url + 'getRecords',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
-            console.log(data);
+        }).done(function(data, x, jq) {
             $("#rtblCobranza").html(getTable('tblCobranza', data));
-            $('#tblCobranza tfoot th').each(function () {
+            $('#tblCobranza tfoot th').each(function() {
                 var title = $(this).text();
                 $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
             });
             var tblSelected = $('#tblCobranza').DataTable(tableOptions);
-            $('#tblCobranza tbody').on('click', 'tr', function () {
+            $('#tblCobranza tbody').on('click', 'tr', function() {
                 $("#tblCobranza").find("tr").removeClass("success");
                 $("#tblCobranza").find("tr").removeClass("warning");
                 //                console.log(this)
@@ -2053,260 +2419,31 @@ $PERMISOS = $_SESSION["PERMISOS"][22];
                 }
                 $(this).addClass('success');
                 var dtm = tblSelected.row(this).data();
-                console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
-                console.log(dtm);
-                console.log(dtm[0]);
-                console.log('+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++');
                 temp = parseInt(dtm[0]);
             });
             //DB CLICK FOR EDIT
-            $('#tblCobranza tbody').on('dblclick', 'tr', function () {
+            $('#tblCobranza tbody').on('dblclick', 'tr', function() {
                 $("#tblCobranza").find("tr").removeClass("warning");
                 $(this).addClass('warning');
                 var dtm = tblSelected.row(this).data();
                 console.log($(dtm[0]));
                 temp = parseInt(dtm[0]);
-                $("#btnEditar").trigger("click");
+                btnEditar.trigger("click");
             });
             // Apply the search
-            tblSelected.columns().every(function () {
+            tblSelected.columns().every(function() {
                 var that = this;
-                $('input', this.footer()).on('keyup change', function () {
+                $('input', this.footer()).on('keyup change', function() {
                     if (that.search() !== this.value) {
                         that.search(this.value).draw();
                     }
                 });
             });
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
 
 </script>
-
-
-
-<div id="mdlEmisionReciboPago" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div id="hmsgModals" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h2 class="modal-title" id="myModalLabel">EMISIÓN DE RECIBOS DE PAGO</h2>
-            </div>
-            <form id="frmReciboAGenerar">
-                <div class="modal-body text-center">
-                    <fieldset>
-                        <div class="col-md-12">
-                            <label for="">EMPRESAS / CLIENTES</label> 
-                            <select class="form-control" id="cmbEmpresaCliente" name="cmbEmpresaCliente"  required>
-                                <option value="">Selecciona</option>
-                                <?php foreach ($ID_cliente as $ID_cliente1) { ?> 
-                                    <option value="<?php echo $ID_cliente1->Folio; ?>"><?php echo $ID_cliente1->NombreC; ?></option>
-                                <?php } ?>
-                            </select>
-                            <input  type="hidden" name="user" id="user" value="<?php echo $indice; ?>" >
-                        </div>
-                        <div id="Resultado" class=" col-md-12 hide" >
-
-                        </div>
-                        <div id="dLoader" class="col-md-12 hide">
-                            <h1 class="text-center"><span class="fa fa-circle-o faa-burst animated"></span> Espere...</h1>
-                        </div>
-                        <div id="ResultadoRecibo" class="col-md-12 hide">
-                            <div class="col-md-12">
-                                <input class="form-control hide" type="text" name="CobranzaIDR" id="CobranzaIDR"  value=""> 
-                            </div>
-                            <div class="col-md-4  hide" align="center">
-                                <div class="well">
-                                    <img src="<?php echo base_url(); ?>media/logo.png" width="80%" height="auto" > 
-                                    <p class="span6">LOMA DEL PEDREGAL #417</p>
-                                    <p class="span6">COL. LOMAS DEL CAMPESTRE</p>
-                                    <p class="span6">LEÓN GTO. MÉXICO. </p>
-                                    <p class="span6">TEL. +52 (477) 779 72 21</p>
-                                    <p class="span6">+52 (477) 779 72 27</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 ">
-                                <label for="NoRecibo" class="control-label">No. de Recibo:</label> 
-                                <input  style="text-transform:uppercase; color:#F30" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="ReciboNoRecibo" id="ReciboNoRecibo" value="">
-                            </div>     
-                            <div class="col-md-4 ">
-                                <label for="ReciboFechaPago" class="control-label">Fecha de pago:</label> 
-                                <input  style="text-transform:uppercase" onkeyup="" data-provide="datepicker" data-date-format="dd/mm/yyyy" class="form-control" type="text" name="ReciboFechaPago" id="ReciboFechaPago" value=" " required>
-                            </div>
-                            <div class="col-md-4 ">
-                                <label for="ReciboNombre" class="control-label">Recibí de:</label>
-                                <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="ReciboNombre" id="ReciboNombre" value=" ">		
-                            </div>
-                            <div class="col-md-4 ">
-                                <label for="MontoTotal" class="control-label">Monto a cobrar:</label> 
-                                <input  style="text-transform:uppercase" onkeyup="" class="form-control" readonly="" type="text" name="MontoTotal" id="MontoTotal" value=" ">		
-                            </div>
-                            <div class="col-md-8 ">
-                                <label for="ReciboHonorarios" class="control-label">Por concepto de: </label> 
-                                <input  style="text-transform:uppercase" onkeyup="javascript:this.value = this.value.toUpperCase()" class="form-control" type="text" name="ReciboHonorarios" id="ReciboHonorarios" value=" ">		
-                            </div>
-                            <div class="col-md-4 ">
-                                <label for="ReciboCantidad" class="control-label">La cantidad de:</label> 
-                                <input  style="text-transform:uppercase" class="form-control" type="text" name="ReciboCantidad" id="ReciboCantidad" value="" onblur="onChangeAmount()" onkeyup="onChangeAmount()">		
-                            </div>
-                            <div class="col-md-3">
-                                <br>
-                                <span class="label label-default">TOTAL</span>
-                                <span class="label label-primary tt">$ 0.00</span>
-                            </div>
-                            <div class="col-md-3">
-                                <br>
-                                <span class="label label-default">RESTANTE</span>
-                                <span class="label label-success rtt">$ 0.00</span>
-                            </div>
-                            <div id="ModificarRecibo" class="col-md-4 hide">
-                                <label for="ReciboTotal" class="control-label">TOTAL</label> 
-                                <input class="form-control" type="text" name="ReciboTotal" id="ReciboTotal" value=" ">
-                            </div>
-                            <div class=" col-md-2 margin-15-top">
-                                <button class="btn btn-lg fa-lg btn-success btn-lg fa-lg" type="button"  id="generar" name="generar"
-                                        data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR" >
-                                    <span class="fa fa-check fa-3x"></span></button> 
-                            </div> 
-                        </div> 
-                    </fieldset>
-                </div>
-            </form> 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button> 
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="mdlCobroPorHonorariosMensuales" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg fullscreen" role="document">
-        <div class="modal-content">
-
-            <div id="hmsgModals" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">ORDEN DE COBRO POR HONORARIOS MENSUALES</h4>
-            </div>
-
-            <form id="frmReciboAGenerar">
-                <div class="modal-body text-center"> 
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#home" data-toggle="tab">ORDEN DE COBRO POR HONORARIOS MENSUALES</a></li>
-                        <li><a href="#profile" data-toggle="tab">
-                                ORDEN DE COBRO POR HONORARIOS MENSUALES POR CLIENTE</a></li> 
-                    </ul>
-                    <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane  animated zoomInUp active in" id="home">
-
-                            <fieldset>
-                                <div class="col-md-12">
-                                    <h2>LA SIGUIENTE INSTRUCCIÓN EMITIRÁ EL COBRO POR LOS HONORARIOS MENSUALES CORRESPONDIENTES A LA TOTALIDAD DE LOS CLIENTES POR SU RESPONSABLE, ES UNA INSTRUCCIÓN MENSUAL Y SOLO SE PODRÁ EMITIR UNA VEZ.</h2>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="">MES A COBRAR</label>
-                                    <select class="form-control" id="meses" name="meses"  required="required">
-                                        <option value="">Selecciona</option>
-                                        <?php foreach ($Meses as $Meses1) { ?> 
-                                            <option value="<?php echo $Meses1->id_meses; ?>"><?php echo $Meses1->dsc_meses; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="">EJERCICIO A COBRAR</label>
-                                    <input  class="form-control" type="text" name="anio" id="anio"  value="<?php echo date("Y") ?>" required="required">
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="tab-pane  animated zoomInUp" id="profile">
-                            <fieldset>
-                                <div class="col-md-12 margin-15-top">
-
-                                    <select class="form-control" id="ID_cliente" name="ID_cliente"  required="required">
-                                        <option value="">Selecciona</option>
-                                        <?php foreach ($ID_cliente as $ID_cliente1) { ?> 
-                                            <option value="<?php echo $ID_cliente1->Folio; ?>"><?php echo $ID_cliente1->NombreC; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">MES A COBRAR</label>
-                                    <select class="form-control" id="meses2" name="meses2"  required="required">
-                                        <option value="">Selecciona</option>
-                                        <?php foreach ($Meses as $Meses1) { ?> 
-                                            <option value="<?php echo $Meses1->id_meses; ?>"><?php echo $Meses1->dsc_meses; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">EJERCICIO A COBRAR</label>
-                                    <input  class="form-control" type="text" name="anio2" id="anio2"  value="<?php echo date("Y") ?>" required="required">	
-                                </div>
-                            </fieldset>  
-                        </div> 
-                    </div>
-                </div>
-            </form> 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button> 
-                <button type="button" class="btn btn-success btn-lg fa-lg" data-dismiss="modal" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR" ><span class="fa fa-check fa-3x"></span></button> 
-            </div> 
-        </div>
-    </div>
-</div>
-
-<div id="mdlEstadoDeCuenta" class="modal  animated zoomInUp"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg fullscreen" role="document">
-        <div class="modal-content">
-            <div id="hmsgModals" class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">ESTADO DE CUENTA</h4>
-            </div>
-            <form id="frmIngresosCobrados">
-                <div id="msg-result-ingresoscobrados" class="modal-body text-center"> 
-                    <fieldset>
-                        <div class="col-md-4">
-                            <label for="Cliente" class="control-label">cliente:</label>
-                            <select class="form-control" id="Cliente" name="Cliente"  required>
-                                <option value="">Selecciona</option>
-                                <?php foreach ($ID_cliente as $ID_cliente1) { ?> 
-                                    <option value="<?php echo $ID_cliente1->ID; ?>"><?php echo $ID_cliente1->NombreC; ?></option>
-                                <?php } ?>
-                            </select>	
-                        </div>
-                        <div class="col-md-3">
-                            <label for="NombreActividad" class="control-label">Fecha de inicio </label>
-                            <input class="form-control" type="text" name="FechaInicioEdo" id="FechaInicioEdo" data-provide="datepicker" data-date-format="dd/mm/yyyy"  value="<?php echo date("d/m/Y") ?>">	
-                        </div>
-                        <div class="col-md-3">
-                            <label for="NombreActividad" class="control-label">Fecha de término </label>
-                            <input class="form-control" type="text" name="FechaTerminoEdo" id="FechaTerminoEdo" data-provide="datepicker" data-date-format="dd/mm/yyyy" value="<?php echo date("d/m/Y") ?>">	
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-emerald btn-lg fa-lg" id="btnEstadoDeCuenta" name="btnEstadoDeCuenta">
-                                <span class="fa fa-search fa-3x"></span>
-                            </button>
-                            <button type="button" class="btn btn-emerald btn-lg fa-lg hide hide" id="btnEstadoDeCuentaProgress" name="btnEstadoDeCuentaProgress">
-                                <span class="fa fa-refresh fa-spin fa-3x"></span>
-                            </button>
-                        </div>
-                    </fieldset>
-                    <div id="msg-result-edocuenta" class="table-responsive"> 
-                    </div>  
-                </div>
-            </form>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default btn-lg fa-lg" data-dismiss="modal"  data-toggle="tooltip" data-placement="top" title="" data-original-title="CERRAR"><span class="fa fa-times fa-3x"></span> </button> 
-                <button class="btn btn-lg fa-lg btn-success hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardar" name="btnGuardar" value="<?php echo $indice; ?>" ><span class="fa fa-check fa-3x"></span></button>
-                <button class="btn btn-lg fa-lg btn-success hide hide" data-toggle="tooltip" data-placement="top" title="" data-original-title="GUARDAR"  type="button" id="btnGuardando" name="btnGuardando" value="" ><span class="fa fa-cog fa-spin fa-3x fa-fw"></span></button>
-            </div>
-        </div>
-    </div>
-</div>
-

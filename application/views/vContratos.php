@@ -1765,7 +1765,7 @@ $PERMISOS = $_SESSION["PERMISOS"][36];
             var tblName = tblname;
             if (data.length > 0) {
                 $("#" + target_result).html(getTable(tblName, data));
-                $('#' + tblName + ' thead th').each(function () {
+                $('#' + tblName + ' tfoot th').each(function () {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
@@ -1812,6 +1812,15 @@ $PERMISOS = $_SESSION["PERMISOS"][36];
                         }
                     });
                 });
+            // Apply the search
+            tblSelected.columns().every(function () {
+                var that = this;
+                $('input', this.footer()).on('keyup change', function () {
+                    if (that.search() !== this.value) {
+                        that.search(this.value).draw();
+                    }
+                });
+            });
             } else {
                 $("#" + target_fail_messages).html('<div class="alert alert-dismissible alert-warning">' +
                         '<button type="button" class="close" data-dismiss="alert">&times;</button>' +

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="margin-15-top">
+    <div class="col-md-12 margin-15-top">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">PANEL DE ARCHIVOS</h3>
@@ -7,8 +7,9 @@
             <div class="panel-body">
                 <form id="frmArchivos">
                     <div class="col-md-12">  
-
-                        <div align="center" class="col-md-12" id="frtArchivo"></div>
+                        <div id="lArchivos" class="col-md-12">
+                        </div>
+                        <div align="center" class="col-md-12" id="VistaPrevia"></div>
                         <div class="col-xs-12 col-md-4"></div>
                         <div class="col-xs-12 col-md-4 hand-cursor fileupload" id="fileuploadtf" align="center" onclick="onUpload(this)">
                             <br>
@@ -16,7 +17,7 @@
                             <h1 >ADJUNTAR ARCHIVO</h1>
                         </div>
                         <div class="col-md-12 hide" align="center">
-                            <input type="file" class="btn btn-primary" id="rArchivo" name="rArchivo">
+                            <input type="file" class="btn btn-primary" id="rArchivo" name="rArchivo[]" multiple="multiple">
                             <input type="text" id="rtImagenText" name="rtImagenText" readonly="" class="">
                         </div>
                     </div>
@@ -58,9 +59,15 @@
     function onUpload(e) {
         var parent = $(e).parent().parent();
         var btnFile = parent.find("input[type='file']");
-        var rArchivo = parent.find("#frtArchivo");
+        var rArchivo = parent.find("#VistaPrevia");
         btnFile.change(function () {
             var imageType = /image.*/;
+            $("#lArchivos").html("");
+            console.log(btnFile[0].files);
+            $.each(btnFile[0].files,function(k,v){
+               console.log(v.name); 
+               $("#lArchivos").append('<span class="label label-success">'+v.name+'</span><br>');
+            });
             if (btnFile[0].files[0] !== undefined && btnFile[0].files[0].type.match(imageType)) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
@@ -71,7 +78,7 @@
                 if (btnFile[0].files[0] !== undefined && btnFile[0].files[0].type.match('application/pdf')) {
                     var readerpdf = new FileReader();
                     readerpdf.onload = function (e) {
-                        rArchivo.html('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="900px" height="1200px"' +
+                        rArchivo.append('<hr> <embed src="' + readerpdf.result + '" type="application/pdf" width="900px" height="1200px"' +
                                 ' pluginspage="http://www.adobe.com/products/acrobat/readstep2.html">');
                     };
                     readerpdf.readAsDataURL(btnFile[0].files[0]);
@@ -79,46 +86,46 @@
                     var extension = getExt(btnFile[0].files[0].name);
                     switch (extension) {
                         case "rar":
-                            rArchivo.html('<img src="../../media/overlays/rar.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/rar.png" class="image-responsive">');
                             break;
                         case "zip":
-                            rArchivo.html('<img src="../../media/overlays/zip.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/zip.png" class="image-responsive">');
                             break;
                         case "zip":
-                            rArchivo.html('<img src="../../media/overlays/zip.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/zip.png" class="image-responsive">');
                             break;
                         case "xml":
-                            rArchivo.html('<img src="../../media/overlays/xml.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/xml.png" class="image-responsive">');
                             break;
                         case "doc":
-                            rArchivo.html('<img src="../../media/overlays/word.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/word.png" class="image-responsive">');
                             break;
                         case "docx":
-                            rArchivo.html('<img src="../../media/overlays/word.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/word.png" class="image-responsive">');
                             break;
                         case "xls":
-                            rArchivo.html('<img src="../../media/overlays/excel.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/excel.png" class="image-responsive">');
                             break;
                         case "xlsx":
-                            rArchivo.html('<img src="../../media/overlays/excel.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/excel.png" class="image-responsive">');
                             break;
                         case "txt":
-                            rArchivo.html('<img src="../../media/overlays/txt.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/txt.png" class="image-responsive">');
                             break;
                         case "css":
-                            rArchivo.html('<img src="../../media/overlays/css.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/css.png" class="image-responsive">');
                             break;
                         case "html":
-                            rArchivo.html('<img src="../../media/overlays/html.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/html.png" class="image-responsive">');
                             break;
                         case "htm":
-                            rArchivo.html('<img src="../../media/overlays/html.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/html.png" class="image-responsive">');
                             break;
                         case "sql":
-                            rArchivo.html('<img src="../../media/overlays/sql.png" class="image-responsive">');
+                            rArchivo.append('<img src="../../media/overlays/sql.png" class="image-responsive">');
                             break;
                         default:
-                            rArchivo.html('EL ARCHIVO SE SUBIRÁ, PERO NO ES POSIBLE RECONOCER SI ES UN PDF O UNA IMAGEN');
+                            rArchivo.append('EL ARCHIVO SE SUBIRÁ, PERO NO ES POSIBLE RECONOCER SI ES UN PDF O UNA IMAGEN');
                             break;
                     }
                 }

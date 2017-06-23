@@ -1,5 +1,3 @@
-
-
 <div class="row">
     <fieldset>
         <div class="col-md-12 margin-15-top">
@@ -19,7 +17,7 @@
                 </div>
                 <div class="panel-body">
                     <div align="center"> 
-                        <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo" > 
+                        <span  data-toggle="modal" data-easein="swoopIn" data-target="#mdlNuevo">
                             <button class="btn btn-default btn-lg text-center fa-lg" 
                                     data-toggle="tooltip" 
                                     data-placement="top" 
@@ -97,6 +95,13 @@
                                 title=""  type="button"
                                 data-original-title="SALIDAS">
                             <span class="fa fa-eye fa-lg purple-icon"></span>
+                        </button>
+                        <button id="btnGenerarCodigoDeSalida" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="CÓDIGO DE SALIDA">
+                            <span class="fa fa-barcode fa-lg purple-icon"></span>
                         </button>
                         <button id="btnCancelarSalida" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
@@ -182,7 +187,7 @@
                                 data-original-title="PERDIDAS">
                             <span class="fa fa-eye fa-lg black-icon"></span>
                         </button>
-                        <button id="btnCancelarPerdida" class="btn btn-default btn-lg fa-lg" 
+                        <button id="btnCancelarPerdida" class="btn btn-default btn-lg fa-lg hide" 
                                 data-toggle="tooltip" 
                                 data-placement="top" 
                                 title=""  type="button"
@@ -220,6 +225,13 @@
                                 data-original-title="ASIGNAR X">
                             <span class="fa fa-exchange fa-lg black-icon"></span>
                         </button>
+                        <button id="btnGeneradorDeCodigoDeBarras" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="GENERADOR DE CODIGO DE BARRAS">
+                            <span class="fa fa-gear fa-lg info-icon"></span>
+                        </button>
                     </div>
 
                     <div class="col-md-12 hide" id="mdlBusquedaDevolucionesX">
@@ -248,19 +260,19 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-default fa-lg" id="btnBuscarPerdidas" 
+                                <button type="button" class="btn btn-default fa-lg" id="btnBuscarDevolucionesX" 
                                         data-toggle="tooltip" 
                                         data-placement="top" 
                                         title=""  type="button"
                                         data-original-title="BUSCAR DEVOLUCIONES"><span class="fa fa-search fa-2x grayscale-icon"></span></button>
-                                <button type="button" class="btn btn-default fa-lg" id="btnReiniciarPerdida" 
+                                <button type="button" class="btn btn-default fa-lg" id="btnReiniciarDevolucionesX" 
                                         data-toggle="tooltip" 
                                         data-placement="top" 
                                         title=""  type="button"
                                         data-original-title="REINICIAR"><span class="fa fa-trash fa-2x grayscale-icon"></span></button>
                             </div>
                             <div class="col-md-12" align="center">
-                                <button type="button" class="btn btn-default fa-lg" id="btnReporteDePerdidas" 
+                                <button type="button" class="btn btn-default fa-lg" id="btnReporteDeDevolucionesX" 
                                         data-toggle="tooltip" 
                                         data-placement="top" 
                                         title=""  type="button"
@@ -991,7 +1003,7 @@
                         <div align="center" class="col-md-12">
                             <h2>ARTICULOS</h2>
                         </div>
-                        <div id="tblResult" class="table-responsive"></div>
+                        <div id="tblResult" class="table-responsive" style="height: 600px; overflow-y:  auto;"></div>
                         <div class="col-md-12"><hr></div>
                         <div class="col-md-12">
                             <label for="">OBSERVACIONES</label>
@@ -1736,6 +1748,86 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal animated bounce" id="mdlGeneradorCodigos">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">GENERADOR DE CODIGOS DE BARRAS</h4>
+            </div>
+            <div class="modal-body">
+                <fieldset>
+                    <div class="col-md-12"> 
+
+                    </div>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#Generador" data-toggle="tab">GENERADOR</a></li>
+                        <li><a href="#GeneradorXOrdenDeCompra" data-toggle="tab">ORDEN DE COMPRA</a></li>
+                        <li><a href="#GeneradorXEntrada" data-toggle="tab">ENTRADAS</a></li>
+                        <li><a href="#GeneradorXSalida" data-toggle="tab">SALIDAS</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="Generador">
+                            <fieldset>
+                                <div class="col-md-12">
+                                    <label for="">CODIGO ALFANUMERICO</label>
+                                    <input type="text" id="Codigo" name="Codigo" class="form-control" placeholder="EJ:12345ABCDE"
+                                </div>
+                                <div class="col-md-12" align="right">
+                                    <button type="button" class="btn btn-default fa-lg" id="btnGenerarCodigoDeBarra" name="btnGenerarCodigoDeBarra" 
+                                            data-toggle="tooltip" 
+                                            data-placement="top" 
+                                            title="GENERAR"  type="button"
+                                            data-original-title="NUEVO ALMACEN"><span class="fa fa-check fa-2x purple-icon"></span><BR>GENERAR</button>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="tab-pane fade" id="GeneradorXOrdenDeCompra">
+                            <fieldset>
+                                <div class="col-md-6">
+                                    <label for="">ALMACEN</label>
+                                    <select id="Almacen" name="Almacen" class="form-control">
+                                        <option value=""></option> 
+                                    </select>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="">ORDEN DE COMPRA</label>
+                                    <select id="OrdenDeCompra" name="OrdenDeCompra" class="form-control">
+                                        <option value=""></option> 
+                                    </select>
+
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="tab-pane fade" id="GeneradorXEntrada">
+                            <fieldset>
+                                <div class="col-md-12">
+                                    <label for="">ENTRADAS</label>
+                                    <input type="text" id="" name="" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="tab-pane fade" id="GeneradorXSalida">
+                            <fieldset>
+                                <div class="col-md-12">
+                                    <label for="">SALIDAS</label>
+                                    <input type="text" id="" name="" class="form-control" placeholder="XX/XX/XXXX" data-provide="datepicker" data-date-format="dd/mm/yyyy" readonly="">
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button>
+                <button type="button" class="btn btn-default fa-lg"><span class="fa fa-check fa-3x success-icon"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     var master_url = base_url + 'index.php/ctrlAlmacen/';
     var mdlNuevo = $("#mdlNuevo");
@@ -1848,9 +1940,80 @@
 
     var btnComprobante = $("#btnComprobante");
 
-    var btnReiniciarPerdida = $("#btnReiniciarPerdida");
+    var btnReiniciarPerdida = mdlBusquedaPerdida.find("#btnReiniciarPerdida");
+
+    var btnReiniciarDevolucionesX = mdlBusquedaDevolucionesX.find("#btnReiniciarDevolucionesX");
+    var btnBuscarDevolucionesX = mdlBusquedaDevolucionesX.find("#btnBuscarDevolucionesX");
+    var btnReporteDeDevolucionesX = $("#btnReporteDeDevolucionesX");
+
+    var btnGenerarCodigoDeSalida = $("#btnGenerarCodigoDeSalida");
+    var btnGeneradorDeCodigoDeBarras = $("#btnGeneradorDeCodigoDeBarras");
+    var mdlGeneradorCodigos = $("#mdlGeneradorCodigos");
+
+
     $(document).ready(function () {
 
+        btnGeneradorDeCodigoDeBarras.click(function () {
+            mdlGeneradorCodigos.modal('show');
+        });
+
+        btnGenerarCodigoDeSalida.click(function () {
+            HoldOn.open({
+                theme: 'sk-bounce',
+                message: 'ESPERE...'
+            });
+            $.ajax({
+                url: master_url + 'onGenerarCodigoDeSalida',
+                type: "POST",
+                data: {
+                    INICIO: (mdlBusquedaDevolucionesX.find("#FechaInicial").val() !== '') ? mdlBusquedaDevolucionesX.find("#FechaInicial").val() : ''
+                }
+            }).done(function (data, x, jq) {
+                onNotify('<span class="fa fa-check fa-lg"></span>', 'CÓDIGO GENERADO', 'success');
+                console.log(data);
+                window.open(data, '_blank');
+            }).fail(function (x, y, z) {
+                console.log(x, y, z);
+            }).always(function () {
+                HoldOn.close();
+            });
+        });
+
+        btnReporteDeDevolucionesX.click(function () {
+            HoldOn.open({
+                theme: 'sk-bounce',
+                message: 'ESPERE...'
+            });
+            $.ajax({
+                url: master_url + 'getReporteDevolucionesX',
+                type: "POST",
+                data: {
+                    INICIO: (mdlBusquedaDevolucionesX.find("#FechaInicial").val() !== '') ? mdlBusquedaDevolucionesX.find("#FechaInicial").val() : '',
+                    FIN: (mdlBusquedaDevolucionesX.find("#FechaFinal").val() !== '') ? mdlBusquedaDevolucionesX.find("#FechaFinal").val() : '',
+                    PROYECTO: (mdlBusquedaDevolucionesX.find("#IdProyecto").val() > 0) ? mdlBusquedaDevolucionesX.find("#IdProyecto").val() : '',
+                    ALMACEN: (mdlBusquedaDevolucionesX.find("#IdAlmacen").val() > 0) ? mdlBusquedaDevolucionesX.find("#IdAlmacen").val() : ''
+                }
+            }).done(function (data, x, jq) {
+                onNotify('<span class="fa fa-check fa-lg"></span>', 'REPORTE GENERADO', 'success');
+                console.log(data);
+                window.open(data, '_blank');
+            }).fail(function (x, y, z) {
+                console.log(x, y, z);
+            }).always(function () {
+                HoldOn.close();
+            });
+        });
+
+        btnBuscarDevolucionesX.click(function () {
+            getDevolucionesX();
+        });
+
+        btnReiniciarDevolucionesX.click(function () {
+            mdlBusquedaDevolucionesX.find("input").val("");
+            mdlBusquedaDevolucionesX.find("#IdProyecto").select2("val", "");
+            mdlBusquedaDevolucionesX.find("#IdAlmacen").select2("val", "");
+            onNotify('<span class="fa fa-check fa-lg"></span>', 'DEVOLUCIONES REINICIADAS', 'success');
+        });
 
         btnDevolucionesX.click(function () {
             mdlBusquedaDevolucionesX.removeClass("hide");
@@ -2025,9 +2188,14 @@
             }
         });
 
+        mdlBusquedaDevolucionesX.find("#IdProyecto").change(function () {
+            getAlmacenesXProyecto($(this).val());
+        });
+
         mdlDevolucionX.find("#IdProyecto").change(function () {
             getAlmacenesXProyecto($(this).val());
         });
+
         mdlPerdida.find("#IdProyecto").change(function () {
             getAlmacenesXProyecto($(this).val());
         });
@@ -2994,6 +3162,7 @@
                     mdlSalida.find("#tblResult table > thead > tr").append("<th>CANTIDAD EN PAQUETES</th>");
                     mdlSalida.find("#tblResult table > thead > tr").append("<th>CANTIDAD EN UNIDADES</th>");
                     mdlSalida.find("#tblResult table > thead > tr").append("<th>OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>");
+                    mdlSalida.find("#tblResult table > thead > tr").append("<th>CÓDIGO DE BARRAS</th>");
                     sts += "<td>";
                     sts += "<label for=\"\">CAJAS</label>";
                     sts += "<input type=\"number\" class=\"form-control\" placeholder=\"0\" onchange=\"onCalcularCajas(this)\" id=\"txtCantidadCajasSaliente\" name=\"txtCantidadCajasSaliente\" min=\"0\" >";
@@ -3009,11 +3178,15 @@
                     sts += "<td>";
                     sts += "<input type=\"text\" class=\"form-control\" id=\"Observacion\" name=\"Observacion\" placeholder=\"ESCRIBA SU HISTORIA...\" />";
                     sts += "</td>";
+                    sts += "<td>";
+                    sts += "<button type=\"button\" class=\"btn btn-default fa-lg\" onclick=\"onGenerarCodigoDeBarraSalida(this)\"><span class=\"fa fa-barcode fa-2x\"></span></button>";
+                    sts += "</td>";
                     mdlSalida.find("#tblResult table > tbody > tr").append(sts);
                     mdlSalida.find("#tblResult table > tfoot > tr").append("<th>CANTIDAD EN CAJAS</th>");
                     mdlSalida.find("#tblResult table > tfoot > tr").append("<th>CANTIDAD EN PAQUETES</th>");
                     mdlSalida.find("#tblResult table > tfoot > tr").append("<th>CANTIDAD EN UNIDADES</th>");
                     mdlSalida.find("#tblResult table > tfoot > tr").append("<th>OBSERVACIONES</th>");
+                    mdlSalida.find("#tblResult table > tfoot > tr").append("<th>CÓDIGO DE BARRAS</th>");
                 } else {
                     onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO HAY ARTICULOS DISPONIBLES EN ESTE ALMACEN', 'danger');
                     onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'NO HAY ARTICULOS DISPONIBLES EN ESTE ALMACEN', 'danger');
@@ -3040,6 +3213,7 @@
             getAlmacenesConProductos();
             mdlSalida.find("#FechaEgreso").val(today);
             mdlSalida.find("#tblResult").html("");
+
             mdlSalida.modal('show');
         });
 
@@ -3353,6 +3527,7 @@
                     mdlEntrada.find("#tblResult table > thead > tr").append("<th>OBSERVACIONES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>");
                     mdlEntrada.find("#tblResult table > thead > tr").append("<th>FOTO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>");
                     mdlEntrada.find("#tblResult table > thead > tr").append("<th>APROBAR<input type=\"checkbox\" id=\"AprobadoT\" name=\"AprobadoT\" class=\"form-control\"></th>");
+                    mdlEntrada.find("#tblResult table > thead > tr").append("<th>CÓDIGO DE BARRA</th>");
                     var sts = "<td>";
                     sts += "<select id=\"Condicion\" name=\"Condicion\" class=\"form-control\">";
                     sts += "<option></option>";
@@ -3391,6 +3566,9 @@
                     sts += "</td>";
                     sts += "<td>";
                     sts += "<input type=\"checkbox\" id=\"Aprobado\" name=\"Aprobado\" class=\"form-control\">";
+                    sts += "</td>";
+                    sts += "<td>";
+                    sts += "<button type=\"button\" class=\"btn btn-default fa-lg\" onclick=\"onGenerarCodigoDeBarra(this)\"><span class=\"fa fa-barcode fa-2x\"></span></button>";
                     sts += "</td>";
                     mdlEntrada.find("#tblResult table > tbody > tr").append(sts);
                     mdlEntrada.find("#tblResult table > tfoot > tr").append("<th>ESTATUS (ARTICULO)</th>");
@@ -3867,6 +4045,24 @@
     });
 
 
+    function getReporteDevolucionesX() {
+        HoldOn.open({
+            theme: 'sk-bounce',
+            message: 'ESPERE...'
+        });
+        $.ajax({
+            url: base_url + 'index.php/ctrlSesion/onReport',
+            type: "POST"
+        }).done(function (data, x, jq) {
+            onNotify('<span class="fa fa-check fa-lg"></span>', 'REPORTE FOTOGRAFICO, GENERADO', 'success');
+            console.log(data);
+            window.open(data, '_blank');
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
 
     function onUpload(e)
     {
@@ -4076,6 +4272,7 @@
             mdlVerPerdida.find("#IdAlmacen").html(options);
             mdlDevolucionX.find("#IdAlmacen").html(options);
             mdlVerDevolucionX.find("#IdAlmacen").html(options);
+            mdlGeneradorCodigos.find("#Almacen").html(options);
             console.log("ALMACENES SETEADOS");
             getAlmacenesConDevolucion();
         }).fail(function (x, y, z) {
@@ -4106,6 +4303,7 @@
             mdlPerdida.find("#IdAlmacen").html(options);
             mdlDevolucionX.find("#IdAlmacen").html(options);
             mdlBusquedaPerdida.find("#IdAlmacen").html(options);
+            mdlBusquedaDevolucionesX.find("#IdAlmacen").html(options);
         }).fail(function (x, y, z) {
             console.log(x, y, z);
         }).always(function () {
@@ -5709,7 +5907,13 @@
         $.ajax({
             url: master_url + 'getDevolucionesX',
             type: "POST",
-            dataType: "JSON"
+            dataType: "JSON",
+            data: {
+                INICIO: (mdlBusquedaDevolucionesX.find("#FechaInicial").val() !== '') ? mdlBusquedaDevolucionesX.find("#FechaInicial").val() : '',
+                FIN: (mdlBusquedaDevolucionesX.find("#FechaFinal").val() !== '') ? mdlBusquedaDevolucionesX.find("#FechaFinal").val() : '',
+                PROYECTO: (mdlBusquedaDevolucionesX.find("#IdProyecto").val() > 0) ? mdlBusquedaDevolucionesX.find("#IdProyecto").val() : '',
+                ALMACEN: (mdlBusquedaDevolucionesX.find("#IdAlmacen").val() > 0) ? mdlBusquedaDevolucionesX.find("#IdAlmacen").val() : ''
+            }
         }).done(function (data, x, jq) {
             console.log(data, x, jq);
 
@@ -5795,6 +5999,52 @@
             HoldOn.close();
         });
 
+    }
+
+    function onGenerarCodigoDeBarraSalida(e) {
+        var row = $(e).parent().parent().find("td");
+        console.log(row);
+        HoldOn.open({
+            theme: 'sk-bounce',
+            message: 'GENERANDO CODIGO...'
+        });
+        $.ajax({
+            url: master_url + 'onGenerarCodigoDeBarraSalida',
+            type: "POST",
+            data: {
+                ID: row[3].innerText
+            }
+        }).done(function (data, x, jq) {
+            window.open(data, '_blank');
+            console.log(data);
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
+    }
+
+    function onGenerarCodigoDeBarra(e) {
+        var row = $(e).parent().parent().find("td");
+        console.log(row);
+        HoldOn.open({
+            theme: 'sk-bounce',
+            message: 'GENERANDO CODIGO...'
+        });
+        $.ajax({
+            url: master_url + 'onGenerarCodigoDeBarra',
+            type: "POST",
+            data: {
+                ID: row[3].innerText
+            }
+        }).done(function (data, x, jq) {
+            window.open(data, '_blank');
+            console.log(data);
+        }).fail(function (x, y, z) {
+            console.log(x, y, z);
+        }).always(function () {
+            HoldOn.close();
+        });
     }
 
 </script>

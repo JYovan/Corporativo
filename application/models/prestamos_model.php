@@ -1,9 +1,8 @@
 <?php
 
-
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -47,9 +46,9 @@ class prestamos_model extends CI_Model {
     }
 
     function getHistorialDePagos() {
-        $this->db->select('PDCM.ID, PDCM.Estatus, MU.RazonS AS "MUTUANTE", MUT.RazonS "MUTUATARIO",CONCAT("$",FORMAT(CDM.CantidadPrestada,2)) AS "CANTIDAD PRESTADA", CDM.Interes AS INTERES, CONCAT("$",FORMAT(PDCM.Pago,2)) AS PAGO, 
-CONCAT("$",FORMAT(CDM.CantidadPrestada - PDCM.Pago,2)) AS SALDO, CDM.FechaApartir AS "A PARTIR DEL DÍA", CDM.FechaLimite AS "HASTA EL DÍA", CDM.FechaContrato AS "FECHA DEL CONTRATO", 
-CDM.FechaSolicitud AS "FECHA DE SOLICITUD", CDM.FechaEntregaContrato "FECHA DE ENTREGA DE CONTRATO ELABORADO", 
+        $this->db->select('PDCM.ID, PDCM.Estatus, MU.RazonS AS "MUTUANTE", MUT.RazonS "MUTUATARIO",CONCAT("$",FORMAT(CDM.CantidadPrestada,2)) AS "CANTIDAD PRESTADA", CDM.Interes AS INTERES, CONCAT("$",FORMAT(PDCM.Pago,2)) AS PAGO,
+CONCAT("$",FORMAT(CDM.CantidadPrestada - PDCM.Pago,2)) AS SALDO, CDM.FechaApartir AS "A PARTIR DEL DÍA", CDM.FechaLimite AS "HASTA EL DÍA", CDM.FechaContrato AS "FECHA DEL CONTRATO",
+CDM.FechaSolicitud AS "FECHA DE SOLICITUD", CDM.FechaEntregaContrato "FECHA DE ENTREGA DE CONTRATO ELABORADO",
 CDM.Registro "FECHA Y HORA DE REGISTRO"', false);
         $this->db->from('ContratosDeMutuo AS CDM');
         $this->db->join('PagoDeContratoDeMutuo AS PDCM', 'CDM.ID = PDCM.IdContratoDeMutuo');
@@ -63,14 +62,14 @@ CDM.Registro "FECHA Y HORA DE REGISTRO"', false);
          * FOR DEBUG ONLY
          */
         $str = $this->db->last_query();
-//        print $str; 
+//        print $str;
         return $data;
     }
 
     function getBusquedaDeHistorialDePagos($INICIO, $FIN, $ACREEDOR, $DEUDOR) {
-        $this->db->select('PDCM.ID, PDCM.Estatus, MU.RazonS AS "MUTUANTE", MUT.RazonS "MUTUATARIO",CONCAT("$",FORMAT(CDM.CantidadPrestada,2)) AS "CANTIDAD PRESTADA", CDM.Interes AS INTERES, CONCAT("$",FORMAT(PDCM.Pago,2)) AS PAGO, 
-CONCAT("$",FORMAT(CDM.CantidadPrestada - PDCM.Pago,2)) AS SALDO, CDM.FechaApartir AS "A PARTIR DEL DÍA", CDM.FechaLimite AS "HASTA EL DÍA", CDM.FechaContrato AS "FECHA DEL CONTRATO", 
-CDM.FechaSolicitud AS "FECHA DE SOLICITUD", CDM.FechaEntregaContrato "FECHA DE ENTREGA DE CONTRATO ELABORADO", 
+        $this->db->select('PDCM.ID, PDCM.Estatus, MU.RazonS AS "MUTUANTE", MUT.RazonS "MUTUATARIO",CONCAT("$",FORMAT(CDM.CantidadPrestada,2)) AS "CANTIDAD PRESTADA", CDM.Interes AS INTERES, CONCAT("$",FORMAT(PDCM.Pago,2)) AS PAGO,
+CONCAT("$",FORMAT(CDM.CantidadPrestada - PDCM.Pago,2)) AS SALDO, CDM.FechaApartir AS "A PARTIR DEL DÍA", CDM.FechaLimite AS "HASTA EL DÍA", CDM.FechaContrato AS "FECHA DEL CONTRATO",
+CDM.FechaSolicitud AS "FECHA DE SOLICITUD", CDM.FechaEntregaContrato "FECHA DE ENTREGA DE CONTRATO ELABORADO",
 CDM.Registro "FECHA Y HORA DE REGISTRO"', false);
         $this->db->from('ContratosDeMutuo AS CDM');
         $this->db->join('PagoDeContratoDeMutuo AS PDCM', 'CDM.ID = PDCM.IdContratoDeMutuo');
@@ -95,7 +94,7 @@ CDM.Registro "FECHA Y HORA DE REGISTRO"', false);
         $this->db->order_by('PDCM.ID', 'DESC');
         $query = $this->db->get();
         $str = $this->db->last_query();
-//        print $str; 
+//        print $str;
         $data = $query->result();
         /*
          * FOR DEBUG ONLY
@@ -384,9 +383,9 @@ CDM.Registro "FECHA Y HORA DE REGISTRO"', false);
             $this->db->join('Directorio AS MU', 'CDM.IdMutuante = MU.ID');
             $this->db->join('Directorio AS MUT', 'CDM.IdMutuatario = MUT.ID');
             $this->db->where('CDM.IdMutuatario NOT IN(
-SELECT CDM.IdMutuante AS ID FROM (`ContratosDeMutuo` AS CDM) JOIN `Directorio` AS MU 
-ON `CDM`.`IdMutuante` = `MU`.`ID` JOIN `Directorio` AS MUT 
-ON `CDM`.`IdMutuatario` = `MUT`.`ID` WHERE `CDM`.`Estatus` NOT IN (\'CANCELADA\', \'CANCELADO\', \'PAGADO\')  
+SELECT CDM.IdMutuante AS ID FROM (`ContratosDeMutuo` AS CDM) JOIN `Directorio` AS MU
+ON `CDM`.`IdMutuante` = `MU`.`ID` JOIN `Directorio` AS MUT
+ON `CDM`.`IdMutuatario` = `MUT`.`ID` WHERE `CDM`.`Estatus` NOT IN (\'CANCELADA\', \'CANCELADO\', \'PAGADO\')
 GROUP BY `CDM`.`IdMutuante` ORDER BY `CDM`.`IdMutuante` ASC)');
             $this->db->where_not_in('CDM.Estatus', array('CANCELADA', 'CANCELADO', 'PAGADO'));
             $this->db->group_by('CDM.IdMutuatario');
@@ -403,15 +402,15 @@ GROUP BY `CDM`.`IdMutuante` ORDER BY `CDM`.`IdMutuante` ASC)');
     function getSaldosByID($ID) {
         try {
             $this->db->select('MU.ID, MU.RazonS AS PRESTADOR, MUT.ID, MUT.RazonS AS EMPRESA,  SUM(CDM.Saldo) AS ADEUDA,
-                              (SELECT CASE WHEN SUM(CDMX.Saldo) IS NULL THEN 0 WHEN SUM(CDMX.Saldo) > 0 THEN SUM(CDMX.Saldo) END 
+                              (SELECT CASE WHEN SUM(CDMX.Saldo) IS NULL THEN 0 WHEN SUM(CDMX.Saldo) > 0 THEN SUM(CDMX.Saldo) END
                                FROM ContratosDeMutuo AS CDMX INNER JOIN Directorio AS MU
-                               ON CDMX.IdMutuante = MU.ID INNER JOIN Directorio AS MUT ON CDMX.IdMutuatario = MUT.ID 
+                               ON CDMX.IdMutuante = MU.ID INNER JOIN Directorio AS MUT ON CDMX.IdMutuatario = MUT.ID
                                WHERE CDMX.IdMutuatario = CDM.IdMutuante AND CDMX.IdMutuante = CDM.IdMutuatario
-                               ORDER BY CDMX.IdMutuante ASC) AS "SE LE ADEUDA", (SUM(CDM.Saldo) - (SELECT CASE WHEN SUM(CDMX.Saldo) IS NULL THEN 0 WHEN SUM(CDMX.Saldo) > 0 THEN SUM(CDMX.Saldo) END 
+                               ORDER BY CDMX.IdMutuante ASC) AS "SE LE ADEUDA", (SUM(CDM.Saldo) - (SELECT CASE WHEN SUM(CDMX.Saldo) IS NULL THEN 0 WHEN SUM(CDMX.Saldo) > 0 THEN SUM(CDMX.Saldo) END
 FROM ContratosDeMutuo AS CDMX INNER JOIN Directorio AS MU
 ON CDMX.IdMutuante = MU.ID
 INNER JOIN Directorio AS MUT
-ON CDMX.IdMutuatario = MUT.ID 
+ON CDMX.IdMutuatario = MUT.ID
 WHERE CDMX.IdMutuatario = CDM.IdMutuante AND CDMX.IdMutuante = CDM.IdMutuatario
 ORDER BY CDMX.IdMutuante ASC)) AS DIFERENCIA', false);
             $this->db->from('ContratosDeMutuo AS CDM');
@@ -477,12 +476,12 @@ ORDER BY CDMX.IdMutuante ASC)) AS DIFERENCIA', false);
             $this->db->join('Directorio AS MUT', 'CDM.IdMutuatario = MUT.ID');
             $this->db->where('CDM.IdMutuatario', $ID);
             $this->db->where('MU.ID NOT IN (
- SELECT MUT.ID 
-FROM (`ContratosDeMutuo` AS CDM) JOIN `Directorio` AS MU 
-ON `CDM`.`IdMutuante` = `MU`.`ID` JOIN `Directorio` AS MUT 
-ON `CDM`.`IdMutuatario` = `MUT`.`ID` 
-WHERE `CDM`.`IdMutuante` = \'' . $ID . '\' 
-AND `CDM`.`ESTATUS` NOT IN (\'CANCELADA\', \'CANCELADO\',\'PAGADO\') 
+ SELECT MUT.ID
+FROM (`ContratosDeMutuo` AS CDM) JOIN `Directorio` AS MU
+ON `CDM`.`IdMutuante` = `MU`.`ID` JOIN `Directorio` AS MUT
+ON `CDM`.`IdMutuatario` = `MUT`.`ID`
+WHERE `CDM`.`IdMutuante` = \'' . $ID . '\'
+AND `CDM`.`ESTATUS` NOT IN (\'CANCELADA\', \'CANCELADO\',\'PAGADO\')
 GROUP BY `CDM`.`IdMutuatario` ORDER BY `CDM`.`IdMutuante` ASC
  )');
             $this->db->where_not_in('CDM.Estatus', array('CANCELADA', 'CANCELADO', 'PAGADO'));

@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 
 if (!defined('BASEPATH'))
@@ -12,8 +12,8 @@ class cobranza_model extends CI_Model {
 
     function __construct() {
         parent::__construct();
-    } 
-    
+    }
+
     function getRecords() {
         try {
             $query = $this->db->query("CALL SP_GETCOBRANZA()");
@@ -283,28 +283,28 @@ class cobranza_model extends CI_Model {
     function getCobranzaPorContratos($INICIO, $TERMINO, $EMPRESA, $CLIENTE, $PROYECTO, $ETAPA, $CONTRATO, $TIPO) {
 //        var_dump($INICIO, $TERMINO, $EMPRESA, $CLIENTE, $PROYECTO, $ETAPA, $CONTRATO);
         $this->db->select('CONTRATISTA.RazonS AS CONTRATISTA,
-                (SELECT CONCAT(PROYECTOS.Proyecto, CASE 
-			WHEN CDO.IdEtapa IS NULL THEN ", NO APLICA" 
-			WHEN CDO.IdEtapa = 0 THEN "" 
-			WHEN CDO.IdEtapa = 1 THEN ", ETAPA 1" 
-			WHEN CDO.IdEtapa = 2 THEN ", ETAPA 2" 
-			WHEN CDO.IdEtapa = 3 THEN ", ETAPA 3" 
-			WHEN CDO.IdEtapa = 4 THEN ", ETAPA 4" 
-			WHEN CDO.IdEtapa = 5 THEN ", ETAPA 5" 
-			WHEN CDO.IdEtapa = 6 THEN ", ETAPA 6" 
-			WHEN CDO.IdEtapa = 7 THEN ", ETAPA 7" 
-			WHEN CDO.IdEtapa = 8 THEN ", ETAPA 8" 
-			WHEN CDO.IdEtapa = 9 THEN ", ETAPA 9" 
-			WHEN CDO.IdEtapa = 10 THEN ", ETAPA 10" 
+                (SELECT CONCAT(PROYECTOS.Proyecto, CASE
+			WHEN CDO.IdEtapa IS NULL THEN ", NO APLICA"
+			WHEN CDO.IdEtapa = 0 THEN ""
+			WHEN CDO.IdEtapa = 1 THEN ", ETAPA 1"
+			WHEN CDO.IdEtapa = 2 THEN ", ETAPA 2"
+			WHEN CDO.IdEtapa = 3 THEN ", ETAPA 3"
+			WHEN CDO.IdEtapa = 4 THEN ", ETAPA 4"
+			WHEN CDO.IdEtapa = 5 THEN ", ETAPA 5"
+			WHEN CDO.IdEtapa = 6 THEN ", ETAPA 6"
+			WHEN CDO.IdEtapa = 7 THEN ", ETAPA 7"
+			WHEN CDO.IdEtapa = 8 THEN ", ETAPA 8"
+			WHEN CDO.IdEtapa = 9 THEN ", ETAPA 9"
+			WHEN CDO.IdEtapa = 10 THEN ", ETAPA 10"
 		END)) AS PROYECTO,
-                CONTRATANTE.RazonS AS CONTRATANTE, CDO.FechaInicio AS "FECHA INICIO", CDO.FechaTermino AS "FECHA TERMINO", 
-                CDO.DescripcionObra AS CONCEPTO, CDO.ContratoDeObra AS "CONTRATO DE OBRA", 
+                CONTRATANTE.RazonS AS CONTRATANTE, CDO.FechaInicio AS "FECHA INICIO", CDO.FechaTermino AS "FECHA TERMINO",
+                CDO.DescripcionObra AS CONCEPTO, CDO.ContratoDeObra AS "CONTRATO DE OBRA",
                 (CASE WHEN CDO.TotalViviendas IS NULL THEN 0 ELSE CDO.TotalViviendas END) AS "VIVIENDAS", CDO.TotalContrato AS "TOTAL DEL CONTRATO",
 
                 ((SELECT CASE WHEN SUM(CI.Cantidad) IS NULL THEN 0 ELSE SUM(CI.Cantidad) END
                 FROM CobranzaIngresos AS CI LEFT JOIN Cobranza AS C ON C.ID = CI.IdCobranza
                 WHERE C.IdContrato = CDO.ID AND CI.Estatus NOT IN (\'INACTIVO\', \'CANCELADO\', \'CANCELADA\') AND
-                C.Estatus NOT IN (\'INACTIVO\', \'CANCELADO\', \'CANCELADA\') )) AS "MONTO PAGADO", 
+                C.Estatus NOT IN (\'INACTIVO\', \'CANCELADO\', \'CANCELADA\') )) AS "MONTO PAGADO",
 
                 (CDO.TotalContrato - (SELECT CASE WHEN SUM(CI.Cantidad) IS NULL THEN 0 ELSE SUM(CI.Cantidad) END
                 FROM CobranzaIngresos AS CI LEFT JOIN Cobranza AS C ON C.ID = CI.IdCobranza
@@ -357,28 +357,28 @@ class cobranza_model extends CI_Model {
     function getCobranzaPorContratosZeros($INICIO, $TERMINO, $EMPRESA, $CLIENTE, $PROYECTO, $ETAPA, $CONTRATO) {
 //        var_dump($INICIO, $TERMINO, $EMPRESA, $CLIENTE, $PROYECTO, $ETAPA, $CONTRATO);
         $this->db->select('CONTRATISTA.RazonS AS CONTRATISTA,
-                (SELECT CONCAT(PROYECTOS.Proyecto, CASE 
-			WHEN CDO.IdEtapa IS NULL THEN ", NO APLICA" 
-			WHEN CDO.IdEtapa = 0 THEN "" 
-			WHEN CDO.IdEtapa = 1 THEN ", ETAPA 1" 
-			WHEN CDO.IdEtapa = 2 THEN ", ETAPA 2" 
-			WHEN CDO.IdEtapa = 3 THEN ", ETAPA 3" 
-			WHEN CDO.IdEtapa = 4 THEN ", ETAPA 4" 
-			WHEN CDO.IdEtapa = 5 THEN ", ETAPA 5" 
-			WHEN CDO.IdEtapa = 6 THEN ", ETAPA 6" 
-			WHEN CDO.IdEtapa = 7 THEN ", ETAPA 7" 
-			WHEN CDO.IdEtapa = 8 THEN ", ETAPA 8" 
-			WHEN CDO.IdEtapa = 9 THEN ", ETAPA 9" 
-			WHEN CDO.IdEtapa = 10 THEN ", ETAPA 10" 
+                (SELECT CONCAT(PROYECTOS.Proyecto, CASE
+			WHEN CDO.IdEtapa IS NULL THEN ", NO APLICA"
+			WHEN CDO.IdEtapa = 0 THEN ""
+			WHEN CDO.IdEtapa = 1 THEN ", ETAPA 1"
+			WHEN CDO.IdEtapa = 2 THEN ", ETAPA 2"
+			WHEN CDO.IdEtapa = 3 THEN ", ETAPA 3"
+			WHEN CDO.IdEtapa = 4 THEN ", ETAPA 4"
+			WHEN CDO.IdEtapa = 5 THEN ", ETAPA 5"
+			WHEN CDO.IdEtapa = 6 THEN ", ETAPA 6"
+			WHEN CDO.IdEtapa = 7 THEN ", ETAPA 7"
+			WHEN CDO.IdEtapa = 8 THEN ", ETAPA 8"
+			WHEN CDO.IdEtapa = 9 THEN ", ETAPA 9"
+			WHEN CDO.IdEtapa = 10 THEN ", ETAPA 10"
 		END)) AS PROYECTO,
-                CONTRATANTE.RazonS AS CONTRATANTE, CDO.FechaInicio AS "FECHA INICIO", CDO.FechaTermino AS "FECHA TERMINO", 
-                COBRANZA.Concepto AS CONCEPTO, CDO.ContratoDeObra AS "CONTRATO DE OBRA", 
+                CONTRATANTE.RazonS AS CONTRATANTE, CDO.FechaInicio AS "FECHA INICIO", CDO.FechaTermino AS "FECHA TERMINO",
+                COBRANZA.Concepto AS CONCEPTO, CDO.ContratoDeObra AS "CONTRATO DE OBRA",
                 (CASE WHEN CDO.TotalViviendas IS NULL THEN 0 ELSE CDO.TotalViviendas END) AS "VIVIENDAS", CDO.TotalContrato AS "TOTAL DEL CONTRATO",
 
                 ((SELECT CASE WHEN SUM(CI.Cantidad) IS NULL THEN 0 ELSE SUM(CI.Cantidad) END
                 FROM CobranzaIngresos AS CI LEFT JOIN Cobranza AS C ON C.ID = CI.IdCobranza
                 WHERE C.IdContrato = CDO.ID AND CI.Estatus NOT IN (\'INACTIVO\', \'CANCELADO\', \'CANCELADA\') AND
-                C.Estatus NOT IN (\'INACTIVO\', \'CANCELADO\', \'CANCELADA\') )) AS "MONTO PAGADO", 
+                C.Estatus NOT IN (\'INACTIVO\', \'CANCELADO\', \'CANCELADA\') )) AS "MONTO PAGADO",
 
                 (CDO.TotalContrato - (SELECT CASE WHEN SUM(CI.Cantidad) IS NULL THEN 0 ELSE SUM(CI.Cantidad) END
                 FROM CobranzaIngresos AS CI LEFT JOIN Cobranza AS C ON C.ID = CI.IdCobranza
@@ -518,7 +518,7 @@ class cobranza_model extends CI_Model {
         try {
             $this->db->select('C.ID,C.Folio AS FOLIO, DIR.NombreC AS "EMPRESA", C.Concepto AS "CONCEPTO DE COBRO",CONCAT("$ ",FORMAT(C.MontoAPagar,2)) AS "MONTO A PAGAR", C.FechaCobro AS "FECHA COBRO",
         CONCAT(USR.nombre," ", USR.apaterno, " ",USR.amaterno)  AS "RESPONSABLE DEL SERVICIO", CONCAT(USRR.nombre," ", USRR.apaterno, " ",USRR.amaterno) AS "RESPONSABLE DE ORDEN",
-        CASE 
+        CASE
         WHEN C.IdContrato IS NULL THEN "SIN CONTRATO"
         WHEN C.IdContrato IS NOT NULL THEN (SELECT CO.ContratoDeObra FROM ContratosDeObra AS CO WHERE CO.ID = C.IdContrato)
         END AS CONTRATO', false);
@@ -604,14 +604,14 @@ class cobranza_model extends CI_Model {
     }
 
     function getEstadoDeCuenta($ID, $FECHAINICIO, $FECHAFINAL) {
-        $this->db->select('CO.ID, CO.ConceptoCobro AS CONCEPTO, CONCAT("$ ",FORMAT(CO.MontoPagar, 2))  AS MONTO,CO.FechaCobro AS "FECHA COBRO (VENCIMIENTO)", 
+        $this->db->select('CO.ID, CO.ConceptoCobro AS CONCEPTO, CONCAT("$ ",FORMAT(CO.MontoPagar, 2))  AS MONTO,CO.FechaCobro AS "FECHA COBRO (VENCIMIENTO)",
 CO.FechaPago AS "FECHA PAGO", UPPER(CO.Cobrado) AS "ESTADO DEL COBRO",CONCAT("$ ",FORMAT((CO.MontoPagar  - CO.Resto), 2))  AS "MONTO PAGADO",
 GROUP_CONCAT(RE.ReciboNoRecibo SEPARATOR \', \') AS "NO. DE RECIBOS", CO.NoFactura AS "NO. DE FACTURA",CONCAT("$ ",FORMAT(SUM(CO.Resto), 2))  AS "TOTAL A PAGAR"', false);
         $this->db->from('Cobranza AS CO');
         $this->db->join('Recibos AS RE', 'CO.ID = RE.IDOrdenCobro');
         $this->db->join('Directorio AS DIR', 'CO.ID_Cliente = DIR.Folio');
         $this->db->where('DIR.ID', $ID);
-        $this->db->where('STR_TO_DATE(`CO`.`FechaCobro`, \'%m/%d/%Y\') 
+        $this->db->where('STR_TO_DATE(`CO`.`FechaCobro`, \'%m/%d/%Y\')
 BETWEEN STR_TO_DATE(\'' . $FECHAINICIO . '\', \'%d/%m/%Y\') AND STR_TO_DATE(\'' . $FECHAFINAL . '\', \'%d/%m/%Y\')');
 
         $this->db->group_by('CO.ID');
@@ -658,7 +658,7 @@ BETWEEN STR_TO_DATE(\'' . $FECHAINICIO . '\', \'%d/%m/%Y\') AND STR_TO_DATE(\'' 
                 case "update":
                     $this->db->where($condition[0], $condition[1]);
                     $this->db->update($tbl, $array);
-//                    print $str = $this->db->last_query();
+                    print $str = $this->db->last_query();
                     print 1;
                     break;
                 case "delete":
@@ -741,45 +741,45 @@ BETWEEN STR_TO_DATE(\'' . $FECHAINICIO . '\', \'%d/%m/%Y\') AND STR_TO_DATE(\'' 
 
     function getCobranzaAcumulada($INICIO, $TERMINO, $EMPRESA, $CLIENTE, $PROYECTO, $ETAPA, $CONTRATO, $TIPO) {
 //        var_dump($INICIO, $TERMINO, $EMPRESA, $CLIENTE, $PROYECTO, $ETAPA, $CONTRATO);
-        $this->db->select('C.ID, C.Folio, 
-        CASE 
-        WHEN CDO.Contratista IS NULL THEN "SIN EMPRESA" 
-        WHEN CDO.Contratista IS NOT NULL THEN  
-			(SELECT DR.RazonS FROM Directorio AS DR WHERE CDO.Contratista = DR.ID AND CDO.ID = C.IdContrato) 
-		END "EMPRESA RABINA", 
-        DIR.RazonS AS "EMPRESA / CLIENTE", 
-        CASE 
+        $this->db->select('C.ID, C.Folio,
+        CASE
+        WHEN CDO.Contratista IS NULL THEN "SIN EMPRESA"
+        WHEN CDO.Contratista IS NOT NULL THEN
+			(SELECT DR.RazonS FROM Directorio AS DR WHERE CDO.Contratista = DR.ID AND CDO.ID = C.IdContrato)
+		END "EMPRESA RABINA",
+        DIR.RazonS AS "EMPRESA / CLIENTE",
+        CASE
         WHEN CDO.IdProyecto IS NULL THEN "SIN PROYECTO"
-        WHEN CDO.IdProyecto IS NOT NULL THEN  
-        (SELECT CONCAT(PROY.Proyecto, CASE 
-			WHEN CDO.IdEtapa IS NULL THEN ", NO APLICA" 
-			WHEN CDO.IdEtapa = 0 THEN "" 
-			WHEN CDO.IdEtapa = 1 THEN ", ETAPA 1" 
-			WHEN CDO.IdEtapa = 2 THEN ", ETAPA 2" 
-			WHEN CDO.IdEtapa = 3 THEN ", ETAPA 3" 
-			WHEN CDO.IdEtapa = 4 THEN ", ETAPA 4" 
-			WHEN CDO.IdEtapa = 5 THEN ", ETAPA 5" 
-			WHEN CDO.IdEtapa = 6 THEN ", ETAPA 6" 
-			WHEN CDO.IdEtapa = 7 THEN ", ETAPA 7" 
-			WHEN CDO.IdEtapa = 8 THEN ", ETAPA 8" 
-			WHEN CDO.IdEtapa = 9 THEN ", ETAPA 9" 
-			WHEN CDO.IdEtapa = 10 THEN ", ETAPA 10" 
-		END) 
-        FROM Proyectos AS PROY WHERE PROY.ID = CDO.IdProyecto) END AS "LUGAR DE TRABAJO", 
-        CASE WHEN C.IdContrato IS NULL THEN "SIN CONTRATO" 
-		ELSE  CDO.ContratoDeObra END AS CONTRATO, 
-        CASE WHEN C.MontoContrato IS NULL THEN "$0.0" 
-		ELSE C.MontoContrato END AS "MONTO DEL CONTRATO", 
-        C.NFactura AS "FACTURA", C.Concepto AS "CONCEPTO DE COBRO", 
-        C.MontoAPagar AS "MONTO A PAGAR", 
-        (C.MontoAPagar - C.Saldo) AS "MONTO PAGADO", 
-        (CASE 
+        WHEN CDO.IdProyecto IS NOT NULL THEN
+        (SELECT CONCAT(PROY.Proyecto, CASE
+			WHEN CDO.IdEtapa IS NULL THEN ", NO APLICA"
+			WHEN CDO.IdEtapa = 0 THEN ""
+			WHEN CDO.IdEtapa = 1 THEN ", ETAPA 1"
+			WHEN CDO.IdEtapa = 2 THEN ", ETAPA 2"
+			WHEN CDO.IdEtapa = 3 THEN ", ETAPA 3"
+			WHEN CDO.IdEtapa = 4 THEN ", ETAPA 4"
+			WHEN CDO.IdEtapa = 5 THEN ", ETAPA 5"
+			WHEN CDO.IdEtapa = 6 THEN ", ETAPA 6"
+			WHEN CDO.IdEtapa = 7 THEN ", ETAPA 7"
+			WHEN CDO.IdEtapa = 8 THEN ", ETAPA 8"
+			WHEN CDO.IdEtapa = 9 THEN ", ETAPA 9"
+			WHEN CDO.IdEtapa = 10 THEN ", ETAPA 10"
+		END)
+        FROM Proyectos AS PROY WHERE PROY.ID = CDO.IdProyecto) END AS "LUGAR DE TRABAJO",
+        CASE WHEN C.IdContrato IS NULL THEN "SIN CONTRATO"
+		ELSE  CDO.ContratoDeObra END AS CONTRATO,
+        CASE WHEN C.MontoContrato IS NULL THEN "$0.0"
+		ELSE C.MontoContrato END AS "MONTO DEL CONTRATO",
+        C.NFactura AS "FACTURA", C.Concepto AS "CONCEPTO DE COBRO",
+        C.MontoAPagar AS "MONTO A PAGAR",
+        (C.MontoAPagar - C.Saldo) AS "MONTO PAGADO",
+        (CASE
 		WHEN C.Saldo > 0 THEN C.Saldo
 		WHEN C.Saldo = 0.00000 THEN C.Saldo
-		END) AS SALDO, 
-        C.FechaCobro AS "FECHA COBRO", 
-        CONCAT(USR.nombre, " ", USR.apaterno, " ", USR.amaterno) AS "RESPONSABLE DEL SERVICIO", 
-        CONCAT(USRR.nombre, " ", USRR.apaterno, " ", USRR.amaterno) AS "RESPONSABLE DE ORDEN", 
+		END) AS SALDO,
+        C.FechaCobro AS "FECHA COBRO",
+        CONCAT(USR.nombre, " ", USR.apaterno, " ", USR.amaterno) AS "RESPONSABLE DEL SERVICIO",
+        CONCAT(USRR.nombre, " ", USRR.apaterno, " ", USRR.amaterno) AS "RESPONSABLE DE ORDEN",
         (CASE WHEN C.Estatus = "ACTIVO" THEN "SIN PAGOS" ELSE C.Estatus END) AS ESTATUS', false);
         $this->db->from('Cobranza AS C');
         $this->db->join('Tarifa AS TAR', "C.Tarifa = TAR.id_tarifa");
@@ -823,9 +823,9 @@ BETWEEN STR_TO_DATE(\'' . $FECHAINICIO . '\', \'%d/%m/%Y\') AND STR_TO_DATE(\'' 
         $this->db->order_by('C.ID', 'ASC');
         $query = $this->db->get();
         /*
-         * 
+         *
          * FOR DEBUG ONLY
-         * 
+         *
          */
         $str = $this->db->last_query();
 //        print $str;

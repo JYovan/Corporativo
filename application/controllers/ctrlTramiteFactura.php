@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
@@ -15,10 +15,10 @@ class ctrlTramiteFactura extends CI_Controller {
      * onRevision
      * Maps to the following URL
      * 		http://example.com/index.php/welcome
-     * 	- or -  
+     * 	- or -
      * 		http://example.com/index.php/welcome/index
      * 	- or -
-     * Since this controller is set as the default controller in 
+     * Since this controller is set as the default controller in
      * config/routes.php, it's displayed at http://example.com/
      *
      * So any other public methods not prefixed with an underscore will
@@ -37,7 +37,7 @@ class ctrlTramiteFactura extends CI_Controller {
         session_start();
         if (isset($_SESSION["ID"])) {
 
-//        $data['User'] = $_SESSION['USER'];   
+//        $data['User'] = $_SESSION['USER'];
             $Empleados = $this->tramitefactura_model->getEmpleados();
             $data['Empleados'] = $Empleados;
             $data['dtm'] = $_SESSION;
@@ -140,7 +140,7 @@ class ctrlTramiteFactura extends CI_Controller {
                     break;
                 case 9:
                     /*
-                     * REVISION => AUTORIZACIÓN 
+                     * REVISION => AUTORIZACIÓN
                      */
 //                    var_dump($_POST);
                     if (isset($chkNoAutorizar) && $chkNoAutorizar !== '') {
@@ -214,9 +214,9 @@ class ctrlTramiteFactura extends CI_Controller {
                         );
                         $this->tramitefactura_model->onAction(
                                 'TramiteFactura tf INNER JOIN ObservacionesXTramiteFactura oxt
-ON tf.IdTramiteFactura = oxt.IdTramiteFactura
-INNER JOIN ObservacionesTF otf 
-ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramiteFactura', $IdTramiteFacturaADMPPDF));
+                                ON tf.IdTramiteFactura = oxt.IdTramiteFactura
+                                INNER JOIN ObservacionesTF otf
+                                ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramiteFactura', $IdTramiteFacturaADMPPDF));
                     }
 
                     $data = array(
@@ -2649,28 +2649,40 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
                 $pdf->SetX(15);
                 $Y = $pdf->GetY();
                 $pdf->SetFont('Arial', 'B', 7);
-                $pdf->MultiCell(40, 3, $row->EMPRESA);
+                if (strlen($row->EMPRESA) > 15) {
+                    $pdf->SetFont('Arial', 'B', 5);
+                    $pdf->MultiCell(40, 8, $row->EMPRESA);
+                } else {
+                    $pdf->MultiCell(40, 8, $row->EMPRESA);
+                }
                 $n += 1;
                 $pdf->SetY($Y);
 
                 $pdf->SetFont('Arial', 'B', 7);
                 $pdf->SetX(60);
-                $pdf->Cell(10, 3, utf8_decode($row->{"FECHA FACTURA"}), 0, 0, 'L');
+                $pdf->Cell(10, 8, utf8_decode($row->{"FECHA FACTURA"}), 0, 0, 'L');
 
                 $Y = $pdf->GetY();
-                $pdf->SetX(85);
+                $pdf->SetX(82.5);
                 $pdf->SetFont('Arial', 'B', 6);
-                $pdf->MultiCell(50, 3, utf8_decode($row->PROVEEDOR));
+
+                if (strlen($row->PROVEEDOR) > 15) {
+                    $pdf->SetFont('Arial', 'B', 5);
+                    $pdf->MultiCell(50, 2.5, utf8_decode($row->PROVEEDOR));
+                } else {
+                    $pdf->MultiCell(50, 5, utf8_decode($row->PROVEEDOR));
+                }
+//                $pdf->MultiCell(50, 8, utf8_decode($row->PROVEEDOR));
                 $pdf->SetY($Y);
                 $top += 25;
                 $pdf->SetDrawColor(96, 96, 96);
                 $pdf->SetX(140);
                 $pdf->SetFont('Arial', 'B', 7);
-                $pdf->Cell(10, 3, $row->FACTURA, 0, 0, 'L');
+                $pdf->Cell(10, 8, $row->FACTURA, 0, 0, 'L');
 
 
                 $pdf->SetX(165);
-                $pdf->Cell(10, 3, "$ " . number_format($row->IMPORTE, 2, '.', ', '), 0, 0, 'L');
+                $pdf->Cell(10, 8, "$ " . number_format(($row->IMPORTE + (($row->{"NOTA DE CREDITO"} > 0) ? $row->{"NOTA DE CREDITO"} : 0)), 2, '.', ', '), 0, 0, 'L');
 
                 if ($row->{"NOTA DE CREDITO"} > 0) {
                     $pdf->SetX($pdf->GetX() + 9.5);
@@ -2682,7 +2694,8 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
                 $pdf->Cell(10, 8, "$ " . number_format($row->{"MONTO PAGADO"}, 2, '.', ', '), 0, 0, 'L');
                 $pdf->SetX(240);
                 $pdf->Cell(10, 8, "$ " . number_format($row->{"SALDO A PAGAR"}, 2, '.', ', '), 0, 1, 'L');
-                $total += $row->IMPORTE;
+//                $total += $row->IMPORTE;
+                $total += ($row->IMPORTE + (($row->{"NOTA DE CREDITO"} > 0) ? $row->{"NOTA DE CREDITO"} : 0));
                 $total_monto_pagado += $row->{"MONTO PAGADO"};
                 $total_saldo_a_pagar += $row->{"SALDO A PAGAR"};
                 $pdf->Line(/* Izq-X */15, /* Top-Y */ $pdf->GetY(), /* Largo */ 275, $pdf->GetY());
@@ -2742,10 +2755,10 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
             extract(filter_input_array(INPUT_POST));
             $data = $this->tramitefactura_model->onBeforeRegisterCheckFactura($ID, $PROVEEDOR);
             $dtm = json_decode(json_encode($data), FALSE);
-//            var_dump($data["NFACTURA"]); 
+//            var_dump($data["NFACTURA"]);
             if ($dtm[0]->NFACTURA == 1) {
-//                $msg = "ERROR: DUPLICIDAD<<br>MODULO: TRAMITE DE FACTURAS<br>USUARIO: ADMIN"; 
-//                $msg = wordwrap($msg, 70); 
+//                $msg = "ERROR: DUPLICIDAD<<br>MODULO: TRAMITE DE FACTURAS<br>USUARIO: ADMIN";
+//                $msg = wordwrap($msg, 70);
 //                mail("ing.giovanniflores93@gmail.com", "INTENTO DE DUPLICIDAD", $msg);
             }
             print $dtm[0]->NFACTURA;
@@ -2884,7 +2897,7 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
         try {
             extract(filter_input_array(INPUT_POST));
             /*
-             * REVISION => AUTORIZACIÓN 
+             * REVISION => AUTORIZACIÓN
              */
 //                    var_dump($_POST);
             if (isset($chkNoAutorizar) && $chkNoAutorizar !== '') {
@@ -3174,7 +3187,7 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
             $mail->Port = 587;
             $mail->setFrom('sistemas@rabina.com.mx', 'MENSAJE DEL SISTEMA RABINA');
             $mail->addReplyTo('sistemas@rabina.com.mx', 'NO RESPONDER');
-            $mail->addAddress('sistemas@rabina.com.mx');   // Add a recipient  
+            $mail->addAddress('sistemas@rabina.com.mx');   // Add a recipient
             $mail->addBCC('orico09@me.com');
             $mail->addBCC('ing.giovanniflores93@gmail.com');
             $mail->addBCC('sistemarabina@gmail.com');
@@ -3359,7 +3372,7 @@ ON otf.IdObservaciontf = oxt.IdObservacion', $data, "update", array('tf.IdTramit
             $mail->Port = 587;
             $mail->setFrom('sistemas@rabina.com.mx', 'MENSAJE DEL SISTEMA');
             $mail->addReplyTo('sistemas@rabina.com.mx', 'NO RESPONDER');
-            $mail->addAddress('sistemas@rabina.com.mx');   // Add a recipient  
+            $mail->addAddress('sistemas@rabina.com.mx');   // Add a recipient
             $mail->addBCC('orico09@me.com');
 //            $mail->addBCC('administrativo@rabina.com.mx');
             $mail->addBCC('ing.giovanniflores93@gmail.com');

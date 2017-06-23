@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 header('Access-Control-Allow-Origin: *');
@@ -64,6 +64,20 @@ class ctrlsesion extends CI_Controller {
                     $_SESSION["USUARIO_CONTRASENA"] = $dtm[0]['DataPass'];
                     $_SESSION["USUARIO"] = $dtm;
                     $_SESSION["firstime"] = 0;
+
+                    $newdata = array(
+                        'ID' => $dtm[0]['Id'],
+                        'PERMISOS' => $this->permisos_model->getPermisosXUsuario($dtm[0]['Id']),
+                        'USUARIO_ID' => $dtm[0]['Id'],
+                        'USUARIO_NOMBRE' => $dtm[0]['nombre'],
+                        'USUARIO_IMAGEN' => $dtm[0]['Imagen'],
+                        'USUARIO_CONTRASENA' => $dtm[0]['DataPass'],
+                        'USUARIO' => $dtm,
+                        'LOGGED' => TRUE
+                    );
+                    $this->session->mark_as_temp('LOGGED', 2880000);
+                    $this->session->set_userdata($newdata);
+
                     $this->onLoadMenu();
                 } else {
                     echo $this->load->view('layout/base/lytBaseHead');
@@ -88,19 +102,9 @@ class ctrlsesion extends CI_Controller {
 
     public function onValidateSession() {
         try {
-            
+
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
-        }
-    }
-
-    public function onLoadData() {
-        session_start();
-        if (isset($_SESSION['ID'])) {
-            $this->onLoadMenu();
-        } else {
-            $this->load->view('layout/base/lytBaseHead');
-            $this->load->view('vLogin');
         }
     }
 
@@ -134,6 +138,8 @@ class ctrlsesion extends CI_Controller {
     }
 
     public function onGoOut() {
+        $array_items = array('USUARIO_NOMBRE', 'USUARIO_CONTRASENA', 'LOGGED');
+        $this->session->unset_userdata($array_items);
         session_start();
         $_SESSION["firstime"] = 0;
         session_unset();
@@ -172,7 +178,7 @@ class ctrlsesion extends CI_Controller {
     public function onBuscarAccesosXFechas() {
         try {
             extract(filter_input_array(INPUT_POST));
-            $data = $this->permisos_model->onBuscarAccesosXFechas($INICIO, $FIN,$USUARIO);
+            $data = $this->permisos_model->onBuscarAccesosXFechas($INICIO, $FIN, $USUARIO);
             print json_encode($data);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
@@ -224,7 +230,7 @@ class ctrlsesion extends CI_Controller {
             $bodyContent .= '<tbody align="center">';
             $bodyContent .= '<tr>';
             $bodyContent .= '<td style="padding: 10px;">' . $IdUsuarioT . '</td>';
-            $bodyContent .= '<td style="padding: 10px;">' . $Nombre . '</td>'; 
+            $bodyContent .= '<td style="padding: 10px;">' . $Nombre . '</td>';
             $bodyContent .= '<td style="padding: 10px;">' . $Tipo . '</td>';
             $bodyContent .= '<td style="padding: 10px;">' . strtoupper(Date('d/m/Y')) . '</td>';
             $bodyContent .= '<td style="padding: 10px;">' . $HORA . '</td>';
@@ -255,7 +261,7 @@ class ctrlsesion extends CI_Controller {
             $mail->Port = 587;
             $mail->setFrom('sistemas@rabina.com.mx', 'MENSAJE DEL SISTEMA');
             $mail->addReplyTo('sistemas@rabina.com.mx', 'NO RESPONDER');
-            $mail->addAddress('sistemas@rabina.com.mx');   // Add a recipient  
+            $mail->addAddress('sistemas@rabina.com.mx');   // Add a recipient
             $mail->addBCC('rramirez@rabina.com.mx');
             $mail->addBCC('orico09@me.com');
             $mail->addBCC('ing.giovanniflores93@gmail.com');
@@ -427,7 +433,7 @@ class ctrlsesion extends CI_Controller {
                     $page_size = 370;
                     $pdf->Line(10, 10, 285, 10);
                 } else {
-                    
+
                 }
             }
 //            }//

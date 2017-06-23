@@ -58,6 +58,35 @@ class productos_model extends CI_Model {
         return $data;
     }
     
+    function getProductoByID($ID) {
+        $this->db->select('*', false);
+        $this->db->from('Productos AS PRO');
+        $this->db->where('PRO.ID',$ID);
+        $query = $this->db->get();
+        /*
+         * FOR DEBUG ONLY
+         */
+        $str = $this->db->last_query();
+//        print $str;
+        $data = $query->result();
+//        var_dump($str);
+        return $data;
+    }
+    function getProductoByPrecioID($ID) {
+        $this->db->select('*', false);
+        $this->db->from('catalogo AS C');
+        $this->db->where('C.ID',$ID);
+        $query = $this->db->get();
+        /*
+         * FOR DEBUG ONLY
+         */
+        $str = $this->db->last_query();
+//        print $str;
+        $data = $query->result();
+//        var_dump($str);
+        return $data;
+    }
+    
     function getEtiquetas() {
         $this->db->select('C.id_conceptos AS ID, C.dsc_conceptos AS ETIQUETA', false);
         $this->db->from('CotizacionConceptos AS C'); 

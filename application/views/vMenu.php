@@ -4,23 +4,19 @@ if (isset($_SESSION["ID"])) {
 }
 ?>
 
-<div class="row"> 
+<div class="row">
 
     <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
     <div class="col-md-12">
-        <div class="panel panel-primary container-fluid"> 
+        <div class="panel panel-success container-fluid">
             <div class="panel-heading row">
                 <div class="col-md-4 panel-title">
                     <a  href='#' onclick="SystemExit()">
                         <span class="fa fa-arrow-left"></span>
-                    </a> 
+                    </a>
                 </div>
-                <div class="col-md-4"> 
+                <div class="col-md-4">
                     <div class="text-center">MEN&Uacute;</div>
-                </div>
-                <div class="col-md-4 panel-title" align="right">
-                    <input type="search" id="txtSearch" name="txtSearch" value="" placeholder="BÚSQUEDA RÁPIDA..." class="form-control box-shadow" onkeyup="onSearch()"> 
-
                 </div>
             </div>
             <div id="vContentMenu" align="center" class="panel-body">
@@ -45,14 +41,16 @@ if (isset($_SESSION["ID"])) {
                     }
                     if ($PERMISOS[1]->Ver === '1') {
                         ?>
-                        <div class="col-md-4 hover cursor-hand" onclick="onControlDeAcceso()">
-                            <div class="thumbnail animated zoomIn text-center">
-                                <span class="fa fa-clock-o fa-5x  "></span>
-                                <div class="caption">
-                                    <h5 class="">CONTROL DE ACCESO</h5>
+                        <a>
+                            <div class="col-md-4 hover" onclick="onControlDeAcceso()">
+                                <div class="thumbnail animated zoomIn text-center">
+                                    <span class="fa fa-clock-o fa-5x  "></span>
+                                    <div class="caption">
+                                        <h5 class="">CONTROL DE ACCESO</h5>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                         <?php
                     }
                     if ($PERMISOS[2]->Ver === '1') {
@@ -76,7 +74,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-home fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>BIENES INMUEBLES</h5> 
+                                        <h5>BIENES INMUEBLES</h5>
                                     </div>
                                 </div>
                             </div>
@@ -86,20 +84,20 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-home fa-5x   "></span>
                                     <div class="caption">
-                                        <h5>BIENES INMUEBLES</h5> 
+                                        <h5>BIENES INMUEBLES</h5>
                                     </div>
                                 </div>
                             </div>
                         </a>
 
                     <?php }
-                    ?> 
+                    ?>
                     <!--</div>END SECTION-->
 
                     <!--<div class="col-md-12">-->
                     <?php
                     if ($PERMISOS[4]->Ver === '1') {
-                        ?> 
+                        ?>
                         <a href="<?php echo base_url(); ?>index.php/ctrlDesarrollosInmobiliarios/">
                             <div class="col-md-4 hover">
                                 <div class="thumbnail animated zoomIn   text-center">
@@ -120,7 +118,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-star fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>TIPOS DE VIVIENDAS</h5> 
+                                        <h5>TIPOS DE VIVIENDAS</h5>
                                     </div>
                                 </div>
                             </div>
@@ -130,25 +128,25 @@ if (isset($_SESSION["ID"])) {
                     }
                     if ($PERMISOS[6]->Ver === '1') {
                         ?>
-                                                                                <!--                        <a href="<?php echo base_url(); ?>index.php/controlador/Menu?ID=22&i=<?php echo $indice ?>">
-                                                                                                            <div class="col-md-4 hover">
-                                                                                                                <div class="thumbnail animated zoomIn   text-center">
-                                                                                                                    <span class="fa fa-clipboard fa-5x  "></span>
-                                                                                                                    <div class="caption">
-                                                                                                                        <h5>TRAMITES</h5> 
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </a>-->
+                                                                                            <!--                        <a href="<?php echo base_url(); ?>index.php/controlador/Menu?ID=22&i=<?php echo $indice ?>">
+                                                                                                                        <div class="col-md-4 hover">
+                                                                                                                            <div class="thumbnail animated zoomIn   text-center">
+                                                                                                                                <span class="fa fa-clipboard fa-5x  "></span>
+                                                                                                                                <div class="caption">
+                                                                                                                                    <h5>TRAMITES</h5>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </a>-->
                         <a href="<?php echo base_url(); ?>index.php/ctrlTramites/">
                             <div class="col-md-4 hover">
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-clipboard fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>TRAMITES</h5> 
+                                        <h5>TRAMITES</h5>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </a>
                         <?php
                     }
@@ -159,7 +157,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-truck fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>PROVEEDORES</h5> 
+                                        <h5>PROVEEDORES</h5>
                                     </div>
                                 </div>
                             </div>
@@ -168,7 +166,7 @@ if (isset($_SESSION["ID"])) {
                     <?php }
                     ?>
                     <!--                    </div>
-                    
+
                                         <div class="col-md-12">-->
                     <?php
                     if ($PERMISOS[8]->Ver === '1') {
@@ -178,7 +176,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-puzzle-piece fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>PRODUCTOS</h5> 
+                                        <h5>PRODUCTOS</h5>
                                     </div>
                                 </div>
                             </div>
@@ -193,11 +191,11 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-shopping-cart fa-5x "></span>
                                     <div class="caption">
-                                        <h5>COMPRAS Y SUMINISTROS</h5> 
+                                        <h5>COMPRAS Y SUMINISTROS</h5>
                                     </div>
                                 </div>
                             </div>
-                        </a> 
+                        </a>
 
                         <?php
                     }
@@ -212,7 +210,7 @@ if (isset($_SESSION["ID"])) {
                                     </div>
                                 </div>
                             </div>
-                        </a>  
+                        </a>
 
                         <?php
                     }
@@ -230,7 +228,7 @@ if (isset($_SESSION["ID"])) {
                         </a>
 
                     <?php }
-                    ?> 
+                    ?>
                     <?php
                     if ($PERMISOS[12]->Ver === '1') {
                         ?>
@@ -255,7 +253,19 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-expand fa-5x   "></span>
                                     <div class="caption">
-                                        <h5>COMERCIALIZACIÓN</h5> 
+                                        <h5>COMERCIALIZACIÓN</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+
+                        <a href="<?php echo base_url(); ?>index.php/ctrlComercializacion">
+                            <div class="col-md-4 hover">
+                                <div class="thumbnail animated zoomIn   text-center">
+                                    <span class="fa fa-expand fa-5x   "></span>
+                                    <div class="caption">
+                                        <h5>COMERCIALIZACIÓN X</h5>
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +312,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-newspaper-o fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>DOCUMENTACIÓN Y TRÁMITES</h5> 
+                                        <h5>DOCUMENTACIÓN Y TRÁMITES</h5>
                                     </div>
                                 </div>
                             </div>
@@ -312,7 +322,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-newspaper-o fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>DOCUMENTACIÓN Y TRÁMITES</h5> 
+                                        <h5>DOCUMENTACIÓN Y TRÁMITES</h5>
                                     </div>
                                 </div>
                             </div>
@@ -322,16 +332,16 @@ if (isset($_SESSION["ID"])) {
                     }
                     if ($PERMISOS[17]->Ver === '1') {
                         ?>
-                                                                                <!--                        <a href="<?php echo base_url(); ?>index.php/controlador/Menu?ID=3&i=<?php echo $indice ?>">
-                                                                                                            <div class="col-md-4 hover">
-                                                                                                                <div class="thumbnail animated zoomIn   text-center">
-                                                                                                                    <span class="fa fa-files-o fa-5x  "></span>
-                                                                                                                    <div class="caption">
-                                                                                                                        <h5>TRAMITES REFERENCIADOS</h5> 
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </a>-->
+                                                                                            <!--                        <a href="<?php echo base_url(); ?>index.php/controlador/Menu?ID=3&i=<?php echo $indice ?>">
+                                                                                                                        <div class="col-md-4 hover">
+                                                                                                                            <div class="thumbnail animated zoomIn   text-center">
+                                                                                                                                <span class="fa fa-files-o fa-5x  "></span>
+                                                                                                                                <div class="caption">
+                                                                                                                                    <h5>TRAMITES REFERENCIADOS</h5>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </a>-->
 
                         <?php
                     }
@@ -346,7 +356,7 @@ if (isset($_SESSION["ID"])) {
                                     </div>
                                 </div>
                             </div>
-                        </a> 
+                        </a>
 
                         <?php
                     }
@@ -378,7 +388,7 @@ if (isset($_SESSION["ID"])) {
                     <?php }
                     ?>
                     <!--        </div>
-                    
+
                                 <div class="col-md-12">-->
                     <?php
                     if ($PERMISOS[20]->Ver === '1') {
@@ -404,7 +414,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-usd fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>COBRANZA</h5> 
+                                        <h5>COBRANZA</h5>
                                     </div>
                                 </div>
                             </div>
@@ -448,12 +458,12 @@ if (isset($_SESSION["ID"])) {
                                     </div>
                                 </div>
                             </div>
-                        </a>  
+                        </a>
                         <?php
                     }
                     ?>
                     <!--        </div>
-                    
+
                                 <div class="col-md-12">-->
                     <?php
                     if ($PERMISOS[40]->Ver === '1') {
@@ -468,7 +478,7 @@ if (isset($_SESSION["ID"])) {
                                     </div>
                                 </div>
                             </div>
-                        </a>    
+                        </a>
                         <?php
                     }
                     if ($PERMISOS[24]->Ver === '1') {
@@ -478,7 +488,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-calculator fa-5x    "></span>
                                     <div class="caption">
-                                        <h5>CALCULO DE IMPUESTOS</h5> 
+                                        <h5>CALCULO DE IMPUESTOS</h5>
                                     </div>
                                 </div>
                             </div>
@@ -493,11 +503,11 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-bar-chart fa-5x    "></span>
                                     <div class="caption">
-                                        <h5>GRÁFICAS</h5> 
+                                        <h5>GRÁFICAS</h5>
                                     </div>
                                 </div>
                             </div>
-                        </a>    
+                        </a>
 
                         <?php
                     }
@@ -508,7 +518,7 @@ if (isset($_SESSION["ID"])) {
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-money fa-5x    "></span>
                                     <div class="caption">
-                                        <h5 class="">CONTABILIDAD</h5> 
+                                        <h5 class="">CONTABILIDAD</h5>
                                     </div>
                                 </div>
                             </div>
@@ -562,7 +572,7 @@ if (isset($_SESSION["ID"])) {
                                     </div>
                                 </div>
                             </div>
-                        </a> 
+                        </a>
 
                         <?php
                     }
@@ -578,7 +588,7 @@ if (isset($_SESSION["ID"])) {
                                     </div>
                                 </div>
                             </div>
-                        </a> 
+                        </a>
 
                     <?php }
                     ?>
@@ -587,22 +597,22 @@ if (isset($_SESSION["ID"])) {
                     <?php
                     if ($PERMISOS[31]->Ver === '1') {
                         ?>
-                                                                                            <!--                        <a href="<?php echo base_url(); ?>index.php/controlador/Menu?ID=13&i=<?php echo $indice ?>">
-                                                                                                                    <div class="col-md-4 hover">
-                                                                                                                        <div class="thumbnail animated zoomIn   text-center">
-                                                                                                                            <span class="fa fa-bus fa-5x  "></span>
-                                                                                                                            <div class="caption">
-                                                                                                                                <h5>UNIDADES DE TRANSPORTE</h5> 
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </a>-->
+                                                                                                        <!--                        <a href="<?php echo base_url(); ?>index.php/controlador/Menu?ID=13&i=<?php echo $indice ?>">
+                                                                                                                                <div class="col-md-4 hover">
+                                                                                                                                    <div class="thumbnail animated zoomIn   text-center">
+                                                                                                                                        <span class="fa fa-bus fa-5x  "></span>
+                                                                                                                                        <div class="caption">
+                                                                                                                                            <h5>UNIDADES DE TRANSPORTE</h5>
+                                                                                                                                        </div>
+                                                                                                                                    </div>
+                                                                                                                                </div>
+                                                                                                                            </a>-->
                         <a href="<?php echo base_url(); ?>index.php/ctrlTransporte/">
                             <div class="col-md-4 hover">
                                 <div class="thumbnail animated zoomIn   text-center">
                                     <span class="fa fa-bus fa-5x  "></span>
                                     <div class="caption">
-                                        <h5>UNIDADES DE TRANSPORTE</h5> 
+                                        <h5>UNIDADES DE TRANSPORTE</h5>
                                     </div>
                                 </div>
                             </div>
@@ -719,7 +729,7 @@ if (isset($_SESSION["ID"])) {
                                         <h5>ARCHIVOS</h5>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </a>
 
                     <?php }
@@ -737,7 +747,7 @@ if (isset($_SESSION["ID"])) {
                                         <h5>PERMISOS</h5>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </a>
 
                         <?php
@@ -756,8 +766,26 @@ if (isset($_SESSION["ID"])) {
                                         <h5>PROYECTOS</h5>
                                     </div>
                                 </div>
-                            </div> 
-                        </a> 
+                            </div>
+                        </a>
+                        <?php
+                    }
+                    ?>
+
+
+                    <?php
+                    if ($PERMISOS[41]->Ver === '1') {
+                        ?>
+                        <a href="<?php echo base_url(); ?>index.php/ctrlPuntoDeVenta/">
+                            <div class="col-md-4 hover">
+                                <div class="thumbnail animated zoomIn   text-center">
+                                    <span class="fa fa-shopping-basket fa-5x  "></span>
+                                    <div class="caption">
+                                        <h5>PUNTO DE VENTA</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
                         <?php
                     }
                     ?>
@@ -769,13 +797,13 @@ if (isset($_SESSION["ID"])) {
                                     <h5>SALIR</h5>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </a>
 
                     <!--</div>-->
                 </div>
             </div>
-        </div> 
+        </div>
     </div>
 </div>
 
@@ -793,15 +821,15 @@ if (isset($_SESSION["ID"])) {
                         <div class="col-md-12" align="center">
                             <h1>
                                 <?php
-//                            var_dump($_SESSION["USUARIO"][0]); 
+//                            var_dump($_SESSION["USUARIO"][0]);
                                 $USER_DATA = $_SESSION["USUARIO"][0];
                                 print $USER_DATA["nombre"] . " " . $USER_DATA["apaterno"] . " " . $USER_DATA["amaterno"];
                                 ?></h1>
-                        </div> 
+                        </div>
                         <div class="col-md-12 hide">
                             <input type="text" id="Nombre" name="Nombre" value="<?php print $USER_DATA["nombre"] . " " . $USER_DATA["apaterno"] . " " . $USER_DATA["amaterno"] ?>" class="form-control">
                         </div>
-                        <div id="rFechaYHora" class="text-center"></div> 
+                        <div id="rFechaYHora" class="text-center"></div>
                         <div class="col-md-4">
                             <label for="">USUARIO</label>
                             <select id="IdUsuario" name="IdUsuario" class="form-control">
@@ -830,7 +858,7 @@ if (isset($_SESSION["ID"])) {
                             <h1>MIS ENTRADAS Y SALIDAS</h1>
                         </div>
                         <div class="col-md-12" id="RelojChecadorXUsuarioID">
-                        </div> 
+                        </div>
                         <?php
                         if ($PERMISOS[1]->Ver === '1' && $PERMISOS[1]->Reportes === '1') {
                             ?>
@@ -838,8 +866,8 @@ if (isset($_SESSION["ID"])) {
                                 <fieldset>
                                     <div class="col-md-2">
                                         <button id="btnReiniciarFiltroDeAccesos" name="btnReiniciarFiltroDeAccesos" class="btn btn-default fa-lg"
-                                                data-toggle="tooltip" 
-                                                data-placement="top" 
+                                                data-toggle="tooltip"
+                                                data-placement="top"
                                                 title=""  type="button"
                                                 data-original-title="REINICIAR"><span class="fa fa-trash fa-2x kingblue-icon"></span></button>
                                     </div>
@@ -854,18 +882,18 @@ if (isset($_SESSION["ID"])) {
                                     <div class="col-md-3">
                                         <label for="">USUARIO</label>
                                         <select id="Usuario" name="Usuario" class="form-control">
-                                            
+
                                         </select>
                                     </div>
                                     <div class="col-md-3">
                                         <button id="btnBuscarAccesos" name="btnBuscarAccesos" class="btn btn-default fa-lg"
-                                                data-toggle="tooltip" 
-                                                data-placement="top" 
+                                                data-toggle="tooltip"
+                                                data-placement="top"
                                                 title=""  type="button"
                                                 data-original-title="BUSCAR ACCESOS"><span class="fa fa-search fa-2x kingblue-icon"></span></button>
                                         <button id="btnGenerarReporteDeAccesos" name="btnGenerarReporteDeAccesos" class="btn btn-default fa-lg"
-                                                data-toggle="tooltip" 
-                                                data-placement="top" 
+                                                data-toggle="tooltip"
+                                                data-placement="top"
                                                 title=""  type="button"
                                                 data-original-title="GENERAR REPORTE DE ACCESOS"><span class="fa fa-check fa-2x kingblue-icon"></span></button>
                                     </div>
@@ -886,7 +914,7 @@ if (isset($_SESSION["ID"])) {
             </div>
         </form>
     </div>
-</div> 
+</div>
 
 
 <script>
@@ -906,17 +934,17 @@ if (isset($_SESSION["ID"])) {
     var btnGenerarReporteDeAccesos = mdlControlDeAcceso.find("#btnGenerarReporteDeAccesos");
     var btnReiniciarFiltroDeAccesos = mdlControlDeAcceso.find("#btnReiniciarFiltroDeAccesos");
 
-    $(document).ready(function () {
+    $(document).ready(function() {
 
-        btnReiniciarFiltroDeAccesos.click(function () {
+        btnReiniciarFiltroDeAccesos.click(function() {
             mdlControlDeAcceso.find("#FechaInicial").val("");
             mdlControlDeAcceso.find("#FechaFinal").val("");
             mdlControlDeAcceso.find("#Usuario").val("");
-            mdlControlDeAcceso.find("#Usuario").select2("val","");
+            mdlControlDeAcceso.find("#Usuario").select2("val", "");
             getEntradasYSalidas();
         });
 
-        btnGenerarReporteDeAccesos.click(function () {
+        btnGenerarReporteDeAccesos.click(function() {
             HoldOn.open({
                 theme: "sk-bounce",
                 message: "POR FAVOR ESPERE..."
@@ -929,19 +957,19 @@ if (isset($_SESSION["ID"])) {
                     INICIO: (mdlControlDeAcceso.find("#FechaInicial").val() !== '') ? mdlControlDeAcceso.find("#FechaInicial").val() : '',
                     FIN: (mdlControlDeAcceso.find("#FechaFinal").val() !== '') ? mdlControlDeAcceso.find("#FechaFinal").val() : ''
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data, x, jq);
                 window.open(data, '_blank');
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
         getUsuariosXReloj();
 
-        btnBuscarAccesos.click(function () {
+        btnBuscarAccesos.click(function() {
             HoldOn.open({
                 theme: 'sk-bounce',
                 message: 'BUSCANDO...'
@@ -956,15 +984,15 @@ if (isset($_SESSION["ID"])) {
                     INICIO: (mdlControlDeAcceso.find("#FechaInicial").val() !== '') ? mdlControlDeAcceso.find("#FechaInicial").val() : '',
                     FIN: (mdlControlDeAcceso.find("#FechaFinal").val() !== '') ? mdlControlDeAcceso.find("#FechaFinal").val() : ''
                 }
-            }).done(function (data, x, jq) {
+            }).done(function(data, x, jq) {
                 console.log(data);
                 mdlControlDeAcceso.find("#RelojChecador").html(getTable('tblRelojChecador', data));
-                mdlControlDeAcceso.find('#tblRelojChecador tfoot th').each(function () {
+                mdlControlDeAcceso.find('#tblRelojChecador tfoot th').each(function() {
                     var title = $(this).text();
                     $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
                 });
                 var tblSelected = mdlControlDeAcceso.find('#tblRelojChecador').DataTable(tableOptions);
-                mdlControlDeAcceso.find('#tblRelojChecador tbody').on('click', 'tr', function () {
+                mdlControlDeAcceso.find('#tblRelojChecador tbody').on('click', 'tr', function() {
                     mdlControlDeAcceso.find("#tblRelojChecador").find("tr").removeClass("success");
                     mdlControlDeAcceso.find("#tblRelojChecador").find("tr").removeClass("warning");
 //                console.log(this)
@@ -984,22 +1012,22 @@ if (isset($_SESSION["ID"])) {
                     temp = parseInt(dtm[0]);
                 });
                 // Apply the search
-                tblSelected.columns().every(function () {
+                tblSelected.columns().every(function() {
                     var that = this;
-                    $('input', this.footer()).on('keyup change', function () {
+                    $('input', this.footer()).on('keyup change', function() {
                         if (that.search() !== this.value) {
                             that.search(this.value).draw();
                         }
                     });
                 });
-            }).fail(function (x, y, z) {
+            }).fail(function(x, y, z) {
                 console.log(x, y, z);
-            }).always(function () {
+            }).always(function() {
                 HoldOn.close();
             });
         });
 
-        btnChecar.click(function () {
+        btnChecar.click(function() {
             if (mdlControlDeAcceso.find("#IdUsuario").val() !== '' && mdlControlDeAcceso.find("#Tipo").val() !== '') {
                 HoldOn.open({
                     theme: 'sk-bounce',
@@ -1015,7 +1043,7 @@ if (isset($_SESSION["ID"])) {
                     contentType: false,
                     processData: false,
                     data: frm
-                }).done(function (data, x, jq) {
+                }).done(function(data, x, jq) {
                     console.log(data, x, jq);
                     mdlControlDeAcceso.find("#frmControlAcceso")[0].reset();
                     mdlControlDeAcceso.find("select").select2("val", "");
@@ -1023,9 +1051,9 @@ if (isset($_SESSION["ID"])) {
                     onNotify('<span class="fa fa-check fa-lg"></span>', 'GRACIAS', 'success');
                     getEntradasYSalidas();
                     getEntradasYSalidasXUsuarioID();
-                }).fail(function (x, y, z) {
+                }).fail(function(x, y, z) {
                     console.log(x, y, z);
-                }).always(function () {
+                }).always(function() {
                     HoldOn.close();
                 });
             } else {
@@ -1035,16 +1063,16 @@ if (isset($_SESSION["ID"])) {
 
 
 
-        $("#btnSalir").on('click', function (evt) {
+        $("#btnSalir").on('click', function(evt) {
             SystemExit();
         });
 
         search.focus();
-        search.keyup(function () {
+        search.keyup(function() {
             if ($(this).val() !== '') {
                 $("#vContentMenu a").addClass("hide");
                 var modules = $("#vContentMenu a").find("h5");
-                $.each(modules, function (k, v) {
+                $.each(modules, function(k, v) {
                     var legend = "";
                     legend = ($(v)[0].innerText);
                     if (legend.includes(search.val().toUpperCase())) {
@@ -1057,18 +1085,18 @@ if (isset($_SESSION["ID"])) {
             console.log($(this).val())
         });
 
-        btnPlay.click(function () {
+        btnPlay.click(function() {
             record = true;
         });
-        btnStop.click(function () {
+        btnStop.click(function() {
             record = false;
         });
-        mdlControlDeAcceso.on('show.bs.modal', function (e) {
+        mdlControlDeAcceso.on('show.bs.modal', function(e) {
             mdlControlDeAcceso.find("#Observaciones").val("");
 //            onRecord();
         });
 
-        $("#mdlControlDeAcceso").on('hidden.bs.modal', function (e) {
+        $("#mdlControlDeAcceso").on('hidden.bs.modal', function(e) {
             video.pause();
             video.src = null;
             video.src = "";
@@ -1080,7 +1108,7 @@ if (isset($_SESSION["ID"])) {
         if ($(this).val() !== '') {
             $("#vContentMenu a").addClass("hide");
             var modules = $("#vContentMenu a").find("h5");
-            $.each(modules, function (k, v) {
+            $.each(modules, function(k, v) {
                 var legend = "";
                 legend = ($(v)[0].innerText);
                 if (legend.includes(search.val().toUpperCase())) {
@@ -1102,16 +1130,16 @@ if (isset($_SESSION["ID"])) {
             url: master_url + 'getUsuariosXReloj',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             var options = '<option></options>';
-            $.each(data, function (k, v) {
+            $.each(data, function(k, v) {
                 options += '<option value="' + v.ID + '">' + v.USUARIO + '</option>';
             });
             mdlControlDeAcceso.find("#IdUsuario").html(options);
             mdlControlDeAcceso.find("#Usuario").html(options);
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -1126,15 +1154,15 @@ if (isset($_SESSION["ID"])) {
             url: master_url + 'getEntradasYSalidas',
             type: "POST",
             dataType: "JSON"
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             console.log(data);
             mdlControlDeAcceso.find("#RelojChecador").html(getTable('tblRelojChecador', data));
-            mdlControlDeAcceso.find('#tblRelojChecador tfoot th').each(function () {
+            mdlControlDeAcceso.find('#tblRelojChecador tfoot th').each(function() {
                 var title = $(this).text();
                 $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
             });
             var tblSelected = mdlControlDeAcceso.find('#tblRelojChecador').DataTable(tableOptions);
-            mdlControlDeAcceso.find('#tblRelojChecador tbody').on('click', 'tr', function () {
+            mdlControlDeAcceso.find('#tblRelojChecador tbody').on('click', 'tr', function() {
                 mdlControlDeAcceso.find("#tblRelojChecador").find("tr").removeClass("success");
                 mdlControlDeAcceso.find("#tblRelojChecador").find("tr").removeClass("warning");
 //                console.log(this)
@@ -1154,17 +1182,17 @@ if (isset($_SESSION["ID"])) {
                 temp = parseInt(dtm[0]);
             });
             // Apply the search
-            tblSelected.columns().every(function () {
+            tblSelected.columns().every(function() {
                 var that = this;
-                $('input', this.footer()).on('keyup change', function () {
+                $('input', this.footer()).on('keyup change', function() {
                     if (that.search() !== this.value) {
                         that.search(this.value).draw();
                     }
                 });
             });
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -1183,15 +1211,15 @@ if (isset($_SESSION["ID"])) {
             data: {
                 ID: <?php print $_SESSION["USUARIO_ID"] ?>
             }
-        }).done(function (data, x, jq) {
+        }).done(function(data, x, jq) {
             console.log(data);
             mdlControlDeAcceso.find("#RelojChecadorXUsuarioID").html(getTable('tblRelojChecadorXUsuarioID', data));
-            mdlControlDeAcceso.find('#tblRelojChecadorXUsuarioID tfoot th').each(function () {
+            mdlControlDeAcceso.find('#tblRelojChecadorXUsuarioID tfoot th').each(function() {
                 var title = $(this).text();
                 $(this).html('<label for="">' + title + '</label><input type="text" placeholder="BUSCAR POR ' + title + '" class="form-control" />');
             });
             var tblSelected = mdlControlDeAcceso.find('#tblRelojChecadorXUsuarioID').DataTable(tableOptions);
-            mdlControlDeAcceso.find('#tblRelojChecadorXUsuarioID tbody').on('click', 'tr', function () {
+            mdlControlDeAcceso.find('#tblRelojChecadorXUsuarioID tbody').on('click', 'tr', function() {
                 mdlControlDeAcceso.find("#tblRelojChecadorXUsuarioID").find("tr").removeClass("success");
                 mdlControlDeAcceso.find("#tblRelojChecadorXUsuarioID").find("tr").removeClass("warning");
 //                console.log(this)
@@ -1211,17 +1239,17 @@ if (isset($_SESSION["ID"])) {
                 temp = parseInt(dtm[0]);
             });
             // Apply the search
-            tblSelected.columns().every(function () {
+            tblSelected.columns().every(function() {
                 var that = this;
-                $('input', this.footer()).on('keyup change', function () {
+                $('input', this.footer()).on('keyup change', function() {
                     if (that.search() !== this.value) {
                         that.search(this.value).draw();
                     }
                 });
             });
-        }).fail(function (x, y, z) {
+        }).fail(function(x, y, z) {
             console.log(x, y, z);
-        }).always(function () {
+        }).always(function() {
             HoldOn.close();
         });
     }
@@ -1237,23 +1265,23 @@ if (isset($_SESSION["ID"])) {
         getEntradasYSalidas();
         getEntradasYSalidasXUsuarioID();
     }
-    
-    
-    
+
+
+
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     var video = document.getElementById('video');
     var mediaConfig = {video: true};
-    var errBack = function (e) {
+    var errBack = function(e) {
         console.log('An error has occurred!', e)
     };
 
     function getRelojChecador() {
 
-        // Grab elements, create settings, etc. 
+        // Grab elements, create settings, etc.
         // Put video listeners into place
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia(mediaConfig).then(function (stream) {
+            navigator.mediaDevices.getUserMedia(mediaConfig).then(function(stream) {
                 video.src = window.URL.createObjectURL(stream);
                 console.log('VIDEO LOG: ' + video);
                 video.play();
@@ -1262,25 +1290,25 @@ if (isset($_SESSION["ID"])) {
 
         /* Legacy code below! */
         else if (navigator.getUserMedia) { // Standard
-            navigator.getUserMedia(mediaConfig, function (stream) {
+            navigator.getUserMedia(mediaConfig, function(stream) {
                 video.src = stream;
                 video.play();
             }, errBack);
         } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
-            navigator.webkitGetUserMedia(mediaConfig, function (stream) {
+            navigator.webkitGetUserMedia(mediaConfig, function(stream) {
                 video.src = window.webkitURL.createObjectURL(stream);
                 console.log(video);
                 video.play();
             }, errBack);
         } else if (navigator.mozGetUserMedia) { // Mozilla-prefixed
-            navigator.mozGetUserMedia(mediaConfig, function (stream) {
+            navigator.mozGetUserMedia(mediaConfig, function(stream) {
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
             }, errBack);
         }
 
         // Trigger photo take
-        document.getElementById('snap').addEventListener('click', function () {
+        document.getElementById('snap').addEventListener('click', function() {
             context.drawImage(video, 0, 0, 320, 240);
             $("#rFechaYHora").html('<div class="col-md-12">FECHA Y HORA DE REGISTRO</div><h2>' + new Date().toLocaleString() + '</h2>');
         });

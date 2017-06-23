@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -14,10 +14,10 @@ class ctrlCompras extends CI_Controller {
      *
      * Maps to the following URL
      * 		http://example.com/index.php/welcome
-     * 	- or -  
+     * 	- or -
      * 		http://example.com/index.php/welcome/index
      * 	- or -
-     * Since this controller is set as the default controller in 
+     * Since this controller is set as the default controller in
      * config/routes.php, it's displayed at http://example.com/
      *
      * So any other public methods not prefixed with an underscore will
@@ -60,7 +60,7 @@ class ctrlCompras extends CI_Controller {
 
                 $Productos = $this->modelo->getProductosAll();
                 $data['Productos'] = $Productos;
-//Cargando Ordenes 
+//Cargando Ordenes
                 $Cotizaciones = $this->modelo->getCotizacionesALL();
                 $data['Cotizaciones'] = $Cotizaciones;
 //Cargando Conceptos de cotizaciones
@@ -408,7 +408,7 @@ class ctrlCompras extends CI_Controller {
                     }
                     $nob = strlen($rdata->ANOTACIONES);
                     if ($nob > 330) {
-                        
+
                     }
                     $pdf->MultiCell(175, 3, strtoupper(utf8_decode($rdata->ANOTACIONES)));
 
@@ -417,6 +417,7 @@ class ctrlCompras extends CI_Controller {
                     /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
                     $pdf->Line(/* Izq-X */105, /* Top-Y */ 92, /* Largo */ 105, 97);
 
+                    $pdf->SetFont('Arial', 'B', 9);
                     $pdf->Text(/* X */107, /* Y */ 96, "UNIDAD");
                     /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
                     $pdf->Line(/* Izq-X */122, /* Top-Y */ 92, /* Largo */ 122, 97);
@@ -446,27 +447,28 @@ class ctrlCompras extends CI_Controller {
                         }
                         $pdf->Text(/* X */16, /* Y */ $top - 8, strtoupper(utf8_decode($value->PRODUCTO)));
                         /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
-                        $pdf->Line(/* Izq-X */105, /* Top-Y */ $top - 10, /* Largo */ 105, $top - 8);
+//                        $pdf->Line(/* Izq-X */105, /* Top-Y */ $top - 10, /* Largo */ 105, $top - 8);
+                        $pdf->SetFont('Arial', 'B', 8);
                         if (strlen($value->UNIDAD) >= 6) {
-                            $pdf->SetFont('Arial', 'B', 4);
+                            $pdf->SetFont('Arial', 'B', 5);
                         } else {
-                            $pdf->SetFont('Arial', 'B', 6);
+                            $pdf->SetFont('Arial', 'B', 7);
                         }
                         $pdf->Text(/* X */107, /* Y */ $top - 8, strtoupper($value->UNIDAD));
                         /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
-                        $pdf->Line(/* Izq-X */122, /* Top-Y */ $top - 10, /* Largo */ 122, $top - 8);
-                        if (strlen($value->UNIDAD) >= 6) {
-                            $pdf->SetFont('Arial', 'B', 4);
-                        } else {
+//                        $pdf->Line(/* Izq-X */122, /* Top-Y */ $top - 10, /* Largo */ 122, $top - 8);
+                        if (strlen($value->CANTIDAD) >= 6) {
                             $pdf->SetFont('Arial', 'B', 6);
+                        } else {
+                            $pdf->SetFont('Arial', 'B', 7.5);
                         }
                         $pdf->Text(/* X */129, /* Y */ $top - 8, $value->CANTIDAD);
                         /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
-                        $pdf->Line(/* Izq-X */142, /* Top-Y */ $top - 10, /* Largo */ 142, $top - 8);
+//                        $pdf->Line(/* Izq-X */142, /* Top-Y */ $top - 10, /* Largo */ 142, $top - 8);
 
                         $pdf->Text(/* X */144, /* Y */ $top - 8, "$ " . number_format($value->PRECIO, 2, '.', ', '));
                         /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
-                        $pdf->Line(/* Izq-X */162, /* Top-Y */ $top - 10, /* Largo */ 162, $top - 8);
+//                        $pdf->Line(/* Izq-X */162, /* Top-Y */ $top - 10, /* Largo */ 162, $top - 8);
 
                         $pdf->Text(/* X */164, /* Y */ $top - 8, "$ " . number_format($value->IMPORTEXP, 2, '.', ', '));
                         $TT = $TT + $value->IMPORTEXP;
@@ -518,7 +520,7 @@ class ctrlCompras extends CI_Controller {
 
     public function onApproved() {
         try {
-//                var_dump(filter_input_array(INPUT_POST)); 
+//                var_dump(filter_input_array(INPUT_POST));
             if (isset($_POST["ID"])) {
                 extract(filter_input_array(INPUT_POST));
                 $rows = $this->compras_model->getDataReportCotizacion($ID);
@@ -566,8 +568,8 @@ class ctrlCompras extends CI_Controller {
                         <title>ATENCIÓN</title>
                         </head>
                         <body align=\"center\">
-                        <p>SE HA APROBADO UNA ORDEN DE COMPRA</p>  
-                        <p>ID: " . $IDOC . "</p>  
+                        <p>SE HA APROBADO UNA ORDEN DE COMPRA</p>
+                        <p>ID: " . $IDOC . "</p>
                         </body>
                         </html>";
 
@@ -611,10 +613,12 @@ class ctrlCompras extends CI_Controller {
                     $pdf->SetFont('Arial', '', 20);
                     $pdf->SetX(70);
                     $pdf->Cell(100, 10, utf8_decode("ORDEN DE COMPRA"), 0, 1, 'L');
-//                    $pdf->Text(/* X */75, /* Y */ 25, utf8_decode("ORDEN DE COMPRA"));
                     $pdf->SetFont('Arial', 'B', 10);
                     $pdf->SetX(90);
-                    $pdf->Cell(100, 3, utf8_decode($rdata->PROYECTO), 0, 0, 'L');
+                    if (strlen($rdata->PROYECTO) > 35) {
+                        $pdf->SetX(60);
+                    }
+                    $pdf->Cell(80, 3, utf8_decode($rdata->PROYECTO), 0, 0, 'L');
                     $pdf->SetFont('Arial', '', 8);
                     $pdf->SetX(85);
                     $pdf->Cell(100, 10, Date('d-m-Y h:m:s a'), 0, 0, 'L');
@@ -626,7 +630,6 @@ class ctrlCompras extends CI_Controller {
 //                    $pdf->Text(/* X */160, /* Y */ 25, "No. " . $rdata->NUMERO);
                     $pdf->Cell(100, 5, "", 0, 1, 'L');
                     $pdf->Line(/* Izq-X */$margen_izq, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 208, /* DER-Y */ $pdf->GetY());
-
 
                     $pdf->SetTextColor(0, 0, 0);
                     $pdf->SetFont('Arial', 'B', 9);
@@ -658,11 +661,11 @@ class ctrlCompras extends CI_Controller {
                     $pdf->SetXY(110, 40);
                     $pdf->MultiCell(60, 4, utf8_decode($rdata->PROVEEDOR));
                     $pdf->Image('media/' . (($rdata->ICONO !== '' && $rdata->ICONO !== null && $rdata->ICONO !== 'NULL') ? $rdata->ICONO : 'logos/si.png'), 170, 37, /* ANCHO */ 36, /* ALTO */ 12);
-                    
+
 
                     $pdf->SetFont('Arial', 'B', 9);
                     $pdf->Cell(100, 1.5, "", 0, 1, 'L');
-                    $pdf->setX($margen_izq); 
+                    $pdf->setX($margen_izq);
                     $pdf->Cell(100, 5, "DOMICILIO", 0, 0, 'L');
 
                     $pdf->SetFont('Arial', 'B', 9);
@@ -677,7 +680,7 @@ class ctrlCompras extends CI_Controller {
                     $cyf = $pdf->GetY();
                     $pdf->SetXY($margen_izq, $cyf);
                     $pdf->MultiCell(85, 3, utf8_decode($rdata->DIRECCION_FACTURA));
-                    $pdf->SetXY(110,$cyf);
+                    $pdf->SetXY(110, $cyf);
                     $pdf->MultiCell(50, 3, utf8_decode($rdata->DIR_PROVEEDOR));
 
                     $pdf->Cell(100, 3, "", 0, 1, 'L');
@@ -710,7 +713,7 @@ class ctrlCompras extends CI_Controller {
                     $pdf->SetX(15);
                     $pdf->Cell(100, 5, $rdata->TEL, 0, 1, 'L');
                     /* SI, IZQ-X Y LARGO SON IGUALES, LA LINEA SE DIBUJA EN VERTICAL */
-                    $pdf->Line(/* Izq-X */105, /* Top-Y */ 38, /* Largo */ 105,  $pdf->GetY()-5);
+                    $pdf->Line(/* Izq-X */105, /* Top-Y */ 38, /* Largo */ 105, $pdf->GetY() - 5);
                     $pdf->Line(/* Izq-X */$margen_izq, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 208, /* DER-Y */ $pdf->GetY());
 
                     $pdf->SetFont('Arial', 'B', 9);
@@ -741,7 +744,7 @@ class ctrlCompras extends CI_Controller {
                     $pdf->SetFont('Arial', 'B', 9);
                     $pdf->setX($margen_izq);
                     $pdf->Cell(100, 5, utf8_decode("OBSERVACIONES: "), 0, 1, 'L');
-                    $pdf->SetFont('Arial', '', 8);
+                    $pdf->SetFont('Arial', '', 7);
                     $strf = "";
 
                     $nchar = 110;
@@ -752,7 +755,7 @@ class ctrlCompras extends CI_Controller {
                     $pdf->setX($margen_izq);
                     $nob = strlen($rdata->ANOTACIONES);
 //                    $pdf->MultiCell(175, 3, strtoupper(utf8_decode($strf)));
-                    $pdf->MultiCell(175, 3, strtoupper(utf8_decode($rdata->ANOTACIONES)));
+                    $pdf->MultiCell(200, 3, strtoupper(utf8_decode($rdata->ANOTACIONES)));
                     $pdf->Cell(100, 2, "", 0, 1, 'L');
                     $pdf->Line(/* Izq-X */$margen_izq, /* Top-Y */ $pdf->GetY(), /* Largo */ 208, $pdf->GetY());
 
@@ -761,16 +764,16 @@ class ctrlCompras extends CI_Controller {
                     $pdf->setX($margen_izq);
                     $pdf->Cell(100, 5, "PRODUCTO", 0, 0, 'L');
 
-                    $pdf->SetX(118);
+                    $pdf->SetX(123);
                     $pdf->Cell(100, 5, "UNIDAD", 0, 0, 'L');
 
-                    $pdf->SetX(133);
+                    $pdf->SetX(138);
                     $pdf->Cell(100, 5, "CANTIDAD", 0, 0, 'L');
 
-                    $pdf->SetX(154);
+                    $pdf->SetX(159);
                     $pdf->Cell(100, 5, "PRECIO.U", 0, 0, 'L');
 
-                    $pdf->SetX(175);
+                    $pdf->SetX(180);
                     $pdf->Cell(100, 5, "IMPORTE", 0, 1, 'L');
 
                     /* LINEA INFERIOR DE TITULOS DE DETALLE */
@@ -784,7 +787,36 @@ class ctrlCompras extends CI_Controller {
                     $pdf->SetDrawColor(224, 224, 224);
 //                    for ($index1 = 0; $index1 < 10; $index1++) {
                     foreach ($rows as $key => $value) {
-                        if ($pdf->GetY() > 1500) {
+                        if (strlen($value->PRODUCTO) >= 70) {
+                            $pdf->SetFont('Arial', 'B', 5);
+                        } else {
+                            $pdf->SetFont('Arial', 'B', 6);
+                        }
+                        $cy = $pdf->GetY();
+                        $pdf->SetX($margen_izq);
+                        $pdf->Cell(120, 4, strtoupper(utf8_decode($value->PRODUCTO)), 0, 0, 'L');
+//                        $pdf->Cell(100, 5, strtoupper(utf8_decode($value->PRODUCTO)), 0, 0, 'L');
+                        if (strlen($value->UNIDAD) >= 6) {
+                            $pdf->SetFont('Arial', 'B', 5);
+                        } else {
+                            $pdf->SetFont('Arial', 'B', 6);
+                        }
+
+                        $pdf->SetX(125);
+                        $pdf->Cell(100, 5, strtoupper($value->UNIDAD), 0, 0, 'L');
+
+                        $pdf->SetFont('Arial', 'B', 7);
+                        $pdf->SetX(143);
+                        $pdf->Cell(100, 5, $value->CANTIDAD, 0, 0, 'L');
+
+                        $pdf->SetX(159);
+                        $pdf->Cell(100, 5, "$ " . number_format($value->PRECIO, 2, '.', ', '), 0, 0, 'L');
+
+                        $pdf->SetX(180);
+                        $pdf->Cell(105, 5, "$ " . number_format($value->IMPORTEXP, 2, '.', ', '), 0, 1, 'L');
+                        $TT = $TT + $value->IMPORTEXP;
+                        $pdf->Line(/* Izq-X */$margen_izq, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 208, /* DER-Y */ $pdf->GetY());
+                        if ($pdf->GetY() > 1650) {
                             $pdf->SetDrawColor(192, 192, 192);
                             $pdf->SetTextColor(192, 192, 192);
                             $pdf->Cell(100, 5, "", 0, 1, 'L');
@@ -796,43 +828,11 @@ class ctrlCompras extends CI_Controller {
                             $top = 0;
                             $pdf->SetDrawColor(0, 0, 0);
                             $pdf->SetTextColor(0, 0, 0);
+                            $pdf->SetY(5);
                         }
-                        if (strlen($value->PRODUCTO) >= 70) {
-                            $pdf->SetFont('Arial', 'B', 6);
-                        } else {
-                            $pdf->SetFont('Arial', 'B', 7);
-                        }
-                        $cy = $pdf->GetY();
-                        $pdf->SetX($margen_izq);
-                        $pdf->MultiCell(115, 4, strtoupper(utf8_decode($value->PRODUCTO)), 0);
-//                        $pdf->Cell(100, 5, strtoupper(utf8_decode($value->PRODUCTO)), 0, 0, 'L');
-                        if (strlen($value->UNIDAD) >= 6) {
-                            $pdf->SetFont('Arial', 'B', 5);
-                        } else {
-                            $pdf->SetFont('Arial', 'B', 6);
-                        }
-                        $cyf = $pdf->GetY();
-
-                        $pdf->setY($cy);
-                        $pdf->SetX(120);
-                        $pdf->Cell(100, 5, strtoupper($value->UNIDAD), 0, 0, 'L');
-
-                        $pdf->SetFont('Arial', 'B', 7);
-                        $pdf->SetX(137);
-                        $pdf->Cell(100, 5, $value->CANTIDAD, 0, 0, 'L');
-
-                        $pdf->SetX(154);
-                        $pdf->Cell(100, 5, "$ " . number_format($value->PRECIO, 2, '.', ', '), 0, 0, 'L');
-
-                        $pdf->SetX(175);
-                        $pdf->Cell(100, 5, "$ " . number_format($value->IMPORTEXP, 2, '.', ', '), 0, 1, 'L');
-                        $TT = $TT + $value->IMPORTEXP;
-                        $pdf->setY($cyf);
-                        $pdf->Line(/* Izq-X */$margen_izq, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 208, /* DER-Y */ $pdf->GetY());
                     }
-//                    }
-
-                    if ($pdf->GetY() > 1500) {
+                    $pdf->Line(/* Izq-X */$margen_izq, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 208, /* DER-Y */ $pdf->GetY());
+                    if ($pdf->GetY() > 1650) {
                         $pdf->SetDrawColor(192, 192, 192);
                         $pdf->SetTextColor(192, 192, 192);
                         $pdf->Cell(100, 5, "", 0, 1, 'L');
@@ -844,10 +844,9 @@ class ctrlCompras extends CI_Controller {
                         $top = 0;
                         $pdf->SetDrawColor(0, 0, 0);
                         $pdf->SetTextColor(0, 0, 0);
+                        $pdf->SetY(5);
                     }
                     $pdf->SetDrawColor(96, 96, 96);
-                    $pdf->Line(/* Izq-X */$margen_izq, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 208, /* DER-Y */ $pdf->GetY());
-
                     $pdf->SetFont('Arial', 'B', 8);
                     $pdf->SetX(154);
                     $pdf->Cell(100, 5, "SUBTOTAL: ", 0, 0, 'L');
@@ -876,7 +875,7 @@ class ctrlCompras extends CI_Controller {
                     $pdf->Line(/* Izq-X */25, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 75, /* DER-Y */ $pdf->GetY());
                     $pdf->Line(/* Izq-X */80, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 130, /* DER-Y */ $pdf->GetY());
                     $pdf->Line(/* Izq-X */135, /* IZQ-Y */ $pdf->GetY(), /* Largo */ 185, /* DER-Y */ $pdf->GetY());
-//                 
+//
                     $pdf->SetFont('Arial', 'B', 8);
                     $pdf->SetX(40);
                     $pdf->Cell(100, 5, utf8_decode("ELABORÓ"), 0, 0, 'L');
@@ -944,7 +943,7 @@ class ctrlCompras extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
-    
+
     public function getOrdenesDeCompra() {
         try {
             $data = $this->compras_model->getOrdenesDeCompra();
@@ -953,7 +952,7 @@ class ctrlCompras extends CI_Controller {
             echo $exc->getTraceAsString();
         }
     }
-    
+
     public function getOrdenesDeCompraADetalle() {
         try {
             $data = $this->compras_model->getOrdenesDeCompraADetalle();

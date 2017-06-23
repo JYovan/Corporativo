@@ -38,16 +38,39 @@ class ctrlArchivos extends CI_Controller {
 
     public function onUploadArchivo() {
         try {
-            if (isset($_FILES["rArchivo"]["name"])) {
-                if (!file_exists('uploads/Archivos')) {
-                    mkdir('uploads/Archivos', 0777, true);
-                }
-                if (move_uploaded_file($_FILES["rArchivo"]["tmp_name"], 'uploads/Archivos/' . utf8_decode($_FILES["rArchivo"]["name"]))) {
-                    echo "EL ARCHIVO SE SUBIO EXITOSAMENTE ! ! !";
-                } else {
-                    echo "NO SE PUDO SUBIR EL ARCHIVO";
+            var_dump($_FILES);
+            $total = count($_FILES['rArchivo']['name']);
+
+// Loop through each file
+            for ($i = 0; $i < $total; $i++) {
+                //Get the temp file path
+                $tmpFilePath = $_FILES['rArchivo']['tmp_name'][$i];
+
+                //Make sure we have a filepath
+                if ($tmpFilePath != "") {
+                    //Setup our new file path
+                    if (!file_exists('uploads/Archivos')) {
+                        mkdir('uploads/Archivos', 0777, true);
+                    }
+                    $newFilePath = "uploads/Archivos/" . $_FILES['rArchivo']['name'][$i];
+
+                    //Upload the file into the temp dir
+                    if (move_uploaded_file($tmpFilePath, $newFilePath)) {
+
+                        //Handle other code here
+                    }
                 }
             }
+//            if (isset($_FILES["rArchivo"]["name"])) {
+//                if (!file_exists('uploads/Archivos')) {
+//                    mkdir('uploads/Archivos', 0777, true);
+//                }
+//                if (move_uploaded_file($_FILES["rArchivo"]["tmp_name"], 'uploads/Archivos/' . utf8_decode($_FILES["rArchivo"]["name"]))) {
+//                    echo "EL ARCHIVO SE SUBIO EXITOSAMENTE ! ! !";
+//                } else {
+//                    echo "NO SE PUDO SUBIR EL ARCHIVO";
+//                }
+//            }
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }

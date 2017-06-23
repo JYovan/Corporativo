@@ -2,7 +2,7 @@
 
 /*
  * Copyright 2016 Ing.Giovanni Flores (email :ing.giovanniflores93@gmail.com)
- * This program isn't free software; you can't redistribute it and/or modify it without authorization of author. 
+ * This program isn't free software; you can't redistribute it and/or modify it without authorization of author.
  */
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -42,7 +42,7 @@ class resource_model extends CI_Model {
                     break;
                 case "save":
                     $this->db->insert($tbl, $array);
-//                    print $str = $this->db->last_query();
+                    print $str = $this->db->last_query();
                     $query = $this->db->query('SELECT LAST_INSERT_ID()');
                     $row = $query->row_array();
                     $LastIdInserted = $row['LAST_INSERT_ID()'];
@@ -68,9 +68,9 @@ class resource_model extends CI_Model {
     }
 
     public function onActionEmail($para, $asunto, $mensaje) {
-        try { 
+        try {
             $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8\r\n"; 
+            $headers .= "Content-type:text/html;charset=UTF-8\r\n";
             $headers .= 'From: sistema@rabina.com.mx ' . "\r\n";
             mail($para, $asunto, $mensaje, $headers);
         } catch (Exception $exc) {

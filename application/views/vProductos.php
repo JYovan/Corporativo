@@ -78,6 +78,20 @@
                                 data-original-title="ASIGNAR PRODUCTOS">
                             <span class="fa fa-share fa-3x danger-icon"></span>
                         </button>
+                        <button id="btnGeneradorCodigos" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="GENERADOR DE CÓDIGOS DE BARRAS">
+                            <span class="fa fa-gear fa-3x kingblue-icon"></span>
+                        </button>
+                        <button id="btnGenerarCodigo" class="btn btn-default btn-lg fa-lg" 
+                                data-toggle="tooltip" 
+                                data-placement="top" 
+                                title=""  type="button"
+                                data-original-title="GENERAR CÓDIGO DE BARRAS">
+                            <span class="fa fa-barcode fa-3x kingblue-icon"></span>
+                        </button>
                     </div>
                     <div id="rBusqueda" class="hide">
                         <fieldset>
@@ -176,6 +190,29 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
+
+<div class="modal animated bounce" id="mdlGeneradorCodigos">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">GENERADOR DE CODIGOS DE BARRAS</h4>
+            </div>
+            <div class="modal-body">
+                <fieldset>
+                    <div class="col-md-12"> 
+
+                    </div>
+                </fieldset>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default fa-lg" data-dismiss="modal"><span class="fa fa-times fa-3x"></span></button>
+                <button type="button" class="btn btn-default fa-lg"><span class="fa fa-check fa-3x success-icon"></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
 
     $(document).ready(function () {
@@ -404,8 +441,41 @@
 
     var btnEliminar = $("#btnEliminar");
     var btnEliminarPrecio = $("#btnEliminarPrecio");
+    var btnGenerarCodigo = $("#btnGenerarCodigo");
+    var btnGeneradorCodigos = $("#btnGeneradorCodigos");
+    var mdlGeneradorCodigos = $("#mdlGeneradorCodigos");
 
     $(document).ready(function () {
+
+        btnGeneradorCodigos.click(function(){
+           mdlGeneradorCodigos.modal('show'); 
+        });
+
+        btnGenerarCodigo.click(function () {
+            if (temp !== undefined && temp !== null && temp !== 0) {
+                HoldOn.open({
+                    theme: "sk-bounce",
+                    message: "GENERANDO... POR FAVOR ESPERE"
+                });
+                $.ajax({
+                    url: master_url + 'onGenerarCodigoXProducto',
+                    type: "POST",
+                    data: {
+                        ID: temp
+                    }
+                }).done(function (data, x, jq) {
+                    console.log(data);
+                    onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'CODIGO GENERADO', 'success');
+                    window.open(data, '_blank');
+                }).fail(function (x, y, z) {
+                    console.log(x, y, z);
+                }).always(function () {
+                    HoldOn.close();
+                });
+            } else {
+                onNotify('<span class="fa fa-exclamation fa-lg"></span>', 'DEBE DE SELECCIONAR UN REGISTRO', 'danger');
+            }
+        });
 
         btnEliminarPrecio.click(function () {
             console.log(temp);
